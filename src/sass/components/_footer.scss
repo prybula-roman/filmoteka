@@ -1,0 +1,37 @@
+.section--footer {
+  padding-top: 29px;
+  padding-bottom: 29px;
+
+  background-color: $footer-bg-color;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 30px;
+    padding-bottom: 28px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__text {
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+
+  color: $dark-grey-color;
+}
+
+.footer__link {
+  display: inline;
+  color: inherit;
+  text-decoration: underline;
+
+  transition: color $time $timing-function;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
