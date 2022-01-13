@@ -94,19 +94,37 @@ class Auth {
             console.log('############################');
             const user = auth.currentUser;
             console.log('user=', user);
-
-            const db = database.ref;
-            console.log('db=', db);
-
             const addUser = {
               email: email,
               // password: password,
               name: fullName,
             };
 
-            db.child('users/' + user.uid).set(addUser);
-            // ...
+            function writeUserData(name, email) {
+              console.log('user.uid=', user.uid);
+              console.log('ref=', ref(database, 'users/' + user.uid));
+
+              set(ref(database, 'users/' + user.uid), addUser);
+
+              console.log(set(ref(database, 'users/' + user.uid), addUser));
+            }
+
+            console.log('addUser.name=', addUser.name, '  addUser.email=', addUser.email);
+            writeUserData(addUser.name, addUser.email);
           })
+          // .then(() => {
+          //   const addUser = {
+          //     email: email,
+          //     // password: password,
+          //     name: fullName,
+          //   };
+
+          //   function writeUserData(userId, name, email) {
+          //     console.log('ref=', ref(database, 'users/' + userId));
+
+          //     set(ref(database, 'users/' + userId), addUser);
+          //   }
+          // })
           .catch(error => {
             const errorCode = error.code;
             const errorMessage = error.message;
