@@ -1,5 +1,7 @@
 import FetchGenre from '../API/fetchGenre';
+import FilmsStorage from './local-storage';
 
+const filmsStorage = new FilmsStorage();
 const apiGenreData = new FetchGenre();
 
 export default function handleMovieCard(movies) {
@@ -33,5 +35,8 @@ export default function handleMovieCard(movies) {
       elem.poster_path = 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-1024x898.png'
     }
   });
+  
+  filmsStorage.addToCurrent(movies);
+
   return movies;
 } 
