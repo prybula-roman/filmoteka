@@ -24,7 +24,7 @@ export default function handleMovieCard(movies) {
     } else {
       elem.genre_ids = 'Unknown';
     }
-
+    
     if (elem.vote_average === 0) {
         elem.vote_average = 'Unknown'
     }
@@ -35,7 +35,7 @@ export default function handleMovieCard(movies) {
       elem.poster_path = 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-1024x898.png'
     }
   });
-
-  filmsStorage.addToCurrent(movies)
+  
+  filmsStorage.addToCurrent(movies);
   return movies;
 }
