@@ -12,8 +12,8 @@ export default function handleMovieCard(movies) {
 
     if (elem.release_date){
         (elem.release_date = elem.release_date.slice(0, 4))
-    } else {
-        elem.release_date = 'Unknown'
+    } else{
+        (elem.release_date = 'Unknown');
     }
 
     if (elem.genre_ids.length > 0) {
@@ -24,11 +24,11 @@ export default function handleMovieCard(movies) {
     } else {
       elem.genre_ids = 'Unknown';
     }
-    
-    if (elem.vote_average === 0) {
-        elem.vote_average = 'Unknown'
-    }
 
+    if (elem.vote_average === 0) {
+      elem.vote_average = 'Unknown'
+    }
+    
     if (elem.poster_path) {
       elem.poster_path = 'https://image.tmdb.org/t/p/w500' + elem.poster_path;
     }else{
@@ -37,5 +37,6 @@ export default function handleMovieCard(movies) {
   });
   
   filmsStorage.addToCurrent(movies);
+
   return movies;
-}
+} 
