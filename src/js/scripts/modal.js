@@ -1,17 +1,9 @@
 import { refs } from './refs';
-import handleMovieCard from './handleMovieCard';
-// import TEMPLATES
 import movieCard from '../templates/modal.hbs';
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
-// refs.galleryEl.addEventListener('click', onOpenModal);
 
-// if (refs.bodyEl.classList.contains('movies__item')) {
-//   const openModalEl = document.querySelector('[data-modal-open]');
-//   console.log(openModalEl )
-//  openModalEl.addEventListener('click', onOpenModal);
-// }
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
@@ -53,9 +45,9 @@ function onOpenModal(e) {
   
  return JSON.parse(localStorage.getItem("currentPage")).map(films => {
     films.forEach(film => {
-            
-      if (currentFilmId === film.id) {
-        
+
+      if (currentFilmId=== film.id) {
+   
       const markupModal = movieCard(film);
       
       refs.modalmarkupEl.innerHTML = '';
