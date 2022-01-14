@@ -1,4 +1,7 @@
+// import js
 import { refs } from './refs';
+
+// import templates
 import movieCard from '../templates/modal.hbs';
 
 refs.openModalEl.addEventListener('click', onOpenModal);

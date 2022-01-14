@@ -17,13 +17,19 @@ const refs = {
   footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
 
-  // modal
-  openModalEl: document.querySelector('[data-modal-open]'),
-  closeModalEl: document.querySelector('[data-modal-close]'),
-  modalEl: document.querySelector('[data-modal]'),
-  modalmarkupEl: document.querySelector('.modal__markup'),
-  bodyEl: document.querySelector('body'),
-  backdropEl: document.querySelector('.js-backdrop'),
+   // modal
+    openModalEl: document.querySelector('[data-modal-open]'),
+    closeModalEl: document.querySelector('[data-modal-close]'),
+    modalEl: document.querySelector('[data-modal]'),
+    modalmarkupEl: document.querySelector('.modal__markup'),
+    bodyEl: document.querySelector('body'),
+    backdropEl: document.querySelector('.js-backdrop'),
+
+   // spinner
+    spinner: document.querySelector('.spinner'),
+
+   // to top button
+    toTopButtonEl: document.querySelector('.toTopButton'),
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
