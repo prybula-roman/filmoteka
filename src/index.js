@@ -7,3 +7,6 @@ import './js/scripts/local-storage';
 import './js/scripts/modal';
 
 import './js/scripts/scrollToTop';
+
+import './js/scripts/toggle-theme'
+
