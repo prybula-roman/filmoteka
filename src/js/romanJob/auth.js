@@ -18,16 +18,28 @@ class Auth {
   constructor() {
     //--->
     console.log('Auth welcome');
+    // const firebaseConfig = {
+    //   apiKey: 'AIzaSyBIzux_2y2qnxWzr05-oqTQcK-YE0UD-zE',
+    //   authDomain: 'registredusers.firebaseapp.com',
+    //   projectId: 'registredusers',
+    //   storageBucket: 'registredusers.appspot.com',
+    //   messagingSenderId: '327609187484',
+    //   appId: '1:327609187484:web:73bd2caac6a3bd86c74159',
+    //   measurementId: 'G-11D2YEEE1H',
+    // };
+
+    //================================
     const firebaseConfig = {
-      apiKey: 'AIzaSyBIzux_2y2qnxWzr05-oqTQcK-YE0UD-zE',
-      authDomain: 'registredusers.firebaseapp.com',
-      projectId: 'registredusers',
-      storageBucket: 'registredusers.appspot.com',
-      messagingSenderId: '327609187484',
-      appId: '1:327609187484:web:73bd2caac6a3bd86c74159',
-      measurementId: 'G-11D2YEEE1H',
+      apiKey: 'AIzaSyDa90zuuBgrKK0jfpfe-POSqhpGwC2ZMx0',
+      authDomain: 'test-963ff.firebaseapp.com',
+      databaseURL: 'https://test-963ff-default-rtdb.europe-west1.firebasedatabase.app',
+      projectId: 'test-963ff',
+      storageBucket: 'test-963ff.appspot.com',
+      messagingSenderId: '593276747780',
+      appId: '1:593276747780:web:cd962cf487808a27ae3551',
     };
 
+    //================================
     const fb = initializeApp(firebaseConfig);
     console.log('fb=', fb);
     //получаем ссылку на БД
@@ -94,19 +106,23 @@ class Auth {
             console.log('############################');
             const user = auth.currentUser;
             console.log('user=', user);
-            const addUser = {
-              email: email,
-              // password: password,
-              name: fullName,
-            };
+            // const addUser = {
+            //   email: email,
+            //   name: fullName,
+            // };
 
             function writeUserData(name, email) {
               console.log('user.uid=', user.uid);
-              console.log('ref=', ref(database, 'users/' + user.uid));
+              console.log('mmail=', email);
+              console.log('name=', fullName);
+              // console.log('ref=', ref(database, 'users/' + user.uid));
 
-              set(ref(database, 'users/' + user.uid), addUser);
+              set(ref(database, 'users/' + user.uid), {
+                name: fullName,
+                mail: email,
+              });
 
-              console.log(set(ref(database, 'users/' + user.uid), addUser));
+              console.log('set=', set(ref(database, 'users/' + user.uid), addUser));
             }
 
             console.log('addUser.name=', addUser.name, '  addUser.email=', addUser.email);
