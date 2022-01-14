@@ -22,3 +22,13 @@ if (currentTheme === 'dark-theme') {
   refs.sectionFooterEl.classList.add('dark-theme');
   refs.checkboxEl.checked = true;
 }
+const modal = document.querySelector('.modal')
+
+if (currentTheme === 'dark-theme') {
+  modal.classList.add('dark-theme');
+  modal.classList.remove('light-theme');
+} else {
+  modal.classList.remove('dark-theme');
+  modal.classList.add('light-theme');
+}
+

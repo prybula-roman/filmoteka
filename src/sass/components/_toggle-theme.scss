@@ -65,3 +65,19 @@ body.dark-theme {
     transition: $time;
   }
 }
+
+// .dark-theme{
+//   background-color: $dark-theme-color;
+//   color:$white-color
+// }
+// .light-theme{
+//   background-color: $main-color;
+// }
+
+  .modal.light-theme {
+    background-color: $main-color;
+  }
+  .modal.dark-theme {
+  background-color: $dark-theme-color;
+  color:$white-color
+}

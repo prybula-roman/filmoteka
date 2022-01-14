@@ -29,7 +29,6 @@ function onBackdropClick(event) {
   }
 }
 
-
 function onOpenModal(e) {
   e.preventDefault();
 
