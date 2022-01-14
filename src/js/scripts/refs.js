@@ -23,6 +23,12 @@ const refs = {
     modalmarkupEl: document.querySelector('.modal__markup'),
     bodyEl: document.querySelector('body'),
     backdropEl: document.querySelector('.js-backdrop'),
+
+    // spinner
+    spinner: document.querySelector('.spinner'),
+
+    // to top button
+    toTopButtonEl: document.querySelector('.toTopButton'),
 };
 
 export { refs };

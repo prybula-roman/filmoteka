@@ -23,6 +23,7 @@ function onEnterIgnor() {
   });
 }
 function onRenderPopularMoviesMarkup(genresArr) {
+   refs.spinner.classList.remove('is-hidden');
 
   onEnterIgnor();
   
@@ -38,7 +39,8 @@ function onRenderPopularMoviesMarkup(genresArr) {
       refs.galleryEl.innerHTML = markup;
     })
   })
-  .finally(() => {
+    .finally(() => {
+    refs.spinner.classList.add('is-hidden');
   });
 }
 
@@ -61,13 +63,16 @@ function onSubmit (event) {
 }
 
 function onRenderPaginationMarkup() {
+  refs.spinner.classList.remove('is-hidden');
+
   apiSearchData.fetchMovies()
     .then(film => {      
       const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
   })
   .catch(error => console.log(error))
-  .finally(() => {
+    .finally(() => {
+    refs.spinner.classList.add('is-hidden');
   });
 }
 export { apiSearchData, popularMovie };
