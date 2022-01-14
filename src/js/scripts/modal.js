@@ -36,24 +36,24 @@ function onOpenModal(e) {
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
-  if (e.target.classList.value === 'movies__poster') {
-    refs.bodyEl.classList.add('show-modal');
-    refs.modalEl.classList.remove('js-backdrop');
-  }
+  if (e.target.classList.value === 'movies') {
+  return
+}
 
-  const currentFilmId = Number(e.target.id);
+  const currentFilmId = Number(e.target.closest('li').id);
   
  return JSON.parse(localStorage.getItem("currentPage")).map(films => {
-    films.forEach(film => {
-
-      if (currentFilmId=== film.id) {
-   
+   films.forEach(film => {
+  
+     if (currentFilmId === film.id ) {
+        
       const markupModal = movieCard(film);
       
       refs.modalmarkupEl.innerHTML = '';
       refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
       refs.bodyEl.classList.add('show-modal');
-    }  
+     }  
+
      })
   })
 
