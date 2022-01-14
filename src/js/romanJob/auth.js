@@ -94,37 +94,59 @@ class Auth {
             console.log('############################');
             const user = auth.currentUser;
             console.log('user=', user);
+
+            
             const addUser = {
               email: email,
               // password: password,
               name: fullName,
             };
 
-            function writeUserData(name, email) {
-              console.log('user.uid=', user.uid);
+            function writeUserData(useruid,name, email) {
+              console.log('useruid=', useruid);
+              console.log("name=",name);
+              console.log("email=",email);
               console.log('ref=', ref(database, 'users/' + user.uid));
 
-              set(ref(database, 'users/' + user.uid), addUser);
+              // set(ref(database, 'users/' + user.uid), addUser);
+              //set(ref(database, 'users/' + user.uid)), {
+              /*
+               set(ref(database, 'users/' + user.uid), {
+                  username: name,
+                  email: email,
+              });
 
-              console.log(set(ref(database, 'users/' + user.uid), addUser));
+              console.log(set(ref(database, 'users/' + user.uid), addUser));*/
+
+              const createUser=()=>{
+return fetch('https://registredusers-default-rtdb.europe-west1.firebasedatabase.app/user.json',{
+method: 'POST',
+body:JSON.stringify( {
+  name:name,
+  mail:email
+}),
+headers: {'Content-Type': 'application.json'}
+
+}).then((response)=>{
+
+  console.log("%%%%%%%%%%%%%%%%%%%%")
+response.json();
+
+}).then((response)=>{
+
+  console.log(response);
+
+})
+
+
+              }
+
             }
 
             console.log('addUser.name=', addUser.name, '  addUser.email=', addUser.email);
-            writeUserData(addUser.name, addUser.email);
+            writeUserData(user.uid,addUser.name, addUser.email);
+            // ...
           })
-          // .then(() => {
-          //   const addUser = {
-          //     email: email,
-          //     // password: password,
-          //     name: fullName,
-          //   };
-
-          //   function writeUserData(userId, name, email) {
-          //     console.log('ref=', ref(database, 'users/' + userId));
-
-          //     set(ref(database, 'users/' + userId), addUser);
-          //   }
-          // })
           .catch(error => {
             const errorCode = error.code;
             const errorMessage = error.message;
