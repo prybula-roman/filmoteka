@@ -15,6 +15,14 @@ const refs = {
     footerLinkEl: document.querySelector('.footer__link'),
     footerTextEl: document.querySelector('.footer__text--first'),
     footerEl: document.querySelector('.footer__text--second'),
+
+    // modal
+    openModalEl: document.querySelector('[data-modal-open]'),
+    closeModalEl: document.querySelector('[data-modal-close]'),
+    modalEl: document.querySelector('[data-modal]'),
+    modalmarkupEl: document.querySelector('.modal__markup'),
+    bodyEl: document.querySelector('body'),
+    backdropEl: document.querySelector('.js-backdrop'),
 };
 
 export { refs };
