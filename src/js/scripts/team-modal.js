@@ -1,17 +1,14 @@
 // import js
 import { refs } from './refs';
 
-refs.openTeamModalEl.addEventListener('click', onOpenTeamModal);
-refs.teamBackdropEl.addEventListener('click', onTeamBackdropClick);
 
-function onOpenTeamModal(e) {
-  e.preventDefault();
+refs.openTeamModalEl.addEventListener('click', toggleModal);
+refs.closeTeamModalEl.addEventListener('click', toggleModal);
 
-  refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
-  window.addEventListener('keydown', onEscKeyPress);
 
-}
-
+  function toggleModal() {
+    refs.teamModalEl.classList.toggle('is-hidden');
+  }
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
@@ -24,10 +21,11 @@ function onEscKeyPress(event) {
 
 
 function onCloseTeamModal() {
-  window.removeEventListener('keydown', onEscKeyPress);
-  refs.bodyEl.classList.remove('show-modal');
-  refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
-  refs.teamModalEl.classList.add('js-team-backdrop');
+  // window.removeEventListener('keydown', onEscKeyPress);
+  // refs.bodyEl.classList.remove('show-modal');
+  // refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
+  // refs.teamModalEl.classList.add('js-team-backdrop');
+  refs.teamModalEl.classList.toggle('is-hidden');
 }
 
 

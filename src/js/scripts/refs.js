@@ -9,8 +9,8 @@ const refs = {
     openTeamModalEl: document.querySelector('[data-team-modal-open]'),
     closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
     teamModalEl: document.querySelector('[data-team-modal]'),
-    teamBackdropEl: document.querySelector('.js-team-backdrop'),
-    bodyEl: document.querySelector('body'),
+    // teamBackdropEl: document.querySelector('.js-team-backdrop'),
+    // bodyEl: document.querySelector('body'),
 };
 
 export { refs };
