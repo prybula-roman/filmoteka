@@ -9,7 +9,8 @@ const refs = {
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 
-  // pagination section elements
+  // pagination section elements  
+  paginationEl: document.querySelector('.pagination'),
 
   // footer section elements
   footerLinkEl: document.querySelector('.footer__link'),
