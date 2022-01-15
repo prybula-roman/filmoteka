@@ -19,7 +19,7 @@ function onCloseTeamModal() {
   refs.teamModalEl.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
   refs.bodyEl.classList.remove('show-modal');
-  refs.closeModalEl.removeEventListener('click', onCloseTeamModal);
+  refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
 }
 
 function onBackdropClick(event) {
