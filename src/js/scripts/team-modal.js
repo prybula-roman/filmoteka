@@ -2,38 +2,32 @@
 import { refs } from './refs';
 
 
-refs.openTeamModalEl.addEventListener('click', toggleModal);
-refs.closeTeamModalEl.addEventListener('click', toggleModal);
+refs.openTeamModalEl.addEventListener('click', onOpenTeamModal);
+refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
 
 
-  function toggleModal() {
-    refs.teamModalEl.classList.toggle('is-hidden');
-  }
+  function onOpenTeamModal() {
+    refs.teamModalEl.classList.remove('is-hidden');
+}
+  
+function onCloseTeamModal() {
+  refs.teamModalEl.classList.add('is-hidden');
+  
+}
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
 
   if (isEscKey) {
-    onCloseTeamModal();
+    refs.teamModalEl.classList.add('is-hidden');
   }
 }
 
 
-function onCloseTeamModal() {
-  // window.removeEventListener('keydown', onEscKeyPress);
-  // refs.bodyEl.classList.remove('show-modal');
-  // refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
-  // refs.teamModalEl.classList.add('js-team-backdrop');
-  refs.teamModalEl.classList.toggle('is-hidden');
-}
 
 
-function onTeamBackdropClick(event) {
-  if (event.currentTarget === event.target) {
-    onCloseTeamModal();
-  }
-}
+
 
 
 

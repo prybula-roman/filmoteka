@@ -13,10 +13,6 @@
   overflow-y: scroll;
 }
 
-// .team-backdrop.js-team-backdrop {
-//   // opacity: 0;
-//   pointer-events: none;
-// }
 .team-backdrop.is-hidden{
   visibility:hidden;
   opacity: 0;
@@ -114,7 +110,7 @@
 }
 
 .people__item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 
   @media screen and (min-width: $tablet) {
@@ -158,7 +154,7 @@
 
 .name__profession {
   margin-top: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   color: $dark-grey-color;
   font-weight: 400;
   font-size: 16px;
