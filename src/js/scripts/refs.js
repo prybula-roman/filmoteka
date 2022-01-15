@@ -9,7 +9,7 @@ const refs = {
     openTeamModalEl: document.querySelector('[data-team-modal-open]'),
     closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
     teamModalEl: document.querySelector('[data-team-modal]'),
-    backdropEl: document.querySelector('.js-backdrop'),
+    teamBackdropEl: document.querySelector('.js-team-backdrop'),
 
 };
 
