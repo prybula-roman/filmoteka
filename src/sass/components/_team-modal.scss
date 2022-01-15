@@ -1,4 +1,4 @@
-.backdrop {
+.team-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,12 +13,12 @@
   overflow-y: scroll;
 }
 
-.backdrop.js-backdrop {
+.team-backdrop.js-backdrop {
   opacity: 0;
   pointer-events: none;
 }
 
-.modal {
+.team-modal {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -44,7 +44,7 @@
   }
 }
 
-.modal__btn {
+.team-modal__btn {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -58,14 +58,14 @@
   background-color: transparent;
   border: none;
 }
-.modal__icon {
+.team-modal__icon {
   width: 18px;
   height: 18px;
   stroke: $black-color;
   transition: fill $time $timing-function;
 
-  .modal__btn:hover &,
-  .modal__btn:focus & {
+  .team-modal__btn:hover &,
+  .team-modal__btn:focus & {
     fill: $accent-color;
   }
 }
@@ -75,7 +75,7 @@
   background-color: $main-color;
 }
 
-.section-team__title {
+.team__title {
   color: $black-color;
   font-weight: 700;
   text-align: center;
