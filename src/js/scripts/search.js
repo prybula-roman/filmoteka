@@ -1,5 +1,6 @@
 import FetchSearchMovie from  '../API/fetchSearchMovie';
 import PopularMovies from '../API/fetchPopularMovie';
+import { onRenderPagination} from '../scripts/pagination'
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
 
@@ -8,7 +9,6 @@ import { refs } from './refs';
 export default onRenderPopularMoviesMarkup;
 
 refs.formEl.addEventListener("input", onSubmit);
-refs.loadMoreBtn.addEventListener('click', onRenderPopularMoviesMarkup);
 
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
@@ -23,6 +23,7 @@ function onEnterIgnor() {
   });
 }
 function onRenderPopularMoviesMarkup(genresArr) {
+   refs.spinner.classList.remove('is-hidden');
 
   onEnterIgnor();
   
@@ -30,21 +31,22 @@ function onRenderPopularMoviesMarkup(genresArr) {
     .then(film => {
       const markup = filmCard(handleMovieCard(film.results, genresArr)); 
       refs.galleryEl.innerHTML = markup;
+      onRenderPagination(film.total_pages, film.page); 
     })
   .catch(error => {
     popularMovie.fetchPopular()
     .then(film => {
       const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
+      onRenderPagination(film.total_pages, film.page); 
     })
   })
-  .finally(() => {
+    .finally(() => {
+    refs.spinner.classList.add('is-hidden');
   });
 }
 
 function onSubmit (event) {
-  refs.loadMoreBtn.removeEventListener('click', onRenderPopularMoviesMarkup);
-  refs.loadMoreBtn.addEventListener('click', onRenderPaginationMarkup);
   event.preventDefault();  
 
   onEnterIgnor();
@@ -61,13 +63,17 @@ function onSubmit (event) {
 }
 
 function onRenderPaginationMarkup() {
+  refs.spinner.classList.remove('is-hidden');
+
   apiSearchData.fetchMovies()
     .then(film => {      
       const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
+      onRenderPagination(film.total_pages, film.page); 
   })
   .catch(error => console.log(error))
-  .finally(() => {
+    .finally(() => {
+    refs.spinner.classList.add('is-hidden');
   });
 }
 export { apiSearchData, popularMovie };
