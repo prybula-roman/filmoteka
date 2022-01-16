@@ -1,6 +1,10 @@
+
 // import js
 import { refs } from './refs';
 
+// import templates
+import teamCard from './templates/teamtemplate.hbs';
+import team from './templates/team.json'
 
 refs.openTeamModalEl.addEventListener('click', onOpenTeamModal);
 refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
@@ -33,6 +37,8 @@ function onBackdropClick(event) {
     window.addEventListener('keydown', onEscKeyPress);
     refs.teamModalEl.classList.remove('is-hidden');
     refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
+    const markupTeam = teamCard(team);
+    refs.galleryEl.insertAdjacentHTML('beforeend', markupTeam);
 }
   
 

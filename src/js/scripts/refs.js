@@ -11,6 +11,7 @@ const refs = {
     teamModalEl: document.querySelector('[data-team-modal]'),
     teamBackdropEl: document.querySelector('.team-backdrop'),
     bodyEl: document.querySelector('body'),
+    galleryEl: document.querySelector('.people'),
 };
 
 export { refs };
