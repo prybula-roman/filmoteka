@@ -38,6 +38,7 @@ function onBackdropClick(event) {
     refs.teamModalEl.classList.remove('is-hidden');
     refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
     const markupTeam = teamCard(team);
+    refs.galleryEl.innerHTML = '';
     refs.galleryEl.insertAdjacentHTML('beforeend', markupTeam);
 }
   
