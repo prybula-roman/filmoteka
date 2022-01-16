@@ -6,30 +6,129 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   currentUser,
+  signOut
 } from 'firebase/auth';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set ,child,update} from 'firebase/database';
 import {  setUserId } from 'firebase/analytics';
-import {firebaseConfig} from "firebaseConfig";
-import Form from "regForm" ;
+import {firebaseConfig} from "./firebaseConfig";
+import Form from "./regForm" ;
 
 
  export default class Auth {
   // методы класса
-  constructor() {
-    //--->
-      console.log(firebaseConfig)
-      console.log("config=",firebaseConfig)
-    //================================
-  //  const fb = initializeApp(config);
-   // console.log('fb=', fb);
-    //получаем ссылку на БД
-   // const database = getDatabase(fb);
-   // console.log('database=', database);
-    //создание экземпляра auth
-   // const auth = getAuth();
-    //console.log('auth=', auth);
 
+
+  constructor(fullName,email,password) {
+    //--->
+    this.fbase = initializeApp(firebaseConfig);//хранится общая конфигурация и используется аутентификация для всех служб Firebase
+      //создание экземпляра auth
+    this.auth = getAuth();
+      console.log("auth:",this.auth)
+//получаем ссылку на БД
+    this.db = getDatabase(this.fbase);
+    //================================
+    
+//this.createUserEmailAndPassword(fullName,email,password,auth);
   }
+get database(){
+
+    return this.db
+}
+///////////////////////////////////////
+get fb(){
+return this.fbase
+
+}
+get authentic(){
+    return this.auth
+}
+///////////////////////////////////////////////////
+signOutUser(auth,fullName,email, password,database){
+}
+
+  //////////////////////////////////////////////////
+  createNewUser(auth,fullName,email, password,database){
+    createUserWithEmailAndPassword(auth,email, password).then(()=>{
+        //создаем профиль в БД
+         set(ref(database, 'users/' + auth.currentUser.uid), {
+            id:auth.currentUser.uid,
+            name:fullName,
+            mail:email,
+            filmList:[""]
+          });
+        
+        //this.createUserDB(fullName,email,auth);
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+              alert('The password is too weak.');
+            } else {
+              alert(errorMessage);
+            }
+            console.log(error);
+          })
+  }
+/////////////////////////////////////////////////////////////
+readUser(){
+
+
+
+}
+
+
+/////////////////////////////////////////////////////////////
+singOutUser(auth){
+    signOut(auth);
+alert("singOut");
+}
+//////////////////////////////////////////////////////////////
+addFilmToUser(auth,fullName,email, password,database,film){
+console.log(database)
+    // set(ref(database, `users/${auth.currentUser.uid}`), {
+    //     nameFilm:"test2"
+    //   });
+const update_data={
+filmList:film
+}
+
+//update(ref(database, 'users/' + auth.currentUser.uid+'/'+auth.currentUser.uid.filmList),update_data)
+update(ref(database, 'users/' +auth.currentUser.uid ),update_data)
+}
+
+
+  ///////////////////////////////////////////////////////////////////////////////            
+
+loginUser(auth,fullName,email, password,database){
+    console.log("loginUser");
+  const promise= signInWithEmailAndPassword(auth,email, password);
+promise.catch((e)=>{
+alert(e.message);
+});
+alert('SingIn');
+return promise;
+}
+   /////////////////////////////////////////////////////////////////////////////     
+//   createUserDB(fullname, email,auth){
+//     fetch('https://test-963ff-default-rtdb.europe-west1.firebasedatabase.app/users.json',{
+//         method: 'POST',
+//         body:JSON.stringify( {
+//           id: auth.currentUser.uid,
+//           name:fullname,
+//           mail:email,
+//           filmList:[]
+//         }),
+//         headers: {'Content-Type': 'application.json'}
+//         }).then((response)=>
+//              response.json()
+//         ).then((response)=>{
+//           console.log("response",response);
+//         }).catch((error)=>{
+// console.log("ERRROR");
+// alert(error.message);
+//         })
+//   }
 }
 /*
     /////////////////////////////////////////////////////////////////////////////
