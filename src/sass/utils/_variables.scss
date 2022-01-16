@@ -3,7 +3,6 @@ $main-color: #ffffff;
 $accent-color: #ff6b08;
 $logo-icon-color: #818181;
 $footer-bg-color: #f7f7f7;
-
 // text colors
 $white-color: #ffffff;
 $black-color: #000000;
@@ -11,21 +10,20 @@ $grey-color: #8c8c8c;
 $light-grey-color: #f7f7f7;
 $dark-grey-color: #545454;
 $red-color: #ff001b;
-
 // font
-$base-font: 'Roboto', sans-serif;
-
+$base-font: 'Roboto',
+sans-serif;
 //breakpoints
 $mobile: 320px;
 $mobile-max: 767px;
 $tablet: 768px;
 $table-max: 1023px;
 $desktop: 1024px;
-
 // transition properties
 $time: 250ms;
 $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
 // shadow
-$shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-  0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+$shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+$bg-header:rgba(0, 0, 0, 0.56);
