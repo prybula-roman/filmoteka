@@ -1,24 +1,29 @@
 const refs = {
-  // header section elements
-  formEl: document.querySelector('.search-form'),
-  inputEl: document.querySelector('.search-form__input'),
+    // header section elements
+    formEl: document.querySelector('.search-form'),
+    inputEl: document.querySelector('.search-form__input'),
+    homeLink: document.querySelector('#home-link'),
+    libraryLink: document.querySelector('#library-link'),
+    headerEl: document.querySelector('header'),
+    searchEl: document.querySelector('.search-box'),
+    btnsEl: document.querySelector('.header__buttons'),
 
-  // gallary section elements
-  mainEl: document.querySelector('main'),
-  galleryEl: document.querySelector('.movies'),
-  loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
-  loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+    // gallary section elements
+    mainEl: document.querySelector('main'),
+    galleryEl: document.querySelector('.movies'),
+    loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 
-  // pagination section elements  
-  paginationEl: document.querySelector('.pagination'),
+    // pagination section elements  
+    paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements
-  footerLinkEl: document.querySelector('.footer__link'),
-  footerTextEl: document.querySelector('.footer__text--first'),
-  footerEl: document.querySelector('.footer__text--second'),
-  sectionFooterEl: document.querySelector('.section--footer'),
+    // footer section elements
+    footerLinkEl: document.querySelector('.footer__link'),
+    footerTextEl: document.querySelector('.footer__text--first'),
+    footerEl: document.querySelector('.footer__text--second'),
+    sectionFooterEl: document.querySelector('.section--footer'),
 
-   // modal
+    // modal
     openModalEl: document.querySelector('[data-modal-open]'),
     closeModalEl: document.querySelector('[data-modal-close]'),
     modalEl: document.querySelector('[data-modal]'),
@@ -26,14 +31,14 @@ const refs = {
     bodyEl: document.querySelector('body'),
     backdropEl: document.querySelector('.js-backdrop'),
 
-   // spinner
+    // spinner
     spinner: document.querySelector('.spinner'),
 
-   // to top button
+    // to top button
     toTopButtonEl: document.querySelector('.toTopButton'),
 
-  // theme(day/night)
-  checkboxEl: document.getElementById('checkbox'),
+    // theme(day/night)
+    checkboxEl: document.getElementById('checkbox'),
 };
 
 export { refs };
