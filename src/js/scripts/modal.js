@@ -3,7 +3,8 @@ import { refs } from './refs';
 
 // import templates
 import movieCard from '../templates/modal.hbs';
-import trailer  from '../API/fetchTrailer';
+import trailer from '../API/fetchTrailer';
+import { currentTheme } from './toggle-theme';
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
@@ -34,6 +35,11 @@ function onBackdropClick(event) {
 function onOpenModal(e) {
   e.preventDefault();
 
+  if ( currentTheme === 'dark-theme') {
+    refs.modalWindowEl.classList.add('dark-theme');
+   } else {
+     refs.modalWindowEl.classList.remove('dark-theme'); 
+   }
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
