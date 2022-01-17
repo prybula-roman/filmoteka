@@ -1,7 +1,7 @@
 const refs = {
   // header section elements
-  homeEl: document.querySelector('#home'),
-  myLibEl: document.querySelector('#my-lib'),
+  homeEl: document.querySelector('#home-link'),
+  myLibEl: document.querySelector('#library-link'),
   watchedEl: document.querySelector('.watched__button'),
   queueEl: document.querySelector('.queue__button'),
   formEl: document.querySelector('.search-form'),
