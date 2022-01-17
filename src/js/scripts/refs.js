@@ -34,6 +34,7 @@ const refs = {
   bodyEl: document.querySelector('body'),
   backdropEl: document.querySelector('.js-backdrop'),
   trailerEl: document.querySelector('.trailer'),
+  modalWindowEl: document.querySelector('.modal'),
 
   // spinner
   spinner: document.querySelector('.spinner'),
