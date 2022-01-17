@@ -1,9 +1,17 @@
 const refs = {
   // header section elements
+  homeEl: document.querySelector('#home'),
+  myLibEl: document.querySelector('#my-lib'),
+  watchedEl: document.querySelector('.watched__button'),
+  queueEl: document.querySelector('.queue__button'),
   formEl: document.querySelector('.search-form'),
+  libraryListEl: document.querySelector('.library'),
+  headerEl: document.querySelector('.header'),
   inputEl: document.querySelector('.search-form__input'),
+  errorEl: document.querySelector('.notification'),
 
   // gallary section elements
+  preloaderEl: document.querySelector('.preloader'),
   mainEl: document.querySelector('main'),
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
@@ -25,6 +33,7 @@ const refs = {
     modalmarkupEl: document.querySelector('.modal__markup'),
     bodyEl: document.querySelector('body'),
     backdropEl: document.querySelector('.js-backdrop'),
+    trailerEl: document.querySelector('.trailer'),
 
    // spinner
     spinner: document.querySelector('.spinner'),

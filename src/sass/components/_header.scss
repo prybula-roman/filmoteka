@@ -1,0 +1,23 @@
+.search-form {
+  position: relative;
+
+  display: flex;
+}
+
+.search-form__input {
+  position: relative;
+
+  display: flex;
+}
+
+.library.is-hidden {
+  display: none;
+}
+
+form.is-hidden {
+  display: none;
+}
+
+.notification__text--is-hidden {
+  display: none;
+}

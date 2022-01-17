@@ -13,6 +13,7 @@
 @import './base/container';
 
 // components
+@import './components/preloader';
 @import './components/header';
 @import './components/gallery';
 @import './components/pagination';
@@ -20,3 +21,4 @@
 @import './components/modal';
 @import './components/plugins';
 @import './components/toggle-theme';
+@import './components/trailer';

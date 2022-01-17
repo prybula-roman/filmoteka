@@ -58,7 +58,6 @@ body.show-modal .modal {
   }
 }
 
-
 .modal__btn {
   position: absolute;
   width: 30px;
@@ -198,7 +197,17 @@ body.show-modal .modal {
     border: 1px solid $accent-color;
   }
 }
-
+.movies-btn__playTrailer {
+  position: static;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  margin-top: 15px;
+  @media screen and(min-width: $tablet) {
+    display: block;
+    margin: 15px 0 0 0;
+  }
+}
 .movies-info__average {
   height: 16px;
   padding: 1px 8px;
