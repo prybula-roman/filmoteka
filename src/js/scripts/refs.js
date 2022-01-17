@@ -25,21 +25,21 @@ const refs = {
   footerTextEl: document.querySelector('.footer__text--first'),
   footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
+    
+  // modal
+  openModalEl: document.querySelector('[data-modal-open]'),
+  closeModalEl: document.querySelector('[data-modal-close]'),
+  modalEl: document.querySelector('[data-modal]'),
+  modalmarkupEl: document.querySelector('.modal__markup'),
+  bodyEl: document.querySelector('body'),
+  backdropEl: document.querySelector('.js-backdrop'),
+  trailerEl: document.querySelector('.trailer'),
 
-   // modal
-    openModalEl: document.querySelector('[data-modal-open]'),
-    closeModalEl: document.querySelector('[data-modal-close]'),
-    modalEl: document.querySelector('[data-modal]'),
-    modalmarkupEl: document.querySelector('.modal__markup'),
-    bodyEl: document.querySelector('body'),
-    backdropEl: document.querySelector('.js-backdrop'),
-    trailerEl: document.querySelector('.trailer'),
+  // spinner
+  spinner: document.querySelector('.spinner'),
 
-   // spinner
-    spinner: document.querySelector('.spinner'),
-
-   // to top button
-    toTopButtonEl: document.querySelector('.toTopButton'),
+  // to top button
+  toTopButtonEl: document.querySelector('.toTopButton'),
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
