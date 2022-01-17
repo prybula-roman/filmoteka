@@ -1,4 +1,3 @@
-
 import './sass/main.scss';
 
 import './js/scripts/search';
@@ -11,7 +10,6 @@ import './js/scripts/modal';
 
 import './js/scripts/scrollToTop';
 
-import './js/scripts/toggle-theme'
+import './js/scripts/toggle-theme';
 
-import Form from "./js/romanJob/regForm"
- const form = new Form();
+import './js/scripts/authForm/authentic';
