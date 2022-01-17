@@ -179,7 +179,12 @@ function onRenderMarkupByPagination(page) {
 
         onRenderPagination(film.total_pages, film.page);
       })
-      .catch(error => console.log(console.error(error)))
+      .catch(error => {
+        const markup = filmCard(handleMovieCard(film.results)); 
+        refs.galleryEl.innerHTML = markup;
+
+        onRenderPagination(film.total_pages, film.page);
+      })
       .finally(() => {
         refs.spinner.classList.add('is-hidden'); // деактивируем спинер
       });
