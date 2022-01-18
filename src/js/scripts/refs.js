@@ -9,6 +9,7 @@ const refs = {
   headerEl: document.querySelector('.header'),
   inputEl: document.querySelector('.search-form__input'),
   errorEl: document.querySelector('.notification'),
+  searchError: document.querySelector('.notification__text'),
 
   // gallary section elements
   preloaderEl: document.querySelector('.preloader'),
@@ -16,16 +17,23 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-
+    
   // pagination section elements  
   paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements
-  footerLinkEl: document.querySelector('.footer__link'),
-  footerTextEl: document.querySelector('.footer__text--first'),
-  footerEl: document.querySelector('.footer__text--second'),
+  // footer section elements  
+  footerTeamLinkEl: document.querySelector('.footer__link'),
+  // footerTextEl: document.querySelector('.footer__text--first'),
+  // footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
-    
+  
+  // team-modal
+  openTeamModalEl: document.querySelector('[data-team-modal-open]'),
+  closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
+  teamModalEl: document.querySelector('[data-team-modal]'),
+  teamBackdropEl: document.querySelector('.team-backdrop'),  
+  peopleEl: document.querySelector('.people'),
+
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
   closeModalEl: document.querySelector('[data-modal-close]'),

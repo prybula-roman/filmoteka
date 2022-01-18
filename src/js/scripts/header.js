@@ -1,25 +1,30 @@
 import { refs } from './refs';
+import onRenderPopularMoviesMarkup from './search';
 
+refs.myLibEl.addEventListener('click', onMyLibrary);
 
-refs.libraryLink.addEventListener('click', clickOnLibrary);
-refs.homeLink.addEventListener('click', clickOnHome);
-
-
-function clickOnLibrary() {
-
-    refs.homeLink.classList.remove('nav-list__link--current');
-    refs.libraryLink.classList.add('nav-list__link--current');
-    refs.headerEl.classList.add('library');
+function onMyLibrary() {
+    refs.formEl.classList.add('is-hidden');
+    refs.libraryListEl.classList.remove('is-hidden');
+    refs.homeEl.classList.remove('nav-list__link--current');
+    refs.myLibEl.classList.add('nav-list__link--current');
     refs.headerEl.classList.remove('header__container');
-    refs.searchEl.classList.add('is-hidden');
-    refs.btnsEl.classList.remove('is-hidden');
+    refs.headerEl.classList.add('library-bgi');
+    refs.galleryEl.innerHTML = '';
+    refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
+    refs.paginationEl.classList.add('pagination__off');
 }
 
-function clickOnHome() {
+refs.homeEl.addEventListener('click', onHome);
 
-    refs.headerEl.classList.remove('library');
-    refs.homeLink.classList.add('nav-list__link--current');
-    refs.libraryLink.classList.remove('nav-list__link--current');
-    refs.btnsEl.classList.add('is-hidden');
-    refs.searchEl.classList.remove('is-hidden');
+function onHome() {
+    refs.formEl.classList.remove('is-hidden');
+    refs.libraryListEl.classList.add('is-hidden');
+    refs.homeEl.classList.add('nav-list__link--current');
+    refs.myLibEl.classList.remove('nav-list__link--current');
+    refs.headerEl.classList.remove('library-bgi');
+    refs.headerEl.classList.add('library');
+    refs.galleryEl.innerHTML = '';
+    onRenderPopularMoviesMarkup();
+    refs.formEl.reset()
 }

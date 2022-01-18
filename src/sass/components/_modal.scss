@@ -13,6 +13,7 @@ body.show-modal .modal {
 }
 
 .backdrop {
+  position: relative;
   position: fixed;
   top: 0;
   left: 0;
@@ -59,6 +60,10 @@ body.show-modal .modal {
   &.dark-theme {
     background-color: $dark-theme-color;
     transition: $time;
+    &:hover,
+    &:focus {
+      box-shadow: 0px 0px 15px 5px $accent-color;
+    }
   }
 
   &.dark-theme .movies__description,
@@ -71,7 +76,7 @@ body.show-modal .modal {
   }
 
   &.dark-theme .movies-btn__button {
-    border-radius: 1px;
+    border-radius: 5px;
     border: 1px solid;
     border-color: $accent-color;
   }
@@ -81,9 +86,15 @@ body.show-modal .modal {
     border: none;
     transition: $time;
   }
+
   &.dark-theme .modal__icon {
     stroke: $white-color;
     transition: $time;
+    &:hover,
+    &:focus {
+      stroke: $accent-color;
+    }
+  
   }
 }
 
