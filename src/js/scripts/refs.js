@@ -21,11 +21,10 @@ const refs = {
   // pagination section elements  
   paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements
-  // footerLinkEl: document.querySelector('.footer__link'),
+  // footer section elements  
   footerTeamLinkEl: document.querySelector('.footer__link'),
-  footerTextEl: document.querySelector('.footer__text--first'),
-  footerEl: document.querySelector('.footer__text--second'),
+  // footerTextEl: document.querySelector('.footer__text--first'),
+  // footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
   
   // team-modal
@@ -33,7 +32,7 @@ const refs = {
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
   teamModalEl: document.querySelector('[data-team-modal]'),
   teamBackdropEl: document.querySelector('.team-backdrop'),  
-  // galleryEl: document.querySelector('.people'),
+  peopleEl: document.querySelector('.people'),
 
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
