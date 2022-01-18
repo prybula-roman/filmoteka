@@ -32,9 +32,8 @@ const refs = {
   openTeamModalEl: document.querySelector('[data-team-modal-open]'),
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
   teamModalEl: document.querySelector('[data-team-modal]'),
-  teamBackdropEl: document.querySelector('.team-backdrop'),
-  bodyEl: document.querySelector('body'),
-  galleryEl: document.querySelector('.people'),
+  teamBackdropEl: document.querySelector('.team-backdrop'),  
+  // galleryEl: document.querySelector('.people'),
 
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
