@@ -1,14 +1,14 @@
 import { refs } from './refs';
 
 
-refs.libraryLink.addEventListener('click', clickOnLibrary);
-refs.homeLink.addEventListener('click', clickOnHome);
+refs.errorEl.addEventListener('click', clickOnLibrary);
+refs.errorEl.addEventListener('click', clickOnHome);
 
 
 function clickOnLibrary() {
 
-    refs.homeLink.classList.remove('nav-list__link--current');
-    refs.libraryLink.classList.add('nav-list__link--current');
+    refs.errorEl.classList.remove('nav-list__link--current');
+    refs.errorEl.classList.add('nav-list__link--current');
     refs.headerEl.classList.add('library');
     refs.headerEl.classList.remove('header__container');
     refs.searchEl.classList.add('is-hidden');
