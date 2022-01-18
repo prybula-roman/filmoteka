@@ -22,7 +22,7 @@ function onEscKeyPress(event) {
 function onCloseTeamModal() {
   refs.teamModalEl.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
-  refs.bodyEl.classList.remove('show-modal');
+  refs.bodyEl.classList.remove('show-modal-team');
   refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
 }
 
@@ -35,6 +35,7 @@ function onBackdropClick(event) {
   function onOpenTeamModal(event) {
     event.preventDefault();
     window.addEventListener('keydown', onEscKeyPress);
+    refs.bodyEl.classList.add('show-modal-team');
     refs.teamModalEl.classList.remove('is-hidden');
     refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
     const markupTeam = teamCard(team);
