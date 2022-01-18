@@ -45,7 +45,7 @@ body.show-modal .modal {
   box-shadow: $shadow;
 
   transform: scale(1.1);
-  transition: transform 200ms ease-in-out;
+  transition: $time;
 
   @media screen and(min-width: $tablet) {
     width: 618px;
@@ -55,6 +55,35 @@ body.show-modal .modal {
   @media screen and(min-width: $desktop) {
     width: 882px;
     padding: 50px 30px 40px;
+  }
+  &.dark-theme {
+    background-color: $dark-theme-color;
+    transition: $time;
+  }
+
+  &.dark-theme .movies__description,
+  &.dark-theme .movies__title,
+  &.dark-theme .movies-info__value,
+  &.dark-theme .movies__info,
+  &.dark-theme .movies-btn__button {
+    color: $white-color;
+    transition: $time;
+  }
+
+  &.dark-theme .movies-btn__button {
+    border-radius: 1px;
+    border: 1px solid;
+    border-color: $accent-color;
+  }
+
+  &.dark-theme .movies-btn:hover,
+  &.dark-theme .movies-btn:focus {
+    border: none;
+    transition: $time;
+  }
+  &.dark-theme .modal__icon {
+    stroke: $white-color;
+    transition: $time;
   }
 }
 
@@ -112,6 +141,7 @@ body.show-modal .modal {
 
   color: $black-color;
   text-transform: uppercase;
+  transition: $time;
 
   @media screen and(min-width: $desktop) {
     font-size: 30px;
