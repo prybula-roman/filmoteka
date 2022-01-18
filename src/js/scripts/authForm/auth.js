@@ -88,12 +88,18 @@ console.log("database=",database)
     //     nameFilm:"test2"
     //   });
 console.log("JSON.stringify(film)",JSON.stringify(film))
-const update_data={
-filmList:JSON.stringify(film) 
-}
-console.log("update_data.filmList=",update_data.filmList)
+console.log("film=",film)
 console.log("auth.currentUser.uid=",auth.currentUser.uid)
-set(ref(database, 'users/' +auth.currentUser.uid),update_data.filmList)
+//for(let i= 0;i!=update_data.filmList.length;i++){
+set(ref(database, 'users/' +auth.currentUser.uid+"/filmList"),film).then(()=>{
+
+console.log("aLL GooD");
+
+}).catch((error)=>{
+
+  console.log(error.message);
+})
+//}
 //update(ref(database, 'users/' +auth.currentUser.uid.filmList ),update_data.filmList)
 }
 

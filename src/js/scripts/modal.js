@@ -14,7 +14,7 @@ import {
   currentUser,
   signOut
 } from 'firebase/auth';
-import { getDatabase, ref, set ,child,update} from 'firebase/database';
+import { getDatabase, ref, set ,child,update,get} from 'firebase/database';
 import Auth from './authForm/auth';
 ////////////////////////////////////////
 
@@ -96,7 +96,39 @@ console.log(localStorage.getItem("authorise"))
             console.log("**fullName=",fullName)
             console.log("**email=",email)
             console.log("**fullName=",password)
-            newAuth.addFilmToUser(newAuth.auth,fullName,email, password,newAuth.db,film)
+///////читаем список фильмов в массив///////////////////////
+console.log("newAuth.currentUser.uid=",newAuth.auth.currentUser.uid)
+get(ref(newAuth.db, 'users/' +newAuth.auth.currentUser.uid+"/filmList")).then((snapshot) => {
+  
+  if (snapshot.exists()) {
+
+    const filmArray=[];
+    console.log("snapshot=",snapshot);
+    console.log("typeof snapshot.val()=",typeof snapshot.val());
+    console.log("film=",film);
+    if(snapshot.val()[0]!=''){
+     console.log("******************************")
+     filmArray.push(snapshot.val());
+     filmArray.push(JSON.stringify(film));
+    }else{
+      filmArray.push(JSON.stringify(film));
+    }
+   
+console.log("filmArray=",filmArray)
+
+    newAuth.addFilmToUser(newAuth.auth,fullName,email, password,newAuth.db,JSON.stringify(filmArray));
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error.message);
+});
+
+
+
+/////////////////////////////////////////////////////////////////
+
+            
           }).catch((error)=>{
 alert(error.message);
           });
