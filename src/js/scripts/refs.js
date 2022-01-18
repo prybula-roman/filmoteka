@@ -9,6 +9,7 @@ const refs = {
   headerEl: document.querySelector('.header'),
   inputEl: document.querySelector('.search-form__input'),
   errorEl: document.querySelector('.notification'),
+  searchError: document.querySelector('.notification__text'),
 
   // gallary section elements
   preloaderEl: document.querySelector('.preloader'),
