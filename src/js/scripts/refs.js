@@ -1,48 +1,49 @@
 const refs = {
-  // header section elements
-  homeEl: document.querySelector('#home-link'),
-  myLibEl: document.querySelector('#library-link'),
-  watchedEl: document.querySelector('.watched__button'),
-  queueEl: document.querySelector('.queue__button'),
-  formEl: document.querySelector('.search-form'),
-  libraryListEl: document.querySelector('.library'),
-  headerEl: document.querySelector('.header'),
-  inputEl: document.querySelector('.search-form__input'),
-  errorEl: document.querySelector('.notification'),
+    // header section elements
+    homeEl: document.querySelector('#home-link'),
+    myLibEl: document.querySelector('#library-link'),
+    watchedEl: document.querySelector('.watched__button'),
+    queueEl: document.querySelector('.queue__button'),
+    formEl: document.querySelector('.search-form'),
+    libraryListEl: document.querySelector('.library'),
+    headerEl: document.querySelector('.header'),
+    inputEl: document.querySelector('.search-form__input'),
+    errorEl: document.querySelector('.notification'),
+    searchError: document.querySelector('.notification__text'),
 
-  // gallary section elements
-  preloaderEl: document.querySelector('.preloader'),
-  mainEl: document.querySelector('main'),
-  galleryEl: document.querySelector('.movies'),
-  loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
-  loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+    // gallary section elements
+    preloaderEl: document.querySelector('.preloader'),
+    mainEl: document.querySelector('main'),
+    galleryEl: document.querySelector('.movies'),
+    loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 
-  // pagination section elements  
-  paginationEl: document.querySelector('.pagination'),
+    // pagination section elements  
+    paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements
-  footerLinkEl: document.querySelector('.footer__link'),
-  footerTextEl: document.querySelector('.footer__text--first'),
-  footerEl: document.querySelector('.footer__text--second'),
-  sectionFooterEl: document.querySelector('.section--footer'),
-    
-  // modal
-  openModalEl: document.querySelector('[data-modal-open]'),
-  closeModalEl: document.querySelector('[data-modal-close]'),
-  modalEl: document.querySelector('[data-modal]'),
-  modalmarkupEl: document.querySelector('.modal__markup'),
-  bodyEl: document.querySelector('body'),
-  backdropEl: document.querySelector('.js-backdrop'),
-  trailerEl: document.querySelector('.trailer'),
+    // footer section elements
+    footerLinkEl: document.querySelector('.footer__link'),
+    footerTextEl: document.querySelector('.footer__text--first'),
+    footerEl: document.querySelector('.footer__text--second'),
+    sectionFooterEl: document.querySelector('.section--footer'),
 
-  // spinner
-  spinner: document.querySelector('.spinner'),
+    // modal
+    openModalEl: document.querySelector('[data-modal-open]'),
+    closeModalEl: document.querySelector('[data-modal-close]'),
+    modalEl: document.querySelector('[data-modal]'),
+    modalmarkupEl: document.querySelector('.modal__markup'),
+    bodyEl: document.querySelector('body'),
+    backdropEl: document.querySelector('.js-backdrop'),
+    trailerEl: document.querySelector('.trailer'),
 
-  // to top button
-  toTopButtonEl: document.querySelector('.toTopButton'),
+    // spinner
+    spinner: document.querySelector('.spinner'),
 
-  // theme(day/night)
-  checkboxEl: document.getElementById('checkbox'),
+    // to top button
+    toTopButtonEl: document.querySelector('.toTopButton'),
+
+    // theme(day/night)
+    checkboxEl: document.getElementById('checkbox'),
 };
 
 export { refs };
