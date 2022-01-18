@@ -18,8 +18,8 @@ function clickOnLibrary() {
 function clickOnHome() {
 
     refs.headerEl.classList.remove('library');
-    refs.homeLink.classList.add('nav-list__link--current');
-    refs.libraryLink.classList.remove('nav-list__link--current');
+    refs.errorEl.classList.add('nav-list__link--current');
+    refs.errorEl.classList.remove('nav-list__link--current');
     refs.btnsEl.classList.add('is-hidden');
     refs.searchEl.classList.remove('is-hidden');
 }
