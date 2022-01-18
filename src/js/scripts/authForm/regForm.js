@@ -16,80 +16,97 @@ export default class Form {
   //--->
   constructor() {
     console.log('I`m constructor of class Form');
-    const btnReg = config.btnReg;
-
-    btnReg.addEventListener('click', this.btnRegClicked());
-
+    
     /////////////////////////////////////////
-    const btnLogIn = config.btnLogIn;
-    btnLogIn.addEventListener('click', () => {
-      if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
-        console.log(this.nameAreaVal);
-        console.log(this.passwordAreaVal);
-        console.log(this.mailAreaVal);
-
-        const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
-        newAuth
-          .loginUser(
-            newAuth.auth,
-            this.nameAreaVal,
-            this.mailAreaVal,
-            this.passwordAreaVal,
-            newAuth.db,
-          )
-          .then(() => {
-            ///////////////////////
-            const btnAddFilm = document.createElement('button');
-            btnAddFilm.innerHTML = 'addFilm';
-            config.btnLogOut.after(btnAddFilm);
-
-            const test = 'test';
-            btnAddFilm.addEventListener('click', () => {
-              console.log('clicked ', btnAddFilm);
-              const testFilm = ['testFilm1'];
-              newAuth.addFilmToUser(
-                newAuth.auth,
-                this.nameAreaVal,
-                this.mailAreaVal,
-                this.passwordAreaVal,
-                newAuth.db,
-                testFilm,
-              );
-            });
-
-            ///////////////////////
-
-            console.log('return promise SingIn');
-          })
-          .catch(e => {
-            alert(e.message);
-          });
-
-        this.setNameAreaVal('');
-        this.setMailAreaVal('');
-        this.setPasswordAreaVal('');
-      } else {
-        alert('Not valid form');
-      }
-    });
-    ////////////////////////////////////////
-    const btnLogOut = config.btnLogOut;
-    btnLogOut.addEventListener('click', () => {
-      const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
-      signOut(newAuth);
-      alert('singOut');
-    });
-    ////////////////////////////////////////
   } //<----
+
+///////////////////////////////////////////////////
+  btnLogOutClicked(authorise){
+    console.log("btnLogOutClicked");
+const newAuth = new Auth(authorise.nameAreaVal, authorise.mailAreaVal, authorise.passwordAreaVal);
+    newAuth
+      .loginUser(
+        newAuth.auth,
+        this.nameAreaVal,
+        this.mailAreaVal,
+        this.passwordAreaVal,
+        newAuth.db,
+      )
+      .then(() => {
+     console.log(newAuth.singOutUser());  
+      })
+
+     
+    config.btnLogIn.classList.toggle("visually-hidden");
+    config.btnReg.classList.toggle("visually-hidden");
+    config.btnLogOut.classList.toggle("visually-hidden");
+    config.btnMyLabr.classList.toggle("visually-hidden");
+
+    alert('singOut');
+
+  }
+/////////////////////////////////////////////////////
+ btnLoginClicked(){
+  if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
+      console.log("btnLoginClicked()  this.nameAreaVal",this.nameAreaVal);
+      console.log("btnLoginClicked()  this.nameAreaVal",this.passwordAreaVal);
+      console.log("btnLoginClicked()  this.nameAreaVal",this.mailAreaVal);
+console.log("btnLoginClicked()");
+    const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
+    newAuth
+      .loginUser(
+        newAuth.auth,
+        this.nameAreaVal,
+        this.mailAreaVal,
+        this.passwordAreaVal,
+        newAuth.db,
+      )
+      .then(() => {
+        console.log('return from loginUser promise SingIn');
+config.btnLogIn.classList.toggle("visually-hidden");
+console.log("config.btnLogIn=",config.btnLogIn);
+config.btnReg.classList.toggle("visually-hidden");
+config.btnLogOut.classList.toggle("visually-hidden");
+config.btnMyLabr.classList.toggle("visually-hidden");
+
+//////////////////////////////////////////////////
+//config.btnLogOut.addEventListener('click',this.btnLogOutClicked(newAuth))
+console.log("localStorage=",localStorage);
+console.log("***********************************");
+console.log("this.nameAreaVal=",this.nameAreaVal);
+console.log("this.passwordAreaVal=",this.passwordAreaVal);
+console.log("this.mailAreaVal=",this.mailAreaVal);
+
+localStorage.setItem("authorise",JSON.stringify({
+  name: this.nameAreaVal,
+  email: this.mailAreaVal,
+  password:this.passwordAreaVal
+}))
+this.setNameAreaVal('');
+this.setMailAreaVal('');
+this.setPasswordAreaVal(''); 
+      })
+      .catch(e => {
+        alert(e.message);
+      });
+
+   
+  } else {
+    alert('Not valid form');
+  }
+ }
+
+
+
   btnRegClicked() {
-    // console.log(this.validName(this.nameAreaVal));
-    // console.log(this.validName(this.passwordAreaVal));
-    // console.log(this.validName(this.mailAreaVal));
+    console.log("btnRegClicked()")
+    console.log(this.validName(this.nameAreaVal));
+    console.log(this.validName(this.passwordAreaVal));
+    console.log(this.validName(this.mailAreaVal));
     if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
       console.log(this.nameAreaVal);
       console.log(this.passwordAreaVal);
       console.log(this.mailAreaVal);
-
       const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
       newAuth.createNewUser(
         newAuth.auth,

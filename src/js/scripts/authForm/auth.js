@@ -16,8 +16,6 @@ import Form from "./regForm" ;
 
  export default class Auth {
   // методы класса
-
-
   constructor(fullName,email,password) {
     //--->
     this.fbase = initializeApp(firebaseConfig);//хранится общая конфигурация и используется аутентификация для всех служб Firebase
@@ -26,6 +24,8 @@ import Form from "./regForm" ;
       console.log("auth:",this.auth)
 //получаем ссылку на БД
     this.db = getDatabase(this.fbase);
+
+    console.log("db=",this.db)
     //================================
     
 //this.createUserEmailAndPassword(fullName,email,password,auth);
@@ -43,8 +43,7 @@ get authentic(){
     return this.auth
 }
 ///////////////////////////////////////////////////
-signOutUser(auth,fullName,email, password,database){
-}
+
 
   //////////////////////////////////////////////////
   createNewUser(auth,fullName,email, password,database){
@@ -77,24 +76,25 @@ readUser(){
 
 }
 
-
 /////////////////////////////////////////////////////////////
-singOutUser(auth){
-    signOut(auth);
+singOutUser(){
+  signOut(this.auth)  ;
 alert("singOut");
 }
 //////////////////////////////////////////////////////////////
 addFilmToUser(auth,fullName,email, password,database,film){
-console.log(database)
+console.log("database=",database)
     // set(ref(database, `users/${auth.currentUser.uid}`), {
     //     nameFilm:"test2"
     //   });
+console.log("JSON.stringify(film)",JSON.stringify(film))
 const update_data={
-filmList:film
+filmList:JSON.stringify(film) 
 }
-
-//update(ref(database, 'users/' + auth.currentUser.uid+'/'+auth.currentUser.uid.filmList),update_data)
-update(ref(database, 'users/' +auth.currentUser.uid ),update_data)
+console.log("update_data.filmList=",update_data.filmList)
+console.log("auth.currentUser.uid=",auth.currentUser.uid)
+set(ref(database, 'users/' +auth.currentUser.uid),update_data.filmList)
+//update(ref(database, 'users/' +auth.currentUser.uid.filmList ),update_data.filmList)
 }
 
 
@@ -102,11 +102,12 @@ update(ref(database, 'users/' +auth.currentUser.uid ),update_data)
 
 loginUser(auth,fullName,email, password,database){
     console.log("loginUser");
+
   const promise= signInWithEmailAndPassword(auth,email, password);
 promise.catch((e)=>{
 alert(e.message);
 });
-alert('SingIn');
+alert('loginUser()  SingIn');
 return promise;
 }
    /////////////////////////////////////////////////////////////////////////////     
