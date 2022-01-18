@@ -1,8 +1,10 @@
 import './sass/main.scss';
 
-import './js/scripts/search';
+import './js/scripts/header';
 
-import './js/scripts/library'
+// import './js/scripts/library';
+
+import './js/scripts/search';
 
 import './js/scripts/pagination';
 
@@ -12,11 +14,14 @@ import './js/scripts/modal';
 
 import './js/scripts/scrollToTop';
 
+import './js/scripts/sort';
+
 import './js/scripts/toggle-theme';
+
 
 import './js/scripts/header';
 
 import './js/scripts/authForm/authentic';
 
-
+import './js/scripts/team-modal';
 
