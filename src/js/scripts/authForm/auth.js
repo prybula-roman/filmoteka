@@ -91,7 +91,8 @@ console.log("JSON.stringify(film)",JSON.stringify(film))
 console.log("film=",film)
 console.log("auth.currentUser.uid=",auth.currentUser.uid)
 //for(let i= 0;i!=update_data.filmList.length;i++){
-set(ref(database, 'users/' +auth.currentUser.uid+"/filmList"),film).then(()=>{
+  let i=JSON.parse(film).length
+set(ref(database, 'users/' +auth.currentUser.uid+"/filmList"+`/${i+1}`),film).then(()=>{
 
 console.log("aLL GooD");
 
