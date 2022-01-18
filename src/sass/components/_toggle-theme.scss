@@ -57,7 +57,7 @@ body.dark-theme {
   transition: $time;
 }
 .section--footer.dark-theme {
-  background-color: $dark-theme-color;
+  background-color: $footer-dark-color;
   color: $white-color;
   transition: $time;
   & .footer__text {
