@@ -1,33 +1,27 @@
-<section class="section filter__section">
-    <div class="container filter__container">
-      <h2 class="filter-text">Find the best movies by genre</h2>
-      <select
-        class="genre-input" 
-        name="sortpicker" 
-        id="sortpicker"    
-        size="1" 
-        onfocus='this.size=5;' 
-        onblur='this.size=1;' 
-        onchange='this.size=1; this.blur();'
-        >
-        <option class="filter-input__option" value="genre.desc">Choose genre</option>
-        <option class="filter-input__option" value="genre.desc">Comedy</option>
-        <option class="filter-input__option" value="genre.desc">Drama</option>
-        <option class="filter-input__option" value="genre.desc">Horror</option>
-        <option class="filter-input__option" value="genre.desc">Blockbuster</option>
-        <option class="filter-input__option" value="genre.desc">Action</option>
-        <option class="filter-input__option" value="genre.desc">Adventure</option>
-        <option class="filter-input__option" value="genre.desc">Animation</option>
-        <option class="filter-input__option" value="genre.desc">Family</option>
-        <option class="filter-input__option" value="genre.desc">War</option>
-        <option class="filter-input__option" value="genre.desc">Science Fiction</option>
-        <option class="filter-input__option" value="genre.desc">Fantasy</option>
-        <option class="filter-input__option" value="genre.desc">Crime</option>
-        <option class="filter-input__option" value="genre.desc">Mystery</option>
-        <option class="filter-input__option" value="genre.desc">Thriller</option>
-        <option class="filter-input__option" value="genre.desc">Romance</option>
-        <option class="filter-input__option" value="genre.desc">Documentary</option>
-        <option class="filter-input__option" value="genre.desc">History</option>
-      </select>
+<div class="parametr">
+    <div class="genre-wrapper">
+      <p class="genre" data-id="">Genre</p>
+      <ul class="category-list is-hidden">
+        <!-- is-hidden добавити в клас -->
+        <li class="category-list__item" data-id="28">Action</li>
+        <li class="category-list__item" data-id="12">Adventure</li>
+        <li class="category-list__item" data-id="16">Animation</li>
+        <li class="category-list__item" data-id="35">Comedy</li>
+        <li class="category-list__item" data-id="80">Crime</li>
+        <li class="category-list__item" data-id="99">Documentary</li>
+        <li class="category-list__item" data-id="18">Drama</li>
+        <li class="category-list__item" data-id="10751">Family</li>
+        <li class="category-list__item" data-id="14">Fantasy</li>
+        <li class="category-list__item" data-id="36">History</li>
+      </ul>
     </div>
-    </section>
+
+    <div class="year-wrapper">
+      <p class="year" data-id="">Year</p>
+      <ul class="year-list is-hidden"></ul> 
+      <!-- is-hidden добавити в клас -->
+    </div>
+
+    <a href="./index.html" class="button clear-btn">Clear</a>
+</div>
+    

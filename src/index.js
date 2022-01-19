@@ -17,3 +17,5 @@ import './js/scripts/toggle-theme';
 // import './js/scripts/header';
 
 import './js/scripts/filter';
+
+import './js/scripts/year-list';
