@@ -34,14 +34,14 @@ function onEnterIgnor() {
   });
 }
 
-function onRenderPopularMoviesMarkup(genresArr) {
+function onRenderPopularMoviesMarkup() {
    refs.spinner.classList.remove('is-hidden');
 
   onEnterIgnor();
   
   popularMovie.fetchPopular()
     .then(film => {
-      const markup = filmCard(handleMovieCard(film.results, genresArr)); 
+      const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
       onRenderPagination(film.total_pages, film.page); 
     })
