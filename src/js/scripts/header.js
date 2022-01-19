@@ -63,18 +63,20 @@ function renderLibrary() {
           let arrFilm = [];
           if (snapshot.exists()) {
             if (snapshot.val() === '') {
-              console.log('-----------------------------------');
+              console.log('-------------пусто----------------------');
             } else {
-              console.log('====================================');
-              console.log('snapshot.val()=', snapshot.val());
+              //   console.log('====================================');
+              //  console.log('snapshot.val()=', snapshot.val());
               arrFilm = JSON.parse(snapshot.val());
               console.log('arrFilm=', arrFilm);
 
               arrFilm.forEach(el => {
                 console.log('el=', el);
               });
-
+              ////////////////////////////////////////////////////////////////
               //  filmCard(handleMovieCard(arrFilm));
+
+              ////////////////////////////////////////////////////////////////
             }
           } else {
             console.log('No data available');
