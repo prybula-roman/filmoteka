@@ -12,9 +12,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   currentUser,
-  signOut
+  signOut,
 } from 'firebase/auth';
-import { getDatabase, ref, set ,child,update,get} from 'firebase/database';
+import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
 ////////////////////////////////////////
 
@@ -37,7 +37,6 @@ function onCloseModal() {
   refs.modalEl.classList.add('js-backdrop');
 }
 
-
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     onCloseModal();
@@ -47,108 +46,93 @@ function onBackdropClick(event) {
 function onOpenModal(e) {
   e.preventDefault();
 
-  if ( currentTheme === 'dark-theme') {
+  if (currentTheme === 'dark-theme') {
     refs.modalWindowEl.classList.add('dark-theme');
-   } else {
-     refs.modalWindowEl.classList.remove('dark-theme'); 
-   }
+  } else {
+    refs.modalWindowEl.classList.remove('dark-theme');
+  }
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
   if (e.target.classList.value === 'movies') {
-  return
+    return;
   }
 
   const currentFilmId = Number(e.target.closest('li').id);
 
-  return JSON.parse(localStorage.getItem("currentPage")).map(films => {
-   films.forEach(film => {
-     if (currentFilmId === film.id ) {
-        
-console.log("film=",film);
+  return JSON.parse(localStorage.getItem('currentPage')).map(films => {
+    films.forEach(film => {
+      if (currentFilmId === film.id) {
+        console.log('film=', film);
 
+        const markupModal = movieCard(film);
 
-      const markupModal = movieCard(film);
-      
-      refs.modalmarkupEl.innerHTML = '';
-      refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
-      refs.bodyEl.classList.add('show-modal');
-  
-  
-      /////////////////////roman////////////////////
-      const btnAddFilm =  document.querySelector(".add-to-watch");
+        refs.modalmarkupEl.innerHTML = '';
+        refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
+        refs.bodyEl.classList.add('show-modal');
 
-      btnAddFilm.addEventListener("click",()=>{
-        const fullName=JSON.parse(localStorage.getItem('authorise')).name
-        const email=JSON.parse(localStorage.getItem('authorise')).email
-        const password=JSON.parse(localStorage.getItem('authorise')).password
-            console.log("fullName=",fullName)
-            console.log("email=",email)
-            console.log("fullName=",password)
+        /////////////////////roman////////////////////
+        const btnAddFilm = document.querySelector('.add-to-watch');
 
-        const newAuth=new Auth(fullName,email,password);
-          console.log(" *********  auth.database=",newAuth.db)
-          console.log(" *********  newAuth.auth=",newAuth.auth)
+        btnAddFilm.addEventListener('click', () => {
+          const fullName = JSON.parse(localStorage.getItem('authorise')).name;
+          const email = JSON.parse(localStorage.getItem('authorise')).email;
+          const password = JSON.parse(localStorage.getItem('authorise')).password;
 
-          console.log(localStorage.getItem("authorise"))
+          const newAuth = new Auth(fullName, email, password);
 
-          newAuth.loginUser(newAuth.auth,fullName,email, password,newAuth.db).then(()=>{
-            console.log("**fullName=",fullName)
-            console.log("**email=",email)
-            console.log("**fullName=",password)
-///////читаем список фильмов в массив///////////////////////
-console.log("newAuth.currentUser.uid=",newAuth.auth.currentUser.uid)
-get(ref(newAuth.db, 'users/' +newAuth.auth.currentUser.uid+"/filmList")).then((snapshot) => {
-  
-  if (snapshot.exists()) {
+          // console.log(localStorage.getItem('authorise'));
 
-    const filmArray=[];
-    console.log("snapshot=",snapshot);
-   // console.log("typeof snapshot.val()=",typeof snapshot.val());
-   // console.log("snapshot.val()=",snapshot.val());
-   // console.log("snapshot.val()[0]=",snapshot.val()[0]);
-   // console.log("film=",film);
-    if(snapshot.val()!=''){
-     console.log("******************************")
-     console.log("snapshot.val()=",snapshot.val())
+          newAuth
+            .loginUser(newAuth.auth, fullName, email, password, newAuth.db)
+            .then(() => {
+              ///////читаем список фильмов в массив///////////////////////
+              console.log('newAuth.currentUser.uid=', newAuth.auth.currentUser.uid);
+              get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
+                .then(snapshot => {
+                  console.log('snapshot=', snapshot);
+                  console.log('snapshot.val()=', snapshot.val());
+                  let arrFilm = [];
+                  if (snapshot.exists()) {
+                    if (snapshot.val() === '') {
+                      console.log('-----------------------------------');
+                      arrFilm.push(film);
 
-     filmArray.push(JSON.stringify(snapshot.val()));
+                      console.log('arrFilm=', arrFilm);
+                    } else {
+                      console.log('====================================');
+                      console.log('snapshot.val()=', snapshot.val());
+                      arrFilm = JSON.parse(snapshot.val());
+                      arrFilm.push(film);
+                      console.log(arrFilm);
+                    }
 
-     console.log("###########################")
-     filmArray.push(JSON.stringify(film));
-   console.log(filmArray.length)
-    }else{
-     // snapshot.val().push(JSON.stringify(film));
-     filmArray[0]=JSON.stringify(film);
-     //filmArray.push(JSON.stringify(film));
-    }
-   
+                    newAuth.addFilmToUser(
+                      newAuth.auth,
+                      fullName,
+                      email,
+                      password,
+                      newAuth.db,
+                      JSON.stringify(arrFilm),
+                    );
+                  } else {
+                    console.log('No data available');
+                  }
+                })
+                .catch(error => {
+                  console.error(error.message);
+                });
 
+              /////////////////////////////////////////////////////////////////
+            })
+            .catch(error => {
+              alert(error.message);
+            });
+        });
+        /////////////////////////////////////////////////////////
 
-    newAuth.addFilmToUser(newAuth.auth,fullName,email, password,newAuth.db,JSON.stringify(filmArray));
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error.message);
-});
-
-
-
-/////////////////////////////////////////////////////////////////
-
-            
-          }).catch((error)=>{
-alert(error.message);
-          });
-         
-      });
-/////////////////////////////////////////////////////////
-      
-
-
-      trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
-      }  
-     })
-  })
+        trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
+      }
+    });
+  });
 }
