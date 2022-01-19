@@ -55,7 +55,6 @@ function renderLibrary() {
     .loginUser(newAuth.auth, fullName, email, password, newAuth.db)
     .then(() => {
       ///////читаем список фильмов в массив///////////////////////
-      console.log('newAuth.currentUser.uid=', newAuth.auth.currentUser.uid);
       get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
         .then(snapshot => {
           console.log('snapshot=', snapshot);
@@ -65,16 +64,14 @@ function renderLibrary() {
             if (snapshot.val() === '') {
               console.log('-------------пусто----------------------');
             } else {
-              //   console.log('====================================');
-              //  console.log('snapshot.val()=', snapshot.val());
               arrFilm = JSON.parse(snapshot.val());
               console.log('arrFilm=', arrFilm);
 
-              arrFilm.forEach(el => {
-                console.log('el=', el);
-              });
               ////////////////////////////////////////////////////////////////
-              //  filmCard(handleMovieCard(arrFilm));
+              //console.log('filmCard=', filmCard);
+              const body = document.querySelector;
+              const listCards = document.querySelector('.movies');
+              listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
 
               ////////////////////////////////////////////////////////////////
             }

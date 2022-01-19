@@ -94,7 +94,7 @@ function onOpenModal(e) {
                   console.log('snapshot.val()=', snapshot.val());
                   let arrFilm = [];
                   if (snapshot.exists()) {
-                    if (snapshot.val() === '') {
+                    if (snapshot.val()[0] === '') {
                       console.log('-----------------------------------');
                       arrFilm.push(film);
 
