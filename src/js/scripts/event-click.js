@@ -8,12 +8,12 @@
 // };
 
 
-refs.yearChoiseEl.addEventListener('click') => {
-    refs.yearChoiseEl.classList.toggle('checked');
-    refs.genreChoiseEl.classList.remove('checked');
-    refs.yearListEl.classList.toggle('is-hidden');
-    refs.categoryGenreListEl.classList.add('is-hidden');
-};
+// refs.yearChoiseEl.addEventListener('click') => {
+//     refs.yearChoiseEl.classList.toggle('checked');
+//     refs.genreChoiseEl.classList.remove('checked');
+//     refs.yearListEl.classList.toggle('is-hidden');
+//     refs.categoryGenreListEl.classList.add('is-hidden');
+// };
 
 // refs.categoryGenreListEl.addEventListener('click', e) => {
 //     e.path.forEach(el) => {

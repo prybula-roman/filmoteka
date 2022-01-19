@@ -18,4 +18,4 @@ import './js/scripts/toggle-theme';
 
 import './js/scripts/filter';
 
-import './js/scripts/year-list';
+// import './js/scripts/year-list';
