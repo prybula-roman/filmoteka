@@ -1,5 +1,22 @@
 import './sass/main.scss';
-import { Render } from './js/romanJob/render';
-import { Auth } from './js/romanJob/auth';
-const render = new Render();
-const auth = new Auth();
+
+import './js/scripts/header';
+
+// import './js/scripts/library';
+
+import './js/scripts/search';
+
+import './js/scripts/pagination';
+
+import './js/scripts/local-storage';
+
+import './js/scripts/modal';
+
+import './js/scripts/scrollToTop';
+
+import './js/scripts/sort';
+
+import './js/scripts/toggle-theme';
+
+import './js/scripts/team-modal';
+
