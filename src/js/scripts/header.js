@@ -3,6 +3,8 @@ import onRenderPopularMoviesMarkup from './search';
 
 //////////////////////roman/////////////
 import filmCard from '../templates/preview_card.hbs';
+//import filmCard from '../templates/modal_lybr.hbs';
+
 import handleMovieCard from './handleMovieCard';
 import {
   getAuth,
@@ -29,7 +31,12 @@ function onMyLibrary() {
   refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
   refs.paginationEl.classList.add('pagination__off');
 
+  /////////////////////////////////////////////////////
+  const listCards = document.querySelector('.movies');
+  listCards.classList.toggle('my-library-movies');
+  console.log('    listCards====', listCards);
   renderLibrary();
+  /////////////////////////////////////////////////////
 }
 
 refs.homeEl.addEventListener('click', onHome);
@@ -44,8 +51,14 @@ function onHome() {
   refs.galleryEl.innerHTML = '';
   onRenderPopularMoviesMarkup();
   refs.formEl.reset();
+  //////////////////////////////
+  const listCards = document.querySelector('.movies');
+  listCards.classList.toggle('my-library-movies');
+  console.log('    listCards====', listCards);
+  //////////////////////////////
 }
 
+///////////////////////roman/////////////////////////////////////////
 function renderLibrary() {
   const fullName = JSON.parse(localStorage.getItem('authorise')).name;
   const email = JSON.parse(localStorage.getItem('authorise')).email;
@@ -71,7 +84,11 @@ function renderLibrary() {
               //console.log('filmCard=', filmCard);
               const body = document.querySelector;
               const listCards = document.querySelector('.movies');
+              //listCards.classList.toggle('my-library-movies');
               listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+
+              const btnDel = document.querySelector('.add-to-watch');
+              console.log('btnDel=', btnDel);
 
               ////////////////////////////////////////////////////////////////
             }
