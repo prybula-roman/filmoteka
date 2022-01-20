@@ -53,11 +53,15 @@ const refs = {
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
-  
+
+  //location
+  enEl: document.querySelector('#englishLink'),
+  ruEl: document.querySelector('#russianLink'),
+  ukEl: document.querySelector('#ukrainianLink')
+
   // swiper
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
-
 };
 
 export { refs };

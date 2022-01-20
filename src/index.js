@@ -21,3 +21,5 @@ import './js/scripts/sort';
 import './js/scripts/toggle-theme';
 
 import './js/scripts/team-modal';
+
+import './js/scripts/localization'
