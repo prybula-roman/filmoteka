@@ -19,7 +19,9 @@ const refs = {
   sectionFooterEl: document.querySelector('.section--footer'),
 
    // modal
-    openModalEl: document.querySelector('[data-modal-open]'),
+  openModalEl: document.querySelector('[data-modal-open]'),
+    openSwiperModalEl: document.querySelector('[data-modal-open-swiper]'),
+  
     closeModalEl: document.querySelector('[data-modal-close]'),
     modalEl: document.querySelector('[data-modal]'),
     modalmarkupEl: document.querySelector('.modal__markup'),
@@ -34,6 +36,11 @@ const refs = {
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
+  
+  // swiper
+  swiperEl: document.querySelector('.swiper-wrapper'),
+  swiperSlideEl: document.querySelector('.swiper-slide'),
+
 };
 
 export { refs };

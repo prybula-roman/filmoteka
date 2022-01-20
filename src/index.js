@@ -10,5 +10,8 @@ import './js/scripts/modal';
 
 import './js/scripts/scrollToTop';
 
-import './js/scripts/toggle-theme'
+import './js/scripts/toggle-theme';
+
+import './js/scripts/swiper';
+
 
