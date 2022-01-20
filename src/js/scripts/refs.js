@@ -26,7 +26,7 @@ const refs = {
   // footerTextEl: document.querySelector('.footer__text--first'),
   // footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
-  
+
   // team-modal
   openTeamModalEl: document.querySelector('[data-team-modal-open]'),
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
@@ -36,6 +36,7 @@ const refs = {
 
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
+  openSwiperModalEl: document.querySelector('[data-modal-open-swiper]'),
   closeModalEl: document.querySelector('[data-modal-close]'),
   modalEl: document.querySelector('[data-modal]'),
   modalmarkupEl: document.querySelector('.modal__markup'),
@@ -52,6 +53,11 @@ const refs = {
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
+  
+  // swiper
+  swiperEl: document.querySelector('.swiper-wrapper'),
+  swiperSlideEl: document.querySelector('.swiper-slide'),
+
 };
 
 export { refs };

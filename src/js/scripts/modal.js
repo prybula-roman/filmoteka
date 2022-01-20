@@ -8,6 +8,7 @@ import { currentTheme } from './toggle-theme';
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
+refs.openSwiperModalEl.addEventListener('click', onOpenModal);
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
@@ -49,18 +50,42 @@ function onOpenModal(e) {
 
   const currentFilmId = Number(e.target.closest('li').id);
 
-  return JSON.parse(localStorage.getItem("currentPage")).map(films => {
-   films.forEach(film => {
-     if (currentFilmId === film.id ) {
-        
-      const markupModal = movieCard(film);
-      
-      refs.modalmarkupEl.innerHTML = '';
-      refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
-      refs.bodyEl.classList.add('show-modal');
   
-      trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
-      }  
-     })
-  })
+  if (e.target.classList.value === 'movies__poster') {
+    return JSON.parse(localStorage.getItem("currentPage")).map(films => {
+      
+      films.forEach(film => {
+  
+        if (currentFilmId === film.id) {
+        
+          const markupModal = movieCard(film);
+      
+          refs.modalmarkupEl.innerHTML = '';
+          refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
+          refs.bodyEl.classList.add('show-modal');
+        }
+      }
+      )
+    })
+  }
+  else if (e.target.classList.value === 'swiper__poster') {
+    return JSON.parse(localStorage.getItem("currentSwiperPage")).map(films => {
+      
+      films.results.forEach(film => {
+  
+        if (currentFilmId === film.id) {
+        
+          const markupSwiperModal = movieCard(film);
+      
+          refs.modalmarkupEl.innerHTML = '';
+          refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupSwiperModal);
+          refs.bodyEl.classList.add('show-modal');
+        }
+      }
+      )
+    })
+  }
+   
 }
+     
+export {onOpenModal}
