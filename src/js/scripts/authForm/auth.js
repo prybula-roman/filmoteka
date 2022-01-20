@@ -19,6 +19,8 @@ export default class Auth {
     this.fbase = initializeApp(firebaseConfig);
     this.auth = getAuth();
     this.db = getDatabase(this.fbase);
+
+
     this.currentUser = JSON.parse(sessionStorage.getItem('logInUser'));
 
     //    console.log('this.currentUser');
@@ -75,15 +77,6 @@ export default class Auth {
   }
 
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
-<<<<<<< HEAD
-  //  console.log('database=', database);
-  //  console.log('jsonFilm=', jsonFilm);
-  //  console.log('auth.currentUser.uid=', auth.currentUser.uid);
-=======
-    // console.log('database=', database);
-    // console.log('jsonFilm=', jsonFilm);
-    // console.log('auth.currentUser.uid=', auth.currentUser.uid);
->>>>>>> 1ef473c815becc61b0c389382e42565fb4fc1e15
     update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
@@ -94,27 +87,34 @@ export default class Auth {
   }
 
   loginUser(auth, fullName, email, password) {
-    if (this.currentUser) {
+console.log("---------------------------------------")
+   if(this.currentUser) {
+      if(this.currentUser!=null){
       console.log('loginUser()   this.currentUser=', this.currentUser);
-      email = this.currentUser.email;
-      password = this.currentUser.password;
-      fullName = this.currentUser.name;
+      this.currentUser.email= email  ;
+      this.currentUser.password= password ;
+      this.currentUser.name=  fullName ;
+      }
+
     }
-    console.log('email=', email);
-    console.log('password=', password);
-    console.log('fullName=', fullName);
+    // console.log('loginUser() email=', email);
+    // console.log('loginUser()   password=', password);
+    // console.log('loginUser()  fullName=', fullName);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+
+        const user={
+          name:fullName,
+          email:email,
+          password:password
+      }
         if (!localStorage.getItem('authorise')) {
-          localStorage.setItem('authorise', JSON.stringify(this.currentUser));
+          localStorage.setItem('authorise', JSON.stringify(user));
         } else {
-          localStorage.getItem('authorise').remove;
-          localStorage.setItem('authorise', JSON.stringify(this.currentUser));
+           localStorage.removeItem('authorise');
+           localStorage.setItem('authorise', JSON.stringify(user));
         }
-        localStorage.setItem('authorise', JSON.stringify(this.currentUser));
-        sessionStorage.setItem('logInUser', JSON.stringify(this.currentUser));
-
-
+         sessionStorage.setItem('logInUser',JSON.stringify(user))
         config.btnLogIn.classList.toggle('visually-hidden');
         config.btnReg.classList.toggle('visually-hidden');
         config.btnLogOut.classList.toggle('visually-hidden');

@@ -21,11 +21,9 @@ export default class Form {
   } //<----
 
   ///////////////////////////////////////////////////
-  btnLogOutClicked(authorise) {
+  btnLogOutClicked(auth) {
     console.log('btnLogOutClicked------>>>>>>');
-    console.log('authorise=', authorise);
-    const auth = JSON.parse(authorise);
-    console.log('auth', auth);
+    console.log('auth=', auth);
     const newAuth = new Auth(auth.name, auth.email, auth.password);
     if (newAuth.loginUser(newAuth.auth, auth.name, auth.email, auth.password)) {
       if (newAuth.singOutUser(newAuth.auth)) {
@@ -38,7 +36,7 @@ export default class Form {
         config.btnMyLabr.classList.toggle('visually-hidden');
       }
     }
-    console.log('<<<<<<------btnLogOutClicked----------------');
+    console.log('<<<<<<------btnLogOutClicked');
   }
   /////////////////////////////////////////////////////
   btnLoginClicked() {

@@ -74,13 +74,12 @@ function onOpenModal(e) {
           const btnDel = document.querySelector('.del-to-queue');
           btnDel.addEventListener('click', () => {
             console.log('btnDel.addEventListener');
-            const fullName = JSON.parse(localStorage.getItem('logInUser')).name;
-            const email = JSON.parse(localStorage.getItem('logInUser')).email;
-            const password = JSON.parse(localStorage.getItem('logInUser')).password;
+            const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
+            const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+            const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
             const newAuth = new Auth(fullName, email, password);
-            newAuth
-              .loginUser(newAuth.auth, fullName, email, password)
-              .then(() => {
+          if(  newAuth.loginUser(newAuth.auth, fullName, email, password))
+               {
                 get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
                   .then(snapshot => {
                     let arrFilm = [];
@@ -114,10 +113,7 @@ function onOpenModal(e) {
                   .catch(error => {
                     alert(error.message);
                   });
-              })
-              .catch(error => {
-                alert(error.message);
-              });
+              }
           });
         }
         if (document.querySelector('.add-to-watch')) {

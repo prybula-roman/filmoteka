@@ -9,7 +9,7 @@ const btnSubmit = document.querySelector('.modal-form__submit');
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
   const form = new Form();
-  form.btnLogOutClicked(sessionStorage.getItem('logInUser'));
+  form.btnLogOutClicked(JSON.parse(sessionStorage.getItem('logInUser')));
 });
 //////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -33,7 +33,6 @@ config.btnLogIn.addEventListener('click', () => {
       }
     }
   }
-  console.log('lhfaefdjf');
   userForm.classList.toggle('visually-hidden');
   btnSubmit.innerHTML = 'Sing In';
 });
@@ -42,10 +41,7 @@ btnCloseForm.addEventListener('click', () => {
   console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
-//////////////////////////////////////////////////////
-//config.btnAddFilm.classList.toggle('visually-hidden');
-//console.log(config.btnAddFilm);
-//////////////////////////////////////////////////////
+/////////////////////////////////////////////////
 btnSubmit.addEventListener('click', e => {
   console.dir(btnSubmit);
   if (btnSubmit.innerHTML === 'Sing Up') {
