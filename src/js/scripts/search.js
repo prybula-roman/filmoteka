@@ -50,7 +50,8 @@ function onRenderPopularMoviesMarkup(genresArr) {
     .then(film => {
       const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
-      onRenderPagination(film.total_pages, film.page); 
+      onRenderPagination(film.total_pages, film.page);
+      
     })
   })
     .finally(() => {
@@ -72,13 +73,7 @@ function onSubmit (event) {
   refs.galleryEl.innerHTML = '';
   apiSearchData.resetPage();
   onRenderPaginationMarkup();
-  if (genreValue !== '' || yearValue!== '') {
-          createCard(genreValue, yearValue);
-          return
-  }
-   if (apiSearchData.query === "" && genreValue === '' && yearValue === '') {
-        onRenderPopularMoviesMarkup(genresArr);
-      }
+   
 }
 
 function onRenderPaginationMarkup() {
@@ -96,6 +91,13 @@ function onRenderPaginationMarkup() {
 
       if(film.total_results ===0){
         refs.spinner.classList.add('is-hidden');
+      }
+      if (apiSearchData.query === "" && genreValue === '' && yearValue === '') {
+        onRenderPopularMoviesMarkup(genresArr);
+  }
+  if (genreValue !== '' || yearValue!== '') {
+          createCard(genreValue, yearValue);
+          return
       }
   })
   .catch(error => 
