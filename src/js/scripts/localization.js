@@ -1,6 +1,6 @@
 import { refs } from './refs';
 
-import pageLang from '../scripts/templates/pageLang';
+import pageLang from './scripts/templates/PageLang';
 
 
  function setLocalStorage(key, data) {
