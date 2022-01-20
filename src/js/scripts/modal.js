@@ -79,8 +79,8 @@ function onOpenModal(e) {
             const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
             const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
             const newAuth = new Auth(fullName, email, password);
-          if(  newAuth.loginUser(newAuth.auth, fullName, email, password))
-               {
+      //    if(  newAuth.loginUser(newAuth.auth, fullName, email, password))
+          //     {
                 get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
                   .then(snapshot => {
                     let arrFilm = [];
@@ -114,7 +114,7 @@ function onOpenModal(e) {
                   .catch(error => {
                     alert(error.message);
                   });
-              }
+       //       }
           });
         }
 
