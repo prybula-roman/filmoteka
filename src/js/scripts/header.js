@@ -40,8 +40,9 @@ function onMyLibrary() {
 }
 
 refs.homeEl.addEventListener('click', onHome);
-
+onRenderPopularMoviesMarkup();
 function onHome() {
+  console.log('--------onHome()----->>>');
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');
   refs.homeEl.classList.add('nav-list__link--current');
@@ -51,58 +52,49 @@ function onHome() {
   refs.galleryEl.innerHTML = '';
   onRenderPopularMoviesMarkup();
   refs.formEl.reset();
-  //////////////////////////////
-  const listCards = document.querySelector('.movies');
-  listCards.classList.toggle('my-library-movies');
-  console.log('    listCards====', listCards);
-  //////////////////////////////
+
+  if (document.querySelector('.movies')) {
+    document.querySelector('.movies').classList.toggle('my-library-movies');
+  }
+  console.log('<<<<--------onHome()--------');
 }
 
-///////////////////////roman/////////////////////////////////////////
 function renderLibrary() {
-  const fullName = JSON.parse(localStorage.getItem('authorise')).name;
-  const email = JSON.parse(localStorage.getItem('authorise')).email;
-  const password = JSON.parse(localStorage.getItem('authorise')).password;
+  console.log('renderLibrary()');
+  const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
+  const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+  const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
   const newAuth = new Auth(fullName, email, password);
-  newAuth
-    .loginUser(newAuth.auth, fullName, email, password, newAuth.db)
-    .then(() => {
-      ///////читаем список фильмов в массив///////////////////////
-      get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
-        .then(snapshot => {
-          console.log('snapshot=', snapshot);
-          console.log('snapshot.val()=', snapshot.val());
-          let arrFilm = [];
-          if (snapshot.exists()) {
-            if (snapshot.val() === '') {
-              console.log('-------------пусто----------------------');
-            } else {
-              arrFilm = JSON.parse(snapshot.val());
-              console.log('arrFilm=', arrFilm);
 
-              ////////////////////////////////////////////////////////////////
-              //console.log('filmCard=', filmCard);
-              const body = document.querySelector;
-              const listCards = document.querySelector('.movies');
-              //listCards.classList.toggle('my-library-movies');
-              listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+  if (newAuth.loginUser(newAuth, fullName, email, password)) {
+    console.log(newAuth);
+    console.log(newAuth.auth.currentUser.uid);
+    console.log(newAuth.db);
+    console.log(fullName);
+    console.log(email);
+    console.log(password);
 
-              const btnDel = document.querySelector('.add-to-watch');
-              console.log('btnDel=', btnDel);
-
-              ////////////////////////////////////////////////////////////////
-            }
+    get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
+      .then(snapshot => {
+        console.log('snapshot=', snapshot);
+        let arrFilm = [];
+        if (snapshot.exists()) {
+          if (snapshot.val() === '') {
           } else {
-            console.log('No data available');
+            arrFilm = JSON.parse(snapshot.val());
+            const body = document.querySelector;
+            const listCards = document.querySelector('.movies');
+            listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+            const btnDel = document.querySelector('.add-to-watch');
           }
-        })
-        .catch(error => {
-          console.error(error.message);
-        });
-
-      /////////////////////////////////////////////////////////////////
-    })
-    .catch(error => {
-      alert(error.message);
-    });
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }
 }
+
+export { onHome };
