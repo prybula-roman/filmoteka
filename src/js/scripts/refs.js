@@ -57,7 +57,7 @@ const refs = {
   //location
   enEl: document.querySelector('#englishLink'),
   ruEl: document.querySelector('#russianLink'),
-  ukEl: document.querySelector('#ukrainianLink')
+  ukEl: document.querySelector('#ukrainianLink'),
 
   // swiper
   swiperEl: document.querySelector('.swiper-wrapper'),
