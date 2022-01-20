@@ -24,23 +24,14 @@ export default class Form {
   btnLogOutClicked(auth) {
     console.log('btnLogOutClicked------>>>>>>');
     console.log('auth=', auth);
-    const newAuth = new Auth(auth.name, auth.email, auth.password);
-    if (newAuth.loginUser(newAuth.auth, auth.name, auth.email, auth.password)) {
-      if (newAuth.singOutUser(newAuth.auth)) {
-        if (document.querySelector('.my-library-movies')) {
-          document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
-        }
-        config.btnLogIn.classList.toggle('visually-hidden');
-        config.btnReg.classList.toggle('visually-hidden');
-        config.btnLogOut.classList.toggle('visually-hidden');
-        config.btnMyLabr.classList.toggle('visually-hidden');
-      }
-    }
+    const newAuth = new Auth(auth.name, auth.email, auth.password); 
+       newAuth.singOutUser(newAuth.auth)
+    
     console.log('<<<<<<------btnLogOutClicked');
   }
   /////////////////////////////////////////////////////
   btnLoginClicked() {
-    console.log('---btnLoginClicked()--');
+    console.log("btnLoginClicked()---->>>>")
     console.log('this.nameAreaVal=', this.nameAreaVal);
     console.log('this.mailAreaVal=', this.mailAreaVal);
     console.log('this.passwordAreaVal=', this.passwordAreaVal);
@@ -54,6 +45,7 @@ export default class Form {
     } else {
       alert('Not valid form');
     }
+    console.log("<<<<-----btnLoginClicked()")
   }
 
   btnRegClicked() {

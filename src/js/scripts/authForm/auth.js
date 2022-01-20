@@ -58,22 +58,30 @@ export default class Auth {
   readUser() {}
 
   singOutUser(auth) {
+    console.log("singOutUser()----->>>>")
     console.log('auth=', auth);
     signOut(auth)
       .then(() => {
         onHome();
-        alert('+++++ singOut +++++');
-        return 1;
+        if (sessionStorage.getItem('logInUser')) {
+          console.log(sessionStorage.getItem('logInUser'));
+          sessionStorage.removeItem('logInUser');
+          console.log(sessionStorage.getItem('logInUser'));
+        }
+        if (document.querySelector('.my-library-movies')) {
+          document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
+        }
+        config.btnLogIn.classList.toggle('visually-hidden');
+        config.btnReg.classList.toggle('visually-hidden');
+        config.btnLogOut.classList.toggle('visually-hidden');
+        config.btnMyLabr.classList.toggle('visually-hidden');
       })
       .catch(error => {
         alert(`!!!!!!!!! ${error.messsage}`);
       })
       .finally(() => {
-        if (sessionStorage.getItem('logInUser')) {
-          sessionStorage.removeItem('logInUser');
-        }
+        console.log("singOutUser()   finally")
       });
-    return 0;
   }
 
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
@@ -87,19 +95,18 @@ export default class Auth {
   }
 
   loginUser(auth, fullName, email, password) {
-console.log("---------------------------------------")
+console.log("loginUser----->>>>>")
    if(this.currentUser) {
       if(this.currentUser!=null){
-      console.log('loginUser()   this.currentUser=', this.currentUser);
-      this.currentUser.email= email  ;
-      this.currentUser.password= password ;
-      this.currentUser.name=  fullName ;
+        this.currentUser.email= email  ;
+        this.currentUser.password= password ;
+        this.currentUser.name=fullName ;
       }
 
     }
-    // console.log('loginUser() email=', email);
-    // console.log('loginUser()   password=', password);
-    // console.log('loginUser()  fullName=', fullName);
+    console.log('loginUser() email=', email);
+    console.log('loginUser()   password=', password);
+    console.log('loginUser()  fullName=', fullName);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
 
@@ -124,6 +131,7 @@ console.log("---------------------------------------")
         alert(e.message);
         return 0;
       });
+      console.log("<<<<<-------loginUser()")
     return 1;
 
   }

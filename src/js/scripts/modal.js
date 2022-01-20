@@ -70,7 +70,8 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
-        if (document.querySelector('.my-library-movies')) {
+
+        if(document.querySelector('.my-library-movies')){
           const btnDel = document.querySelector('.del-to-queue');
           btnDel.addEventListener('click', () => {
             console.log('btnDel.addEventListener');
@@ -116,14 +117,20 @@ function onOpenModal(e) {
               }
           });
         }
+
+        /////////////////////////////////////////////////////////
         if (document.querySelector('.add-to-watch')) {
+          if(!sessionStorage.getItem('logInUser')){
+            document.querySelector('.add-to-watch').classList.toggle('visually-hidden');
+
+          }
           const btnAddFilm = document.querySelector('.add-to-watch');
           btnAddFilm.addEventListener('click', () => {
             const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
             const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
             const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
             const newAuth = new Auth(fullName, email, password);
-            if (newAuth.loginUser(newAuth.auth, fullName, email, password, newAuth.db)) {
+          //  if (newAuth.loginUser(newAuth.auth, fullName, email, password, newAuth.db)) {
               ///////читаем список фильмов в массив///////////////////////
               console.log('newAuth.currentUser.uid=', newAuth.auth.currentUser.uid);
               get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
@@ -135,7 +142,6 @@ function onOpenModal(e) {
                     if (snapshot.val()[0] === '') {
                       console.log('-----------------------------------');
                       arrFilm.push(film);
-
                       console.log('arrFilm=', arrFilm);
                     } else {
                       console.log('====================================');
@@ -162,7 +168,7 @@ function onOpenModal(e) {
                 });
 
               /////////////////////////////////////////////////////////////////
-            }
+         //   }
           });
 
           trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
