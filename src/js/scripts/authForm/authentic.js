@@ -6,6 +6,11 @@ const userForm = document.querySelector('.form-auth');
 const btnCloseForm = document.querySelector('.modal__close-btn');
 const btnSubmit = document.querySelector('.modal-form__submit');
 
+for(let i=0; i<sessionStorage.length; i++) {
+ sessionStorage.removeItem(sessionStorage.key(i));
+
+}
+
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
   const form = new Form();

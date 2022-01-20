@@ -34,7 +34,7 @@ function onMyLibrary() {
   /////////////////////////////////////////////////////
   const listCards = document.querySelector('.movies');
   listCards.classList.toggle('my-library-movies');
-  console.log('    listCards====', listCards);
+
   renderLibrary();
   /////////////////////////////////////////////////////
 }
@@ -42,7 +42,7 @@ function onMyLibrary() {
 refs.homeEl.addEventListener('click', onHome);
 onRenderPopularMoviesMarkup();
 function onHome() {
-  console.log('--------onHome()----->>>');
+  console.log('onHome()----->>>');
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');
   refs.homeEl.classList.add('nav-list__link--current');
@@ -53,14 +53,15 @@ function onHome() {
   onRenderPopularMoviesMarkup();
   refs.formEl.reset();
 
-  if (document.querySelector('.movies')) {
+  console.log(document.querySelector('.movies'))
+  
     document.querySelector('.movies').classList.toggle('my-library-movies');
-  }
-  console.log('<<<<--------onHome()--------');
+  
+  console.log('<<<<--------onHome()');
 }
 
 function renderLibrary() {
-  console.log('renderLibrary()');
+  console.log('renderLibrary()----->>>>');
   const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
   const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
   const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
@@ -95,6 +96,7 @@ function renderLibrary() {
         console.log(error.message);
       });
   }
+  console.log('<<<<<-----renderLibrary()');
 }
 
 export { onHome };
