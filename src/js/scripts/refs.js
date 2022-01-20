@@ -52,6 +52,11 @@ const refs = {
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
+
+  //location
+  enEl: document.querySelector('#englishLink'),
+  ruEl: document.querySelector('#russianLink'),
+  ukEl: document.querySelector('#ukrainianLink')
 };
 
 export { refs };
