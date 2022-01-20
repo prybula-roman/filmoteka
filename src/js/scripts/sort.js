@@ -33,9 +33,7 @@ class MovieFilter {
     }
   }
 
-
 const movieFilter = new MovieFilter();
-
 
 let sortValue = '';
 
@@ -48,8 +46,8 @@ document.querySelectorAll('.filter-input').forEach(item => {
   });
 });
 
-function createCard(sort) {
-  movieFilter.fetchMovies(sort).then(res => {
+function createCard(genre) {
+  movieFilter.fetchMovies(genre).then(res => {
     refs.galleryEl.innerHTML = filmCard(handleMovieCard(res.results));   
     refs.paginationEl.innerHTML = ''    
     if(res.total_pages >= 500){
@@ -58,5 +56,3 @@ function createCard(sort) {
     onRenderPagination(res.total_pages, res.page);
   })
 }
-
-   

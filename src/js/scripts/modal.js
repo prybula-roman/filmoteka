@@ -26,7 +26,6 @@ function onCloseModal() {
   refs.modalEl.classList.add('js-backdrop');
 }
 
-
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     onCloseModal();
@@ -80,6 +79,8 @@ function onOpenModal(e) {
           refs.modalmarkupEl.innerHTML = '';
           refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupSwiperModal);
           refs.bodyEl.classList.add('show-modal');
+
+          trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
         }
       }
       )
