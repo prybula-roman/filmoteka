@@ -117,14 +117,12 @@ body.show-modal .modal {
   }
 }
 .modal__icon {
-  width: 18px;
-  height: 18px;
   stroke: $black-color;
   transition: fill $time $timing-function;
 
   .modal__btn:hover &,
   .modal__btn:focus & {
-    fill: $accent-color;
+    stroke: $accent-color;
   }
 }
 .movies__modal {

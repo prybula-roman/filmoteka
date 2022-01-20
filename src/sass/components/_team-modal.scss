@@ -146,7 +146,6 @@
 }
 
 .name__profession {
-  margin-top: 5px;
   margin-bottom: 5px;
   color: $dark-grey-color;
   font-size: 16px;
@@ -179,18 +178,8 @@
   &:focus {
     background: $accent-color;
   }
-  &:hover .socialnets__icon-instagram,
-  &:focus .socialnets__icon-instagram {
-    fill: $main-color;
-  }
-
-  &:hover .socialnets__icon-twitter,
-  &:focus .socialnets__icon-twitter {
-    fill: $main-color;
-  }
-
-  &:hover .socialnets__icon-facebook,
-  &:focus .socialnets__icon-facebook {
+  &:hover .socialnets__icon-gitHub,
+  &:focus .socialnets__icon-gitHub {
     fill: $main-color;
   }
 
@@ -200,12 +189,10 @@
   }
 }
 
-.socialnets__icon-instagram,
-.socialnets__icon-twitter,
-.socialnets__icon-facebook,
+.socialnets__icon-gitHub,
 .socialnets__icon-linkedin {
-  width: 20px;
-  height: 20px;
+  // width: 20px;
+  // height: 20px;
   fill: $grey-color;
   transition: fill $time $timing-function;
 }
