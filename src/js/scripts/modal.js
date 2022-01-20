@@ -3,11 +3,12 @@ import { refs } from './refs';
 
 // import templates
 import movieCard from '../templates/modal.hbs';
+import trailer from '../API/fetchTrailer';
+import { currentTheme } from './toggle-theme';
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
 refs.openSwiperModalEl.addEventListener('click', onOpenModal);
-
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
@@ -17,7 +18,6 @@ function onEscKeyPress(event) {
     onCloseModal();
   }
 }
-
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
@@ -36,12 +36,17 @@ function onBackdropClick(event) {
 function onOpenModal(e) {
   e.preventDefault();
 
+  if ( currentTheme === 'dark-theme') {
+    refs.modalWindowEl.classList.add('dark-theme');
+   } else {
+     refs.modalWindowEl.classList.remove('dark-theme'); 
+   }
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
   if (e.target.classList.value === 'movies') {
   return
-}
+  }
 
   const currentFilmId = Number(e.target.closest('li').id);
 
@@ -81,6 +86,6 @@ function onOpenModal(e) {
     })
   }
    
-     }
+}
      
 export {onOpenModal}

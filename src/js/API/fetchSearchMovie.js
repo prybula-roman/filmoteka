@@ -9,12 +9,8 @@ export default class FetchSearchMovie {
         const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.searchQuery}&page=${this.page}`;
         return await fetch(url)
         .then(res => {
-            this.incrementPage();
             return res.json();
         })
-    }
-    incrementPage() {
-        this.page += 1;
     }
     resetPage() {
         this.page = 1;

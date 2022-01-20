@@ -1,0 +1,19 @@
+<section class="section filter__section">
+    <div class="container filter__container">
+      <h2 class="filter-text">Find the best movies</h2>
+      <select
+        class="filter-input" 
+        name="sortpicker" 
+        id="sortpicker"    
+        size="1" 
+        onfocus='this.size=4;' 
+        onblur='this.size=1;' 
+        onchange='this.size=1; this.blur();'
+        >
+        <option class="filter-input__option" value="popularity.desc">Choose sort</option>
+        <option class="filter-input__option" value="popularity.desc">Popularity</option>
+        <option class="filter-input__option" value="revenue.desc">Revenue</option>
+        <option class="filter-input__option" value="vote_count.desc">Vote count</option>
+      </select>
+    </div>
+</section>

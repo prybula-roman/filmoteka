@@ -2,8 +2,8 @@
   display: inline-block;
   z-index: 999;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 50px;
+  top: 175px;
 }
 
 .toggle__label {
@@ -57,7 +57,7 @@ body.dark-theme {
   transition: $time;
 }
 .section--footer.dark-theme {
-  background-color: $dark-theme-color;
+  background-color: $footer-dark-color;
   color: $white-color;
   transition: $time;
   & .footer__text {
@@ -65,14 +65,6 @@ body.dark-theme {
     transition: $time;
   }
 }
-
-// .dark-theme{
-//   background-color: $dark-theme-color;
-//   color:$white-color
-// }
-// .light-theme{
-//   background-color: $main-color;
-// }
 
   .modal.light-theme {
     background-color: $main-color;
