@@ -98,30 +98,29 @@ function onOpenModal(e) {
                 console.log('newAuth.currentUser.uid=', newAuth.auth.currentUser.uid);
                 get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
                   .then(snapshot => {
-                    console.log('snapshot=', snapshot);
-                    console.log('snapshot.val()=', snapshot.val());
+                    //  console.log('snapshot=', snapshot);
+                    //  console.log('snapshot.val()=', snapshot.val());
                     let arrFilm = [];
                     if (snapshot.exists()) {
                       if (snapshot.val()[0] === '') {
-                        console.log('-----------------------------------');
+                        //    console.log('-----------------------------------');
                         // arrFilm.push(film);
-
-                        console.log('arrFilm=', arrFilm);
+                        //      console.log('arrFilm=', arrFilm);
                       } else {
                         console.log('====================================');
                         console.log('snapshot.val()=', snapshot.val());
                         arrFilm = JSON.parse(snapshot.val());
                         //arrFilm.push(film);
-                        console.log('arrFilm=', arrFilm);
-                        console.log('film.id=', film);
+                        //      console.log('arrFilm=', arrFilm);
+                        //      console.log('film.id=', film);
                         arrFilm.forEach((item, index, arr) => {
-                          console.log('item.id=', item.id);
+                          //        console.log('item.id=', item.id);
                           if (item.id === film.id) {
-                            console.log('%%%%%%%%%%%%%%%index=', index);
+                            //          console.log('%%%%%%%%%%%%%%%index=', index);
                           }
                         });
-                        console.log('arrFilm=', arrFilm);
-                        console.log(arrFilm);
+                        //      console.log('arrFilm=', arrFilm);
+                        //      console.log(arrFilm);
                       }
 
                       // newAuth.addFilmToUser(
