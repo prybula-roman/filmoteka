@@ -10,23 +10,23 @@
 
                 <ul class="nav-list">
                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link nav-list__link--current" id="home-link">Home</a>
+                        <a href="#" class="nav-list__link nav-list__link--current lang-home" id="home-link">Home</a>
                     </li>
                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link" id="library-link">My library</a>
+                        <a href="#" class="nav-list__link lang-library" id="library-link">My library</a>
                     </li>
                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">Login</a>
+                        <a href="#" class="nav-list__link lang-login">Login</a>
                     </li>
                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">Registration</a>
+                        <a href="#" class="nav-list__link lang-registration">Registration</a>
                     </li>
                 </ul>
             </nav>
         </div>
         <div class="search-box">
             <form class="search-form" id="search-form">
-                <input type="text" name="searchQuery" autocomplete="off" placeholder="Search films" class="search-form__input" />
+                <input type="text" name="searchQuery" autocomplete="off" placeholder="Search films" class="search-form__input lang-input" />
                 <button type="submit" class="search-form__btn">
           <svg class="search-form__icon" width="12" height="12">
             <use href="./images/sprite.svg#icon-search"></use>
@@ -36,12 +36,12 @@
         </div>
 
         <div class="notification">
-            <p class="notification__text visually-hidden">Search result not successful. Enter the correct movie name and search again.</p>
+            <p class="notification__text visually-hidden lang-notification">Search result not successful. Enter the correct movie name and search again.</p>
         </div>
 
         <div class="library header__buttons is-hidden">
-            <button type="button" class="button watched__button btn-activ">watched</button>
-            <button type="button" class="button queue__button">queue</button>
+            <button type="button" class="button watched__button btn-activ lang-watched">watched</button>
+            <button type="button" class="button queue__button lang-queue">queue</button>
         </div>
 
     </div>

@@ -5,7 +5,7 @@
     "role": "Team lead",
     "photo": "https://github.com/KurbatovAS.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
+    "linkedinlink": "linkedIn"
 },
 {
     "name": "София Процив",
@@ -13,7 +13,7 @@
     "role": "Scrum master",
     "photo": "https://github.com/SofiaProtsiv.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
+    "linkedinlink": "linkedIn"
 },
 {
     "name": "Наталья Кулибаба",
@@ -21,7 +21,7 @@
     "role": "Frontend developer",
     "photo": "https://github.com/NataliyaKulibaba.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",  
+    "linkedinlink": "linkedIn"  
 },
 {   
     "name": "Леляк Андрей",
@@ -29,7 +29,7 @@
     "role": "Frontend developer",
     "photo": "https://github.com/Lelyak-Andriy.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
+    "linkedinlink": "linkedIn"
     
 },
 {
@@ -38,14 +38,14 @@
     "role": "Frontend developer",
     "photo": "https://github.com/prybula-roman.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
+    "linkedinlink": "linkedIn"
 },
 {   "name": "Инна Смертюк",
     "title": "inna smertyuk",
     "role": "Frontend developer",
     "photo": "https://github.com/Inna-Smertyuk.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
+    "linkedinlink": "linkedIn"
 },
 {
     "name": "Дмитрий Сергиенко",
@@ -53,6 +53,6 @@
     "role": "Frontend developer",
     "photo": "https://github.com/lokomativniy.png",
     "twitterlink": "twitter",
-    "linkedinlink": "linkedIn",
-},
+    "linkedinlink": "linkedIn"
+}
 ]
