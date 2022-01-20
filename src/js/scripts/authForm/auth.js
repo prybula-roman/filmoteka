@@ -76,9 +76,9 @@ export default class Auth {
   }
   //////////////////////////////////////////////////////////////
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
-    console.log('database=', database);
-    console.log('jsonFilm=', jsonFilm);
-    console.log('auth.currentUser.uid=', auth.currentUser.uid);
+  //  console.log('database=', database);
+  //  console.log('jsonFilm=', jsonFilm);
+  //  console.log('auth.currentUser.uid=', auth.currentUser.uid);
     update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
@@ -94,6 +94,18 @@ export default class Auth {
 
   loginUser(auth, fullName, email, password, database) {
     console.log('loginUser');
+
+if(sessionStorage.getItem("logInUser")){
+if(JSON.parse(sessionStorage)!=null){
+
+
+  }else{
+
+    email=JSON.parse(sessionStorage)
+  }
+
+}
+
 
     const promise = signInWithEmailAndPassword(auth, email, password);
     promise.catch(e => {

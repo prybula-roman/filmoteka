@@ -84,7 +84,7 @@ function onOpenModal(e) {
         ///////////////////////////////////////////////////////////////
         if (document.querySelector('.my-library-movies')) {
           const btnDel = document.querySelector('.del-to-queue');
-          btnDel.addEventListener('click', film => {
+          btnDel.addEventListener('click', () => {
             console.log('btnDel.addEventListener');
             const fullName = JSON.parse(localStorage.getItem('authorise')).name;
             const email = JSON.parse(localStorage.getItem('authorise')).email;
@@ -118,20 +118,21 @@ function onOpenModal(e) {
                           console.log('item.id=', item.id);
                           if (item.id === film.id) {
                             console.log('%%%%%%%%%%%%%%%index=', index);
+                            arrFilm.splice(index,1);
                           }
                         });
                         console.log('arrFilm=', arrFilm);
                         console.log(arrFilm);
                       }
 
-                      // newAuth.addFilmToUser(
-                      //   newAuth.auth,
-                      //   fullName,
-                      //   email,
-                      //   password,
-                      //   newAuth.db,
-                      //   JSON.stringify(arrFilm),
-                      // );
+                      newAuth.addFilmToUser(
+                        newAuth.auth,
+                        fullName,
+                        email,
+                        password,
+                        newAuth.db,
+                        JSON.stringify(arrFilm),
+                      );
                     } else {
                       console.log('No data available');
                     }
