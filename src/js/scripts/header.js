@@ -67,13 +67,6 @@ function renderLibrary() {
   const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
   const newAuth = new Auth(fullName, email, password);
 
-  if (newAuth.loginUser(newAuth, fullName, email, password)) {
-    console.log(newAuth);
-    console.log(newAuth.auth.currentUser.uid);
-    console.log(newAuth.db);
-    console.log(fullName);
-    console.log(email);
-    console.log(password);
 
     get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
@@ -95,7 +88,7 @@ function renderLibrary() {
       .catch(error => {
         console.log(error.message);
       });
-  }
+
   console.log('<<<<<-----renderLibrary()');
 }
 
