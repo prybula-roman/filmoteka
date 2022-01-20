@@ -12,16 +12,15 @@
   overflow-y: scroll;
 }
 
-.team-backdrop.is-hidden{
+.team-backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
-  pointer-events: none;  
+  pointer-events: none;
 
-& .team-modal{
-  transform: translate(-50%, -50%) scale(0.9);
+  & .team-modal {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
 }
-}
-
 
 .team-modal {
   position: relative;
@@ -31,7 +30,6 @@
   width: 280px;
   border-radius: 5px;
   background-color: $main-color;
-
 
   transform: translate(-50%, -50%) scale(1.2);
   transition: transform $time $timing-function;
@@ -43,7 +41,7 @@
 
   @media screen and(min-width: $desktop) {
     width: 882px;
-    padding: 40px ;
+    padding: 40px;
   }
 }
 
@@ -89,7 +87,6 @@
     line-height: 1.17;
   }
 }
-
 
 // список людей
 .people {
@@ -149,14 +146,13 @@
 }
 
 .name__profession {
-  margin-top: 5px;
   margin-bottom: 5px;
   color: $dark-grey-color;
   font-size: 16px;
   line-height: 1.2;
 }
 
-.socialnets{
+.socialnets {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,11 +160,11 @@
   margin-right: 5px;
 }
 
-.socialnets__item:not(:last-child){
-margin-right: 5px;
+.socialnets__item:not(:last-child) {
+  margin-right: 5px;
 }
 
-.socialnets__link{
+.socialnets__link {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -178,37 +174,25 @@ margin-right: 5px;
   background: $main-color;
   transition: background $time $timing-function;
 
-&:hover,
-&:focus {
-  background: $accent-color;
-}
-&:hover .socialnets__icon-instagram,
-&:focus .socialnets__icon-instagram{
-  fill: $main-color;
+  &:hover,
+  &:focus {
+    background: $accent-color;
+  }
+  &:hover .socialnets__icon-gitHub,
+  &:focus .socialnets__icon-gitHub {
+    fill: $main-color;
+  }
+
+  &:hover .socialnets__icon-linkedin,
+  &:focus .socialnets__icon-linkedin {
+    fill: $main-color;
+  }
 }
 
-&:hover .socialnets__icon-twitter,
-&:focus .socialnets__icon-twitter{
-  fill: $main-color;
-}
-
-&:hover .socialnets__icon-facebook,
-&:focus .socialnets__icon-facebook{
-  fill: $main-color;
-}
-
-&:hover .socialnets__icon-linkedin,
-&:focus .socialnets__icon-linkedin{
-  fill: $main-color;
-}
-}
-
-.socialnets__icon-instagram,
-.socialnets__icon-twitter,
-.socialnets__icon-facebook,
-.socialnets__icon-linkedin{
-  width: 20px;
-  height: 20px;
+.socialnets__icon-gitHub,
+.socialnets__icon-linkedin {
+  // width: 20px;
+  // height: 20px;
   fill: $grey-color;
   transition: fill $time $timing-function;
 }
