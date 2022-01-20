@@ -35,6 +35,9 @@ function onEnterIgnor() {
 }
 
 function onRenderPopularMoviesMarkup() {
+  if (refs.errorEl.classList != 'visually-hidden') {
+    refs.errorEl.classList.add("visually-hidden");
+  }
    refs.spinner.classList.remove('is-hidden');
 
   onEnterIgnor();
@@ -83,12 +86,20 @@ function onRenderPaginationMarkup() {
 
   apiSearchData.fetchMovies()
     .then(film => {      
+      refs.errorEl.classList.add("visually-hidden");
+
       const markup = filmCard(handleMovieCard(film.results)); 
       refs.galleryEl.innerHTML = markup;
       onRenderPagination(film.total_pages, film.page); 
 
-      if(film.total_results ===0){
+      if(film.total_results === 0){
+        refs.errorEl.classList.remove("visually-hidden");
         refs.spinner.classList.add('is-hidden');
+        refs.filterSectionEl.classList.add("visually-hidden");
+      }
+      if (film.total_pages === 1) {
+        refs.spinner.classList.add('is-hidden');
+        refs.filterSectionEl.classList.remove("visually-hidden");
       }
   })
   .catch(error => 
