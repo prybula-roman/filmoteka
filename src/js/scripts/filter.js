@@ -38,12 +38,14 @@ const movieGenreFilter = new MovieGenreFilter();
 
 
 let genreValue = '';
+let yearValue = '';
 
 document.querySelectorAll('.genre-input').forEach(item => {
-  item.addEventListener('click', event => {
+  item.addEventListener('change', event => {
     movieGenreFilter.resetPage();
     refs.formEl.value = '';
-    genreValue = document.querySelector('#sortpicker').value;
+    genreValue = document.querySelector('#genrepiker').value;
+    yearValue = document.querySelector('#yearpicker').value;
     createCard(genreValue);
   });
 });

@@ -50,7 +50,7 @@ const refs = {
   // genreChoiseEl: document.querySelector('.genre'),
   // categoryGenreListEl: document.querySelector('.category-list'),
   // yearChoiseEl: document.querySelector('.year'),
-  // yearListEl: document.querySelector('.year-list'),
+   yearOptionEl: document.querySelector('.year-input'),
   // yearEl: document.querySelector('.year-list__item'),
   // clearBtnEl: document.querySelector('.clear-btn'),
   // genreWrapperEl: document.querySelector('.genre-wrapper'),

@@ -72,6 +72,13 @@ function onSubmit (event) {
   refs.galleryEl.innerHTML = '';
   apiSearchData.resetPage();
   onRenderPaginationMarkup();
+  if (genreValue !== '' || yearValue!== '') {
+          createCard(genreValue, yearValue);
+          return
+  }
+   if (apiSearchData.query === "" && genreValue === '' && yearValue === '') {
+        onRenderPopularMoviesMarkup(genresArr);
+      }
 }
 
 function onRenderPaginationMarkup() {
