@@ -1,4 +1,4 @@
-import FetchSearchMovie from  '../API/fetchSearchMovie';
+import FetchSearchMovie from '../API/fetchSearchMovie';
 import PopularMovies from '../API/fetchPopularMovie';
 
 import handleMovieCard from './handleMovieCard';
@@ -6,69 +6,67 @@ import filmCard from '../templates/preview_card.hbs';
 
 import { refs } from './refs';
 import { debounce } from 'lodash';
-import { onRenderPagination} from '../scripts/pagination';
+import { onRenderPagination } from '../scripts/pagination';
 
 export default onRenderPopularMoviesMarkup;
 
-refs.formEl.addEventListener("input", debounce(onSubmit, 500));
+refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
 
 window.onload = function () {
   refs.bodyEl.style.overflow = 'hidden';
-    window.setTimeout(function () {
-        refs.preloaderEl.style.visibility = 'hidden';
-        refs.preloaderEl.style.opacity = '0';
-        refs.bodyEl.style.overflow = '';
-      }, 1000);
-}
-
-onRenderPopularMoviesMarkup()
+  window.setTimeout(function () {
+    refs.preloaderEl.style.visibility = 'hidden';
+    refs.preloaderEl.style.opacity = '0';
+    refs.bodyEl.style.overflow = '';
+  }, 1000);
+};
 
 function onEnterIgnor() {
-   refs.formEl.addEventListener("keypress", event => {   
-    if (event.code === 'Enter') {  
+  refs.formEl.addEventListener('keypress', event => {
+    if (event.code === 'Enter') {
       event.preventDefault();
     }
   });
 }
 
 function onRenderPopularMoviesMarkup() {
-   refs.spinner.classList.remove('is-hidden');
-
+  refs.spinner.classList.remove('is-hidden');
+  console.log('------------onRenderPopularMoviesMarkup------------');
   onEnterIgnor();
-  
-  popularMovie.fetchPopular()
+
+  popularMovie
+    .fetchPopular()
     .then(film => {
-      const markup = filmCard(handleMovieCard(film.results)); 
+      const markup = filmCard(handleMovieCard(film.results));
       refs.galleryEl.innerHTML = markup;
-      onRenderPagination(film.total_pages, film.page); 
+      onRenderPagination(film.total_pages, film.page);
     })
-  .catch(error => {
-    popularMovie.fetchPopular()
-    .then(film => {
-      const markup = filmCard(handleMovieCard(film.results)); 
-      refs.galleryEl.innerHTML = markup;
-      onRenderPagination(film.total_pages, film.page); 
+    .catch(error => {
+      popularMovie.fetchPopular().then(film => {
+        const markup = filmCard(handleMovieCard(film.results));
+        refs.galleryEl.innerHTML = markup;
+        onRenderPagination(film.total_pages, film.page);
+      });
     })
-  })
     .finally(() => {
-    refs.spinner.classList.add('is-hidden');
-  });
+      refs.spinner.classList.add('is-hidden');
+    });
 }
 
-function onSubmit (event) {
-  event.preventDefault();  
+function onSubmit(event) {
+  event.preventDefault();
 
   onEnterIgnor();
-  
+
   apiSearchData.query = event.target.value;
 
-  if(apiSearchData.query === ""){
+  if (apiSearchData.query === '') {
     onRenderPopularMoviesMarkup();
   }
-  
+
   refs.galleryEl.innerHTML = '';
   apiSearchData.resetPage();
   onRenderPaginationMarkup();
@@ -77,25 +75,24 @@ function onSubmit (event) {
 function onRenderPaginationMarkup() {
   refs.spinner.classList.remove('is-hidden');
 
-  if (apiSearchData.query === "") {
+  if (apiSearchData.query === '') {
     return;
   }
 
-  apiSearchData.fetchMovies()
-    .then(film => {      
-      const markup = filmCard(handleMovieCard(film.results)); 
+  apiSearchData
+    .fetchMovies()
+    .then(film => {
+      const markup = filmCard(handleMovieCard(film.results));
       refs.galleryEl.innerHTML = markup;
-      onRenderPagination(film.total_pages, film.page); 
+      onRenderPagination(film.total_pages, film.page);
 
-      if(film.total_results ===0){
+      if (film.total_results === 0) {
         refs.spinner.classList.add('is-hidden');
       }
-  })
-  .catch(error => 
-    onRenderPopularMoviesMarkup()
-    )
+    })
+    .catch(error => onRenderPopularMoviesMarkup())
     .finally(() => {
-    refs.spinner.classList.add('is-hidden');
-  });
+      refs.spinner.classList.add('is-hidden');
+    });
 }
 export { apiSearchData, popularMovie };

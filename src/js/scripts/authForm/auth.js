@@ -10,51 +10,41 @@ import { getDatabase, ref, set, child, update, get } from 'firebase/database';
 import { setUserId } from 'firebase/analytics';
 import { firebaseConfig } from './firebaseConfig';
 import Form from './regForm';
+import { onHome } from '../header';
+import { config } from './configForm';
 
 export default class Auth {
-  // методы класса
   constructor(fullName, email, password) {
     //--->
-    this.fbase = initializeApp(firebaseConfig); //хранится общая конфигурация и используется аутентификация для всех служб Firebase
-    //создание экземпляра auth
+    this.fbase = initializeApp(firebaseConfig);
     this.auth = getAuth();
-    console.log('auth:', this.auth);
-    //получаем ссылку на БД
     this.db = getDatabase(this.fbase);
 
-    console.log('db=', this.db);
-    //================================
 
-    //this.createUserEmailAndPassword(fullName,email,password,auth);
+    this.currentUser = JSON.parse(sessionStorage.getItem('logInUser'));
+
+    //    console.log('this.currentUser');
   }
   get database() {
     return this.db;
   }
-  ///////////////////////////////////////
   get fb() {
     return this.fbase;
   }
   get authentic() {
     return this.auth;
   }
-  ///////////////////////////////////////////////////
-
-  //////////////////////////////////////////////////
   createNewUser(auth, fullName, email, password, database) {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        //создаем профиль в БД
         set(ref(database, 'users/' + auth.currentUser.uid), {
           id: auth.currentUser.uid,
           name: fullName,
           mail: email,
           filmList: [''],
         });
-
-        //this.createUserDB(fullName,email,auth);
       })
       .catch(function (error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
@@ -62,56 +52,79 @@ export default class Auth {
         } else {
           alert(errorMessage);
         }
-        console.log(error);
       });
   }
-  /////////////////////////////////////////////////////////////
+
   readUser() {}
 
-  /////////////////////////////////////////////////////////////
-  singOutUser() {
-    signOut(this.auth);
-
-    alert('singOut');
+  singOutUser(auth) {
+    console.log('auth=', auth);
+    signOut(auth)
+      .then(() => {
+        onHome();
+        alert('+++++ singOut +++++');
+        return 1;
+      })
+      .catch(error => {
+        alert(`!!!!!!!!! ${error.messsage}`);
+      })
+      .finally(() => {
+        if (sessionStorage.getItem('logInUser')) {
+          sessionStorage.removeItem('logInUser');
+        }
+      });
+    return 0;
   }
-  //////////////////////////////////////////////////////////////
+
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
-  //  console.log('database=', database);
-  //  console.log('jsonFilm=', jsonFilm);
-  //  console.log('auth.currentUser.uid=', auth.currentUser.uid);
     update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
-      .then(resp => {
-        alert('update data succefully');
-      })
+      .then(resp => {})
       .catch(error => {
-        console.log(error.message);
+        alert(error.message);
       });
   }
 
-  ///////////////////////////////////////////////////////////////////////////////
+  loginUser(auth, fullName, email, password) {
+console.log("---------------------------------------")
+   if(this.currentUser) {
+      if(this.currentUser!=null){
+      console.log('loginUser()   this.currentUser=', this.currentUser);
+      this.currentUser.email= email  ;
+      this.currentUser.password= password ;
+      this.currentUser.name=  fullName ;
+      }
 
-  loginUser(auth, fullName, email, password, database) {
-    console.log('loginUser');
+    }
+    // console.log('loginUser() email=', email);
+    // console.log('loginUser()   password=', password);
+    // console.log('loginUser()  fullName=', fullName);
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
 
-if(sessionStorage.getItem("logInUser")){
-if(JSON.parse(sessionStorage)!=null){
+        const user={
+          name:fullName,
+          email:email,
+          password:password
+      }
+        if (!localStorage.getItem('authorise')) {
+          localStorage.setItem('authorise', JSON.stringify(user));
+        } else {
+           localStorage.removeItem('authorise');
+           localStorage.setItem('authorise', JSON.stringify(user));
+        }
+         sessionStorage.setItem('logInUser',JSON.stringify(user))
+        config.btnLogIn.classList.toggle('visually-hidden');
+        config.btnReg.classList.toggle('visually-hidden');
+        config.btnLogOut.classList.toggle('visually-hidden');
+        config.btnMyLabr.classList.toggle('visually-hidden');
+      })
+      .catch(e => {
+        alert(e.message);
+        return 0;
+      });
+    return 1;
 
-
-  }else{
-
-    email=JSON.parse(sessionStorage)
-  }
-
-}
-
-
-    const promise = signInWithEmailAndPassword(auth, email, password);
-    promise.catch(e => {
-      alert(e.message);
-    });
-    alert('loginUser()  SingIn');
-    return promise;
   }
 }
