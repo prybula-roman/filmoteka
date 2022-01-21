@@ -31,6 +31,7 @@
     "debounce": "^1.2.1",
     "firebase": "^9.6.2",
     "handlebars": "^4.7.7",
+    "email-validator": "^2.0.4",
     "lodash.throttle": "^4.1.1",
     "swiper": "^7.4.1",
     "trim": "^1.0.1"
