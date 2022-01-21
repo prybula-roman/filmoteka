@@ -10,7 +10,7 @@ class MovieFilter {
       this.page = 1;
     }
     async fetchMovies(sort) {
-      const url = `${this.BASE_URL}/discover/movie?&sort_by=${sort}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
+      const url = `${this.BASE_URL}/discover/movie?with_genres=${sort}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));
@@ -41,7 +41,7 @@ document.querySelectorAll('.filter-input').forEach(item => {
   item.addEventListener('change', event => {
     movieFilter.resetPage();
     refs.formEl.value = '';
-    sortValue = document.querySelector('#sortpicker').value;
+    sortValue = document.querySelector('#genrepicker').value;
     createCard(sortValue);
   });
 });

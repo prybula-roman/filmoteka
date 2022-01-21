@@ -56,8 +56,8 @@ const refs = {
   checkboxEl: document.getElementById('checkbox'),
   
   // filter
-  yearOptionEl: document.querySelector('.year-input'),
-  genreOptionEl: document.querySelector('.genre-input'),
+  yearOptionEl: document.querySelector('#yearpicker'),
+  genreOptionEl: document.querySelector('#genrepicker'),
   // clearBtnEl: document.querySelector('.clear-btn'),
   //filter
   // filterInputEl: document.querySelectorAll('.filter-input'),
@@ -65,103 +65,103 @@ const refs = {
   
   
   // genres
-  genresEl: [
-    {
-      "id": 28,
-      "genre-name": "Action",
-      "genre-name_ru": "Экшн"
-    },
-    {
-      "id": 12,
-      "genre-name": "Adventure",
-      "genre-name_ru": "Приключения"
-    },
-    {
-      "id": 16,
-      "genre-name": "Animation",
-      "genre-name_ru": "Анимационный"
-    },
-    {
-      "id": 35,
-      "genre-name": "Comedy",
-      "genre-name_ru": "Комедии"
-    },
-    {
-      "id": 80,
-      "genre-name": "Crime",
-      "genre-name_ru": "Криминал"
-    },
-    {
-      "id": 99,
-      "genre-name": "Documentary",
-      "genre-name_ru": "Документальные"
-    },
-    {
-      "id": 18,
-      "genre-name": "Drama",
-      "genre-name_ru": "Драма"
-    },
-    {
-      "id": 10751,
-      "genre-name": "Family",
-      "genre-name_ru": "Семейные"
-    },
-    {
-      "id": 14,
-      "genre-name": "Fantasy",
-      "genre-name_ru": "Фантасктика"
-    },
-    {
-      "id": 36,
-      "genre-name": "History",
-      "genre-name_ru": "Исторические"
-    },
-    {
-      "id": 27,
-      "genre-name": "Horror",
-      "genre-name_ru": "Хоррор"
-    },
-    {
-      "id": 10402,
-      "genre-name": "Music",
-      "genre-name_ru": "Музыка"
-    },
-    {
-      "id": 9648,
-      "genre-name": "Mystery",
-      "genre-name_ru": "Мистика"
-    },
-    {
-      "id": 10749,
-      "genre-name": "Romance",
-      "genre-name_ru": "Мелодрама"
-    },
-    {
-      "id": 878,
-      "genre-name": "Science Fiction",
-      "genre-name_ru": "Научная фантастика"
-    },
-    {
-      "id": 10770,
-      "genre-name": "TV Movie",
-      "genre-name_ru": "Сериал"
-    },
-    {
-      "id": 53,
-      "genre-name": "Thriller",
-      "genre-name_ru": "Триллер"
-    },
-    {
-      "id": 10752,
-      "genre-name": "War",
-      "genre-name_ru": "Война"
-    },
-    {
-      "id": 37,
-      "genre-name": "Western",
-      "genre-name_ru": "Вестерн"
-    }
-  ],
+  // genresEl: [
+  //   {
+  //     "id": 28,
+  //     "genre-name": "Action",
+  //     "genre-name_ru": "Экшн"
+  //   },
+  //   {
+  //     "id": 12,
+  //     "genre-name": "Adventure",
+  //     "genre-name_ru": "Приключения"
+  //   },
+  //   {
+  //     "id": 16,
+  //     "genre-name": "Animation",
+  //     "genre-name_ru": "Анимационный"
+  //   },
+  //   {
+  //     "id": 35,
+  //     "genre-name": "Comedy",
+  //     "genre-name_ru": "Комедии"
+  //   },
+  //   {
+  //     "id": 80,
+  //     "genre-name": "Crime",
+  //     "genre-name_ru": "Криминал"
+  //   },
+  //   {
+  //     "id": 99,
+  //     "genre-name": "Documentary",
+  //     "genre-name_ru": "Документальные"
+  //   },
+  //   {
+  //     "id": 18,
+  //     "genre-name": "Drama",
+  //     "genre-name_ru": "Драма"
+  //   },
+  //   {
+  //     "id": 10751,
+  //     "genre-name": "Family",
+  //     "genre-name_ru": "Семейные"
+  //   },
+  //   {
+  //     "id": 14,
+  //     "genre-name": "Fantasy",
+  //     "genre-name_ru": "Фантасктика"
+  //   },
+  //   {
+  //     "id": 36,
+  //     "genre-name": "History",
+  //     "genre-name_ru": "Исторические"
+  //   },
+  //   {
+  //     "id": 27,
+  //     "genre-name": "Horror",
+  //     "genre-name_ru": "Хоррор"
+  //   },
+  //   {
+  //     "id": 10402,
+  //     "genre-name": "Music",
+  //     "genre-name_ru": "Музыка"
+  //   },
+  //   {
+  //     "id": 9648,
+  //     "genre-name": "Mystery",
+  //     "genre-name_ru": "Мистика"
+  //   },
+  //   {
+  //     "id": 10749,
+  //     "genre-name": "Romance",
+  //     "genre-name_ru": "Мелодрама"
+  //   },
+  //   {
+  //     "id": 878,
+  //     "genre-name": "Science Fiction",
+  //     "genre-name_ru": "Научная фантастика"
+  //   },
+  //   {
+  //     "id": 10770,
+  //     "genre-name": "TV Movie",
+  //     "genre-name_ru": "Сериал"
+  //   },
+  //   {
+  //     "id": 53,
+  //     "genre-name": "Thriller",
+  //     "genre-name_ru": "Триллер"
+  //   },
+  //   {
+  //     "id": 10752,
+  //     "genre-name": "War",
+  //     "genre-name_ru": "Война"
+  //   },
+  //   {
+  //     "id": 37,
+  //     "genre-name": "Western",
+  //     "genre-name_ru": "Вестерн"
+  //   }
+  // ],
   
   //location
   enEl: document.querySelector('#englishLink'),

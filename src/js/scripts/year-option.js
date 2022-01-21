@@ -1,7 +1,10 @@
 import { refs } from './refs'
 
 let currentYear = new Date().getFullYear();
+document.querySelector('#yearpicker').insertAdjacentHTML(
+    'beforeend','<option class="year" value="">Choose year</option>',
+  );
 
-for (let i = 1900; i <= currentYear; i++) { 
-    refs.yearOptionEl.insertAdjacentHTML('afterbegin',`<option class="year-input__option" value="year" data-id="${i}">${i}</option> `)
+for (let i = currentYear; i > 1900; i--) { 
+    refs.yearOptionEl.insertAdjacentHTML('beforeend',`<option class="filter-input__option" value="${i}" >${i}</option> `)
 }

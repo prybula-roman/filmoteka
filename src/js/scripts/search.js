@@ -9,6 +9,9 @@ import filmCard from '../templates/preview_card.hbs';
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
+import { genreValue} from './filter';
+// import createCard from './filter'
+
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
@@ -17,10 +20,10 @@ const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 export default onRenderPopularMoviesMarkup;
 
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
-
+console.log(genreValue);
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
-
+ 
 onSwiperNowPlayingMovies();
 
 function onSwiperNowPlayingMovies() {
