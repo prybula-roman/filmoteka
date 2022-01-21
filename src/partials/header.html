@@ -1,4 +1,5 @@
 <header class="header">
+
     <div class="container header__container">
         <div class="header-nav">
             <nav class="site-nav">
@@ -20,7 +21,13 @@
                     </li>
                     <li class="nav-list__item">
                         <a href="#" class="nav-list__link lang-registration">Registration</a>
+
                     </li>
+                    
+                    <li class="nav-list__item">
+                      <a href="#" class="nav-list__link visually-hidden" id='logout'>LogOut</a>
+                  </li>
+                    
                 </ul>
             </nav>
         </div>
@@ -32,6 +39,7 @@
             <use href="./images/sprite.svg#icon-search"></use>
           </svg>
         </button>
+
             </form>
         </div>
 
@@ -45,4 +53,17 @@
         </div>
 
     </div>
+
+    <div class="notification">
+      <p class="notification__text visually-hidden">
+        Search result not successful. Enter the correct movie name and search again.
+      </p>
+    </div>
+
+    <div class="header__buttons visually-hidden">
+      <button type="button" class="button watched__button btn-activ">watched</button>
+      <button type="button" class="button queue__button">queue</button>
+    </div>
+   
+  </div>
 </header>
