@@ -21,7 +21,6 @@ refs.formEl.addEventListener("input", debounce(onSubmit, 500));
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
 
-
 onSwiperNowPlayingMovies()
 
 function onSwiperNowPlayingMovies() {
@@ -55,7 +54,6 @@ window.onload = function () {
 
 onRenderPopularMoviesMarkup()
 
-
 function onEnterIgnor() {
    refs.formEl.addEventListener("keypress", event => {   
     if (event.code === 'Enter') {  
@@ -64,7 +62,8 @@ function onEnterIgnor() {
   });
 }
 
-function onRenderPopularMoviesMarkup() {
+function onRenderPopularMoviesMarkup(e) {
+  
   if (refs.errorEl.classList != 'visually-hidden') {
     refs.errorEl.classList.add("visually-hidden");
   }

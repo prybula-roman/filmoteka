@@ -49,31 +49,31 @@ function onOpenModal(e) {
 
   const currentFilmId = Number(e.target.closest('li').id);
 
-  
   if (e.target.classList.value === 'movies__poster') {
     return JSON.parse(localStorage.getItem("currentPage")).map(films => {
       
       films.forEach(film => {
   
         if (currentFilmId === film.id) {
-        
+
           const markupModal = movieCard(film);
       
           refs.modalmarkupEl.innerHTML = '';
           refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
           refs.bodyEl.classList.add('show-modal');
+
+          trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
         }
       }
       )
     })
   }
-  else if (e.target.classList.value === 'swiper__poster') {
+  if (e.target.classList.value === 'swiper__poster') {
     return JSON.parse(localStorage.getItem("currentSwiperPage")).map(films => {
       
       films.results.forEach(film => {
-  
+
         if (currentFilmId === film.id) {
-        
           const markupSwiperModal = movieCard(film);
       
           refs.modalmarkupEl.innerHTML = '';
@@ -86,7 +86,6 @@ function onOpenModal(e) {
       )
     })
   }
-   
 }
      
 export {onOpenModal}

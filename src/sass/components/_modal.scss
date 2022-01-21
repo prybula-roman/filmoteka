@@ -111,10 +111,6 @@ body.show-modal .modal {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  @media screen and(min-width: $tablet) {
-    top: 0px;
-    right: 15px;
-  }
 }
 .modal__icon {
   stroke: $black-color;
