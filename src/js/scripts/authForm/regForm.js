@@ -15,8 +15,7 @@ var validator = require('email-validator');
 export default class Form {
   //--->
   constructor() {
-    console.log('I`m constructor of class Form');
-
+    // console.log('I`m constructor of class Form');
     /////////////////////////////////////////
   } //<----
 
@@ -24,14 +23,14 @@ export default class Form {
   btnLogOutClicked(auth) {
     console.log('btnLogOutClicked------>>>>>>');
     console.log('auth=', auth);
-    const newAuth = new Auth(auth.name, auth.email, auth.password); 
-       newAuth.singOutUser(newAuth.auth)
-    
+    const newAuth = new Auth(auth.name, auth.email, auth.password);
+    newAuth.singOutUser(newAuth.auth);
+
     console.log('<<<<<<------btnLogOutClicked');
   }
   /////////////////////////////////////////////////////
   btnLoginClicked() {
-    console.log("btnLoginClicked()---->>>>")
+    console.log('btnLoginClicked()---->>>>');
     console.log('this.nameAreaVal=', this.nameAreaVal);
     console.log('this.mailAreaVal=', this.mailAreaVal);
     console.log('this.passwordAreaVal=', this.passwordAreaVal);
@@ -45,7 +44,7 @@ export default class Form {
     } else {
       alert('Not valid form');
     }
-    console.log("<<<<-----btnLoginClicked()")
+    console.log('<<<<-----btnLoginClicked()');
   }
 
   btnRegClicked() {
