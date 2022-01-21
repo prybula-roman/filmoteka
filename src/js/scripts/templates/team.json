@@ -1,0 +1,58 @@
+[
+{
+    "name": "Андрей Курбатов",
+    "title": "andrey kurbatov",
+    "role": "Team lead",
+    "photo": "https://github.com/KurbatovAS.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+},
+{
+    "name": "София Процив",
+    "title": "sofiya protsiv",
+    "role": "Scrum master",
+    "photo": "https://github.com/SofiaProtsiv.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+},
+{
+    "name": "Наталья Кулибаба",
+    "title": "nataliya kulibaba",
+    "role": "Frontend developer",
+    "photo": "https://github.com/NataliyaKulibaba.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"  
+},
+{   
+    "name": "Леляк Андрей",
+    "title": "andrey lelyak",
+    "role": "Frontend developer",
+    "photo": "https://github.com/Lelyak-Andriy.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+    
+},
+{
+    "name": "Роман Прибула",
+    "title": "roman pribyla",
+    "role": "Frontend developer",
+    "photo": "https://github.com/prybula-roman.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+},
+{   "name": "Инна Смертюк",
+    "title": "inna smertyuk",
+    "role": "Frontend developer",
+    "photo": "https://github.com/Inna-Smertyuk.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+},
+{
+    "name": "Дмитрий Сергиенко",
+    "title": "dmitriy sergienko",
+    "role": "Frontend developer",
+    "photo": "https://github.com/lokomativniy.png",
+    "twitterlink": "twitter",
+    "linkedinlink": "linkedIn"
+}
+]

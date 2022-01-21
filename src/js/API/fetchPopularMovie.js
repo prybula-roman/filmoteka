@@ -9,13 +9,13 @@ export default class PopularMovies {
       const url = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this._page}`;
       return await fetch(url)
       .then(res => {
-        this.incrementPage();
+        // this.incrementPage();
         return res.json();
       })
     }
-    incrementPage() {
-        this.page += 1;
-    }
+    // incrementPage() {
+    //     this.page += 1;
+    // }
     resetPage() {
       this._page = 1;
     }

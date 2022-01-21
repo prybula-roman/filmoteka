@@ -1,25 +1,19 @@
-<div class="parametr">
-    <div class="genre-wrapper">
-      <p class="genre" data-id="">Genre</p>
-      <ul class="category-list is-hidden">
-        <li class="category-list__item" data-id="28">Action</li>
-        <li class="category-list__item" data-id="12">Adventure</li>
-        <li class="category-list__item" data-id="16">Animation</li>
-        <li class="category-list__item" data-id="35">Comedy</li>
-        <li class="category-list__item" data-id="80">Crime</li>
-        <li class="category-list__item" data-id="99">Documentary</li>
-        <li class="category-list__item" data-id="18">Drama</li>
-        <li class="category-list__item" data-id="10751">Family</li>
-        <li class="category-list__item" data-id="14">Fantasy</li>
-        <li class="category-list__item" data-id="36">History</li>
-      </ul>
+<section class="section filter__section">
+    <div class="container filter__container">
+      <h2 class="filter-text lang-filter">Find the best movies</h2>
+      <select
+        class="filter-input" 
+        name="sortpicker" 
+        id="sortpicker"    
+        size="1" 
+        onfocus='this.size=4;' 
+        onblur='this.size=1;' 
+        onchange='this.size=1; this.blur();'
+        >
+        <option class="filter-input__option lang-sort" value="popularity.desc">Choose sort</option>
+        <option class="filter-input__option lang-popularity" value="popularity.desc">Popularity</option>
+        <option class="filter-input__option lang-Revenue" value="revenue.desc">Revenue</option>
+        <option class="filter-input__option lang-count"  value="vote_count.desc">Vote count</option>
+      </select>
     </div>
-
-    <div class="year-wrapper">
-      <p class="year" data-id="">Year</p>
-      <ul class="year-list is-hidden"></ul>
-    </div>
-
-    <a href="./index.html" class="button clear-btn">Clear</a>
-</div>
-    
+</section>

@@ -99,3 +99,42 @@
 .loadMoreBtn--is-hidden {
   visibility: hidden;
 }
+.no-movies {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.no-movies__img {
+  opacity: 0.2;
+}
+.no-movies__title {
+  font-weight: $base-font;
+  opacity: 0.4;
+  margin-top: 20px;
+  font-size: 36px;
+}
+.no-movies__link {
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.87;
+  padding: 7px 30px;
+  cursor: pointer;
+
+  letter-spacing: 0.06em;
+  background: $accent-color;
+  border-radius: 4px;
+  border: 0;
+  margin-top: 20px;
+  text-decoration: none;
+
+  transition: All $time $timing-function;
+  &:hover {
+    font-size: 13px;
+    padding: 8px 31px;
+  }
+}

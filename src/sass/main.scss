@@ -15,11 +15,17 @@
 // components
 @import './components/preloader';
 @import './components/header';
+@import './components/loginForm';
 @import './components/gallery';
 @import './components/pagination';
 @import './components/footer';
+@import './components/team-modal';
 @import './components/modal';
 @import './components/plugins';
 @import './components/toggle-theme';
+@import './components/swiper';
+
+// @import './components/auth-form';
 @import './components/trailer';
 @import './components/filter';
+@import './components/localization';
