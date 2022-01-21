@@ -57,7 +57,7 @@ body.dark-theme {
   transition: $time;
 }
 .section--footer.dark-theme {
-  background-color: $dark-theme-color;
+  background-color: $footer-dark-color;
   color: $white-color;
   transition: $time;
   & .footer__text {
@@ -66,10 +66,10 @@ body.dark-theme {
   }
 }
 
-  .modal.light-theme {
-    background-color: $main-color;
-  }
-  .modal.dark-theme {
+.modal.light-theme {
+  background-color: $main-color;
+}
+.modal.dark-theme {
   background-color: $dark-theme-color;
-  color:$white-color
+  color: $white-color;
 }

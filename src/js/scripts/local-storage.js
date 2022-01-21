@@ -9,8 +9,6 @@ export default class FilmsStorage {
       }
     }
     addToCurrent(item) {
-
- 
         if(this._currentPage.length == 0){
             this._currentPage.push(item);  
             this.saveCurrentPage();
@@ -19,7 +17,6 @@ export default class FilmsStorage {
             this._currentPage.push(item);  
             this.saveCurrentPage();
         }
-  
     }
     saveCurrentPage() {
         localStorage.setItem('currentPage', JSON.stringify(this._currentPage));

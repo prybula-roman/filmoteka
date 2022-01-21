@@ -13,21 +13,28 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+    <include src="./partials/localization.html"></include>
     <include src="./partials/toggle-theme.html"></include>
     <include src="./partials/preloader.html"></include>
     <include src="./partials/header.html"></include>
+    <include src="./partials/loginForm.html"></include>
+    <include src="./partials/swiper.html"></include>
     <include src="./partials/gallery.html"></include>
-    <include src="./partials/pagination.html"></include> 
+    <include src="./partials/pagination.html"></include>
     <include src="./partials/modal.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/team-modal.html"></include>
     <include src="./partials/plugins.html"></include>
-
+    <include src="./partials/modal-auth.html"></include>
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
   </body>
 </html>
