@@ -1,9 +1,11 @@
 const config = {
   ////HEADER
-  btnReg: document.getElementById('register'),
-  btnLogIn: document.getElementById('login'),
+  // btnReg: document.getElementById('register'),
+  btnReg: document.querySelector('.lang-registration'),
+  // btnLogIn: document.getElementById('login'),
+  btnLogIn: document.querySelector('.lang-login'),
   btnLogOut: document.getElementById('logout'),
-  btnMyLabr:document.getElementById("library-link"),
+  btnMyLabr: document.getElementById('library-link'),
   /////////////////////////////////////////////
   btnAddFilm: document.querySelector('.add-to-watch'),
   btnAddQueue: document.querySelector('.add-to-queue'),

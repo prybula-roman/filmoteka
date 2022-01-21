@@ -63,7 +63,6 @@ function onRenderPopularMoviesMarkup() {
   }
   refs.spinner.classList.remove('is-hidden');
 
-  h;
   onEnterIgnor();
 
   popularMovie
@@ -135,4 +134,3 @@ function onRenderPaginationMarkup() {
 }
 
 export { apiSearchData, popularMovie };
-roman_branch;

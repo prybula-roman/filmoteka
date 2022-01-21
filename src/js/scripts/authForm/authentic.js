@@ -1,14 +1,15 @@
 import Form from './regForm';
 import { config } from './configForm';
 
+console.log(config);
+
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
 const btnCloseForm = document.querySelector('.modal__close-btn');
 const btnSubmit = document.querySelector('.modal-form__submit');
 
-for(let i=0; i<sessionStorage.length; i++) {
- sessionStorage.removeItem(sessionStorage.key(i));
-
+for (let i = 0; i < sessionStorage.length; i++) {
+  sessionStorage.removeItem(sessionStorage.key(i));
 }
 
 //////////////////////////////////////////////////
@@ -25,6 +26,7 @@ config.btnReg.addEventListener('click', () => {
 });
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
 config.btnLogIn.addEventListener('click', () => {
   let keys = Object.keys(localStorage);
   console.log('keys=', keys);
