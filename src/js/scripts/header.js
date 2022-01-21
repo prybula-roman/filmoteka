@@ -29,8 +29,9 @@ function onMyLibrary() {
     refs.galleryEl.innerHTML = '';
     refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
     refs.paginationEl.classList.add('pagination__off');
-    refs.filterSectionEl.style.display = 'none'
-    refs.errorEl.classList.add("visually-hidden"); 
+    
+    refs.errorEl.classList.add("visually-hidden");
+
     if(refs.galleryEl.innerHTML === ''){
       refs.noMoviesEl.classList.remove("visually-hidden");
     }else{
@@ -54,7 +55,6 @@ function onHome() {
     refs.headerEl.classList.remove('library-bgi');
     refs.headerEl.classList.add('library');
     refs.galleryEl.innerHTML = '';
-    refs.filterSectionEl.style.display = 'block'
     refs.noMoviesEl.classList.add("visually-hidden");
     onRenderPopularMoviesMarkup();
     refs.formEl.reset()
