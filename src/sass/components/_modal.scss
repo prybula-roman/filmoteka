@@ -106,21 +106,23 @@ body.show-modal .modal {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 8px;
+  top: 11px;
   right: 8px;
   cursor: pointer;
   background-color: transparent;
   border: none;
+  @media screen and(min-width: $tablet) {
+    top: 0px;
+    right: 15px;
+  }
 }
 .modal__icon {
-  width: 18px;
-  height: 18px;
   stroke: $black-color;
   transition: fill $time $timing-function;
 
   .modal__btn:hover &,
   .modal__btn:focus & {
-    fill: $accent-color;
+    stroke: $accent-color;
   }
 }
 .movies__modal {
@@ -256,4 +258,10 @@ body.show-modal .modal {
   color: $main-color;
   background-color: $accent-color;
   border-radius: 5px;
+}
+
+.movies-btn__button--current {
+  background: $accent-color;
+  color: $main-color;
+  border: 1px solid $accent-color;
 }

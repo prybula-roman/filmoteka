@@ -8,7 +8,7 @@ const refs = {
   libraryListEl: document.querySelector('.library'),
   headerEl: document.querySelector('.header'),
   inputEl: document.querySelector('.search-form__input'),
-  errorEl: document.querySelector('.notification'),
+  errorEl: document.querySelector('.notification__text'),
   searchError: document.querySelector('.notification__text'),
 
   // gallary section elements
@@ -17,6 +17,7 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+  noMoviesEl: document.querySelector('.no-movies'),
     
   // pagination section elements  
   paginationEl: document.querySelector('.pagination'),
@@ -26,7 +27,7 @@ const refs = {
   // footerTextEl: document.querySelector('.footer__text--first'),
   // footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
-  
+
   // team-modal
   openTeamModalEl: document.querySelector('[data-team-modal-open]'),
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
@@ -36,6 +37,7 @@ const refs = {
 
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
+  openSwiperModalEl: document.querySelector('[data-modal-open-swiper]'),
   closeModalEl: document.querySelector('[data-modal-close]'),
   modalEl: document.querySelector('[data-modal]'),
   modalmarkupEl: document.querySelector('.modal__markup'),
@@ -52,6 +54,19 @@ const refs = {
 
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
+
+  //filter
+  filterInputEl: document.querySelectorAll('.filter-input'),
+  filterSectionEl: document.querySelector('.filter__section'),
+  
+  //location
+  enEl: document.querySelector('#englishLink'),
+  ruEl: document.querySelector('#russianLink'),
+  ukEl: document.querySelector('#ukrainianLink'),
+
+  // swiper
+  swiperEl: document.querySelector('.swiper-wrapper'),
+  swiperSlideEl: document.querySelector('.swiper-slide'),
 };
 
 export { refs };
