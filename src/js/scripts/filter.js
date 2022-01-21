@@ -7,10 +7,11 @@ class MovieGenreYearFilter {
     constructor() {
       this.BASE_URL = 'https://api.themoviedb.org/3'
       this.API_KEY = '208491dbcc6d03ee351feb599226bf58',
-      this.page = 1;
+        this.page = 1;
+      
     }
     async fetchMovies(genre, year) {
-      const url = `${this.BASE_URL}/discover/movie?with_genres=${genre},1&primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
+      const url = `${this.BASE_URL}/discover/movie?with_genres=${genre}&primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));
