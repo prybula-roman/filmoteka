@@ -1,7 +1,5 @@
 .filter__section {
-  // position: relative;
   padding-top: 20px;
-
   @media screen and (min-width: $tablet) {
     padding-top: 30px;
   }
@@ -13,9 +11,21 @@
   text-transform: uppercase;
 }
 
+.filters{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.filters__item{
+   @media screen and (min-width: $tablet) {
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+
 #genrepicker, {
-  position: absolute;
-  left: 34%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -24,7 +34,6 @@
   background: $main-color;
   color: $dark-grey-color;
   outline: $accent-color;
-  z-index: 1;
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
@@ -39,15 +48,15 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  // @media screen and (min-width: $tablet) {
-  //   width: 150px;
-  //   font-size: 15px;
-  // }
-  
+   @media screen and (min-width: $tablet) {
+  width: 180px;
+}
+@media screen and (min-width: $desktop) {
+  width: 200px;
+}
 }
 #yearpicker{
-   position: absolute;
-  left: 50%;
+  
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -56,7 +65,6 @@
   background: $main-color;
   color: $dark-grey-color;
   outline: $accent-color;
-  z-index: 1;
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
@@ -71,21 +79,15 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  // @media screen and (min-width: $tablet) {
-  //   width: 150px;
-  //   font-size: 15px;
-  //   left: 54%;
-  // }
-  @media screen and (min-width: $desktop) {
-  left: 42%;
-  
-  }
+  @media screen and (min-width: $tablet) {
+  width: 180px;
+}
+@media screen and (min-width: $desktop) {
+  width: 200px;
+}
 }
 
 #sortpicker{
-  position: absolute;
-  left: 34%;
-  // top: 95%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -94,7 +96,6 @@
   background: $main-color;
   color: $dark-grey-color;
   outline: $accent-color;
-  // z-index: 1;
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
@@ -107,22 +108,23 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  // @media screen and (min-width: $tablet) {
-  //   width: 150px;
-  //   font-size: 15px;
-  //   // top: 100%
-  // }
-  @media screen and (min-width: $desktop) {
-  left: 50%;
-  
-  }
+  @media screen and (min-width: $tablet) {
+  width: 180px;
+}
+@media screen and (min-width: $desktop) {
+  width: 200px;
+}
+}
+
+.button-wrap{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 
 .clear-btn{
-  position: absolute;
-  left: 50%;
-  // top: 95%;
-  width: 100px;
+  width: 200px;
   padding: 5px 0;
   font-size: 10px;
   border: 2px solid $accent-color;
@@ -138,16 +140,6 @@
     cursor: pointer;
     color: $black-color;
     background-color: $accent-color;
-  }
-  // @media screen and (min-width: $tablet) {
-  //   width: 150px;
-  //   font-size: 15px;
-  //   left: 54%;
-  // top: 100%;
-  // }
-  @media screen and (min-width: $desktop) {
-  left: 58%;
-  
   }
 }
 
@@ -167,7 +159,6 @@ option {
 .filter-input__option{
   background-color: $main-color;
   color: $black-color;
-  text-align:start;
   padding-left: 5px;
   font-size: 10px;
   transition: all $time $timing-function;
