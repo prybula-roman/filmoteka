@@ -1,5 +1,5 @@
 .wrapper {
-  @media screen and (max-width: $table-max) {
+  @media screen and (max-width: $tablet) {
     display: none;
   }
   height: 340px;

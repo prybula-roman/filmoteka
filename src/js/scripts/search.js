@@ -24,7 +24,11 @@ const popularMovie = new PopularMovies();
 onSwiperNowPlayingMovies()
 
 function onSwiperNowPlayingMovies() {
-  fetchNowPlayingMovies.fetchNowPlaying().then(movies => handleSwiperMovieCard(movies));
+  fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
+
+    console.log(movies)
+    handleSwiperMovieCard(movies)
+  });
 
   JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
     films.results.forEach(({ id, poster_path, title, genre_ids }) => {
