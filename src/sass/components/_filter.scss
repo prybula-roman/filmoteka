@@ -18,6 +18,7 @@
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
+  text-align: center;
   border: 2px solid $accent-color;
   background: $main-color;
   color: $dark-grey-color;
@@ -26,25 +27,30 @@
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
+  overflow: hidden;
+  overflow-y: scroll;
   &::-webkit-scrollbar {
     // width: 5px;
     // height: 8px;
   }
   &:hover {
     cursor: pointer;
+    color: $black-color;
     background-color: $accent-color;
   }
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
   }
+  
 }
 #yearpicker{
    position: absolute;
-  left: 42%;
+  left: 50%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
+  text-align: center;
   border: 2px solid $accent-color;
   background: $main-color;
   color: $dark-grey-color;
@@ -53,31 +59,41 @@
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
+  overflow: hidden;
+  overflow-y: scroll;
   &::-webkit-scrollbar {
     // width: 5px;
     // height: 8px;
   }
   &:hover {
     cursor: pointer;
+    color: $black-color;
     background-color: $accent-color;
   }
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
+    left: 54%;
+  }
+  @media screen and (min-width: $desktop) {
+  left: 42%;
+  
   }
 }
 
 #sortpicker{
   position: absolute;
-  left: 50%;
+  left: 34%;
+  top: 95%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
+  text-align: center;
   border: 2px solid $accent-color;
   background: $main-color;
   color: $dark-grey-color;
   outline: $accent-color;
-  z-index: 1;
+  // z-index: 1;
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
@@ -87,17 +103,24 @@
   }
   &:hover {
     cursor: pointer;
+    color: $black-color;
     background-color: $accent-color;
   }
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
+    top: 100%
+  }
+  @media screen and (min-width: $desktop) {
+  left: 50%;
+  top: 54%;
   }
 }
 
 .clear-btn{
   position: absolute;
-  left: 58%;
+  left: 50%;
+  top: 95%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -106,17 +129,24 @@
   text-align: center;
   color: $dark-grey-color;
   outline: $accent-color;
-  z-index: 1;
+  // z-index: 1;
   margin: 10px;
   border-radius: 10px;
   transition: all $time $timing-function;
   &:hover {
     cursor: pointer;
+    color: $black-color;
     background-color: $accent-color;
   }
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
+    left: 54%;
+    top: 100%;
+  }
+  @media screen and (min-width: $desktop) {
+  left: 58%;
+  top: 54%;
   }
 }
 
@@ -131,5 +161,15 @@ option {
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
+  }
+}
+.filter-input__option{
+  background-color: $main-color;
+  color: $black-color;
+  transition: all $time $timing-function;
+  &:hover {
+    cursor: pointer;
+    color: $main-color;
+    background-color: $accent-color;
   }
 }
