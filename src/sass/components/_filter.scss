@@ -1,4 +1,5 @@
 .filter__section {
+  // position: relative;
   padding-top: 20px;
 
   @media screen and (min-width: $tablet) {
@@ -13,7 +14,7 @@
 }
 
 #genrepicker, {
-   position: absolute;
+  position: absolute;
   left: 34%;
   width: 100px;
   padding: 5px 0;
@@ -38,10 +39,10 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-    font-size: 15px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  //   font-size: 15px;
+  // }
   
 }
 #yearpicker{
@@ -70,11 +71,11 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-    font-size: 15px;
-    left: 54%;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  //   font-size: 15px;
+  //   left: 54%;
+  // }
   @media screen and (min-width: $desktop) {
   left: 42%;
   
@@ -84,7 +85,7 @@
 #sortpicker{
   position: absolute;
   left: 34%;
-  top: 95%;
+  // top: 95%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -106,21 +107,21 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-    font-size: 15px;
-    top: 100%
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  //   font-size: 15px;
+  //   // top: 100%
+  // }
   @media screen and (min-width: $desktop) {
   left: 50%;
-  top: 54%;
+  
   }
 }
 
 .clear-btn{
   position: absolute;
   left: 50%;
-  top: 95%;
+  // top: 95%;
   width: 100px;
   padding: 5px 0;
   font-size: 10px;
@@ -138,15 +139,15 @@
     color: $black-color;
     background-color: $accent-color;
   }
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-    font-size: 15px;
-    left: 54%;
-    top: 100%;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  //   font-size: 15px;
+  //   left: 54%;
+  // top: 100%;
+  // }
   @media screen and (min-width: $desktop) {
   left: 58%;
-  top: 54%;
+  
   }
 }
 
@@ -166,6 +167,9 @@ option {
 .filter-input__option{
   background-color: $main-color;
   color: $black-color;
+  text-align:start;
+  padding-left: 5px;
+  font-size: 10px;
   transition: all $time $timing-function;
   &:hover {
     cursor: pointer;
