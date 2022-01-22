@@ -20,7 +20,6 @@ const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 export default onRenderPopularMoviesMarkup;
 
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
-console.log(genreValue);
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
 
