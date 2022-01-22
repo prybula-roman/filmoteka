@@ -10,6 +10,11 @@
   font-size: 20px;
   color: $black-color;
   text-transform: uppercase;
+  transition: $time;
+  &.dark-theme {
+    color:$white-color;
+    transition: $time;
+  }
 }
 #sortpicker {
   position: absolute;
@@ -24,6 +29,12 @@
   z-index: 1;
   margin: 10px;
   border-radius: 10px;
+  transition: $time;
+  &.dark-theme {
+    background-color: $dark-theme-color;
+    transition: $time;
+    color:$white-color
+  }
   &::-webkit-scrollbar {
     // width: 5px;
     // height: 8px;
@@ -39,10 +50,15 @@ option {
   padding: 5px 0;
   font-size: 10px;
   text-align: center;
-  background: $main-color;
+  &.dark-theme {
+    background-color: $dark-theme-color;
+    transition: $time;
+  }
   border-bottom: 1px solid rgba(0, 0, 0, 0.075);
   @media screen and (min-width: $tablet) {
     width: 150px;
     font-size: 15px;
   }
 }
+
+

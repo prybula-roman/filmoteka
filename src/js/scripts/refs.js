@@ -17,21 +17,21 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-    
-  // pagination section elements  
+
+  // pagination section elements
   paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements  
+  // footer section elements
   footerTeamLinkEl: document.querySelector('.footer__link'),
   // footerTextEl: document.querySelector('.footer__text--first'),
   // footerEl: document.querySelector('.footer__text--second'),
   sectionFooterEl: document.querySelector('.section--footer'),
-  
+
   // team-modal
   openTeamModalEl: document.querySelector('[data-team-modal-open]'),
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
   teamModalEl: document.querySelector('[data-team-modal]'),
-  teamBackdropEl: document.querySelector('.team-backdrop'),  
+  teamBackdropEl: document.querySelector('.team-backdrop'),
   peopleEl: document.querySelector('.people'),
 
   // modal
@@ -53,10 +53,18 @@ const refs = {
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
 
-  //location
+  // filter
+  filterTextEl: document.querySelector('.filter-text'),
+  selectEl: document.querySelector('.filter-input'),
+  optionEl: document.querySelector('option'),
+      
+
+  // location
   enEl: document.querySelector('#englishLink'),
   ruEl: document.querySelector('#russianLink'),
-  ukEl: document.querySelector('#ukrainianLink')
+  ukEl: document.querySelector('#ukrainianLink'),
+ 
 };
 
 export { refs };
+ console.log(refs.selectEl)

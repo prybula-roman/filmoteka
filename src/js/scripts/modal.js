@@ -6,6 +6,8 @@ import movieCard from '../templates/modal.hbs';
 import trailer from '../API/fetchTrailer';
 import { currentTheme } from './toggle-theme';
 
+import {changeModalLanguage} from './localization'
+
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
 
@@ -59,7 +61,8 @@ function onOpenModal(e) {
       refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
       refs.bodyEl.classList.add('show-modal');
   
-      trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
+       trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
+       changeModalLanguage()
       }  
      })
   })

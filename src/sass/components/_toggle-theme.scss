@@ -4,6 +4,9 @@
   position: absolute;
   right: 50px;
   top: 175px;
+  @media screen and (max-width: $mobile-max) {
+   display: none;
+  }
 }
 
 .toggle__label {
