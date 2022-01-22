@@ -5,18 +5,17 @@
         <use href="./images/auth-form/sprite.svg#close-btn"></use>
       </svg>
     </button>
-    <!-- <div class="modal-form"> -->
-    <!-- <h2 class="modal-form__title">Оставьте свои данные, мы вам перезвоним</h2> -->
     <section class="modal-form">
-      <h2>SIGN IN</h2>
+      <h2 class="modal-form__title">SIGN UP</h2>
       <div class="modal-form__subbox">
-        <label for="form-usename" class="modal-form__label">Имя</label>
+        <label for="form-usename" class="modal-form__label">Name</label>
         <input
           type="text"
           name="name"
           id="form-usename"
           autofocus
           class="modal-form__input"
+          placeholder="Enter your user name"
           required
         />
         <svg class="modal-form__icon" width="18" height="18">
@@ -24,12 +23,13 @@
         </svg>
       </div>
       <div class="modal-form__subbox">
-        <label for="form-mail" class="modal-form__label">Почта</label>
+        <label for="form-mail" class="modal-form__label">Email</label>
         <input
           type="text"
           name="name"
           id="form-mail"
           class="modal-form__input"
+          placeholder="Enter your email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
         />
@@ -44,46 +44,17 @@
           name="password"
           id="form-password"
           class="modal-form__input"
-          placeholder="Enter your pass"
+          placeholder="Enter your password"
           required
         />
+        <svg class="modal-form__icon" width="18" height="18">
+          <use href="./images/sprite.svg#icon-key"></use>
+        </svg>
       </div>
 
-      <!--  <div class="modal-form__subbox">
-        <label for="comment" class="modal-form__label">Комментарий</label>
-        <textarea
-          placeholder="Введите текст"
-          class="modal-form__comment"
-          name="comment"
-          id="comment"
-        >
-        </textarea>
-      </div>
-      <label for="conditions" class="modal-form__checkbox-label">
-        <span class="check-wrapper">
-          <input
-            class="modal-form__checkbox"
-            type="checkbox"
-            name="conditions"
-            value="conditions submitted"
-            id="conditions"
-            required
-          />
-          <svg class="modal-form__check-icon" width="16px" height="15px">
-            <use href="./images/auth-form/sprite.svg#icon-checked"></use>
-          </svg>
-        </span> 
-         <span class="modal-form__policy-text">
-          Соглашаюсь с рассылкой и принимаю
-          <span class="modal-form__policy-link">
-            <a href="/">Условия договора</a>
-          </span>
-        </span>
-      </label> -->
       <div class="modal-form__button">
         <button class="modal-form__submit btn" type="submit">Sing Up</button>
       </div>
     </section>
-    <!-- </div> -->
   </div>
 </div>
