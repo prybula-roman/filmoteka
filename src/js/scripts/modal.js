@@ -1,7 +1,6 @@
 import { refs } from './refs';
 import movieCard from '../templates/modal.hbs';
 import movieCardLyb from '../templates/modal_lybr.hbs';
-import trailer from '../API/fetchTrailer';
 import { currentTheme } from './toggle-theme';
 
 //////////////////////roman/////////////
@@ -193,7 +192,6 @@ function onBackdropClick(event) {
 //     })
 //   }
 // }
-
 function onOpenModal(e) {
   e.preventDefault();
 
@@ -320,8 +318,6 @@ function onOpenModal(e) {
             /////////////////////////////////////////////////////////////////
             //   }
           });
-
-          trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
         }
       }
     });

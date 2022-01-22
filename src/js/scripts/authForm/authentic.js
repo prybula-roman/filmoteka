@@ -7,6 +7,7 @@ config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
 const btnCloseForm = document.querySelector('.modal__close-btn');
 const btnSubmit = document.querySelector('.modal-form__submit');
+const titleRegForm = document.querySelector('.modal-form__title');
 
 for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
@@ -22,6 +23,7 @@ config.btnLogOut.addEventListener('click', () => {
 config.btnReg.addEventListener('click', () => {
   userForm.classList.toggle('visually-hidden');
   btnSubmit.innerHTML = 'Sing Up';
+  titleRegForm.textContent = 'Sing Up';
   //const objForm = new Form();
 });
 ////////////////////////////////////////////////
@@ -42,6 +44,7 @@ config.btnLogIn.addEventListener('click', () => {
   }
   userForm.classList.toggle('visually-hidden');
   btnSubmit.innerHTML = 'Sing In';
+  titleRegForm.textContent = 'Sing In';
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
