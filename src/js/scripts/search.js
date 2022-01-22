@@ -10,6 +10,9 @@ import trailer from '../API/fetchTrailer';
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
+import { genreValue} from './filter';
+// import createCard from './filter'
+
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
@@ -17,12 +20,13 @@ import handleSwiperMovieCard from './handleSwiperMovieCard';
 export default onRenderPopularMoviesMarkup;
 
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
-
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
 const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
+
 onSwiperNowPlayingMovies()
+
 
 function onSwiperNowPlayingMovies() {
   fetchNowPlayingMovies.fetchNowPlaying().then(movies => handleSwiperMovieCard(movies));
@@ -107,6 +111,7 @@ function onSubmit(event) {
   refs.galleryEl.innerHTML = '';
   apiSearchData.resetPage();
   onRenderPaginationMarkup();
+   
 }
 
 function onRenderPaginationMarkup() {
