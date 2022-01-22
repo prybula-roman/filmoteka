@@ -23,8 +23,10 @@ refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 console.log(genreValue);
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
- 
-onSwiperNowPlayingMovies();
+
+
+onSwiperNowPlayingMovies()
+
 
 function onSwiperNowPlayingMovies() {
   fetchNowPlayingMovies.fetchNowPlaying().then(movies => handleSwiperMovieCard(movies));
@@ -45,12 +47,15 @@ function onSwiperNowPlayingMovies() {
 
 window.onload = function () {
   refs.bodyEl.style.overflow = 'hidden';
-  window.setTimeout(function () {
-    refs.preloaderEl.style.visibility = 'hidden';
-    refs.preloaderEl.style.opacity = '0';
-    refs.bodyEl.style.overflow = '';
-  }, 1000);
-};
+  
+    window.setTimeout(function () {
+        refs.preloaderEl.style.visibility = 'hidden';
+        refs.preloaderEl.style.opacity = '0';
+        refs.bodyEl.style.overflow = '';
+      }, 1000);
+}
+
+onRenderPopularMoviesMarkup()
 
 function onEnterIgnor() {
   refs.formEl.addEventListener('keypress', event => {
@@ -60,7 +65,8 @@ function onEnterIgnor() {
   });
 }
 
-function onRenderPopularMoviesMarkup() {
+function onRenderPopularMoviesMarkup(e) {
+  
   if (refs.errorEl.classList != 'visually-hidden') {
     refs.errorEl.classList.add('visually-hidden');
   }

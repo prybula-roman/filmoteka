@@ -16,8 +16,6 @@ import './js/scripts/scrollToTop';
 
 import './js/scripts/swiper';
 
-import './js/scripts/sort';
-
 import './js/scripts/toggle-theme';
 
 import './js/scripts/filter';
