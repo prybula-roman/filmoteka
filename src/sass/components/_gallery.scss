@@ -37,10 +37,16 @@
 }
 
 .movies__item {
+  position: relative;
+  border-radius: 15px;
   transition: all $time $timing-function;
+  box-shadow: $grey-color 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  body.dark-theme & {
+    box-shadow: rgb(10, 10, 10) 6px 2px 16px 0px, rgb(10, 10, 10) -6px -2px 16px 0px;
+  }
   &:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 0px 5px 2px $accent-color;
+    transform: scale(1.06, 1.06);
+    cursor: pointer;
   }
 
   @media screen and (min-width: $tablet) {
@@ -55,13 +61,33 @@
     }
   }
 }
+.movies__overlay {
+  background: black;
+  opacity: 1;
+}
+.movies__overlay:hover .movies__poster {
+  opacity: 0.5;
+}
+.movies__overlay:hover .movies__playBtn {
+  opacity: 1;
+}
+.movies__playBtn {
+  display: none;
+}
+.movies__item:hover .movies__playBtn {
+  position: absolute;
+  top: 40%;
+  left: 43%;
+  fill: $main-color;
+  display: block;
+}
 .movies__poster {
   width: 280px;
   height: 398px;
   display: block;
   margin-bottom: 10px;
-
   border-radius: 5px;
+  transition: all $time $timing-function;
 
   @media screen and (min-width: $tablet) {
     width: 294px;
@@ -73,9 +99,11 @@
 
 .movies__name {
   text-transform: uppercase;
+  margin-left: 10px;
 }
 .movies__genre {
   color: $accent-color;
+  margin-left: 10px;
 }
 
 .movies__ratinge {
@@ -98,4 +126,43 @@
 }
 .loadMoreBtn--is-hidden {
   visibility: hidden;
+}
+.no-movies {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.no-movies__img {
+  opacity: 0.2;
+}
+.no-movies__title {
+  font-weight: $base-font;
+  opacity: 0.4;
+  margin-top: 20px;
+  font-size: 36px;
+}
+.no-movies__link {
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.87;
+  padding: 7px 30px;
+  cursor: pointer;
+
+  letter-spacing: 0.06em;
+  background: $accent-color;
+  border-radius: 4px;
+  border: 0;
+  margin-top: 20px;
+  text-decoration: none;
+
+  transition: All $time $timing-function;
+  &:hover {
+    font-size: 13px;
+    padding: 8px 31px;
+  }
 }
