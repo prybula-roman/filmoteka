@@ -67,4 +67,4 @@ const refs = {
 };
 
 export { refs };
- console.log(refs.selectEl)
+ 
