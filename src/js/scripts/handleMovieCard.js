@@ -32,10 +32,10 @@ export default function handleMovieCard(movies) {
     if (elem.poster_path) {
       elem.poster_path = 'https://image.tmdb.org/t/p/w500' + elem.poster_path;
     }else{
-      elem.poster_path = 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-1024x898.png'
+      elem.poster_path = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsairhVA5q080vP7Niigy3bMCnGZNdzNCN4w&usqp=CAU'
     }
   });
-  
+
   filmsStorage.addToCurrent(movies);
 
   return movies;
