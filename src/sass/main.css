@@ -672,7 +672,7 @@ body.dark-theme .movies__item {
 
 @media screen and (max-width: 767px) {
   .movies__item:not(:last-child) {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
 }
 
