@@ -10,6 +10,7 @@ const refs = {
   inputEl: document.querySelector('.search-form__input'),
   errorEl: document.querySelector('.notification__text'),
   searchError: document.querySelector('.notification__text'),
+  libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
 
   // gallary section elements
   preloaderEl: document.querySelector('.preloader'),
@@ -66,8 +67,13 @@ const refs = {
   ukEl: document.querySelector('#ukrainianLink'),
 
   // swiper
+  
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
+  wrapperSwiperEl: document.querySelector('.wrapper'),
+
+  // 
+  logoutEl: document.getElementById('logout')
 };
 
 export { refs };

@@ -20,7 +20,7 @@ import Auth from './authForm/auth';
 refs.myLibEl.addEventListener('click', onMyLibrary);
 
 function onMyLibrary() {
-    refs.formEl.classList.add('is-hidden');
+  refs.formEl.classList.add('is-hidden');
     refs.libraryListEl.classList.remove('is-hidden');
     refs.homeEl.classList.remove('nav-list__link--current');
     refs.myLibEl.classList.add('nav-list__link--current');
@@ -43,6 +43,10 @@ function onMyLibrary() {
   renderLibrary();
   /////////////////////////////////////////////////////
 
+  
+  refs.wrapperSwiperEl.classList.add("is-hidden")
+  // refs.wrapperSwiperEl.style='display:none'
+
 }
 
 refs.homeEl.addEventListener('click', onHome);
@@ -60,7 +64,12 @@ function onHome() {
     refs.formEl.reset()
     console.log(document.querySelector('.movies'))
     document.querySelector('.movies').classList.toggle('my-library-movies');
-    console.log('<<<<--------onHome()');
+  console.log('<<<<--------onHome()');
+
+  
+  refs.wrapperSwiperEl.classList.remove("is-hidden")
+  // refs.wrapperSwiperEl.style='display:block'
+
 }
 
 function renderLibrary() {

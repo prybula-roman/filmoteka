@@ -1,5 +1,5 @@
 .wrapper {
-  @media screen and (max-width: $tablet) {
+  @media screen and (max-width: $mobile-max) {
     display: none;
   }
   height: 340px;
@@ -20,6 +20,9 @@
 .wrapper__slider {
   display: flex;
   min-width: 0;
+}
+.wrapper .is-hidden {
+  display: none;
 }
 .image-slider.swiper {
   padding-top: 20px;

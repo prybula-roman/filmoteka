@@ -26,3 +26,5 @@ import './js/scripts/authForm/authentic';
 import './js/scripts/team-modal';
 
 import './js/scripts/localization';
+
+import './js/scripts/library';
