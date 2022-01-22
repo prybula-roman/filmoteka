@@ -18,7 +18,6 @@ import './js/scripts/swiper';
 
 import './js/scripts/toggle-theme';
 
-
 import './js/scripts/header';
 
 import './js/scripts/authForm/authentic';

@@ -4,6 +4,7 @@ import PopularMovies from '../API/fetchPopularMovie';
 
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
+import trailer from '../API/fetchTrailer';
 // import {onSwiperNowPlayingMovies} from '../scripts/swiper'
 
 import { refs } from './refs';
@@ -12,7 +13,6 @@ import { onRenderPagination } from '../scripts/pagination';
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
-const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 export default onRenderPopularMoviesMarkup;
 
@@ -20,6 +20,7 @@ refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
+const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 onSwiperNowPlayingMovies()
 
@@ -52,6 +53,7 @@ window.onload = function () {
 
 onRenderPopularMoviesMarkup()
 
+
 function onEnterIgnor() {
   refs.formEl.addEventListener('keypress', event => {
     if (event.code === 'Enter') {
@@ -74,12 +76,15 @@ function onRenderPopularMoviesMarkup(e) {
     .then(film => {
       const markup = filmCard(handleMovieCard(film.results));
       refs.galleryEl.innerHTML = markup;
+      trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
       onRenderPagination(film.total_pages, film.page);
     })
     .catch(error => {
       popularMovie.fetchPopular().then(film => {
         const markup = filmCard(handleMovieCard(film.results));
         refs.galleryEl.innerHTML = markup;
+
+        trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
         onRenderPagination(film.total_pages, film.page);
       });
     })
@@ -117,8 +122,9 @@ function onRenderPaginationMarkup() {
       refs.errorEl.classList.add('visually-hidden');
 
       const markup = filmCard(handleMovieCard(film.results));
-      n_branch;
+      //n_branch;
       refs.galleryEl.innerHTML = markup;
+      trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
       onRenderPagination(film.total_pages, film.page);
 
       if (film.total_results === 0) {
