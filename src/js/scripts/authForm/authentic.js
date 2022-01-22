@@ -1,7 +1,37 @@
 import Form from './regForm';
 import { config } from './configForm';
+import Auth from './auth';
+import {onOpenModal} from '../modal';
+//import movieCard from '../templates/modal.hbs';
+import { refs } from '../refs';
 
-console.log(config);
+
+refs.openModalEl.addEventListener('click', (e)=>{
+
+console.log("refs.openModalEl=",refs.openModalEl);
+
+//e.preventDefault();
+console.log("e=",e) ;
+const currentFilmId = Number(e.target.closest('li').id);
+console.log("currentFilmId=",currentFilmId);
+if (sessionStorage.getItem('logInUser')!=null) {
+      //  document.querySelector('.add-to-queue').setAttribute('disabled', false);
+        document.querySelector('.add-to-watch').setAttribute('disabled', false);  
+        btnAddFilmClicked(e); 
+       if (document.querySelector('.my-library-movies')) {
+        const btnDel = document.querySelector('.del-to-queue');
+        btnDel.addEventListener('click', btnDelFilmClicked() );
+      }
+      document.querySelector('.add-to-watch').addEventListener('click',btnAddFilmClicked());
+      }else{
+      //  document.querySelector('.add-to-queue').setAttribute('disabled', true);
+        document.querySelector('.add-to-watch').setAttribute('disabled', true);
+      //  console.log(document.querySelector('.add-to-queue'));
+      //  console.log(document.querySelector('.add-to-watch'));  
+      }
+     
+   //   document.querySelector('.add-to-queue').addEventListener('click',btnAddFilmClicked());
+});
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -45,7 +75,7 @@ config.btnLogIn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
-  console.log('click');
+ // console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
@@ -66,3 +96,80 @@ btnSubmit.addEventListener('click', e => {
   //const form = new Form();
 });
 //////////////////////////////////////////////////////
+
+
+
+
+// setInterval(()=>{
+//   //console.log("setTimeout()")
+//   if (document.querySelector('.add-to-watch')!=null) {
+//   //  console.log(document.querySelector('.add-to-watch'))
+// //    console.log("sessionStorage.getItem('logInUser')=",sessionStorage.getItem('logInUser'))
+
+//     if (sessionStorage.getItem('logInUser')!=null) {
+//       document.querySelector('.add-to-queue').setAttribute('disabled', false);
+//       document.querySelector('.add-to-watch').setAttribute('disabled', false);
+    
+
+//       document.querySelector('.add-to-watch').addEventListener('click',btnAddFilmClicked());
+//      if (document.querySelector('.my-library-movies')) {
+//       const btnDel = document.querySelector('.del-to-queue');
+//       btnDel.addEventListener('click', btnDelFilmClicked() );
+//     }
+
+//     }else{
+//       document.querySelector('.add-to-queue').setAttribute('disabled', true);
+//       document.querySelector('.add-to-watch').setAttribute('disabled', true);
+
+//     }
+     
+//   }
+  
+  
+// },1000);
+
+ function btnAddFilmClicked(e){
+  console.log("btnAddFilmClicked()")
+  const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
+  const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+  const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+  
+   //console.log(document.querySelector('.add-to-watch'));
+   const auth = new Auth(fullName, email, password);
+   //const btnAddFilm = document.querySelector('.add-to-watch'); 
+   //const currentFilmId = Number(e.target.closest('li').id);
+   
+   const films= JSON.parse(localStorage.getItem('currentPage')).map(films => {
+    // films.forEach(film => {
+    //   if (currentFilmId === film.id) {
+    //     ///////////////////////////////////////// 
+    //     auth.addToWatched(film);
+    // ////////////////////////////////////////////
+    //   }
+    // });
+  });
+  console.log("films=",films)
+ }
+
+
+
+ function btnDelFilmClicked(){
+   console.log("btnDelFilmClicked()")
+  const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
+  const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+  const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+   const auth = new Auth(fullName, email, password);
+   const btnAddFilm = document.querySelector('.add-to-watch'); 
+   const currentFilmId = Number(e.target.closest('li').id); 
+   JSON.parse(localStorage.getItem('currentPage')).map(films => {
+    films.forEach(film => {
+      if (currentFilmId === film.id) {
+        /////////////////////////////////////////
+       auth.delFilmWatched(film);
+      }
+    });
+  });
+
+ }
+
+

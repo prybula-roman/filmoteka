@@ -88,7 +88,11 @@ export default class Auth {
     update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
-      .then(resp => {})
+      .then(resp => {
+        const btnAddFilm = document.querySelector('.add-to-watch');
+        btnAddFilm.innerHTML="Delete"  
+
+      })
       .catch(error => {
         alert(error.message);
       });
@@ -135,4 +139,71 @@ console.log("loginUser----->>>>>")
     return 1;
 
   }
+
+   addToWatched(film){
+    get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
+      .then(snapshot => {
+        console.log('snapshot=', snapshot);
+        console.log('snapshot.val()=', snapshot.val());
+        let arrFilm = [];
+        if (snapshot.exists()) {
+          if (snapshot.val()[0] === '') {
+            arrFilm.push(film);
+          } else {
+            arrFilm = JSON.parse(snapshot.val());
+            arrFilm.push(film);
+          }
+          this.addFilmToUser(
+            this.auth,
+            fullName,
+            email,
+            password,
+            this.db,
+            JSON.stringify(arrFilm),
+          );
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error.message);
+      });
+  }
+
+
+ delFilmWatched(film) {
+    console.log('btnDel.addEventListener');
+    
+    get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
+      .then(snapshot => {
+        let arrFilm = [];
+        if (snapshot.exists()) {
+          if (snapshot.val()[0] === '') {
+          } else {
+            arrFilm = JSON.parse(snapshot.val());
+            arrFilm.forEach((item, index, arr) => {
+              if (item.id === film.id) {
+                arrFilm.splice(index, 1);
+                onCloseModal(); //закрыть модалку
+                document.getElementById(`${film.id}`).remove();
+              }
+            });
+          }
+          this.addFilmToUser(
+            this.auth,
+            fullName,
+            email,
+            password,
+            this.db,
+            JSON.stringify(arrFilm),
+          );
+        } else {
+          console.log('Not data available');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }
+
 }
