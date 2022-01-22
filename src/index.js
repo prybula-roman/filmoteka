@@ -2,8 +2,6 @@ import './sass/main.scss';
 
 import './js/scripts/header';
 
-import './js/scripts/library';
-
 import './js/scripts/search';
 
 import './js/scripts/pagination';
