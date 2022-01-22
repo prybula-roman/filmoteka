@@ -10,7 +10,7 @@ function onPlayTrailer(btn) {
   const trailerBtn = btn;
   trailerBtn.forEach(element =>
     element.addEventListener('click', event => {
-      modalForTrailer(event.target.dataset.id);
+      modalForTrailer(element.id);
     }),
   );
 

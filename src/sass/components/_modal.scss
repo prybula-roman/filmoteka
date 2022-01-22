@@ -42,11 +42,11 @@ body.show-modal .modal {
   max-height: 90vh;
   overflow-y: scroll;
 
-  // padding: 48px 20px 41px;
   width: 280px;
   background-color: #ffffff;
   transform: scale(1.1);
   box-shadow: 0px 0px 15px 5px $accent-color;
+
   transition: $time;
   border-radius: 15px;
 
@@ -57,12 +57,10 @@ body.show-modal .modal {
   @media screen and(min-width: $tablet) {
     width: 550px;
     overflow: hidden;
-    // padding: 42px 30px 40px 28px;
   }
 
   @media screen and(min-width: $desktop) {
     width: 780px;
-    // padding: 50px 30px 40px;
   }
   &.dark-theme {
     background-color: $dark-theme-color;
@@ -135,8 +133,6 @@ body.show-modal .modal {
   }
 }
 .movies__img {
-  // width: 240px;
-
   @media screen and(min-width: $tablet) {
     width: 275px;
     border-radius: 15px 0px 0px 15px;
@@ -144,7 +140,6 @@ body.show-modal .modal {
 
   @media screen and(min-width: $desktop) {
     width: 390px;
-    // margin-right: 30px;
   }
 }
 .movies__details {
@@ -246,7 +241,6 @@ body.show-modal .modal {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  // box-shadow: #2d282b 0px 2px 10px 4px;
 
   min-width: 112px;
   padding: 0 10px;
