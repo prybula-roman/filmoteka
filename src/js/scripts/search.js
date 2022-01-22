@@ -44,6 +44,7 @@ function onSwiperNowPlayingMovies() {
   });
 }
 
+
 window.onload = function () {
   refs.bodyEl.style.overflow = 'hidden';
   
