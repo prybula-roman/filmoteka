@@ -57,13 +57,14 @@
   }
   &:not(:last-child) {
     @media screen and (max-width: $mobile-max) {
-      margin-bottom: 20px;
+      margin-bottom: 35px;
     }
   }
 }
 .movies__overlay {
   background: black;
   opacity: 1;
+  border-radius: 15px;
 }
 .movies__overlay:hover .movies__poster {
   opacity: 0.5;
@@ -81,12 +82,17 @@
   fill: $main-color;
   display: block;
 }
+
+.movies__playBtn:hover .fillForPlayBtn {
+  fill: $accent-color;
+  cursor: pointer;
+}
 .movies__poster {
   width: 280px;
   height: 398px;
   display: block;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: all $time $timing-function;
 
   @media screen and (min-width: $tablet) {
@@ -104,6 +110,7 @@
 .movies__genre {
   color: $accent-color;
   margin-left: 10px;
+  padding-bottom: 5px;
 }
 
 .movies__ratinge {

@@ -42,12 +42,12 @@ body.show-modal .modal {
   width: 280px;
   background-color: #ffffff;
   transform: scale(1.1);
-  box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
+  // box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
   transition: $time;
   border-radius: 15px;
 
   body.dark-theme & {
-    box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
+    // box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
   }
 
   @media screen and(min-width: $tablet) {
