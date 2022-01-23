@@ -150,12 +150,13 @@ function onRenderPaginationMarkup() {
 
       if (film.total_results === 0) {
         refs.errorEl.classList.remove('visually-hidden');
+        refs.searchError.classList.remove('visually-hidden');
         refs.spinner.classList.add('is-hidden');
-        refs.filterSectionEl.classList.add('visually-hidden');
+        // refs.filterSectionEl.classList.add('visually-hidden');
       }
       if (film.total_pages === 1) {
         refs.spinner.classList.add('is-hidden');
-        refs.filterSectionEl.classList.remove('visually-hidden');
+        // refs.filterSectionEl.classList.remove('visually-hidden');
       }
     })
     .catch(error => onRenderPopularMoviesMarkup())
