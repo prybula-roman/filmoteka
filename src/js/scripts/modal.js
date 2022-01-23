@@ -71,6 +71,7 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
+        // changeModalLanguage()
 ///////////////////////////////////////////////////
 let btnAdd= document.querySelector('.currentLang-addWatched');   
 if(document.querySelector(".my-library-movies")){

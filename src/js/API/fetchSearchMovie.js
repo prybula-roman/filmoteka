@@ -1,4 +1,4 @@
-import { langs } from '../scripts/localization';
+// import { langs } from '../scripts/localization';
 
 export default class FetchSearchMovie {
   constructor() {
@@ -7,7 +7,7 @@ export default class FetchSearchMovie {
     this.page = 1;
   }
   async fetchMovies() {
-    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${langs}`;
+    const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.searchQuery}&page=${this.page}`;
     return await fetch(url).then(res => {
       return res.json();
     });

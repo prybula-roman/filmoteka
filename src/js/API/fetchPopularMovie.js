@@ -1,4 +1,4 @@
-import {langs } from '../scripts/localization';
+// import {langs } from '../scripts/localization';
 
 
 export default class PopularMovies {
@@ -10,7 +10,7 @@ export default class PopularMovies {
   }
  
     async fetchPopular() {
-      const url = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this._page}&language=${langs}`;
+      const url = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this._page}`;
       return await fetch(url)
       .then(res => {
         // this.incrementPage();
