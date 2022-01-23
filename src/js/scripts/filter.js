@@ -40,7 +40,6 @@ let sortValue = '';
 let yearValue = '';
 let genreValue = '';
 
-
 document.querySelectorAll('.filter-input').forEach(item => {
   item.addEventListener('change', event => {
     movieFilter.resetPage();
