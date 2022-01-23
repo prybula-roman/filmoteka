@@ -72,12 +72,14 @@ function onOpenModal(e) {
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
 ///////////////////////////////////////////////////
-let btnAdd= document.querySelector('.add-to-watch');
-      if(document.querySelector(".my-library-movies")){
-        btnAdd = document.querySelector('.add-to-watch');
+//let btnAdd= document.querySelector('.add-to-watch');//currentLang-addWatched
+let btnAdd= document.querySelector('.currentLang-addWatched');      
+if(document.querySelector(".my-library-movies")){
+       // btnAdd = document.querySelector('.add-to-watch');
+        btnAdd = document.querySelector('.currentLang-addWatched');
         btnAdd.innerHTML="DELETE WATCHED"
       }
-    btnAdd.addEventListener("click",()=>{
+    btnAdd.addEventListener("click",()=>{//
       if(btnAdd.textContent==='DELETE WATCHED'){
           btnDelFilmClicked(film);   
       }  else{

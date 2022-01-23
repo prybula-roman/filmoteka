@@ -88,7 +88,7 @@ export default class Auth {
       filmList: jsonFilm,
     })
       .then(resp => { 
-        const btnAddFilm = document.querySelector('.add-to-watch');
+        const btnAddFilm = document.querySelector('.currentLang-addWatched');
         
         if(btnAddFilm.textContent==='DELETE WATCHED'){
           btnAddFilm.innerHTML="ADD TO WATCHED"
