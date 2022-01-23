@@ -51,7 +51,7 @@ body.show-modal .modal {
   border-radius: 15px;
 
   body.dark-theme & {
-    box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
+    // box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
   }
 
   @media screen and(min-width: $tablet) {
