@@ -41,9 +41,31 @@ new Swiper('.swiper', {
     delay: 1500,
     stopOnLastSlide: true,
     disableOnInteraction: false
+  },
+
+  breakpoints: {
+      768: {
+      slidesPerView:5,
+    },
+      1024: {
+      slidesPerView:7,
+    },
+
   }
   
 });
+
+// const sliderBlock = document.querySelector('.image-slider');
+
+// sliderBlock.addEventListener('mouseenter', function (e) {
+//   myImageSlider.params.autoplay.disableOnInteraction = false;
+//   myImageSlider.params.autoplay.delay = 500;
+//   myImageSlider.autoplay.start();
+// });
+
+// sliderBlock.addEventListener('mouseleave', function (e) {
+//   myImageSlider.autoplay.stop();
+// });
 
 
 // function onSwiperNowPlayingMovies() {

@@ -1,44 +1,52 @@
-import FetchSearchMovie from '../API/fetchSearchMovie'; <<
-<< << < HEAD
-    ===
-    === =
+import FetchSearchMovie from '../API/fetchSearchMovie';
 
-    >>>
-    >>> > main
 import PopularMovies from '../API/fetchPopularMovie';
 
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
+import trailer from '../API/fetchTrailer';
 // import {onSwiperNowPlayingMovies} from '../scripts/swiper'
 
 import { refs } from './refs';
 import { debounce } from 'lodash';
-import { onRenderPagination } from '../scripts/pagination'; <<
-<< << < HEAD
-    ===
-    === =
+import { onRenderPagination } from '../scripts/pagination';
+import { genreValue } from './filter';
+// import createCard from './filter'
 
-    import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
+
+import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
-const fetchNowPlayingMovies = new FetchNowPlayingMovies(); >>>
->>> > main
 
 export default onRenderPopularMoviesMarkup;
 
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
-
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
+const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
-onSwiperNowPlayingMovies()
+
+onSwiperNowPlayingMovies();
+trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+
 
 function onSwiperNowPlayingMovies() {
-    fetchNowPlayingMovies.fetchNowPlaying().then(movies => handleSwiperMovieCard(movies));
+    fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
+
+        console.log(movies)
+        handleSwiperMovieCard(movies)
+    });
 
     JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
         films.results.forEach(({ id, poster_path, title, genre_ids }) => {
             const markupSwiper = ` <li class="swiper-slide"  id="${id}">
+     
     <img class="swiper__poster" src="${poster_path}" alt="${title} poster"  loading="lazy" />
+    <svg class= "movies__playSwiperBtn" id="${id}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="50" height="50"
+                viewBox="0 0 172 172"
+                ><g fill="none"></g><path d="M0,172v-172h172v172z" fill="none" ></path><g class="fillForPlayBtn" fill="#ffffff"><path d="M86,6.88c-43.65844,0 -79.12,35.46156 -79.12,79.12c0,43.65844 35.46156,79.12 79.12,79.12c43.65844,0 79.12,-35.46156 79.12,-79.12c0,-43.65844 -35.46156,-79.12 -79.12,-79.12zM86,13.76c39.93625,0 72.24,32.30375 72.24,72.24c0,39.93625 -32.30375,72.24 -72.24,72.24c-39.93625,0 -72.24,-32.30375 -72.24,-72.24c0,-39.93625 32.30375,-72.24 72.24,-72.24zM61.92,45.58v80.84l5.16,-3.01l58.48,-34.4l5.0525,-3.01l-5.0525,-3.01l-58.48,-34.4zM68.8,57.62l48.16,28.38l-48.16,28.38z"></path></g></g>
+            </svg>
+        
     <p class="swiper__name">${title}</p>
     <p class="swiper__genre">${genre_ids} </p>
     
@@ -48,6 +56,7 @@ function onSwiperNowPlayingMovies() {
         });
     });
 }
+
 
 window.onload = function() {
     refs.bodyEl.style.overflow = 'hidden';
@@ -61,79 +70,8 @@ window.onload = function() {
 
 onRenderPopularMoviesMarkup()
 
-function onEnterIgnor() { <<
-    << << < HEAD
-    refs.formEl.addEventListener("keypress", event => {
-        if (event.code === 'Enter') {
-            event.preventDefault();
-        }
-    });
-}
 
-function onRenderPopularMoviesMarkup(genresArr) {
-    refs.spinner.classList.remove('is-hidden');
-
-    onEnterIgnor();
-
-    popularMovie.fetchPopular()
-        .then(film => {
-            const markup = filmCard(handleMovieCard(film.results, genresArr));
-            refs.galleryEl.innerHTML = markup;
-            onRenderPagination(film.total_pages, film.page);
-        })
-        .catch(error => {
-            popularMovie.fetchPopular()
-                .then(film => {
-                    const markup = filmCard(handleMovieCard(film.results));
-                    refs.galleryEl.innerHTML = markup;
-                    onRenderPagination(film.total_pages, film.page);
-                })
-        })
-        .finally(() => {
-            refs.spinner.classList.add('is-hidden');
-        });
-}
-
-function onSubmit(event) {
-    event.preventDefault();
-
-    onEnterIgnor();
-
-    apiSearchData.query = event.target.value;
-
-    if (apiSearchData.query === "") {
-        onRenderPopularMoviesMarkup();
-    }
-
-    refs.galleryEl.innerHTML = '';
-    apiSearchData.resetPage();
-    onRenderPaginationMarkup();
-}
-
-function onRenderPaginationMarkup() {
-    refs.spinner.classList.remove('is-hidden');
-
-    if (apiSearchData.query === "") {
-        return;
-    }
-
-    apiSearchData.fetchMovies()
-        .then(film => {
-            const markup = filmCard(handleMovieCard(film.results));
-            refs.galleryEl.innerHTML = markup;
-            onRenderPagination(film.total_pages, film.page);
-
-            if (film.total_results === 0) {
-                refs.spinner.classList.add('is-hidden');
-            }
-        })
-        .catch(error =>
-            onRenderPopularMoviesMarkup()
-        )
-        .finally(() => {
-            refs.spinner.classList.add('is-hidden');
-        }); ===
-    === =
+function onEnterIgnor() {
     refs.formEl.addEventListener('keypress', event => {
         if (event.code === 'Enter') {
             event.preventDefault();
@@ -155,12 +93,17 @@ function onRenderPopularMoviesMarkup(e) {
         .then(film => {
             const markup = filmCard(handleMovieCard(film.results));
             refs.galleryEl.innerHTML = markup;
+            trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+
             onRenderPagination(film.total_pages, film.page);
         })
         .catch(error => {
             popularMovie.fetchPopular().then(film => {
                 const markup = filmCard(handleMovieCard(film.results));
                 refs.galleryEl.innerHTML = markup;
+
+                trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+                // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
                 onRenderPagination(film.total_pages, film.page);
             });
         })
@@ -183,6 +126,7 @@ function onSubmit(event) {
     refs.galleryEl.innerHTML = '';
     apiSearchData.resetPage();
     onRenderPaginationMarkup();
+
 }
 
 function onRenderPaginationMarkup() {
@@ -198,8 +142,10 @@ function onRenderPaginationMarkup() {
             refs.errorEl.classList.add('visually-hidden');
 
             const markup = filmCard(handleMovieCard(film.results));
-            n_branch;
+            //n_branch;
             refs.galleryEl.innerHTML = markup;
+            trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+            // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
             onRenderPagination(film.total_pages, film.page);
 
             if (film.total_results === 0) {
@@ -215,8 +161,7 @@ function onRenderPaginationMarkup() {
         .catch(error => onRenderPopularMoviesMarkup())
         .finally(() => {
             refs.spinner.classList.add('is-hidden');
-        }); >>>
-    >>> > main
+        });
 }
 
 export { apiSearchData, popularMovie };

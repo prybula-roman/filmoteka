@@ -4,6 +4,9 @@
   position: absolute;
   right: 50px;
   top: 175px;
+  @media screen and (max-width: $mobile-max) {
+    display: none;
+  }
 }
 
 .toggle__label {
@@ -50,6 +53,50 @@ body.light-theme {
 body.dark-theme {
   background-color: $dark-theme-color;
   color: $white-color;
+
+  /////FILTER//////
+  & .filter__container {
+    background-color: $footer-dark-color;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+      rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+      rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background: transparent;
+  }
+  & .filter-text {
+    color: $main-color;
+  }
+  & #genrepicker,
+  #yearpicker,
+  #sortpicker,
+  .clear-btn {
+    background: $dark-theme-color;
+    color: $main-color;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+  & option {
+    background: $footer-dark-color;
+  }
+  & .filter-input__option {
+    background-color: $dark-theme-color;
+    color: $main-color;
+    &:hover {
+      cursor: pointer;
+      color: $main-color;
+      background-color: $accent-color;
+    }
+  }
+  & .clear-btn__link {
+    color: $main-color;
+  }
+  & .clear-btn {
+    transition: all $time $timing-function;
+    &:hover {
+      cursor: pointer;
+      color: $main-color;
+      background-color: $accent-color;
+    }
+  }
 }
 .section--footer.light-theme {
   background-color: $footer-bg-color;
