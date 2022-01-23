@@ -1,5 +1,5 @@
 .wrapper {
-  @media screen and (max-width: $table-max) {
+  @media screen and (max-width: $mobile-max) {
     display: none;
   }
   height: 340px;
@@ -21,6 +21,9 @@
 .wrapper__slider {
   display: flex;
   min-width: 0;
+}
+.wrapper.is-hidden {
+  display: none;
 }
 .image-slider.swiper {
   padding-top: 20px;
@@ -47,6 +50,7 @@
 }
 
 .swiper__poster {
+  position: relative;
   height: 70%;
   border-radius: 5px;
   margin-left: 40px;
@@ -71,6 +75,7 @@
 }
 
 .swiper-slide {
+  position: relative;
   transition: all $time $timing-function;
   &:hover,
   &:focus {
@@ -84,4 +89,28 @@
   background-color: rgba(117, 190, 218, 0.5);
   border-radius: 5px;
   top: 40%;
+}
+
+.swiper-slide:hover .movies__playSwiperBtn {
+  display: inline;
+  fill: $accent-color;
+}
+.movies__playSwiperBtn {
+  position: absolute;
+  z-index: 2;
+  top: 90px;
+  right: 32px;
+  display: none;
+}
+.movies__item:hover .movies__playSwiperBtn {
+  position: absolute;
+  top: 40%;
+  left: 43%;
+  fill: $main-color;
+  display: block;
+}
+
+.movies__playSwiperBtn:hover .fillForPlayBtn {
+  fill: $accent-color;
+  cursor: pointer;
 }

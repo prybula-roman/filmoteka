@@ -29,12 +29,23 @@ onSwiperNowPlayingMovies()
 
 
 function onSwiperNowPlayingMovies() {
-  fetchNowPlayingMovies.fetchNowPlaying().then(movies => handleSwiperMovieCard(movies));
+  fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
+
+    console.log(movies)
+    handleSwiperMovieCard(movies)
+  });
 
   JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
-    films.results.forEach(({ id, poster_path, title, genre_ids }) => {
+    films.results.forEach(({ id, poster_path, title, genre_ids}) => {
       const markupSwiper = ` <li class="swiper-slide"  id="${id}">
+     
     <img class="swiper__poster" src="${poster_path}" alt="${title} poster"  loading="lazy" />
+    <svg class= "movies__playSwiperBtn" id="${id}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="50" height="50"
+                viewBox="0 0 172 172"
+                ><g fill="none"></g><path d="M0,172v-172h172v172z" fill="none" ></path><g class="fillForPlayBtn" fill="#ffffff"><path d="M86,6.88c-43.65844,0 -79.12,35.46156 -79.12,79.12c0,43.65844 35.46156,79.12 79.12,79.12c43.65844,0 79.12,-35.46156 79.12,-79.12c0,-43.65844 -35.46156,-79.12 -79.12,-79.12zM86,13.76c39.93625,0 72.24,32.30375 72.24,72.24c0,39.93625 -32.30375,72.24 -72.24,72.24c-39.93625,0 -72.24,-32.30375 -72.24,-72.24c0,-39.93625 32.30375,-72.24 72.24,-72.24zM61.92,45.58v80.84l5.16,-3.01l58.48,-34.4l5.0525,-3.01l-5.0525,-3.01l-58.48,-34.4zM68.8,57.62l48.16,28.38l-48.16,28.38z"></path></g></g>
+            </svg>
+        
     <p class="swiper__name">${title}</p>
     <p class="swiper__genre">${genre_ids} </p>
     
@@ -44,6 +55,7 @@ function onSwiperNowPlayingMovies() {
     });
   });
 }
+
 
 window.onload = function () {
   refs.bodyEl.style.overflow = 'hidden';
@@ -81,6 +93,7 @@ function onRenderPopularMoviesMarkup(e) {
       const markup = filmCard(handleMovieCard(film.results));
       refs.galleryEl.innerHTML = markup;
       trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+      trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
       onRenderPagination(film.total_pages, film.page);
     })
     .catch(error => {
@@ -89,6 +102,7 @@ function onRenderPopularMoviesMarkup(e) {
         refs.galleryEl.innerHTML = markup;
 
         trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+        // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
         onRenderPagination(film.total_pages, film.page);
       });
     })
@@ -130,6 +144,7 @@ function onRenderPaginationMarkup() {
       //n_branch;
       refs.galleryEl.innerHTML = markup;
       trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+      // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
       onRenderPagination(film.total_pages, film.page);
 
       if (film.total_results === 0) {

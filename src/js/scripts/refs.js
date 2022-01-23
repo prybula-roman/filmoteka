@@ -10,6 +10,7 @@ const refs = {
   inputEl: document.querySelector('.search-form__input'),
   errorEl: document.querySelector('.notification'),
   searchError: document.querySelector('.notification__text'),
+  libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
 
   // gallary section elements
   preloaderEl: document.querySelector('.preloader'),
@@ -17,7 +18,9 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-
+  // noMoviesEl: document.querySelector('.no-movies'),
+  // btnYoutubeEl: document.querySelectorAll('.btn-youtube'),
+  
   // pagination section elements
   paginationEl: document.querySelector('.pagination'),
 
@@ -184,7 +187,13 @@ const refs = {
   enEl: document.querySelector('#englishLink'),
   ruEl: document.querySelector('#russianLink'),
   ukEl: document.querySelector('#ukrainianLink'),
- 
+
+  // swiper
+  
+  swiperEl: document.querySelector('.swiper-wrapper'),
+  swiperSlideEl: document.querySelector('.swiper-slide'),
+  wrapperSwiperEl: document.querySelector('.wrapper'),
+  
 };
 
 export { refs };

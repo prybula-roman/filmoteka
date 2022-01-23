@@ -1,10 +1,12 @@
 import * as basicLightbox from 'basiclightbox'
 import 'basiclightbox/dist/basicLightbox.min.css';
 
+
 const API_KEY = '208491dbcc6d03ee351feb599226bf58';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 function onPlayTrailer(btn) {
+  console.log(btn)
   const trailerBtn = btn;
   trailerBtn.forEach(element =>
     element.addEventListener('click', event => {
@@ -71,3 +73,6 @@ function onPlayTrailer(btn) {
 }
 
 export default { onPlayTrailer };
+
+
+
