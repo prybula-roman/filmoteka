@@ -1,7 +1,11 @@
 import Form from './regForm';
 import { config } from './configForm';
+import Auth from './auth';
+import {onOpenModal} from '../modal';
+//import movieCard from '../templates/modal.hbs';
+import { refs } from '../refs';
 
-console.log(config);
+
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -48,7 +52,7 @@ config.btnLogIn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
-  console.log('click');
+ // console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
@@ -69,3 +73,19 @@ btnSubmit.addEventListener('click', e => {
   //const form = new Form();
 });
 //////////////////////////////////////////////////////
+
+export function btnAddFilmClicked(film){
+  console.log("btnAddFilmClicked()");
+  const auth=new Auth();
+  auth.addToWatched(film);
+ }
+
+
+ export function btnDelFilmClicked(film){
+   console.log("btnDelFilmClicked()")
+   const auth = new Auth();
+   auth.delFilmWatched(film);
+  
+ }
+
+
