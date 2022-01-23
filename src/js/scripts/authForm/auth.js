@@ -89,11 +89,14 @@ export default class Auth {
     })
       .then(resp => { 
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
-        
+        console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
+        console.log("btnAddFilm.textContent",btnAddFilm.textContent)
         if(btnAddFilm.textContent==='DELETE WATCHED'){
+          console.log("btnAddFilm.textContent=DELETE WATCHED")
           btnAddFilm.innerHTML="ADD TO WATCHED"
         }
         else{
+          console.log("btnAddFilm.textContent=ADD TO WATCHED")
           btnAddFilm.innerHTML="DELETE WATCHED"
         }    
       })
@@ -148,20 +151,23 @@ loginUser(auth, fullName, email, password) {
         }
       }
     }else{
+      console.log("$$$$$$$$$$$$$$$$$$")
       return;
     }   
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        if (snapshot.exists()) {
-          const snap=JSON.parse(snapshot.val());
-          if (JSON.parse( snapshot.val()).length === 0) {
+        console.log("snapshot.val()=",snapshot.val())
+        if (snapshot.exists()){
+          if ( snapshot.val() === "[]") {
+console.log("************")
             arrFilm.push(film);
-          } else {  
-            arrFilm = JSON.parse(snapshot.val());
+          } else { 
+            console.log("==================")
+            arrFilm =JSON.parse(snapshot.val());
             arrFilm.push(film);
           }
-          this.addFilmToUser(
+            this.addFilmToUser(
             this.auth,
             this.currentUser.name,
             this.currentUser.email,
@@ -196,9 +202,10 @@ loginUser(auth, fullName, email, password) {
       .then(snapshot => {
         let arrFilm = [];
         if (snapshot.exists()) {
-          if (snapshot.val()[0] === '') {
+          if ( snapshot.val() === "[]") {
+            console.log(snapshot.val() === "[]")
           } else {
-            arrFilm = JSON.parse(snapshot.val());
+            arrFilm =JSON.parse(snapshot.val());
             arrFilm.forEach((item, index, arr) => {
               if (item.id === film.id) {
                 arrFilm.splice(index, 1);

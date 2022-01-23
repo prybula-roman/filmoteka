@@ -4,7 +4,7 @@ import { refs } from './refs';
 // import templates
 import movieCard from '../templates/modal.hbs';
 // import trailer from '../API/fetchTrailer';
-import movieCardLyb from '../templates/modal_lybr.hbs';
+
 import { currentTheme } from './toggle-theme';
 import {changeModalLanguage} from './localization'
 //////////////////////roman/////////////
@@ -73,19 +73,25 @@ function onOpenModal(e) {
         refs.bodyEl.classList.add('show-modal');
 ///////////////////////////////////////////////////
 //let btnAdd= document.querySelector('.add-to-watch');//currentLang-addWatched
-let btnAdd= document.querySelector('.currentLang-addWatched');      
+let btnAdd= document.querySelector('.currentLang-addWatched');   
+console.log("btnAdd=",btnAdd);   
 if(document.querySelector(".my-library-movies")){
        // btnAdd = document.querySelector('.add-to-watch');
         btnAdd = document.querySelector('.currentLang-addWatched');
+        console.log("@@@@@@@btnAdd=", btnAdd)
         btnAdd.innerHTML="DELETE WATCHED"
       }
+
+
     btnAdd.addEventListener("click",()=>{//
       if(btnAdd.textContent==='DELETE WATCHED'){
           btnDelFilmClicked(film);   
       }  else{
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%")
           btnAddFilmClicked(film);  
        }  
     })
+
   } 
 //////////////////////////////////////////////////
     
