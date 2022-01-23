@@ -14,9 +14,10 @@ import {
 } from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
+import {btnAddFilmClicked,btnDelFilmClicked} from "./authForm/authentic"
 ////////////////////////////////////////
-refs.openModalEl.addEventListener('click', onOpenModal);
 
+refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
 refs.openSwiperModalEl.addEventListener('click', onOpenModal);
 
@@ -29,7 +30,7 @@ function onEscKeyPress(event) {
   }
 }
 
-function onCloseModal() {
+export function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   refs.bodyEl.classList.remove('show-modal');
   refs.closeModalEl.removeEventListener('click', onCloseModal);
@@ -42,9 +43,10 @@ function onBackdropClick(event) {
   }
 }
 
+
+
 function onOpenModal(e) {
-  //console.log("e=",e)
-  //e.preventDefault();
+  e.preventDefault();
 
   if (currentTheme === 'dark-theme') {
     refs.modalWindowEl.classList.add('dark-theme');
@@ -61,26 +63,28 @@ function onOpenModal(e) {
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
     films.forEach(film => {
       if (currentFilmId === film.id) {
-        /////////////////////////////////////////
-       const   markupModal = movieCard(film); 
-        //////////////////////////////////////////
+        let markupModal = null;
+          markupModal = movieCard(film);
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
-        refs.bodyEl.classList.add('show-modal');      
-        trailer.onPlayTrailer(document.querySelectorAll('.playTrailer'));
+        refs.bodyEl.classList.add('show-modal');
+///////////////////////////////////////////////////
+let btnAdd= document.querySelector('.add-to-watch');
+      if(document.querySelector(".my-library-movies")){
+        btnAdd = document.querySelector('.add-to-watch');
+        btnAdd.innerHTML="DELETE WATCHED"
       }
-    });
+    btnAdd.addEventListener("click",()=>{
+      if(btnAdd.textContent==='DELETE WATCHED'){
+          btnDelFilmClicked(film);   
+      }  else{
+          btnAddFilmClicked(film);  
+       }  
+    })
+  } 
+//////////////////////////////////////////////////
+    
+  });
   });
 }
-
-
-
-
- 
-
-
-
-
-
-
 export { onOpenModal };

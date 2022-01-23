@@ -12,15 +12,16 @@ import { firebaseConfig } from './firebaseConfig';
 import Form from './regForm';
 import { onHome } from '../header';
 import { config } from './configForm';
+import {onCloseModal} from "../modal.js"
 
 export default class Auth {
-  constructor(fullName, email, password) {
+  constructor() {
     //--->
+
+
     this.fbase = initializeApp(firebaseConfig);
     this.auth = getAuth();
     this.db = getDatabase(this.fbase);
-
-
     this.currentUser = JSON.parse(sessionStorage.getItem('logInUser'));
 
     //    console.log('this.currentUser');
@@ -58,15 +59,13 @@ export default class Auth {
   readUser() {}
 
   singOutUser(auth) {
-    console.log("singOutUser()----->>>>")
-    console.log('auth=', auth);
     signOut(auth)
       .then(() => {
         onHome();
         if (sessionStorage.getItem('logInUser')) {
-          console.log(sessionStorage.getItem('logInUser'));
+          
           sessionStorage.removeItem('logInUser');
-          console.log(sessionStorage.getItem('logInUser'));
+         
         }
         if (document.querySelector('.my-library-movies')) {
           document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
@@ -80,37 +79,38 @@ export default class Auth {
         alert(`!!!!!!!!! ${error.messsage}`);
       })
       .finally(() => {
-        console.log("singOutUser()   finally")
+       
       });
   }
 
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
-    update(ref(database, 'users/' + auth.currentUser.uid), {
+  update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
-      .then(resp => {
+      .then(resp => { 
         const btnAddFilm = document.querySelector('.add-to-watch');
-        btnAddFilm.innerHTML="Delete"  
-
+        
+        if(btnAddFilm.textContent==='DELETE WATCHED'){
+          btnAddFilm.innerHTML="ADD TO WATCHED"
+        }
+        else{
+          btnAddFilm.innerHTML="DELETE WATCHED"
+        }    
       })
       .catch(error => {
         alert(error.message);
       });
   }
 
-  loginUser(auth, fullName, email, password) {
-console.log("loginUser----->>>>>")
+
+loginUser(auth, fullName, email, password) {
    if(this.currentUser) {
       if(this.currentUser!=null){
         this.currentUser.email= email  ;
         this.currentUser.password= password ;
         this.currentUser.name=fullName ;
       }
-
     }
-    console.log('loginUser() email=', email);
-    console.log('loginUser()   password=', password);
-    console.log('loginUser()  fullName=', fullName);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
 
@@ -135,29 +135,37 @@ console.log("loginUser----->>>>>")
         alert(e.message);
         return 0;
       });
-      console.log("<<<<<-------loginUser()")
     return 1;
-
   }
 
    addToWatched(film){
+     if (sessionStorage.getItem('logInUser')!=null){
+      if(this.currentUser) {
+        if(this.currentUser!=null){
+          this.currentUser.email= JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password= JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name=JSON.parse(sessionStorage.getItem('logInUser')).name;;
+        }
+      }
+    }else{
+      return;
+    }   
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
-        console.log('snapshot=', snapshot);
-        console.log('snapshot.val()=', snapshot.val());
         let arrFilm = [];
         if (snapshot.exists()) {
-          if (snapshot.val()[0] === '') {
+          const snap=JSON.parse(snapshot.val());
+          if (JSON.parse( snapshot.val()).length === 0) {
             arrFilm.push(film);
-          } else {
+          } else {  
             arrFilm = JSON.parse(snapshot.val());
             arrFilm.push(film);
           }
           this.addFilmToUser(
             this.auth,
-            fullName,
-            email,
-            password,
+            this.currentUser.name,
+            this.currentUser.email,
+            this.currentUser.password,
             this.db,
             JSON.stringify(arrFilm),
           );
@@ -172,8 +180,18 @@ console.log("loginUser----->>>>>")
 
 
  delFilmWatched(film) {
-    console.log('btnDel.addEventListener');
-    
+//console.log("delFilmWatched(film)")
+    if (sessionStorage.getItem('logInUser')!=null){
+      if(this.currentUser) {
+        if(this.currentUser!=null){
+          this.currentUser.email= JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password= JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name=JSON.parse(sessionStorage.getItem('logInUser')).name;;
+        }
+      }
+    }else{
+      return;
+    }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
@@ -191,9 +209,10 @@ console.log("loginUser----->>>>>")
           }
           this.addFilmToUser(
             this.auth,
-            fullName,
-            email,
-            password,
+            // fullName,
+            this.currentUser.name,
+            this.currentUser.email,
+            this.currentUser.password,
             this.db,
             JSON.stringify(arrFilm),
           );

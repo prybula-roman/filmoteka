@@ -40,7 +40,11 @@ function onMyLibrary() {
      /////////////////////////////////////////////////////
   const listCards = document.querySelector('.movies');
   listCards.classList.toggle('my-library-movies');
+  console.log("listCards=",listCards);
+if(document.querySelector(".my-library-movies")){
   renderLibrary();
+}
+  
   /////////////////////////////////////////////////////
 
 }
@@ -69,20 +73,24 @@ function renderLibrary() {
   const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
   const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
   const newAuth = new Auth(fullName, email, password);
-
-
     get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
-        console.log('snapshot=', snapshot);
+        console.log('renderLibrary()  snapshot=', snapshot);
         let arrFilm = [];
         if (snapshot.exists()) {
-          if (snapshot.val() === '') {
+          if (JSON.parse( snapshot.val()).length === 0) {
+
+            console.log("Nothig do");
           } else {
+
             arrFilm = JSON.parse(snapshot.val());
-            const body = document.querySelector;
             const listCards = document.querySelector('.movies');
             listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
-            const btnDel = document.querySelector('.add-to-watch');
+          //  const btnDel = document.querySelector('.add-to-watch');
+          //  console.log("btnDel=",btnDel)
+            //btnDel.classList().toggle(".del-to-watch");
+         //   btnDel.innerHTML="Delete"
+
           }
         } else {
           console.log('No data available');
