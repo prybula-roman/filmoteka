@@ -1,7 +1,27 @@
 .filter__section {
-  padding-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 0;
+}
+
+.filter__container {
+  width: 280px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  background-color: $footer-bg-color;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+
   @media screen and (min-width: $tablet) {
-    padding-top: 30px;
+    width: 625px;
+    padding: 15px 0px 70px 0px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 882px;
+    padding: 15px 0px 85px 0px;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 1220px;
+    display: flex;
+    justify-content: center;
   }
 }
 .filter-text {
@@ -11,160 +31,98 @@
   text-transform: uppercase;
 }
 
-.filters{
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  @media screen and (min-width: $tablet) {
+    position: absolute;
+    z-index: 1;
+    flex-wrap: nowrap;
+    justify-content: inherit;
+  }
+  @media screen and (min-width: 1400px) {
+    margin: 0;
+  }
+}
+
+#genrepicker,
+#yearpicker,
+#sortpicker,
+.clear-btn {
+  width: 200px;
+  padding: 10px 0;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid $accent-color;
+  background: $main-color;
+  color: $dark-grey-color;
+  outline: $accent-color;
+  margin: 10px;
+  border-radius: 5px;
+  transition: all $time $timing-function;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  cursor: pointer;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+  }
+  @media screen and (min-width: $tablet) {
+    width: 135px;
+    font-size: 16px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 200px;
+    padding: 15px 0;
+    font-size: 16px;
+  }
+}
+
+.button-wrap {
   display: flex;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-}
-
-.filters__item{
-   @media screen and (min-width: $tablet) {
-  margin-left: auto;
-  margin-right: auto;
-}
-}
-
-#genrepicker, {
-  width: 100px;
-  padding: 5px 0;
-  font-size: 10px;
-  text-align: center;
-  border: 2px solid $accent-color;
-  background: $main-color;
-  color: $dark-grey-color;
-  outline: $accent-color;
-  margin: 10px;
-  border-radius: 10px;
-  transition: all $time $timing-function;
-  overflow: hidden;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    // width: 5px;
-    // height: 8px;
-  }
-  &:hover {
-    cursor: pointer;
-    color: $black-color;
-    background-color: $accent-color;
-  }
-   @media screen and (min-width: $tablet) {
-  width: 180px;
-}
-@media screen and (min-width: $desktop) {
-  width: 200px;
-}
-}
-#yearpicker{
-  
-  width: 100px;
-  padding: 5px 0;
-  font-size: 10px;
-  text-align: center;
-  border: 2px solid $accent-color;
-  background: $main-color;
-  color: $dark-grey-color;
-  outline: $accent-color;
-  margin: 10px;
-  border-radius: 10px;
-  transition: all $time $timing-function;
-  overflow: hidden;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    // width: 5px;
-    // height: 8px;
-  }
-  &:hover {
-    cursor: pointer;
-    color: $black-color;
-    background-color: $accent-color;
-  }
-  @media screen and (min-width: $tablet) {
-  width: 180px;
-}
-@media screen and (min-width: $desktop) {
-  width: 200px;
-}
-}
-
-#sortpicker{
-  width: 100px;
-  padding: 5px 0;
-  font-size: 10px;
-  text-align: center;
-  border: 2px solid $accent-color;
-  background: $main-color;
-  color: $dark-grey-color;
-  outline: $accent-color;
-  margin: 10px;
-  border-radius: 10px;
-  transition: all $time $timing-function;
-  &::-webkit-scrollbar {
-    // width: 5px;
-    // height: 8px;
-  }
-  &:hover {
-    cursor: pointer;
-    color: $black-color;
-    background-color: $accent-color;
-  }
-  @media screen and (min-width: $tablet) {
-  width: 180px;
-}
-@media screen and (min-width: $desktop) {
-  width: 200px;
-}
-}
-
-.button-wrap{
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-}
-
-.clear-btn{
-  width: 200px;
-  padding: 5px 0;
-  font-size: 10px;
-  border: 2px solid $accent-color;
-  background: $main-color;
-  text-align: center;
-  color: $dark-grey-color;
-  outline: $accent-color;
-  // z-index: 1;
-  margin: 10px;
-  border-radius: 10px;
-  transition: all $time $timing-function;
-  &:hover {
-    cursor: pointer;
-    color: $black-color;
-    background-color: $accent-color;
-  }
 }
 
 option {
-  width: 100px;
   margin: 0;
   padding: 5px 0;
-  font-size: 10px;
+  font-size: 16px;
   text-align: center;
   background: $main-color;
   border-bottom: 1px solid rgba(0, 0, 0, 0.075);
   @media screen and (min-width: $tablet) {
-    width: 150px;
-    font-size: 15px;
+    font-size: 16px;
   }
 }
-.filter-input__option{
+.filter-input__option {
   background-color: $main-color;
   color: $black-color;
-  padding-left: 5px;
-  font-size: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
   transition: all $time $timing-function;
   &:hover {
     cursor: pointer;
     color: $main-color;
     background-color: $accent-color;
+  }
+}
+.clear-btn {
+  transition: all $time $timing-function;
+  &:hover {
+    cursor: pointer;
+    color: $main-color;
+    background-color: $accent-color;
+  }
+}
+.clear-btn__link {
+  transition: color $time $timing-function;
+  color: black;
+  .clear-btn:hover & {
+    color: $main-color;
   }
 }
