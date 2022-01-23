@@ -11,6 +11,7 @@ const refs = {
     errorEl: document.querySelector('.notification'),
     searchError: document.querySelector('.notification__text'),
     libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
+    
 
     // gallary section elements
     preloaderEl: document.querySelector('.preloader'),
@@ -19,6 +20,7 @@ const refs = {
     loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     noMoviesEl: document.querySelector('.no-movies'),
+    filterEl: document.querySelector('.filter__container'),
 
     // pagination section elements
     paginationEl: document.querySelector('.pagination'),

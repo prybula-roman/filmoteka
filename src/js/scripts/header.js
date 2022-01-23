@@ -21,6 +21,7 @@ refs.myLibEl.addEventListener('click', onMyLibrary);
 
 function onMyLibrary() {
   refs.wrapperSwiperEl.classList.add("is-hidden")
+  refs.filterEl.style.display = 'none';
 
   refs.formEl.classList.add('is-hidden');
     refs.libraryListEl.classList.remove('is-hidden');
@@ -33,12 +34,13 @@ function onMyLibrary() {
     refs.paginationEl.classList.add('pagination__off');
     
     refs.errorEl.classList.add("visually-hidden");
+  
 
-    if(refs.galleryEl.innerHTML === ''){
-      refs.noMoviesEl.classList.remove("visually-hidden");
-    }else{
-      refs.noMoviesEl.classList.add("visually-hidden");
-    }
+    // if(refs.galleryEl.innerHTML === ''){
+    //   refs.noMoviesEl.classList.remove("visually-hidden");
+    // }else{
+    //   refs.noMoviesEl.classList.add("visually-hidden");
+    // }
      /////////////////////////////////////////////////////
   const listCards = document.querySelector('.movies');
   listCards.classList.toggle('my-library-movies');
@@ -53,6 +55,7 @@ if(document.querySelector(".my-library-movies")){
 refs.homeEl.addEventListener('click', onHome);
 onRenderPopularMoviesMarkup();
 function onHome() {
+    refs.filterEl.style.display = 'block';
     refs.formEl.classList.remove('is-hidden');
     refs.libraryListEl.classList.add('is-hidden');
     refs.homeEl.classList.add('nav-list__link--current');
@@ -83,10 +86,10 @@ function renderLibrary() {
         let arrFilm = [];
         if (snapshot.exists()) {
           if (JSON.parse( snapshot.val()).length === 0) {
-
+            refs.noMoviesEl.classList.remove('visually-hidden');
             console.log("Nothig do");
           } else {
-
+            refs.noMoviesEl.classList.add('visually-hidden');
             arrFilm = JSON.parse(snapshot.val());
             const listCards = document.querySelector('.movies');
             listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
