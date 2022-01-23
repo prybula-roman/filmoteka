@@ -94,10 +94,13 @@ export default class Auth {
         if(btnAddFilm.textContent==='DELETE WATCHED'){
           console.log("btnAddFilm.textContent=DELETE WATCHED")
           btnAddFilm.innerHTML="ADD TO WATCHED"
+       //   btnAddFilm.classList.remove("movies-btn__button--current")
         }
         else{
           console.log("btnAddFilm.textContent=ADD TO WATCHED")
           btnAddFilm.innerHTML="DELETE WATCHED"
+         // btnAddFilm.classList.add("movies-btn__button--current")
+
         }    
       })
       .catch(error => {
@@ -160,7 +163,7 @@ loginUser(auth, fullName, email, password) {
         console.log("snapshot.val()=",snapshot.val())
         if (snapshot.exists()){
           if ( snapshot.val() === "[]") {
-console.log("************")
+            console.log("************")
             arrFilm.push(film);
           } else { 
             console.log("==================")
