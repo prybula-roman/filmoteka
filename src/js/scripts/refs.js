@@ -8,7 +8,7 @@ const refs = {
   libraryListEl: document.querySelector('.library'),
   headerEl: document.querySelector('.header'),
   inputEl: document.querySelector('.search-form__input'),
-  errorEl: document.querySelector('.notification__text'),
+  errorEl: document.querySelector('.notification'),
   searchError: document.querySelector('.notification__text'),
   libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
 
@@ -18,13 +18,13 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-  noMoviesEl: document.querySelector('.no-movies'),
-  btnYoutubeEl: document.querySelectorAll('.btn-youtube'),
-    
-  // pagination section elements  
+  // noMoviesEl: document.querySelector('.no-movies'),
+  // btnYoutubeEl: document.querySelectorAll('.btn-youtube'),
+  
+  // pagination section elements
   paginationEl: document.querySelector('.pagination'),
 
-  // footer section elements  
+  // footer section elements
   footerTeamLinkEl: document.querySelector('.footer__link'),
   // footerTextEl: document.querySelector('.footer__text--first'),
   // footerEl: document.querySelector('.footer__text--second'),
@@ -34,12 +34,11 @@ const refs = {
   openTeamModalEl: document.querySelector('[data-team-modal-open]'),
   closeTeamModalEl: document.querySelector('[data-team-modal-close]'),
   teamModalEl: document.querySelector('[data-team-modal]'),
-  teamBackdropEl: document.querySelector('.team-backdrop'),  
+  teamBackdropEl: document.querySelector('.team-backdrop'),
   peopleEl: document.querySelector('.people'),
 
   // modal
   openModalEl: document.querySelector('[data-modal-open]'),
-  openSwiperModalEl: document.querySelector('[data-modal-open-swiper]'),
   closeModalEl: document.querySelector('[data-modal-close]'),
   modalEl: document.querySelector('[data-modal]'),
   modalmarkupEl: document.querySelector('.modal__markup'),
@@ -194,9 +193,8 @@ const refs = {
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
   wrapperSwiperEl: document.querySelector('.wrapper'),
-
-  // 
-  logoutEl: document.getElementById('logout')
+  
 };
 
 export { refs };
+ 

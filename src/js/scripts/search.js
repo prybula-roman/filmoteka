@@ -51,7 +51,7 @@ function onSwiperNowPlayingMovies() {
     
 </li>`;
 
-      refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
+      // refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
     });
   });
 }
