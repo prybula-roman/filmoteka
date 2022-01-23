@@ -29,4 +29,3 @@ import './js/scripts/localization';
 import './js/scripts/filter';
 
 import './js/scripts/year-option';
-

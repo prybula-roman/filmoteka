@@ -800,10 +800,6 @@ body.dark-theme .movies__item {
   padding: 8px 31px;
 }
 
-.movies__thumb {
-  position: relative;
-}
-
 .section--pagination {
   padding-top: 0;
   padding-bottom: 40px;
@@ -1177,26 +1173,25 @@ body.show-modal .modal {
   position: absolute;
   left: 50%;
   top: 50%;
-  max-height: 90vh;
-  overflow-y: scroll;
+  padding: 48px 20px 41px;
   width: 280px;
   background-color: #ffffff;
   transform: scale(1.1);
-  box-shadow: 0px 0px 15px 5px #ff6b08;
   transition: 250ms;
   border-radius: 15px;
 }
 
 @media screen and (min-width: 768px) {
   .modal {
-    width: 550px;
-    overflow: hidden;
+    width: 618px;
+    padding: 42px 30px 40px 28px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .modal {
-    width: 780px;
+    width: 882px;
+    padding: 50px 30px 40px;
   }
 }
 
@@ -1271,16 +1266,21 @@ body.show-modal .modal {
   }
 }
 
+.movies__img {
+  width: 240px;
+}
+
 @media screen and (min-width: 768px) {
   .movies__img {
-    width: 275px;
-    border-radius: 15px 0px 0px 15px;
+    width: 264px;
+    margin-right: 32px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .movies__img {
     width: 390px;
+    margin-right: 30px;
   }
 }
 
@@ -1292,7 +1292,7 @@ body.show-modal .modal {
 .movies__title {
   font-weight: 500;
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.15;
   color: #000000;
   text-transform: uppercase;
@@ -1311,15 +1311,9 @@ body.show-modal .modal {
   align-items: center;
   margin-right: 25px;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.33;
   color: #8c8c8c;
-}
-
-@media screen and (min-width: 1024px) {
-  .movies-info__item {
-    font-size: 12px;
-  }
 }
 
 .movies-info {
@@ -1331,14 +1325,8 @@ body.show-modal .modal {
   align-items: center;
   color: #000000;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.33;
-}
-
-@media screen and (min-width: 1024px) {
-  .movies-info__value {
-    font-size: 12px;
-  }
 }
 
 .movies-info__item:nth-child(4) {
@@ -1361,15 +1349,9 @@ body.show-modal .modal {
 .movies__description {
   margin-bottom: 21px;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.67;
   color: #000000;
-}
-
-@media screen and (min-width: 1024px) {
-  .movies__description {
-    font-size: 12px;
-  }
 }
 
 .movies-btn {
@@ -1377,12 +1359,12 @@ body.show-modal .modal {
 }
 
 .movies-btn__item:nth-child(1) {
-  margin-right: 5px;
+  margin-right: 15px;
 }
 
 .movies-btn__button {
   display: block;
-  height: 35px;
+  height: 44px;
   border-radius: 5px;
   background: none;
   text-transform: uppercase;
@@ -1406,7 +1388,6 @@ body.show-modal .modal {
   margin: 0 auto;
   align-items: center;
   margin-top: 15px;
-  color: #000000;
 }
 
 @media screen and (min-width: 768px) {
@@ -1517,12 +1498,6 @@ body.show-modal .modal {
   top: 175px;
 }
 
-@media screen and (max-width: 767px) {
-  .toggle {
-    display: none;
-  }
-}
-
 .toggle__label {
   position: relative;
   background-color: #000000;
@@ -1601,7 +1576,7 @@ body.dark-theme {
   z-index: -1000;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
   .wrapper {
     display: none;
   }
@@ -1623,10 +1598,6 @@ body.dark-theme {
 .wrapper__slider {
   display: flex;
   min-width: 0;
-}
-
-.wrapper.is-hidden {
-  display: none;
 }
 
 .image-slider.swiper {
@@ -1657,7 +1628,6 @@ body.dark-theme {
 }
 
 .swiper__poster {
-  position: relative;
   height: 70%;
   border-radius: 5px;
   margin-left: 40px;
@@ -1681,7 +1651,6 @@ body.dark-theme {
 }
 
 .swiper-slide {
-  position: relative;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1695,32 +1664,6 @@ body.dark-theme {
   background-color: rgba(117, 190, 218, 0.5);
   border-radius: 5px;
   top: 40%;
-}
-
-.swiper-slide:hover .movies__playSwiperBtn {
-  display: inline;
-  fill: #ff6b08;
-}
-
-.movies__playSwiperBtn {
-  position: absolute;
-  z-index: 2;
-  top: 90px;
-  right: 32px;
-  display: none;
-}
-
-.movies__item:hover .movies__playSwiperBtn {
-  position: absolute;
-  top: 40%;
-  left: 43%;
-  fill: #ffffff;
-  display: block;
-}
-
-.movies__playSwiperBtn:hover .fillForPlayBtn {
-  fill: #ff6b08;
-  cursor: pointer;
 }
 
 .trailer {
