@@ -2,7 +2,6 @@ import './sass/main.scss';
 
 import './js/scripts/header';
 
-
 import './js/scripts/search';
 
 import './js/scripts/pagination';
@@ -17,6 +16,8 @@ import './js/scripts/swiper';
 
 import './js/scripts/toggle-theme';
 
+import './js/scripts/filter';
+
 import './js/scripts/header';
 
 import './js/scripts/authForm/authentic';
@@ -28,3 +29,4 @@ import './js/scripts/localization';
 import './js/scripts/filter';
 
 import './js/scripts/year-option';
+

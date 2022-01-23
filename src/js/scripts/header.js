@@ -20,14 +20,16 @@ import Auth from './authForm/auth';
 refs.myLibEl.addEventListener('click', onMyLibrary);
 
 function onMyLibrary() {
-    refs.formEl.classList.add('is-hidden');
+  refs.wrapperSwiperEl.classList.add("is-hidden")
+
+  refs.formEl.classList.add('is-hidden');
     refs.libraryListEl.classList.remove('is-hidden');
     refs.homeEl.classList.remove('nav-list__link--current');
     refs.myLibEl.classList.add('nav-list__link--current');
     refs.headerEl.classList.remove('header__container');
     refs.headerEl.classList.add('library-bgi');
     refs.galleryEl.innerHTML = '';
-    refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
+    // refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
     refs.paginationEl.classList.add('pagination__off');
     
     refs.errorEl.classList.add("visually-hidden");
@@ -42,7 +44,6 @@ function onMyLibrary() {
   listCards.classList.toggle('my-library-movies');
   renderLibrary();
   /////////////////////////////////////////////////////
-
 }
 
 refs.homeEl.addEventListener('click', onHome);
@@ -55,12 +56,15 @@ function onHome() {
     refs.headerEl.classList.remove('library-bgi');
     refs.headerEl.classList.add('library');
     refs.galleryEl.innerHTML = '';
-    refs.noMoviesEl.classList.add("visually-hidden");
+    // refs.noMoviesEl.classList.add("visually-hidden");
     onRenderPopularMoviesMarkup();
     refs.formEl.reset()
     console.log(document.querySelector('.movies'))
     document.querySelector('.movies').classList.toggle('my-library-movies');
-    console.log('<<<<--------onHome()');
+  console.log('<<<<--------onHome()');
+
+  refs.wrapperSwiperEl.classList.remove("is-hidden")
+
 }
 
 function renderLibrary() {

@@ -1,5 +1,11 @@
 // import JS
-// import { refs } from './refs';
+import { refs } from './refs';
+
+console.log(refs.logoutEl)
+
+// if ( refs.formEl.classList.contains('is-hidden')) {
+//   refs.wrapperSwiperEl.classList.add("is-hidden")
+// }
 
 // import onRenderPopularMoviesMarkup from './search';
 

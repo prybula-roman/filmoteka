@@ -1,23 +1,16 @@
+// import js
 import { refs } from './refs';
+
+// import templates
 import movieCard from '../templates/modal.hbs';
+// import trailer from '../API/fetchTrailer';
 import movieCardLyb from '../templates/modal_lybr.hbs';
 import { currentTheme } from './toggle-theme';
 
-//////////////////////roman/////////////
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  currentUser,
-  signOut,
-} from 'firebase/auth';
-import { getDatabase, ref, set, get, child, update } from 'firebase/database';
-import Auth from './authForm/auth';
-////////////////////////////////////////
+import {changeModalLanguage} from './localization'
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
-refs.openSwiperModalEl.addEventListener('click', onOpenModal);
 
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
@@ -34,6 +27,7 @@ function onCloseModal() {
   refs.closeModalEl.removeEventListener('click', onCloseModal);
   refs.modalEl.classList.add('js-backdrop');
 }
+
 
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
@@ -203,7 +197,7 @@ function onOpenModal(e) {
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
-  if (e.target.classList.value === 'movies') {
+  if (e.target.classList.value === 'movies__thumb') {
     return;
   }
   const currentFilmId = Number(e.target.closest('li').id);
