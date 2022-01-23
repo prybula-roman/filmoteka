@@ -1,4 +1,3 @@
-
 // import js
 import { refs } from './refs';
 
@@ -11,45 +10,31 @@ refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
 refs.teamBackdropEl.addEventListener('click', onBackdropClick);
 
 function onEscKeyPress(event) {
-  const ESC_KEY_CODE = 'Escape';
-  const isEscKey = event.code === ESC_KEY_CODE;
+    const ESC_KEY_CODE = 'Escape';
+    const isEscKey = event.code === ESC_KEY_CODE;
 
-  if (isEscKey) {
-    onCloseTeamModal();
-  }
+    if (isEscKey) {
+        onCloseTeamModal();
+    }
 }
 
 function onCloseTeamModal() {
-  refs.teamModalEl.classList.add('is-hidden');
-  window.removeEventListener('keydown', onEscKeyPress);
-  refs.bodyEl.classList.remove('show-modal-team');
-  refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
+    refs.teamModalEl.classList.add('is-hidden');
+    window.removeEventListener('keydown', onEscKeyPress);
+    refs.bodyEl.classList.remove('show-modal-team');
+    refs.closeTeamModalEl.removeEventListener('click', onCloseTeamModal);
 }
 
 function onBackdropClick(event) {
-  if (event.currentTarget === event.target) {
-    onCloseTeamModal();
-  }
+    if (event.currentTarget === event.target) {
+        onCloseTeamModal();
+    }
 }
 
-  function onOpenTeamModal(event) {
+function onOpenTeamModal(event) {
     event.preventDefault();
     window.addEventListener('keydown', onEscKeyPress);
     refs.bodyEl.classList.add('show-modal-team');
     refs.teamModalEl.classList.remove('is-hidden');
     refs.closeTeamModalEl.addEventListener('click', onCloseTeamModal);
-    const markupTeam = teamCard(team);
-    // refs.peopleEl.innerHTML = markupTeam; 
-    refs.peopleEl.innerHTML = '';
-    refs.peopleEl.insertAdjacentHTML('beforeend', markupTeam);
 }
-  
-
-
-
-
-
-
-
-
-
