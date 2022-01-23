@@ -56,7 +56,7 @@ function onHome() {
     refs.headerEl.classList.remove('library-bgi');
     refs.headerEl.classList.add('library');
     refs.galleryEl.innerHTML = '';
-    // refs.noMoviesEl.classList.add("visually-hidden");
+    refs.noMoviesEl.classList.add("visually-hidden");
     onRenderPopularMoviesMarkup();
     refs.formEl.reset()
     console.log(document.querySelector('.movies'))
