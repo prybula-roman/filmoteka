@@ -10,7 +10,7 @@ import trailer from '../API/fetchTrailer';
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
-import { genreValue} from './filter';
+import { genreValue } from './filter';
 // import createCard from './filter'
 
 
@@ -26,19 +26,19 @@ const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 
 onSwiperNowPlayingMovies();
-  trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
 
 
 function onSwiperNowPlayingMovies() {
-  fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
+    fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
 
-    console.log(movies)
-    handleSwiperMovieCard(movies)
-  });
+        console.log(movies)
+        handleSwiperMovieCard(movies)
+    });
 
-  JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
-    films.results.forEach(({ id, poster_path, title, genre_ids}) => {
-      const markupSwiper = ` <li class="swiper-slide"  id="${id}">
+    JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
+        films.results.forEach(({ id, poster_path, title, genre_ids }) => {
+            const markupSwiper = ` <li class="swiper-slide"  id="${id}">
      
     <img class="swiper__poster" src="${poster_path}" alt="${title} poster"  loading="lazy" />
     <svg class= "movies__playSwiperBtn" id="${id}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -52,117 +52,118 @@ function onSwiperNowPlayingMovies() {
     
 </li>`;
 
-      refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
+            refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
+        });
     });
-  });
 }
 
 
-window.onload = function () {
-  refs.bodyEl.style.overflow = 'hidden';
-  
-    window.setTimeout(function () {
+window.onload = function() {
+    refs.bodyEl.style.overflow = 'hidden';
+
+    window.setTimeout(function() {
         refs.preloaderEl.style.visibility = 'hidden';
         refs.preloaderEl.style.opacity = '0';
         refs.bodyEl.style.overflow = '';
-      }, 1000);
+    }, 1000);
 }
 
 onRenderPopularMoviesMarkup()
 
 
 function onEnterIgnor() {
-  refs.formEl.addEventListener('keypress', event => {
-    if (event.code === 'Enter') {
-      event.preventDefault();
-    }
-  });
+    refs.formEl.addEventListener('keypress', event => {
+        if (event.code === 'Enter') {
+            event.preventDefault();
+        }
+    });
 }
 
 function onRenderPopularMoviesMarkup(e) {
-  
-  if (refs.errorEl.classList != 'visually-hidden') {
-    refs.errorEl.classList.add('visually-hidden');
-  }
-  refs.spinner.classList.remove('is-hidden');
 
-  onEnterIgnor();
+    if (refs.errorEl.classList != 'visually-hidden') {
+        refs.errorEl.classList.add('visually-hidden');
+    }
+    refs.spinner.classList.remove('is-hidden');
 
-  popularMovie
-    .fetchPopular()
-    .then(film => {
-      const markup = filmCard(handleMovieCard(film.results));
-      refs.galleryEl.innerHTML = markup;
-      trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-    
-      onRenderPagination(film.total_pages, film.page);
-    })
-    .catch(error => {
-      popularMovie.fetchPopular().then(film => {
-        const markup = filmCard(handleMovieCard(film.results));
-        refs.galleryEl.innerHTML = markup;
+    onEnterIgnor();
 
-        trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-        // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
-        onRenderPagination(film.total_pages, film.page);
-      });
-    })
-    .finally(() => {
-      refs.spinner.classList.add('is-hidden');
-    });
+    popularMovie
+        .fetchPopular()
+        .then(film => {
+            const markup = filmCard(handleMovieCard(film.results));
+            refs.galleryEl.innerHTML = markup;
+            trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+
+            onRenderPagination(film.total_pages, film.page);
+        })
+        .catch(error => {
+            popularMovie.fetchPopular().then(film => {
+                const markup = filmCard(handleMovieCard(film.results));
+                refs.galleryEl.innerHTML = markup;
+
+                trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+                // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+                onRenderPagination(film.total_pages, film.page);
+            });
+        })
+        .finally(() => {
+            refs.spinner.classList.add('is-hidden');
+        });
 }
 
 function onSubmit(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  onEnterIgnor();
+    onEnterIgnor();
 
-  apiSearchData.query = event.target.value;
+    apiSearchData.query = event.target.value;
 
-  if (apiSearchData.query === '') {
-    onRenderPopularMoviesMarkup();
-  }
+    if (apiSearchData.query === '') {
+        onRenderPopularMoviesMarkup();
+    }
 
-  refs.galleryEl.innerHTML = '';
-  apiSearchData.resetPage();
-  onRenderPaginationMarkup();
-   
+    refs.galleryEl.innerHTML = '';
+    apiSearchData.resetPage();
+    onRenderPaginationMarkup();
+
 }
 
 function onRenderPaginationMarkup() {
-  refs.spinner.classList.remove('is-hidden');
+    refs.spinner.classList.remove('is-hidden');
 
-  if (apiSearchData.query === '') {
-    return;
-  }
+    if (apiSearchData.query === '') {
+        refs.filterEl.style.display = 'block';
+        return;
+    }
 
-  apiSearchData
-    .fetchMovies()
-    .then(film => {
-      refs.errorEl.classList.add('visually-hidden');
+    apiSearchData
+        .fetchMovies()
+        .then(film => {
+            refs.errorEl.classList.add('visually-hidden');
+            refs.filterEl.style.display = 'none';
 
-      const markup = filmCard(handleMovieCard(film.results));
-      //n_branch;
-      refs.galleryEl.innerHTML = markup;
-      trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-      // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
-      onRenderPagination(film.total_pages, film.page);
+            const markup = filmCard(handleMovieCard(film.results));
+            //n_branch;
+            refs.galleryEl.innerHTML = markup;
+            trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
+            // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+            onRenderPagination(film.total_pages, film.page);
 
-      if (film.total_results === 0) {
-        refs.errorEl.classList.remove('visually-hidden');
-        refs.searchError.classList.remove('visually-hidden');
-        refs.spinner.classList.add('is-hidden');
-        // refs.filterSectionEl.classList.add('visually-hidden');
-      }
-      if (film.total_pages === 1) {
-        refs.spinner.classList.add('is-hidden');
-        // refs.filterSectionEl.classList.remove('visually-hidden');
-      }
-    })
-    .catch(error => onRenderPopularMoviesMarkup())
-    .finally(() => {
-      refs.spinner.classList.add('is-hidden');
-    });
+            if (film.total_results === 0) {
+                refs.errorEl.classList.remove('visually-hidden');
+                refs.spinner.classList.add('is-hidden');
+                refs.filterSectionEl.classList.add('visually-hidden');
+            }
+            if (film.total_pages === 1) {
+                refs.spinner.classList.add('is-hidden');
+                refs.filterSectionEl.classList.remove('visually-hidden');
+            }
+        })
+        .catch(error => onRenderPopularMoviesMarkup())
+        .finally(() => {
+            refs.spinner.classList.add('is-hidden');
+        });
 }
 
 export { apiSearchData, popularMovie };

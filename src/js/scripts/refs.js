@@ -20,7 +20,7 @@ const refs = {
     loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     noMoviesEl: document.querySelector('.no-movies'),
-    filterEl: document.querySelector('.filter__container'),
+    filterEl: document.querySelector('.filter__section'),
 
     // pagination section elements
     paginationEl: document.querySelector('.pagination'),

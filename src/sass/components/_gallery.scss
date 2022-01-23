@@ -40,6 +40,7 @@
   position: relative;
   border-radius: 15px;
   transition: all $time $timing-function;
+  margin-bottom: 25px;
   box-shadow: $grey-color 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
   body.dark-theme & {
     box-shadow: rgb(10, 10, 10) 6px 2px 16px 0px, rgb(10, 10, 10) -6px -2px 16px 0px;
@@ -56,6 +57,9 @@
     margin: 20px;
   }
   &:not(:last-child) {
+    @media screen and (max-width: $mobile) {
+      margin-bottom: 0;
+    }
     @media screen and (max-width: $mobile-max) {
       margin-bottom: 35px;
     }
