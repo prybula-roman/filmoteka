@@ -18,8 +18,7 @@ const refs = {
   galleryEl: document.querySelector('.movies'),
   loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-  // noMoviesEl: document.querySelector('.no-movies'),
-  // btnYoutubeEl: document.querySelectorAll('.btn-youtube'),
+  noMoviesEl: document.querySelector('.no-movies'),
   
   // pagination section elements
   paginationEl: document.querySelector('.pagination'),
