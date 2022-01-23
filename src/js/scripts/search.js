@@ -25,7 +25,8 @@ const popularMovie = new PopularMovies();
 const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 
-onSwiperNowPlayingMovies()
+onSwiperNowPlayingMovies();
+  trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
 
 
 function onSwiperNowPlayingMovies() {
@@ -51,7 +52,7 @@ function onSwiperNowPlayingMovies() {
     
 </li>`;
 
-      // refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
+      refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
     });
   });
 }
@@ -93,7 +94,7 @@ function onRenderPopularMoviesMarkup(e) {
       const markup = filmCard(handleMovieCard(film.results));
       refs.galleryEl.innerHTML = markup;
       trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-      trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+    
       onRenderPagination(film.total_pages, film.page);
     })
     .catch(error => {

@@ -10,6 +10,7 @@ function onPlayTrailer(btn) {
   const trailerBtn = btn;
   trailerBtn.forEach(element =>
     element.addEventListener('click', event => {
+      event.stopPropagation();
       modalForTrailer(element.id);
     }),
   );
