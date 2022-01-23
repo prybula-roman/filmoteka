@@ -197,7 +197,7 @@ function onOpenModal(e) {
   window.addEventListener('keydown', onEscKeyPress);
   refs.closeModalEl.addEventListener('click', onCloseModal);
 
-  if (e.target.classList.value === 'movies') {
+  if (e.target.classList.value === 'movies__thumb') {
     return;
   }
   const currentFilmId = Number(e.target.closest('li').id);
