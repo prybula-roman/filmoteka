@@ -2,7 +2,6 @@ import './sass/main.scss';
 
 import './js/scripts/header';
 
-// import './js/scripts/library';
 
 import './js/scripts/search';
 
@@ -25,3 +24,7 @@ import './js/scripts/authForm/authentic';
 import './js/scripts/team-modal';
 
 import './js/scripts/localization';
+
+import './js/scripts/filter';
+
+import './js/scripts/year-option';

@@ -143,6 +143,11 @@ body.show-modal .modal {
   }
 }
 
+.movies__details {
+  padding: 25px;
+  border-radius: 0px 15px 15px 0px;
+  // background-color: rgb(0 0 0 / 0%);
+}
 .movies__title {
   font-weight: 500;
   margin-bottom: 20px;
