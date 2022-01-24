@@ -1,21 +1,22 @@
-.langWrap{
-   display: inline-flex;
-   position: absolute;
-   top:200px;
-   left:48%;
+.langWrap {
+  display: flex;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.linkLang{
-   text-transform: uppercase;
-   color: #fff;
-   text-decoration: none;
-   padding: 0 15;
-   &:not(:last-child){
-     margin-right: 10px; 
-   } 
-   &:focus,
-   &:hover{
-     box-shadow: 0 0 4px 4px $accent-color;
-     transition: $time;
-   }
+.linkLang {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 15;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 4px 4px $accent-color;
+    transition: $time;
+  }
 }

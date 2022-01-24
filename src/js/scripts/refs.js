@@ -9,7 +9,7 @@ const refs = {
     headerEl: document.querySelector('.header'),
     inputEl: document.querySelector('.search-form__input'),
     errorEl: document.querySelector('.notification'),
-    searchError: document.querySelector('.notification__text'),
+    //searchError: document.querySelector('.notification__text'),
     libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
     
 
@@ -20,7 +20,7 @@ const refs = {
     loadMoreBtnEl: document.querySelector('.loadMoreBtn'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     noMoviesEl: document.querySelector('.no-movies'),
-    filterEl: document.querySelector('.filter__container'),
+    filterEl: document.querySelector('.filter__section'),
 
     // pagination section elements
     paginationEl: document.querySelector('.pagination'),
@@ -58,9 +58,10 @@ const refs = {
     checkboxEl: document.getElementById('checkbox'),
 
     // filter
-    yearOptionEl: document.querySelector('#yearpicker'),
-    genreOptionEl: document.querySelector('#genrepicker'),
-    // clearBtnEl: document.querySelector('.clear-btn'),
+    yearPickerEl: document.querySelector('#yearpicker'),
+    genrePickerEl: document.querySelector('#genrepicker'),
+    sortPickerEl: document.querySelector('#sortpicker'),
+    clearBtnEl: document.querySelector('.clear-btn'),
     //filter
     // filterInputEl: document.querySelectorAll('.filter-input'),
     // filterSectionEl: document.querySelector('.filter__section'),

@@ -2,7 +2,7 @@
   @media screen and (max-width: $mobile-max) {
     display: none;
   }
-  height: 340px;
+  height: 310px;
   z-index: -1000;
 }
 
@@ -11,7 +11,7 @@
   font-weight: normal;
   text-align: center;
   color: $black-color;
-  margin: 10px 0px;
+  margin: 30px 0 10px 0;
   text-transform: uppercase;
 }
 .dark-theme .wrapper__title {
@@ -35,7 +35,10 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $main-color;
+  color: $dark-theme-color;
+  body.light-theme & {
+    color: $main-color;
+  }
 }
 
 .image-slider__image {
@@ -86,7 +89,7 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  background-color: rgba(117, 190, 218, 0.5);
+  // background-color: rgba(117, 190, 218, 0.5);
   border-radius: 5px;
   top: 40%;
 }
