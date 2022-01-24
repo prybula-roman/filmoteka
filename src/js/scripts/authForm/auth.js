@@ -42,7 +42,7 @@ export default class Auth {
           id: auth.currentUser.uid,
           name: fullName,
           mail: email,
-          filmList: [''],
+          filmList: "[]",
         });
       })
       .catch(function (error) {
