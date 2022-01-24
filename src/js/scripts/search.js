@@ -175,4 +175,4 @@ function onRenderPaginationMarkup() {
         });
 }
 
-export { apiSearchData, popularMovie };
+export { apiSearchData, popularMovie, onRenderPopularMoviesMarkup };

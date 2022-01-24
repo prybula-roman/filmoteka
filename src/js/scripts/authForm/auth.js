@@ -91,16 +91,15 @@ export default class Auth {
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
         console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
         console.log("btnAddFilm.textContent",btnAddFilm.textContent)
+
         if(btnAddFilm.textContent==='DELETE WATCHED'){
           console.log("btnAddFilm.textContent=DELETE WATCHED")
           btnAddFilm.innerHTML="ADD TO WATCHED"
-       //   btnAddFilm.classList.remove("movies-btn__button--current")
         }
         else{
           console.log("btnAddFilm.textContent=ADD TO WATCHED")
           btnAddFilm.innerHTML="DELETE WATCHED"
-         // btnAddFilm.classList.add("movies-btn__button--current")
-
+          btnAddFilm.classList.add("movies-btn__button--current")
         }    
       })
       .catch(error => {

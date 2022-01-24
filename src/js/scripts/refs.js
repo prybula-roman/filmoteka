@@ -58,9 +58,10 @@ const refs = {
     checkboxEl: document.getElementById('checkbox'),
 
     // filter
-    yearOptionEl: document.querySelector('#yearpicker'),
-    genreOptionEl: document.querySelector('#genrepicker'),
-    // clearBtnEl: document.querySelector('.clear-btn'),
+    yearPickerEl: document.querySelector('#yearpicker'),
+    genrePickerEl: document.querySelector('#genrepicker'),
+    sortPickerEl: document.querySelector('#sortpicker'),
+    clearBtnEl: document.querySelector('.clear-btn'),
     //filter
     // filterInputEl: document.querySelectorAll('.filter-input'),
     // filterSectionEl: document.querySelector('.filter__section'),

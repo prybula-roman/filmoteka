@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
+import {onRenderPopularMoviesMarkup} from './search'
 import { onRenderPagination } from './pagination'
 
 class MovieFilter {
@@ -44,9 +45,9 @@ document.querySelectorAll('.filter-input').forEach(item => {
   item.addEventListener('change', event => {
     movieFilter.resetPage();
     refs.formEl.value = '';
-    sortValue = document.querySelector('#sortpicker').value;
-    yearValue = document.querySelector('#yearpicker').value;
-    genreValue = document.querySelector('#genrepicker').value;
+    sortValue = refs.sortPickerEl.value;
+    yearValue = refs.yearPickerEl.value;
+    genreValue = refs.genrePickerEl.value;
 
     createCard(genreValue, yearValue, sortValue);
 
@@ -62,8 +63,14 @@ function createCard(genre, year, sort) {
     }
     onRenderPagination(res.total_pages, res.page);
   })
-
-
 }
+
+refs.clearBtnEl.addEventListener('click', () => {
+  refs.sortPickerEl.value = '';
+  refs.yearPickerEl.value = '';
+  refs.genrePickerEl.value = '';
+
+  onRenderPopularMoviesMarkup()
+})
 
 export {createCard};
