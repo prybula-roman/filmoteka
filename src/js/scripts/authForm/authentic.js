@@ -15,6 +15,22 @@ for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
 }
 
+
+// if(localStorage.length!=0){
+//   for(let i=0; i<localStorage.length; i++) {
+//     if(localStorage.key(i)==='authorise'){
+//         const rez= JSON.parse( localStorage.getItem(localStorage.key(i)));
+//         console.log("rez=",rez)
+//         const user=new Auth();  
+//        // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
+
+//     }
+//   }
+// }
+
+
+
+
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
   const form = new Form();
@@ -61,16 +77,14 @@ btnSubmit.addEventListener('click', e => {
     const form = new Form();
     form.btnRegClicked();
   }
-
   if (btnSubmit.innerHTML === 'Sing In') {
-    console.log('LOGIN');
     const form = new Form();
     form.btnLoginClicked();
   }
   userForm.classList.toggle('visually-hidden');
   //const form = new Form();
 });
-//////////////////////////////////////////////////////
+//////////////////////надо потерять это в auth////////////////////////////////
 
 export function btnAddFilmClicked(film) {
   console.log('btnAddFilmClicked()');
@@ -95,3 +109,4 @@ export function btnDelQueueClicked(film) {
   const auth = new Auth();
   auth.delQueueWatched(film);
 }
+////////////////////////////////////////////////////////////////////////////  
