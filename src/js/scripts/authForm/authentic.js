@@ -1,11 +1,9 @@
 import Form from './regForm';
 import { config } from './configForm';
 import Auth from './auth';
-import {onOpenModal} from '../modal';
+import { onOpenModal } from '../modal';
 //import movieCard from '../templates/modal.hbs';
 import { refs } from '../refs';
-
-
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -52,7 +50,7 @@ config.btnLogIn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
- // console.log('click');
+  // console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
@@ -74,18 +72,26 @@ btnSubmit.addEventListener('click', e => {
 });
 //////////////////////////////////////////////////////
 
-export function btnAddFilmClicked(film){
-  console.log("btnAddFilmClicked()");
-  const auth=new Auth();
+export function btnAddFilmClicked(film) {
+  console.log('btnAddFilmClicked()');
+  const auth = new Auth();
   auth.addToWatched(film);
- }
+}
 
+export function btnDelFilmClicked(film) {
+  console.log('btnDelFilmClicked()');
+  const auth = new Auth();
+  auth.delFilmWatched(film);
+}
 
- export function btnDelFilmClicked(film){
-   console.log("btnDelFilmClicked()")
-   const auth = new Auth();
-   auth.delFilmWatched(film);
-  
- }
+export function btnAddQueueClicked(film) {
+  console.log('btnAddQueueClicked()');
+  const auth = new Auth();
+  auth.addQueueWatched(film);
+}
 
-
+export function btnDelQueueClicked(film) {
+  console.log('btnDelQueueClicked()');
+  const auth = new Auth();
+  auth.delQueueWatched(film);
+}

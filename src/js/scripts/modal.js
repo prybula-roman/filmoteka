@@ -6,7 +6,7 @@ import movieCard from '../templates/modal.hbs';
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
-import {changeModalLanguage} from './localization'
+import { changeModalLanguage } from './localization';
 //////////////////////roman/////////////
 import {
   getAuth,
@@ -17,9 +17,14 @@ import {
 } from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
-import {btnAddFilmClicked,btnDelFilmClicked} from "./authForm/authentic"
-////////////////////////////////////////
+import {
+  btnAddFilmClicked,
+  btnDelFilmClicked,
+  btnDelQueueClicked,
+  btnAddQueueClicked,
+} from './authForm/authentic';
 
+////////////////////////////////////////
 
 refs.openModalEl.addEventListener('click', onOpenModal);
 refs.backdropEl.addEventListener('click', onBackdropClick);
@@ -40,13 +45,11 @@ export function onCloseModal() {
   refs.modalEl.classList.add('js-backdrop');
 }
 
-
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     onCloseModal();
   }
 }
-
 
 function onOpenModal(e) {
   e.preventDefault();
@@ -67,28 +70,55 @@ function onOpenModal(e) {
     films.forEach(film => {
       if (currentFilmId === film.id) {
         let markupModal = null;
-          markupModal = movieCard(film);
+        markupModal = movieCard(film);
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
-///////////////////////////////////////////////////
-let btnAdd= document.querySelector('.currentLang-addWatched');   
-if(document.querySelector(".my-library-movies")){
-        btnAdd = document.querySelector('.currentLang-addWatched');
-        btnAdd.innerHTML="DELETE WATCHED"
+        ///////////////////////////////////////////////////
+        //--------------------------------------------------------------
+        let btnAdd = document.querySelector('.currentLang-addWatched');
+        let btnQueue = document.querySelector('.currentLang-addQueue');
+
+        if (refs.GLOBAL_IS_QUE) {
+          if (!btnAdd.classList.contains('btnAdd.classList')) {
+            btnAdd.classList.add('visually-hidden');
+          }
+        }
+        if (refs.GLOBAL_IS_LIB) {
+          if (!btnQueue.classList.contains('btnAdd.classList')) {
+            btnAdd.classList.add('visually-hidden');
+          }
+        }
+
+        if (document.querySelector('.my-library-movies')) {
+          btnAdd = document.querySelector('.currentLang-addWatched');
+          btnAdd.innerHTML = 'DELETE WATCHED';
+        }
+        btnAdd.addEventListener('click', () => {
+          if (btnAdd.textContent === 'DELETE WATCHED') {
+            btnDelFilmClicked(film);
+          } else {
+            btnAddFilmClicked(film);
+          }
+        });
+        //-------------------------------------------------------------
+
+        if (document.querySelector('.my-library-movies')) {
+          btnQueue = document.querySelector('.currentLang-addQueue');
+          btnQueue.innerHTML = 'DELETE QUEUE';
+        }
+        btnQueue.addEventListener('click', e => {
+          console.log('e=', e);
+          if (btnQueue.textContent === 'DELETE QUEUE') {
+            btnDelQueueClicked(film);
+          } else {
+            btnAddQueueClicked(film);
+          }
+        });
+        //--------------------------------------------------------------
+        //////////////////////////////////////////////////
       }
-    btnAdd.addEventListener("click",()=>{//
-     
-      if(btnAdd.textContent==='DELETE WATCHED'){
-          btnDelFilmClicked(film);   
-      }  else{
-          btnAddFilmClicked(film);  
-       }  
-    })
-  } 
-//////////////////////////////////////////////////
-    
-  });
+    });
   });
 }
 export { onOpenModal };
