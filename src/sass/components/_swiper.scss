@@ -35,9 +35,9 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $main-color;
+  color: $dark-theme-color;
   body.light-theme & {
-    color: $dark-theme-color;
+    color: $main-color;
   }
 }
 
@@ -117,3 +117,32 @@
   fill: $accent-color;
   cursor: pointer;
 }
+/////////////
+// .swiper-button-prev {
+//   display: block;
+//   height: 40px;
+//   width: 45px;
+//   z-index: 10;
+//   margin-top: -34%;
+//   margin-left: -10%;
+//   cursor: pointer;
+// }
+// .swiper-button-next {
+//   display: block;
+//   height: 40px;
+//   width: 45px;
+//   z-index: 10;
+//   margin-top: -7%;
+//   margin-left: 106%;
+//   cursor: pointer;
+// }
+// @media screen and (min-width: 1024px) {
+//   .swiper-button-prev {
+//     margin-top: -25%;
+//     margin-left: -7%;
+//   }
+//   .swiper-button-next {
+//     margin-top: -5%;
+//     margin-left: 105%;
+//   }
+// }
