@@ -20,12 +20,12 @@ import './js/scripts/filter';
 
 import './js/scripts/header';
 
-import './js/scripts/authForm/authentic';
-
 import './js/scripts/team-modal';
 
 import './js/scripts/localization';
 
-import './js/scripts/filter';
+//import './js/scripts/filter';
 
 import './js/scripts/year-option';
+
+import './js/scripts/authForm/authentic';

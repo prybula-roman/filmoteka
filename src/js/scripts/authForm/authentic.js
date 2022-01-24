@@ -1,11 +1,9 @@
 import Form from './regForm';
 import { config } from './configForm';
 import Auth from './auth';
-import {onOpenModal} from '../modal';
+import { onOpenModal } from '../modal';
 //import movieCard from '../templates/modal.hbs';
 import { refs } from '../refs';
-
-
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -16,6 +14,22 @@ const titleRegForm = document.querySelector('.modal-form__title');
 for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
 }
+
+
+// if(localStorage.length!=0){
+//   for(let i=0; i<localStorage.length; i++) {
+//     if(localStorage.key(i)==='authorise'){
+//         const rez= JSON.parse( localStorage.getItem(localStorage.key(i)));
+//         console.log("rez=",rez)
+//         const user=new Auth();  
+//        // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
+
+//     }
+//   }
+// }
+
+
+
 
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
@@ -52,7 +66,7 @@ config.btnLogIn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
- // console.log('click');
+  // console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
@@ -63,29 +77,36 @@ btnSubmit.addEventListener('click', e => {
     const form = new Form();
     form.btnRegClicked();
   }
-
   if (btnSubmit.innerHTML === 'Sing In') {
-    console.log('LOGIN');
     const form = new Form();
     form.btnLoginClicked();
   }
   userForm.classList.toggle('visually-hidden');
   //const form = new Form();
 });
-//////////////////////////////////////////////////////
+//////////////////////надо потерять это в auth////////////////////////////////
 
-export function btnAddFilmClicked(film){
-  console.log("btnAddFilmClicked()");
-  const auth=new Auth();
+export function btnAddFilmClicked(film) {
+  console.log('btnAddFilmClicked()');
+  const auth = new Auth();
   auth.addToWatched(film);
- }
+}
 
+export function btnDelFilmClicked(film) {
+  console.log('btnDelFilmClicked()');
+  const auth = new Auth();
+  auth.delFilmWatched(film);
+}
 
- export function btnDelFilmClicked(film){
-   console.log("btnDelFilmClicked()")
-   const auth = new Auth();
-   auth.delFilmWatched(film);
-  
- }
+export function btnAddQueueClicked(film) {
+  console.log('btnAddQueueClicked()');
+  const auth = new Auth();
+  auth.addQueueWatched(film);
+}
 
-
+export function btnDelQueueClicked(film) {
+  console.log('btnDelQueueClicked()');
+  const auth = new Auth();
+  auth.delQueueWatched(film);
+}
+////////////////////////////////////////////////////////////////////////////  
