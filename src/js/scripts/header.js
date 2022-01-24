@@ -20,20 +20,20 @@ import Auth from './authForm/auth';
 refs.myLibEl.addEventListener('click', onMyLibrary);
 
 function onMyLibrary() {
-  refs.wrapperSwiperEl.classList.add("is-hidden")
-  refs.filterEl.style.display = 'none';
+    refs.wrapperSwiperEl.classList.add("is-hidden")
+    refs.filterEl.style.display = 'none';
 
-  refs.formEl.classList.add('is-hidden');
+    refs.formEl.classList.add('is-hidden');
     refs.libraryListEl.classList.remove('is-hidden');
     refs.homeEl.classList.remove('nav-list__link--current');
     refs.myLibEl.classList.add('nav-list__link--current');
     refs.headerEl.classList.remove('header__container');
     refs.headerEl.classList.add('library-bgi');
     refs.galleryEl.innerHTML = '';
-    // refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
+    // refs.mainEl.style.minHeight = "calc(100vh - 80px)";
     refs.paginationEl.classList.add('pagination__off');
     
-    refs.errorEl.classList.add("visually-hidden");
+    // refs.errorEl.classList.add("visually-hidden");
   
 
     // if(refs.galleryEl.innerHTML === ''){
@@ -45,10 +45,9 @@ function onMyLibrary() {
   const listCards = document.querySelector('.movies');
   listCards.classList.toggle('my-library-movies');
   console.log("listCards=",listCards);
-if(document.querySelector(".my-library-movies")){
-  renderLibrary();
-}
-  
+  if(document.querySelector(".my-library-movies")){
+    renderLibrary();
+  }
   /////////////////////////////////////////////////////
 }
 

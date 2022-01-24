@@ -10,8 +10,8 @@ import trailer from '../API/fetchTrailer';
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
-import { genreValue } from './filter';
-// import createCard from './filter'
+import { genreValue, yearValue, sortValue } from './filter';
+import {createCard} from './filter'
 
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
@@ -79,11 +79,20 @@ function onEnterIgnor() {
     });
 }
 
+if (genreValue !== '' || yearValue!== '') {
+    createCard(genreValue, yearValue, sortValue);
+    return
+}
+if (apiSearchData.query === "" && genreValue === '' && yearValue === '' && sortValue === '') {
+  
+  onRenderPopularMoviesMarkup();
+} else {
+  onRenderPaginationMarkup();
+}
+
+
 function onRenderPopularMoviesMarkup(e) {
 
-    if (refs.errorEl.classList != 'visually-hidden') {
-        refs.errorEl.classList.add('visually-hidden');
-    }
     refs.spinner.classList.remove('is-hidden');
 
     onEnterIgnor();
@@ -133,21 +142,21 @@ function onRenderPaginationMarkup() {
     refs.spinner.classList.remove('is-hidden');
 
     if (apiSearchData.query === '') {
-        refs.filterEl.style.display = 'block';
+        refs.filterEl.style.display = 'flex';
+        refs.wrapperSwiperEl.classList.remove("is-hidden")
         return;
     }
 
     apiSearchData
         .fetchMovies()
         .then(film => {
-            refs.errorEl.classList.add('visually-hidden');
             refs.filterEl.style.display = 'none';
-
+            refs.wrapperSwiperEl.classList.add("is-hidden")
+            refs.errorEl.classList.add('visually-hidden');
+            
             const markup = filmCard(handleMovieCard(film.results));
-            //n_branch;
             refs.galleryEl.innerHTML = markup;
             trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-            // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
             onRenderPagination(film.total_pages, film.page);
 
             if (film.total_results === 0) {
@@ -160,7 +169,7 @@ function onRenderPaginationMarkup() {
                 refs.filterSectionEl.classList.remove('visually-hidden');
             }
         })
-        .catch(error => onRenderPopularMoviesMarkup())
+        .catch(error => console.log(error))
         .finally(() => {
             refs.spinner.classList.add('is-hidden');
         });

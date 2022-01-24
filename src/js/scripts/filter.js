@@ -65,3 +65,5 @@ function createCard(genre, year, sort) {
 
 
 }
+
+export {createCard};

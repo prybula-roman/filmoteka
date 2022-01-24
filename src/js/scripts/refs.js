@@ -9,7 +9,7 @@ const refs = {
     headerEl: document.querySelector('.header'),
     inputEl: document.querySelector('.search-form__input'),
     errorEl: document.querySelector('.notification'),
-    searchError: document.querySelector('.notification__text'),
+    //searchError: document.querySelector('.notification__text'),
     libruaryIsActivEl: document.querySelectorAll('.nav-list__link--current'),
     
 
