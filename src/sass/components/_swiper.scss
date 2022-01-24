@@ -35,7 +35,10 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $main-color;
+  color: $dark-theme-color;
+  body.light-theme & {
+    color: $main-color;
+  }
 }
 
 .image-slider__image {

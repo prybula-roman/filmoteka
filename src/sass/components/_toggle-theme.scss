@@ -100,10 +100,13 @@ body.dark-theme {
 
   ////team-modal////
   & .team-modal {
-    background-color: rgb(20 20 20 / 88%);
+    background-color: #111111c5;
   }
   & .team-modal__title {
     color: $main-color;
+  }
+  & .team-modal__btn {
+    background-color: $accent-color;
   }
 }
 .section--footer.light-theme {
