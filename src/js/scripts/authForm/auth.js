@@ -108,7 +108,7 @@ export default class Auth {
         if (btnQueueFilm.textContent === 'DELETE QUEUE') {
           btnQueueFilm.innerHTML = 'ADD TO QUEUE';
         } else {
-          btnQueueFilm.innerHTML = 'ADD TO QUEUE';
+          btnQueueFilm.innerHTML = 'DELETE QUEUE';
         }
       })
       .catch(error => {
@@ -172,7 +172,19 @@ export default class Auth {
             arrFilm.push(film);
           } else {
             arrFilm = JSON.parse(snapshot.val());
-            arrFilm.push(film);
+            let filmInList=false;
+            arrFilm.forEach(element => {
+              if(element.id===film.id){
+                alert("Film in the list watched");
+                filmInList=true;
+              }
+
+            });
+            if(filmInList===true){
+            return;
+            }else{
+              arrFilm.push(film);
+            }
           }
           this.addFilmToUser(
             this.auth,
@@ -260,7 +272,18 @@ export default class Auth {
             arrFilm.push(film);
           } else {
             arrFilm = JSON.parse(snapshot.val());
-            arrFilm.push(film);
+            let filmInList=false;
+            arrFilm.forEach(element => {
+              if(element.id===film.id){
+                alert("Film in the list queue");
+                filmInList=true;
+              }
+            });
+            if(filmInList===true){
+            return;
+            }else{
+              arrFilm.push(film);
+            }
           }
           console.log(arrFilm)
           this.addFilmToQueue(
