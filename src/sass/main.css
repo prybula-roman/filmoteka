@@ -1821,12 +1821,12 @@ body.dark-theme .team-modal__btn {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: #222222;
+  color: #ffffff;
 }
 
 body.light-theme .swiper-button-prev::after, body.light-theme
 .swiper-button-next::after {
-  color: #ffffff;
+  color: #222222;
 }
 
 .image-slider__image {
@@ -1904,6 +1904,36 @@ body.light-theme .swiper-button-prev::after, body.light-theme
 
 .movies__playSwiperBtn:hover .fillForPlayBtn {
   fill: #ff6b08;
+  cursor: pointer;
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  display: none;
+  /* bottom: 10px;
+  left: 0;
+  width: 100%; */
+}
+
+.swiper-button-prev {
+  display: block;
+  height: 45px;
+  width: 45px;
+  z-index: 10;
+  margin-top: -7%;
+  margin-left: 35%;
+  cursor: pointer;
+}
+
+.swiper-button-next {
+  display: block;
+  height: 45px;
+  width: 45px;
+  z-index: 10;
+  margin-top: -7%;
+  margin-left: 35%;
   cursor: pointer;
 }
 
