@@ -29,13 +29,12 @@
     "en": "Search movies"
   },
 
- 
   "notification": {
     "uk": "Результат пошуку не вдалося. Введіть правильну назву фільму та повторіть пошук.",
     "ru": "Результат поиска не удался. Введите правильное название фильма и повторите поиск.",
     "en": "Search result not successful. Enter the correct movie name and search again."
   },
-  
+
   "rights": {
     "uk": "Всі права захищені",
     "ru": "Все права защищены",
@@ -56,7 +55,7 @@
     "ru": "Студентами GoIT",
     "en": "GoIT Students"
   },
-  "team":{
+  "team": {
     "uk": "Наша команда",
     "ru": "Наша команда",
     "en": "Our team"
