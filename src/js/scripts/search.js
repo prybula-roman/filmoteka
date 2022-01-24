@@ -10,9 +10,6 @@ import trailer from '../API/fetchTrailer';
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
-import { genreValue, yearValue, sortValue } from './filter';
-import {createCard} from './filter'
-
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
@@ -78,18 +75,6 @@ function onEnterIgnor() {
         }
     });
 }
-
-if (genreValue !== '' || yearValue!== '') {
-    createCard(genreValue, yearValue, sortValue);
-    return
-}
-if (apiSearchData.query === "" && genreValue === '' && yearValue === '' && sortValue === '') {
-  
-  onRenderPopularMoviesMarkup();
-} else {
-  onRenderPaginationMarkup();
-}
-
 
 function onRenderPopularMoviesMarkup(e) {
 
