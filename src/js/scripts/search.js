@@ -76,7 +76,7 @@ function onEnterIgnor() {
     });
 }
 
-function onRenderPopularMoviesMarkup(e) {
+export function onRenderPopularMoviesMarkup(e) {
 
     refs.spinner.classList.remove('is-hidden');
 
@@ -160,4 +160,4 @@ function onRenderPaginationMarkup() {
         });
 }
 
-export { apiSearchData, popularMovie, onRenderPopularMoviesMarkup };
+export { apiSearchData, popularMovie };
