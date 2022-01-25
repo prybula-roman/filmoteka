@@ -246,8 +246,10 @@ export default class Auth {
                   // document.getElementById(`${film.id}`).remove();
                   onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
+                } else {
+                  document.getElementById(`${film.id}`).remove();
                 }
-                document.getElementById(`${film.id}`).remove();
+                //document.getElementById(`${film.id}`).remove();
                 //refs.GLOBAL_IS_LIB = false;
               }
             });
@@ -356,8 +358,10 @@ export default class Auth {
                 console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
                 if (refs.GLOBAL_IS_QUE === true) {
                   onCloseModal(); //закрыть модалку
+                } else {
+                  document.getElementById(`${film.id}`).remove();
                 }
-                document.getElementById(`${film.id}`).remove();
+                // document.getElementById(`${film.id}`).remove();
                 // refs.GLOBAL_IS_QUE = false;
               }
             });
