@@ -50,10 +50,6 @@ body.show-modal .modal {
   transition: $time;
   border-radius: 15px;
 
-  body.dark-theme & {
-    // box-shadow: rgb(45 40 38) 0px 22px 70px 4px;
-  }
-
   @media screen and(min-width: $tablet) {
     width: 550px;
     overflow: hidden;
@@ -145,7 +141,6 @@ body.show-modal .modal {
 .movies__details {
   padding: 25px;
   border-radius: 0px 15px 15px 0px;
-  // background-color: rgb(0 0 0 / 0%);
 }
 .movies__title {
   font-weight: 500;
@@ -229,7 +224,10 @@ body.show-modal .modal {
   display: flex;
 }
 .movies-btn__item:nth-child(1) {
-  margin-right: 5px;
+  margin-right: 10px;
+  @media screen and(min-width: $desktop) {
+    margin-right: 20px;
+  }
 }
 
 .movies-btn__button {
@@ -251,6 +249,7 @@ body.show-modal .modal {
     border: 1px solid $accent-color;
   }
 }
+
 .movies-btn__playTrailer {
   position: static;
   display: flex;
@@ -263,11 +262,11 @@ body.show-modal .modal {
     margin: 15px 0 0 0;
   }
 }
+
 .movies-info__average {
   height: 16px;
   padding: 1px 8px;
   margin-right: 3px;
-
   color: $main-color;
   background-color: $accent-color;
   border-radius: 5px;
