@@ -266,10 +266,19 @@ body.show-modal .modal {
 .movies-info__average {
   height: 16px;
   padding: 1px 8px;
+  margin-right: 3px;
 
   color: $main-color;
   background-color: $accent-color;
   border-radius: 5px;
+}
+
+.movies-info__votes {
+  margin-left: 3px;
+  padding: 1px 8px;
+  background-color: $footer-bg-color;
+  border-radius: 5px;
+  color: $black-color;
 }
 
 .movies-btn__button--current {
