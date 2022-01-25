@@ -2,6 +2,9 @@ import { refs } from './refs';
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
 import { apiSearchData, popularMovie } from './search';
+import FilmsStorage from './local-storage';
+
+const filmsStorage = new FilmsStorage();
 
 let globalTotalPages = 0;
 let globalPage = 0;
@@ -174,12 +177,16 @@ function onRenderMarkupByPagination(page) {
     popularMovie.page = page;
     popularMovie.fetchPopular()
       .then(film => {
+        filmsStorage.addToCurrent(film.results);
+
         const markup = filmCard(handleMovieCard(film.results)); 
         refs.galleryEl.innerHTML = markup;
 
         onRenderPagination(film.total_pages, film.page);
       })
       .catch(error => {
+        filmsStorage.addToCurrent(film.results);
+
         const markup = filmCard(handleMovieCard(film.results)); 
         refs.galleryEl.innerHTML = markup;
 
@@ -194,7 +201,9 @@ function onRenderMarkupByPagination(page) {
   else {
     apiSearchData.page = page;    
     apiSearchData.fetchMovies()
-      .then(film => {               
+      .then(film => {          
+        filmsStorage.addToCurrent(film.results);
+
         const markup = filmCard(handleMovieCard(film.results)); 
         refs.galleryEl.innerHTML = markup;
 
