@@ -67,7 +67,8 @@ function onHome() {
   refs.wrapperSwiperEl.classList.remove('is-hidden');
 
   ///////////////////////////////////////
-
+  refs.GLOBAL_IS_QUE = false;
+  refs.GLOBAL_IS_LIB = false;
   ///////////////////////////////////////
 }
 

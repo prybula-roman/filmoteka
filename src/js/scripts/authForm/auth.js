@@ -237,7 +237,7 @@ export default class Auth {
                   document.getElementById(`${film.id}`).remove();
                   onCloseModal(); //закрыть модалку
                 }
-                refs.GLOBAL_IS_LIB = false;
+                //refs.GLOBAL_IS_LIB = false;
               }
             });
           }
@@ -341,7 +341,7 @@ export default class Auth {
                   document.getElementById(`${film.id}`).remove();
                   onCloseModal(); //закрыть модалку
                 }
-                refs.GLOBAL_IS_QUE = false;
+                // refs.GLOBAL_IS_QUE = false;
               }
             });
           }
