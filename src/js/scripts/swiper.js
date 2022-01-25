@@ -48,37 +48,3 @@ new Swiper('.swiper', {
 
   }
 });
-
-// const sliderBlock = document.querySelector('.image-slider');
-
-// sliderBlock.addEventListener('mouseenter', function (e) {
-//   myImageSlider.params.autoplay.disableOnInteraction = false;
-//   myImageSlider.params.autoplay.delay = 500;
-//   myImageSlider.autoplay.start();
-// });
-
-// sliderBlock.addEventListener('mouseleave', function (e) {
-//   myImageSlider.autoplay.stop();
-// });
-
-
-// function onSwiperNowPlayingMovies() {
-//   fetchNowPlayingMovies.fetchNowPlaying()
-//   .then(movies=> handleSwiperMovieCard(movies))
-  
-//   JSON.parse(localStorage.getItem("currentSwiperPage")).map(films => {
-    
-//     films.results.forEach(({id,poster_path,title,genre_ids}) => {
-//       const markupSwiper = ` <li class="swiper-slide"  id="${id}">
-//     <img class="swiper__poster" src="${poster_path}" alt="${title} poster"  loading="lazy" />
-//     <p class="swiper__name">${title}</p>
-//     <p class="swiper__genre">${genre_ids} </p>
-    
-// </li>`
-    
-//       refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
-//     })
-//   })
-// }
-
-// export {onSwiperNowPlayingMovies}

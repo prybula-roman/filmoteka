@@ -14,12 +14,18 @@ export default function handleMovieCard(movies) {
         (elem.release_date = 'Unknown');
     }
 
-    if (elem.genre_ids.length > 0) {
+    if (elem.genre_ids.length > 0 && elem.genre_ids.length <3) {
       elem.genre_ids = apiGenreData
         .ganreTranspiler(elem.genre_ids)
         .slice(0, 2)
         .join(', ');
-    } else {
+    } else if (elem.genre_ids.length > 2) {
+      elem.genre_ids = apiGenreData
+        .ganreTranspiler(elem.genre_ids)
+        .slice(0, 2)
+        .join(', ') + ', ' + 'Others';
+    }
+    else {
       elem.genre_ids = 'Unknown';
     }
 
