@@ -14,6 +14,8 @@ const nameBtnAddWatch = 'ADD TO WATCHED';
 const nameBtnAddQueue = 'ADD TO QUEUE';
 const nameBtnDelWatch = 'DELETE WATCHED';
 const nameBtnDelQueue = 'DELETE QUEUE';
+refs.GLOBAL_IS_LIB = false;
+refs.GLOBAL_IS_QUE = false;
 
 for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
@@ -39,6 +41,10 @@ config.btnLogOut.addEventListener('click', () => {
 //////////////////////////////////////////////////
 /////////////////////////////////////////////////
 config.btnReg.addEventListener('click', () => {
+  if (refs.modalInpName.classList.contains('visually-hidden')) {
+    refs.modalInpName.classList.toggle('visually-hidden');
+    refs.modalInpNameIcon.classList.toggle('visually-hidden');
+  }
   userForm.classList.toggle('visually-hidden');
   btnSubmit.innerHTML = 'Sing Up';
   titleRegForm.textContent = 'Sing Up';
@@ -60,6 +66,8 @@ config.btnLogIn.addEventListener('click', () => {
       }
     }
   }
+  refs.modalInpName.classList.toggle('visually-hidden');
+  refs.modalInpNameIcon.classList.toggle('visually-hidden');
   userForm.classList.toggle('visually-hidden');
   btnSubmit.innerHTML = 'Sing In';
   titleRegForm.textContent = 'Sing In';

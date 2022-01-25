@@ -45,6 +45,8 @@ export default class Auth {
           filmList: '[]',
           queueList: '[]',
         });
+
+        alert('User was registred');
       })
       .catch(function (error) {
         var errorCode = error.code;
@@ -227,10 +229,12 @@ export default class Auth {
                 arrFilm.splice(index, 1);
                 //
                 ///---------------
+                console.log('refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
                 if (refs.GLOBAL_IS_LIB) {
-                  onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
+                  onCloseModal(); //закрыть модалку
                 }
+                refs.GLOBAL_IS_LIB = false;
               }
             });
           }
@@ -251,7 +255,6 @@ export default class Auth {
       });
   }
   //-------------------------------------------------------------
-
   addQueueWatched(film) {
     if (sessionStorage.getItem('logInUser') != null) {
       if (this.currentUser) {
@@ -330,10 +333,12 @@ export default class Auth {
               if (item.id === film.id) {
                 arrFilm.splice(index, 1);
                 // onCloseModal(); //закрыть модалку
+                console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
                 if (refs.GLOBAL_IS_QUE) {
-                  onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
+                  onCloseModal(); //закрыть модалку
                 }
+                refs.GLOBAL_IS_QUE = false;
               }
             });
           }

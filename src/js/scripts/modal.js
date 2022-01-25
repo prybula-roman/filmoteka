@@ -82,16 +82,9 @@ function onOpenModal(e) {
         btnQueue.innerHTML = 'ADD TO QUEUE';
         const newAuth = new Auth();
         //------------------------------------------------
-        console.log('btnAdd.textContent=', btnAdd.textContent);
         newAuth.findFilm(film, btnAdd, `/filmList`);
         newAuth.findFilm(film, btnQueue, `/queueList`);
         //--------------------------------------------------------
-        // if (refs.GLOBAL_IS_LIB) {
-        //   btnAdd.innerHTML = 'DELETE WATCHED';
-        // } else {
-        //   btnAdd.innerHTML = 'ADD TO WATCHED';
-        // }
-
         btnAdd.addEventListener('click', () => {
           if (btnAdd.textContent === 'DELETE WATCHED') {
             btnDelFilmClicked(film);
@@ -100,13 +93,6 @@ function onOpenModal(e) {
           }
         });
         //-------------------------------------------------------------
-
-        // if (refs.GLOBAL_IS_QUE) {
-        //   btnQueue.innerHTML = 'DELETE QUEUE';
-        // } else {
-        //   btnQueue.innerHTML = 'ADD TO QUEUE';
-        // }
-
         btnQueue.addEventListener('click', e => {
           console.log('e=', e);
           if (btnQueue.textContent === 'DELETE QUEUE') {
