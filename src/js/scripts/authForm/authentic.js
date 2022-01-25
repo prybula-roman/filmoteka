@@ -1,11 +1,10 @@
 import Form from './regForm';
 import { config } from './configForm';
 import Auth from './auth';
-import {onOpenModal} from '../modal';
+import { onOpenModal } from '../modal';
 //import movieCard from '../templates/modal.hbs';
 import { refs } from '../refs';
-
-
+import { langs } from '../localization';
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -26,8 +25,28 @@ config.btnLogOut.addEventListener('click', () => {
 /////////////////////////////////////////////////
 config.btnReg.addEventListener('click', () => {
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.innerHTML = 'Sing Up';
+  btnSubmit.textContent = 'Sing Up';
+
+  if (langs === 'ru') {
+    btnSubmit.textContent = 'Зарегистрироваться';
+  }
+  if (langs === 'uk') {
+    btnSubmit.textContent = 'Зареєструватись';
+  }
+  if (langs === 'en') {
+    btnSubmit.textContent = 'Sing Up';
+  }
+
   titleRegForm.textContent = 'Sing Up';
+  if (langs === 'ru') {
+    titleRegForm.textContent = 'Зарегистрироваться';
+  }
+  if (langs === 'uk') {
+    titleRegForm.textContent = 'Зареєструватись';
+  }
+  if (langs === 'en') {
+    titleRegForm.textContent = 'Sing Up';
+  }
   //const objForm = new Form();
 });
 ////////////////////////////////////////////////
@@ -47,24 +66,51 @@ config.btnLogIn.addEventListener('click', () => {
     }
   }
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.innerHTML = 'Sing In';
+  btnSubmit.textContent = 'Sing In';
+
+  if (langs === 'ru') {
+    btnSubmit.textContent = 'Войти';
+  }
+  if (langs === 'uk') {
+    btnSubmit.textContent = 'Увійти';
+  }
+  if (langs === 'en') {
+    btnSubmit.textContent = 'Sing In';
+  }
   titleRegForm.textContent = 'Sing In';
+  if (langs === 'ru') {
+    titleRegForm.textContent = 'Войти';
+  }
+  if (langs === 'uk') {
+    titleRegForm.textContent = 'Увійти';
+  }
+  if (langs === 'en') {
+    titleRegForm.textContent = 'Sing In';
+  }
 });
+
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
- // console.log('click');
+  // console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
 btnSubmit.addEventListener('click', e => {
   console.dir(btnSubmit);
-  if (btnSubmit.innerHTML === 'Sing Up') {
+  if (
+    btnSubmit.textContent === 'Sing Up' ||
+    btnSubmit.textContent === 'Зареєструватись' ||
+    btnSubmit.textContent === 'Зарегистрироваться'
+  ) {
     console.log('Registr');
     const form = new Form();
     form.btnRegClicked();
   }
-
-  if (btnSubmit.innerHTML === 'Sing In') {
+  if (
+    btnSubmit.textContent === 'Sing In' ||
+    btnSubmit.textContent === 'Увійти' ||
+    btnSubmit.textContent === 'Войти'
+  ) {
     console.log('LOGIN');
     const form = new Form();
     form.btnLoginClicked();
@@ -72,20 +118,17 @@ btnSubmit.addEventListener('click', e => {
   userForm.classList.toggle('visually-hidden');
   //const form = new Form();
 });
+
 //////////////////////////////////////////////////////
 
-export function btnAddFilmClicked(film){
-  console.log("btnAddFilmClicked()");
-  const auth=new Auth();
+export function btnAddFilmClicked(film) {
+  console.log('btnAddFilmClicked()');
+  const auth = new Auth();
   auth.addToWatched(film);
- }
+}
 
-
- export function btnDelFilmClicked(film){
-   console.log("btnDelFilmClicked()")
-   const auth = new Auth();
-   auth.delFilmWatched(film);
-  
- }
-
-
+export function btnDelFilmClicked(film) {
+  console.log('btnDelFilmClicked()');
+  const auth = new Auth();
+  auth.delFilmWatched(film);
+}

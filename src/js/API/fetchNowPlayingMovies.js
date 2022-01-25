@@ -1,3 +1,5 @@
+import { langs } from '../scripts/localization';
+
 export default class FetchNowPlayingMovies {
     constructor() {
         this.BASE_URL = 'https://api.themoviedb.org/3'
@@ -6,7 +8,7 @@ export default class FetchNowPlayingMovies {
         this.page = 1;
     }
     async fetchNowPlaying() {
-        const url = `${this.BASE_URL}/movie/upcoming?api_key=${this.API_KEY}&query=${this.searchQuery}&language=en-US&page=${this.page}`;
+        const url = `${this.BASE_URL}/movie/upcoming?api_key=${this.API_KEY}&query=${this.searchQuery}&language=${langs}&page=${this.page}`;
         return await fetch(url)
         .then(res => {
             this.incrementPage();

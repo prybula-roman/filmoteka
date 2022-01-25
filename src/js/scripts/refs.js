@@ -60,6 +60,7 @@ const refs = {
     // filter
     yearOptionEl: document.querySelector('#yearpicker'),
     genreOptionEl: document.querySelector('#genrepicker'),
+    
     // clearBtnEl: document.querySelector('.clear-btn'),
     //filter
     // filterInputEl: document.querySelectorAll('.filter-input'),

@@ -1,4 +1,4 @@
-// import { langs } from '../scripts/localization';
+ import { langs } from '../scripts/localization';
 
 export default class FetchGenre {
   constructor() {
@@ -10,7 +10,7 @@ export default class FetchGenre {
 
   async fetchGenre() {
     const response = await fetch(
-      `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}`,
+      `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=${langs}`,
     );
     return response.json();
   }
