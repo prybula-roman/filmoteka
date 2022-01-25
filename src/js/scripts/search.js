@@ -114,6 +114,7 @@ function onSubmit(event) {
     apiSearchData.query = event.target.value;
 
     if (apiSearchData.query === '') {
+        refs.errorEl.classList.add('visually-hidden');
         onRenderPopularMoviesMarkup();
     }
 
@@ -145,13 +146,13 @@ function onRenderPaginationMarkup() {
             onRenderPagination(film.total_pages, film.page);
 
             if (film.total_results === 0) {
+                refs.filterEl.style.display = 'none';
                 refs.errorEl.classList.remove('visually-hidden');
                 refs.spinner.classList.add('is-hidden');
-                refs.filterSectionEl.classList.add('visually-hidden');
             }
             if (film.total_pages === 1) {
+                refs.filterEl.style.display = 'flex';
                 refs.spinner.classList.add('is-hidden');
-                refs.filterSectionEl.classList.remove('visually-hidden');
             }
         })
         .catch(error => console.log(error))
