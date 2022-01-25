@@ -139,7 +139,10 @@ export default class Auth {
           localStorage.setItem('authorise', JSON.stringify(user));
         }
         sessionStorage.setItem('logInUser', JSON.stringify(user));
-        config.btnLogIn.classList.toggle('visually-hidden');
+        if (!config.btnLogIn.classList.contains('visually-hidden')) {
+          config.btnLogIn.classList.add('visually-hidden');
+        }
+
         config.btnReg.classList.toggle('visually-hidden');
         config.btnLogOut.classList.toggle('visually-hidden');
         config.btnMyLabr.classList.toggle('visually-hidden');

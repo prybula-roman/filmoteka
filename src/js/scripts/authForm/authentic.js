@@ -21,18 +21,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
 }
 
-// if(localStorage.length!=0){
-//   for(let i=0; i<localStorage.length; i++) {
-//     if(localStorage.key(i)==='authorise'){
-//         const rez= JSON.parse( localStorage.getItem(localStorage.key(i)));
-//         console.log("rez=",rez)
-//         const user=new Auth();
-//        // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
-
-//     }
-//   }
-// }
-
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
   const form = new Form();
@@ -124,5 +112,18 @@ export function btnDelQueueClicked(film) {
   console.log('btnDelQueueClicked()');
   const auth = new Auth();
   auth.delQueueWatched(film);
+}
+
+export function autoLogin() {
+  if (localStorage.length != 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+      if (localStorage.key(i) === 'authorise') {
+        const rez = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        console.log('rez=', rez);
+        const auth = new Auth();
+        // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
+      }
+    }
+  }
 }
 ////////////////////////////////////////////////////////////////////////////
