@@ -86,13 +86,12 @@ export default class Auth {
     })
       .then(resp => {
         //------------------------------------------------
-       const btnAddFilm = document.querySelector('.currentLang-addWatched');
+        const btnAddFilm = document.querySelector('.currentLang-addWatched');
         if (btnAddFilm.textContent === 'DELETE WATCHED') {
           btnAddFilm.innerHTML = 'ADD TO WATCHED';
         } else {
           btnAddFilm.innerHTML = 'DELETE WATCHED';
         }
-
       })
       .catch(error => {
         alert(error.message);
@@ -160,7 +159,7 @@ export default class Auth {
         }
       }
     } else {
-      alert('Not User LogIn');
+      alert('addToWatched(film)   Not User LogIn');
       return;
     }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
@@ -172,17 +171,16 @@ export default class Auth {
             arrFilm.push(film);
           } else {
             arrFilm = JSON.parse(snapshot.val());
-            let filmInList=false;
+            let filmInList = false;
             arrFilm.forEach(element => {
-              if(element.id===film.id){
-                alert("Film in the list watched");
-                filmInList=true;
+              if (element.id === film.id) {
+                alert('Film in the list watched');
+                filmInList = true;
               }
-
             });
-            if(filmInList===true){
-            return;
-            }else{
+            if (filmInList === true) {
+              return;
+            } else {
               arrFilm.push(film);
             }
           }
@@ -227,8 +225,12 @@ export default class Auth {
             arrFilm.forEach((item, index, arr) => {
               if (item.id === film.id) {
                 arrFilm.splice(index, 1);
-                onCloseModal(); //закрыть модалку
-                document.getElementById(`${film.id}`).remove();
+                //
+                ///---------------
+                if (refs.GLOBAL_IS_LIB) {
+                  onCloseModal(); //закрыть модалку
+                  document.getElementById(`${film.id}`).remove();
+                }
               }
             });
           }
@@ -260,7 +262,7 @@ export default class Auth {
         }
       }
     } else {
-      alert('Not User LogIn');
+      alert('addQueueWatched   Not User LogIn');
       return;
     }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
@@ -272,20 +274,20 @@ export default class Auth {
             arrFilm.push(film);
           } else {
             arrFilm = JSON.parse(snapshot.val());
-            let filmInList=false;
+            let filmInList = false;
             arrFilm.forEach(element => {
-              if(element.id===film.id){
-                alert("Film in the list queue");
-                filmInList=true;
+              if (element.id === film.id) {
+                alert('Film in the list queue');
+                filmInList = true;
               }
             });
-            if(filmInList===true){
-            return;
-            }else{
+            if (filmInList === true) {
+              return;
+            } else {
               arrFilm.push(film);
             }
           }
-          console.log(arrFilm)
+          console.log(arrFilm);
           this.addFilmToQueue(
             this.auth,
             this.currentUser.name,
@@ -327,8 +329,11 @@ export default class Auth {
             arrFilm.forEach((item, index, arr) => {
               if (item.id === film.id) {
                 arrFilm.splice(index, 1);
-                onCloseModal(); //закрыть модалку
-                document.getElementById(`${film.id}`).remove();
+                // onCloseModal(); //закрыть модалку
+                if (refs.GLOBAL_IS_QUE) {
+                  onCloseModal(); //закрыть модалку
+                  document.getElementById(`${film.id}`).remove();
+                }
               }
             });
           }
@@ -348,6 +353,38 @@ export default class Auth {
       .catch(error => {
         alert(error.message);
       });
+  }
+
+  findFilm(film, btn, dataTable) {
+    if (sessionStorage.getItem('logInUser') != null) {
+      console.log('dataTable=', dataTable);
+      get(ref(this.db, 'users/' + this.auth.currentUser.uid + dataTable))
+        .then(snapshot => {
+          let arrFilm = [];
+          // console.log('snapshot.val()=', snapshot.val());
+          if (snapshot.exists()) {
+            arrFilm = JSON.parse(snapshot.val());
+            arrFilm.forEach(element => {
+              if (element.id === film.id) {
+                // alert('Film in the list watched');
+                console.log('btn=', btn.textContent);
+                if (btn.textContent === 'ADD TO QUEUE') {
+                  btn.innerHTML = 'DELETE QUEUE';
+                }
+                if (btn.textContent === 'ADD TO WATCHED') {
+                  btn.innerHTML = 'DELETE WATCHED';
+                }
+              }
+            }); //foreach
+          } else {
+            alert('findFilm   Not User LogIn');
+            return;
+          }
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    }
   }
 }
 //---------------------------------------------------------------------------
