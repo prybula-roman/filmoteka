@@ -207,7 +207,7 @@ export default class Auth {
   }
   //---------------------------------------------------------------------------
   delFilmWatched(film) {
-    //console.log("delFilmWatched(film)")
+    console.log('delFilmWatched(film)');
     if (sessionStorage.getItem('logInUser') != null) {
       if (this.currentUser) {
         if (this.currentUser != null) {
@@ -233,10 +233,16 @@ export default class Auth {
                 //
                 ///---------------
                 console.log('refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
-                if (refs.GLOBAL_IS_LIB) {
-                  document.getElementById(`${film.id}`).remove();
+                if (refs.GLOBAL_IS_LIB === true) {
+                  // console.log('film.id=', film.id);
+                  // document.getElementById(`${film.id}`).remove();
                   onCloseModal(); //закрыть модалку
                 }
+                console.log(
+                  'document.getElementById(`${film.id}`)=',
+                  document.getElementById(`${film.id}`),
+                );
+                document.getElementById(`${film.id}`).remove();
                 //refs.GLOBAL_IS_LIB = false;
               }
             });
@@ -283,7 +289,7 @@ export default class Auth {
             let filmInList = false;
             arrFilm.forEach(element => {
               if (element.id === film.id) {
-                alert('Film in the list queue');
+                alert('Film is in the list queue');
                 filmInList = true;
               }
             });
@@ -337,10 +343,10 @@ export default class Auth {
                 arrFilm.splice(index, 1);
                 // onCloseModal(); //закрыть модалку
                 console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
-                if (refs.GLOBAL_IS_QUE) {
-                  document.getElementById(`${film.id}`).remove();
+                if (refs.GLOBAL_IS_QUE === true) {
                   onCloseModal(); //закрыть модалку
                 }
+                document.getElementById(`${film.id}`).remove();
                 // refs.GLOBAL_IS_QUE = false;
               }
             });
