@@ -1,3 +1,12 @@
+.wrapper-section {
+  position: relative;
+  margin: 0 auto;
+  width: $tablet;
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+  }
+}
+
 .wrapper {
   @media screen and (max-width: $mobile-max) {
     display: none;
@@ -35,10 +44,7 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $dark-theme-color;
-  body.light-theme & {
-    color: $main-color;
-  }
+  color: $accent-color;
 }
 
 .image-slider__image {
@@ -89,7 +95,7 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  // background-color: rgba(117, 190, 218, 0.5);
+  z-index: 0;
   border-radius: 5px;
   top: 40%;
 }

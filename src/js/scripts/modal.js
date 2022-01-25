@@ -6,17 +6,17 @@ import movieCard from '../templates/modal.hbs';
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
-import { changeModalLanguage } from './localization';
+// import { changeModalLanguage } from './localization';
 //////////////////////roman/////////////
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  currentUser,
-  signOut,
-} from 'firebase/auth';
-import { getDatabase, ref, set, get, child, update } from 'firebase/database';
-import Auth from './authForm/auth';
+// import {
+//   getAuth,
+//   signInWithEmailAndPassword,
+//   createUserWithEmailAndPassword,
+//   currentUser,
+//   signOut,
+// } from 'firebase/auth';
+// import { getDatabase, ref, set, get, child, update } from 'firebase/database';
+// import Auth from './authForm/auth';
 import {
   btnAddFilmClicked,
   btnDelFilmClicked,
