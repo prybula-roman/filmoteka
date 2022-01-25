@@ -1834,12 +1834,12 @@ body.dark-theme .team-modal__btn {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: #222222;
+  color: #ffffff;
 }
 
 body.light-theme .swiper-button-prev::after, body.light-theme
 .swiper-button-next::after {
-  color: #ffffff;
+  color: #222222;
 }
 
 .image-slider__image {
