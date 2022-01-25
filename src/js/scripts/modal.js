@@ -77,64 +77,20 @@ function onOpenModal(e) {
         ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
+        btnAdd.innerHTML = 'ADD TO WATCHED';
         let btnQueue = document.querySelector('.currentLang-addQueue');
-
+        btnQueue.innerHTML = 'ADD TO QUEUE';
         const newAuth = new Auth();
-        console.log(newAuth);
         //------------------------------------------------
-        if (sessionStorage.getItem('logInUser') != null) {
-          get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
-            .then(snapshot => {
-              let arrFilm = [];
-              console.log('snapshot.val()=', snapshot.val());
-              if (snapshot.exists()) {
-                arrFilm = JSON.parse(snapshot.val());
-                let filmInList = false;
-                arrFilm.forEach(element => {
-                  if (element.id === film.id) {
-                    // alert('Film in the list watched');
-                    filmInList = true;
-                    btnAdd.innerHTML = 'DELETE WATCHED';
-                  }
-                }); //foreach
-              } else {
-                alert('Not User LogIn');
-                return;
-              }
-            })
-            .catch(error => {
-              alert(error.message);
-            });
-          //--------------------------------------------------------
-          get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/queueList'))
-            .then(snapshot => {
-              let arrFilm = [];
-              console.log('snapshot.val()=', snapshot.val());
-              if (snapshot.exists()) {
-                arrFilm = JSON.parse(snapshot.val());
-                let filmInList = false;
-                arrFilm.forEach(element => {
-                  if (element.id === film.id) {
-                    // alert('Film in the list watched');
-                    filmInList = true;
-                    btnQueue.innerHTML = 'DELETE QUEUE';
-                  }
-                }); //foreach
-              } else {
-                alert('Not User LogIn');
-                return;
-              }
-            })
-            .catch(error => {
-              alert(error.message);
-            });
-        } //if(sessionStorage...)
-        //------------------------------------------------
-        if (refs.GLOBAL_IS_LIB) {
-          btnAdd.innerHTML = 'DELETE WATCHED';
-        } else {
-          btnAdd.innerHTML = 'ADD TO WATCHED';
-        }
+        console.log('btnAdd.textContent=', btnAdd.textContent);
+        newAuth.findFilm(film, btnAdd, `/filmList`);
+        newAuth.findFilm(film, btnQueue, `/queueList`);
+        //--------------------------------------------------------
+        // if (refs.GLOBAL_IS_LIB) {
+        //   btnAdd.innerHTML = 'DELETE WATCHED';
+        // } else {
+        //   btnAdd.innerHTML = 'ADD TO WATCHED';
+        // }
 
         btnAdd.addEventListener('click', () => {
           if (btnAdd.textContent === 'DELETE WATCHED') {
@@ -145,11 +101,11 @@ function onOpenModal(e) {
         });
         //-------------------------------------------------------------
 
-        if (refs.GLOBAL_IS_QUE) {
-          btnQueue.innerHTML = 'DELETE QUEUE';
-        } else {
-          btnQueue.innerHTML = 'ADD TO QUEUE';
-        }
+        // if (refs.GLOBAL_IS_QUE) {
+        //   btnQueue.innerHTML = 'DELETE QUEUE';
+        // } else {
+        //   btnQueue.innerHTML = 'ADD TO QUEUE';
+        // }
 
         btnQueue.addEventListener('click', e => {
           console.log('e=', e);

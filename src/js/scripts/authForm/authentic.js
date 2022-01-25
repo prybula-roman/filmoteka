@@ -10,26 +10,26 @@ const userForm = document.querySelector('.form-auth');
 const btnCloseForm = document.querySelector('.modal__close-btn');
 const btnSubmit = document.querySelector('.modal-form__submit');
 const titleRegForm = document.querySelector('.modal-form__title');
+const nameBtnAddWatch = 'ADD TO WATCHED';
+const nameBtnAddQueue = 'ADD TO QUEUE';
+const nameBtnDelWatch = 'DELETE WATCHED';
+const nameBtnDelQueue = 'DELETE QUEUE';
 
 for (let i = 0; i < sessionStorage.length; i++) {
   sessionStorage.removeItem(sessionStorage.key(i));
 }
-
 
 // if(localStorage.length!=0){
 //   for(let i=0; i<localStorage.length; i++) {
 //     if(localStorage.key(i)==='authorise'){
 //         const rez= JSON.parse( localStorage.getItem(localStorage.key(i)));
 //         console.log("rez=",rez)
-//         const user=new Auth();  
+//         const user=new Auth();
 //        // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
 
 //     }
 //   }
 // }
-
-
-
 
 //////////////////////////////////////////////////
 config.btnLogOut.addEventListener('click', () => {
@@ -88,8 +88,12 @@ btnSubmit.addEventListener('click', e => {
 
 export function btnAddFilmClicked(film) {
   console.log('btnAddFilmClicked()');
-  const auth = new Auth();
-  auth.addToWatched(film);
+  if (sessionStorage.getItem('logInUser') != null) {
+    const auth = new Auth();
+    auth.addToWatched(film);
+  } else {
+    alert('User is NOT LOGIN');
+  }
 }
 
 export function btnDelFilmClicked(film) {
@@ -100,8 +104,12 @@ export function btnDelFilmClicked(film) {
 
 export function btnAddQueueClicked(film) {
   console.log('btnAddQueueClicked()');
-  const auth = new Auth();
-  auth.addQueueWatched(film);
+  if (sessionStorage.getItem('logInUser') != null) {
+    const auth = new Auth();
+    auth.addQueueWatched(film);
+  } else {
+    alert('User is NOT LOGIN');
+  }
 }
 
 export function btnDelQueueClicked(film) {
@@ -109,4 +117,4 @@ export function btnDelQueueClicked(film) {
   const auth = new Auth();
   auth.delQueueWatched(film);
 }
-////////////////////////////////////////////////////////////////////////////  
+////////////////////////////////////////////////////////////////////////////
