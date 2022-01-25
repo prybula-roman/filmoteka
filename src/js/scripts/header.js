@@ -3,16 +3,14 @@ import onRenderPopularMoviesMarkup from './search';
 
 //////////////////////roman/////////////
 import filmCard from '../templates/preview_card.hbs';
-//import filmCard from '../templates/modal_lybr.hbs';
-
-// import handleMovieCard from './handleMovieCard';
-// import {
-//   getAuth,
-//   signInWithEmailAndPassword,
-//   createUserWithEmailAndPassword,
-//   currentUser,
-//   signOut,
-// } from 'firebase/auth';
+import handleMovieCard from './handleMovieCard';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  currentUser,
+  signOut,
+} from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
 ////////////////////////////////////////
