@@ -34,9 +34,7 @@ class MovieFilter {
     }
   }
 
-
 const movieFilter = new MovieFilter();
-
 
 let sortValue = '';
 

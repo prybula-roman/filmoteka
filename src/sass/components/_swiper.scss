@@ -1,8 +1,17 @@
+.wrapper-section {
+  position: relative;
+  margin: 0 auto;
+  width: $tablet;
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+  }
+}
+
 .wrapper {
   @media screen and (max-width: $mobile-max) {
     display: none;
   }
-  height: 340px;
+  height: 310px;
   z-index: -1000;
 }
 
@@ -11,7 +20,7 @@
   font-weight: normal;
   text-align: center;
   color: $black-color;
-  margin: 10px 0px;
+  margin: 30px 0 10px 0;
   text-transform: uppercase;
 }
 .dark-theme .wrapper__title {
@@ -35,7 +44,7 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $main-color;
+  color: $accent-color;
 }
 
 .image-slider__image {
@@ -86,7 +95,7 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  background-color: rgba(117, 190, 218, 0.5);
+  z-index: 0;
   border-radius: 5px;
   top: 40%;
 }
@@ -114,3 +123,32 @@
   fill: $accent-color;
   cursor: pointer;
 }
+/////////////
+// .swiper-button-prev {
+//   display: block;
+//   height: 40px;
+//   width: 45px;
+//   z-index: 10;
+//   margin-top: -34%;
+//   margin-left: -10%;
+//   cursor: pointer;
+// }
+// .swiper-button-next {
+//   display: block;
+//   height: 40px;
+//   width: 45px;
+//   z-index: 10;
+//   margin-top: -7%;
+//   margin-left: 106%;
+//   cursor: pointer;
+// }
+// @media screen and (min-width: 1024px) {
+//   .swiper-button-prev {
+//     margin-top: -25%;
+//     margin-left: -7%;
+//   }
+//   .swiper-button-next {
+//     margin-top: -5%;
+//     margin-left: 105%;
+//   }
+// }

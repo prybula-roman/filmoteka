@@ -1,8 +1,8 @@
 import { refs } from './refs';
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
-import { onRenderPagination } from './pagination';
-import { langs } from '../scripts/localization';
+import {onRenderPopularMoviesMarkup} from './search'
+import { onRenderPagination } from './pagination'
 
 class MovieFilter {
     constructor() {
@@ -12,7 +12,7 @@ class MovieFilter {
     }
     async fetchMovies(genre, year, sort) {
       const url = `${this.BASE_URL}/discover/movie?with_genres=${genre}&sort_by=${sort}
-&primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=${langs}`;
+                    &primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));
@@ -45,9 +45,9 @@ document.querySelectorAll('.filter-input').forEach(item => {
   item.addEventListener('change', event => {
     movieFilter.resetPage();
     refs.formEl.value = '';
-    sortValue = document.querySelector('#sortpicker').value;
-    yearValue = document.querySelector('#yearpicker').value;
-    genreValue = document.querySelector('#genrepicker').value;
+    sortValue = refs.sortPickerEl.value;
+    yearValue = refs.yearPickerEl.value;
+    genreValue = refs.genrePickerEl.value;
 
     createCard(genreValue, yearValue, sortValue);
 
@@ -63,6 +63,14 @@ function createCard(genre, year, sort) {
     }
     onRenderPagination(res.total_pages, res.page);
   })
-
-
 }
+
+refs.clearBtnEl.addEventListener('click', () => {
+  refs.sortPickerEl.value = '';
+  refs.yearPickerEl.value = '';
+  refs.genrePickerEl.value = '';
+
+  onRenderPopularMoviesMarkup()
+})
+
+export {createCard};

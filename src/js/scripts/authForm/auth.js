@@ -12,12 +12,12 @@ import { firebaseConfig } from './firebaseConfig';
 import Form from './regForm';
 import { onHome } from '../header';
 import { config } from './configForm';
-import {onCloseModal} from "../modal.js"
+import { onCloseModal } from '../modal.js';
+import { refs } from '../refs';
 
 export default class Auth {
   constructor() {
     //--->
-
 
     this.fbase = initializeApp(firebaseConfig);
     this.auth = getAuth();
@@ -42,8 +42,11 @@ export default class Auth {
           id: auth.currentUser.uid,
           name: fullName,
           mail: email,
-          filmList: [''],
+          filmList: '[]',
+          queueList: '[]',
         });
+
+        alert('User was registred');
       })
       .catch(function (error) {
         var errorCode = error.code;
@@ -63,9 +66,7 @@ export default class Auth {
       .then(() => {
         onHome();
         if (sessionStorage.getItem('logInUser')) {
-          
           sessionStorage.removeItem('logInUser');
-         
         }
         if (document.querySelector('.my-library-movies')) {
           document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
@@ -78,61 +79,70 @@ export default class Auth {
       .catch(error => {
         alert(`!!!!!!!!! ${error.messsage}`);
       })
-      .finally(() => {
-       
-      });
+      .finally(() => {});
   }
-
+  //--------------------------------------------------------------------------
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
-  update(ref(database, 'users/' + auth.currentUser.uid), {
+    update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
-      .then(resp => { 
+      .then(resp => {
+        //------------------------------------------------
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
-        console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
-        console.log("btnAddFilm.textContent",btnAddFilm.textContent)
-        if(btnAddFilm.textContent==='DELETE WATCHED'){
-          console.log("btnAddFilm.textContent=DELETE WATCHED")
-          btnAddFilm.innerHTML="ADD TO WATCHED"
-       //   btnAddFilm.classList.remove("movies-btn__button--current")
+        if (btnAddFilm.textContent === 'DELETE WATCHED') {
+          btnAddFilm.innerHTML = 'ADD TO WATCHED';
+        } else {
+          btnAddFilm.innerHTML = 'DELETE WATCHED';
         }
-        else{
-          console.log("btnAddFilm.textContent=ADD TO WATCHED")
-          btnAddFilm.innerHTML="DELETE WATCHED"
-         // btnAddFilm.classList.add("movies-btn__button--current")
-
-        }    
       })
       .catch(error => {
         alert(error.message);
       });
   }
-
-
-loginUser(auth, fullName, email, password) {
-   if(this.currentUser) {
-      if(this.currentUser!=null){
-        this.currentUser.email= email  ;
-        this.currentUser.password= password ;
-        this.currentUser.name=fullName ;
+  //---------------------------------------------------------------------------
+  addFilmToQueue(auth, fullName, email, password, database, jsonFilm) {
+    update(ref(database, 'users/' + auth.currentUser.uid), {
+      queueList: jsonFilm,
+    })
+      .then(resp => {
+        const btnQueueFilm = document.querySelector('.currentLang-addQueue');
+        if (btnQueueFilm.textContent === 'DELETE QUEUE') {
+          btnQueueFilm.innerHTML = 'ADD TO QUEUE';
+        } else {
+          btnQueueFilm.innerHTML = 'DELETE QUEUE';
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }
+  //---------------------------------------------------------------------------
+  loginUser(auth, fullName, email, password) {
+    if (this.currentUser) {
+      if (this.currentUser != null) {
+        this.currentUser.email = email;
+        this.currentUser.password = password;
+        this.currentUser.name = fullName;
       }
     }
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-
-        const user={
-          name:fullName,
-          email:email,
-          password:password
-      }
+        const user = {
+          name: fullName,
+          email: email,
+          password: password,
+        };
         if (!localStorage.getItem('authorise')) {
           localStorage.setItem('authorise', JSON.stringify(user));
         } else {
-           localStorage.removeItem('authorise');
-           localStorage.setItem('authorise', JSON.stringify(user));
+          localStorage.removeItem('authorise');
+          localStorage.setItem('authorise', JSON.stringify(user));
         }
-         sessionStorage.setItem('logInUser',JSON.stringify(user))
-        config.btnLogIn.classList.toggle('visually-hidden');
+        sessionStorage.setItem('logInUser', JSON.stringify(user));
+        if (!config.btnLogIn.classList.contains('visually-hidden')) {
+          config.btnLogIn.classList.add('visually-hidden');
+        }
+
         config.btnReg.classList.toggle('visually-hidden');
         config.btnLogOut.classList.toggle('visually-hidden');
         config.btnMyLabr.classList.toggle('visually-hidden');
@@ -143,34 +153,43 @@ loginUser(auth, fullName, email, password) {
       });
     return 1;
   }
-
-   addToWatched(film){
-     if (sessionStorage.getItem('logInUser')!=null){
-      if(this.currentUser) {
-        if(this.currentUser!=null){
-          this.currentUser.email= JSON.parse(sessionStorage.getItem('logInUser')).email;
-          this.currentUser.password= JSON.parse(sessionStorage.getItem('logInUser')).password;
-          this.currentUser.name=JSON.parse(sessionStorage.getItem('logInUser')).name;;
+  //---------------------------------------------------------------------------
+  addToWatched(film) {
+    if (sessionStorage.getItem('logInUser') != null) {
+      if (this.currentUser) {
+        if (this.currentUser != null) {
+          this.currentUser.email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name = JSON.parse(sessionStorage.getItem('logInUser')).name;
         }
       }
-    }else{
-      console.log("$$$$$$$$$$$$$$$$$$")
+    } else {
+      alert('addToWatched(film)   Not User LogIn');
       return;
-    }   
+    }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        console.log("snapshot.val()=",snapshot.val())
-        if (snapshot.exists()){
-          if ( snapshot.val() === "[]") {
-            console.log("************")
+        console.log('snapshot.val()=', snapshot.val());
+        if (snapshot.exists()) {
+          if (snapshot.val() === '[]') {
             arrFilm.push(film);
-          } else { 
-            console.log("==================")
-            arrFilm =JSON.parse(snapshot.val());
-            arrFilm.push(film);
+          } else {
+            arrFilm = JSON.parse(snapshot.val());
+            let filmInList = false;
+            arrFilm.forEach(element => {
+              if (element.id === film.id) {
+                alert('Film in the list watched');
+                filmInList = true;
+              }
+            });
+            if (filmInList === true) {
+              return;
+            } else {
+              arrFilm.push(film);
+            }
           }
-            this.addFilmToUser(
+          this.addFilmToUser(
             this.auth,
             this.currentUser.name,
             this.currentUser.email,
@@ -186,38 +205,153 @@ loginUser(auth, fullName, email, password) {
         console.error(error.message);
       });
   }
-
-
- delFilmWatched(film) {
-//console.log("delFilmWatched(film)")
-    if (sessionStorage.getItem('logInUser')!=null){
-      if(this.currentUser) {
-        if(this.currentUser!=null){
-          this.currentUser.email= JSON.parse(sessionStorage.getItem('logInUser')).email;
-          this.currentUser.password= JSON.parse(sessionStorage.getItem('logInUser')).password;
-          this.currentUser.name=JSON.parse(sessionStorage.getItem('logInUser')).name;;
+  //---------------------------------------------------------------------------
+  delFilmWatched(film) {
+    console.log('delFilmWatched(film)');
+    if (sessionStorage.getItem('logInUser') != null) {
+      if (this.currentUser) {
+        if (this.currentUser != null) {
+          this.currentUser.email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name = JSON.parse(sessionStorage.getItem('logInUser')).name;
         }
       }
-    }else{
+    } else {
       return;
     }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
         if (snapshot.exists()) {
-          if ( snapshot.val() === "[]") {
-            console.log(snapshot.val() === "[]")
+          if (snapshot.val() === '[]') {
+            console.log(snapshot.val() === '[]');
           } else {
-            arrFilm =JSON.parse(snapshot.val());
+            arrFilm = JSON.parse(snapshot.val());
             arrFilm.forEach((item, index, arr) => {
               if (item.id === film.id) {
                 arrFilm.splice(index, 1);
-                onCloseModal(); //закрыть модалку
+                //
+                ///---------------
+                console.log('refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
+                if (refs.GLOBAL_IS_LIB === true) {
+                  // console.log('film.id=', film.id);
+                  // document.getElementById(`${film.id}`).remove();
+                  onCloseModal(); //закрыть модалку
+                }
+                console.log(
+                  'document.getElementById(`${film.id}`)=',
+                  document.getElementById(`${film.id}`),
+                );
                 document.getElementById(`${film.id}`).remove();
+                //refs.GLOBAL_IS_LIB = false;
               }
             });
           }
           this.addFilmToUser(
+            this.auth,
+            this.currentUser.name,
+            this.currentUser.email,
+            this.currentUser.password,
+            this.db,
+            JSON.stringify(arrFilm),
+          );
+        } else {
+          console.log('Not data available');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }
+  //-------------------------------------------------------------
+  addQueueWatched(film) {
+    if (sessionStorage.getItem('logInUser') != null) {
+      if (this.currentUser) {
+        if (this.currentUser != null) {
+          this.currentUser.email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name = JSON.parse(sessionStorage.getItem('logInUser')).name;
+        }
+      }
+    } else {
+      alert('addQueueWatched   Not User LogIn');
+      return;
+    }
+    get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
+      .then(snapshot => {
+        let arrFilm = [];
+        console.log('snapshot.val()=', snapshot.val());
+        if (snapshot.exists()) {
+          if (snapshot.val() === '[]') {
+            arrFilm.push(film);
+          } else {
+            arrFilm = JSON.parse(snapshot.val());
+            let filmInList = false;
+            arrFilm.forEach(element => {
+              if (element.id === film.id) {
+                alert('Film is in the list queue');
+                filmInList = true;
+              }
+            });
+            if (filmInList === true) {
+              return;
+            } else {
+              arrFilm.push(film);
+            }
+          }
+          console.log(arrFilm);
+          this.addFilmToQueue(
+            this.auth,
+            this.currentUser.name,
+            this.currentUser.email,
+            this.currentUser.password,
+            this.db,
+            JSON.stringify(arrFilm),
+          );
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error.message);
+      });
+  }
+  //------------------------------------------------
+  delQueueWatched(film) {
+    console.log('delQueueWatched()');
+    if (sessionStorage.getItem('logInUser') != null) {
+      if (this.currentUser) {
+        if (this.currentUser != null) {
+          this.currentUser.email = JSON.parse(sessionStorage.getItem('logInUser')).email;
+          this.currentUser.password = JSON.parse(sessionStorage.getItem('logInUser')).password;
+          this.currentUser.name = JSON.parse(sessionStorage.getItem('logInUser')).name;
+        }
+      }
+    } else {
+      return;
+    }
+    get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
+      .then(snapshot => {
+        let arrFilm = [];
+        if (snapshot.exists()) {
+          if (snapshot.val() === '[]') {
+            console.log(snapshot.val() === '[]');
+          } else {
+            arrFilm = JSON.parse(snapshot.val());
+            arrFilm.forEach((item, index, arr) => {
+              if (item.id === film.id) {
+                arrFilm.splice(index, 1);
+                // onCloseModal(); //закрыть модалку
+                console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
+                if (refs.GLOBAL_IS_QUE === true) {
+                  onCloseModal(); //закрыть модалку
+                }
+                document.getElementById(`${film.id}`).remove();
+                // refs.GLOBAL_IS_QUE = false;
+              }
+            });
+          }
+          this.addFilmToQueue(
             this.auth,
             // fullName,
             this.currentUser.name,
@@ -235,4 +369,36 @@ loginUser(auth, fullName, email, password) {
       });
   }
 
+  findFilm(film, btn, dataTable) {
+    if (sessionStorage.getItem('logInUser') != null) {
+      console.log('dataTable=', dataTable);
+      get(ref(this.db, 'users/' + this.auth.currentUser.uid + dataTable))
+        .then(snapshot => {
+          let arrFilm = [];
+          // console.log('snapshot.val()=', snapshot.val());
+          if (snapshot.exists()) {
+            arrFilm = JSON.parse(snapshot.val());
+            arrFilm.forEach(element => {
+              if (element.id === film.id) {
+                // alert('Film in the list watched');
+                console.log('btn=', btn.textContent);
+                if (btn.textContent === 'ADD TO QUEUE') {
+                  btn.innerHTML = 'DELETE QUEUE';
+                }
+                if (btn.textContent === 'ADD TO WATCHED') {
+                  btn.innerHTML = 'DELETE WATCHED';
+                }
+              }
+            }); //foreach
+          } else {
+            alert('findFilm   Not User LogIn');
+            return;
+          }
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    }
+  }
 }
+//---------------------------------------------------------------------------

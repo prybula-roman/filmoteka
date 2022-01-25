@@ -97,6 +97,17 @@ body.dark-theme {
       background-color: $accent-color;
     }
   }
+
+  ////team-modal////
+  & .team-modal {
+    background-color: #111111c5;
+  }
+  & .team-modal__title {
+    color: $main-color;
+  }
+  & .team-modal__btn {
+    background-color: $accent-color;
+  }
 }
 .section--footer.light-theme {
   background-color: $footer-bg-color;
