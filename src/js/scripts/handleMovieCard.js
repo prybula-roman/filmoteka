@@ -1,7 +1,5 @@
 import FetchGenre from '../API/fetchGenre';
-import FilmsStorage from './local-storage';
 
-const filmsStorage = new FilmsStorage();
 const apiGenreData = new FetchGenre();
 
 export default function handleMovieCard(movies) {
@@ -35,8 +33,6 @@ export default function handleMovieCard(movies) {
       elem.poster_path = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsairhVA5q080vP7Niigy3bMCnGZNdzNCN4w&usqp=CAU'
     }
   });
-
-  filmsStorage.addToCurrent(movies);
 
   return movies;
 } 
