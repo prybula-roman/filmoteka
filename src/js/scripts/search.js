@@ -95,6 +95,7 @@ export function onRenderPopularMoviesMarkup(e) {
             refs.galleryEl.innerHTML = markup;
             trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
             onRenderPagination(film.total_pages, film.page);
+            refs.noMoviesEl.classList.add('visually-hidden');
         })
         .catch(error => {
             popularMovie.fetchPopular().then(film => {
@@ -146,7 +147,8 @@ function onRenderPaginationMarkup() {
             refs.filterEl.style.display = 'none';
             refs.wrapperSwiperEl.classList.add("is-hidden")
             refs.errorEl.classList.add('visually-hidden');
-            
+           // refs.noMoviesEl.classList.add('visually-hidden');
+
             const markup = filmCard(handleMovieCard(film.results));
             refs.galleryEl.innerHTML = markup;
             trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
@@ -156,7 +158,10 @@ function onRenderPaginationMarkup() {
                 refs.filterEl.style.display = 'none';
                 refs.errorEl.classList.remove('visually-hidden');
                 refs.spinner.classList.add('is-hidden');
-            }
+               // const noMovie = refs.noMoviesEl;
+                 // if (noMovie.classList.contains('visually-hidden')) {
+                   refs.noMoviesEl.classList.remove('visually-hidden');
+                         }
             if (film.total_pages === 1) {
                 refs.filterEl.style.display = 'flex';
                 refs.spinner.classList.add('is-hidden');

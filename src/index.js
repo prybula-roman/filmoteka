@@ -25,3 +25,13 @@ import './js/scripts/localization';
 import './js/scripts/year-option';
 
 import './js/scripts/authForm/authentic';
+
+import Auth from "./js/scripts/authForm/auth";
+
+
+if(localStorage.getItem("authorise")!=null){
+    const newAuth=new Auth();
+const logUser=JSON.parse(localStorage.getItem("authorise")); 
+    newAuth.loginUser(newAuth.auth, logUser.name,logUser.email ,logUser.password);
+}
+
