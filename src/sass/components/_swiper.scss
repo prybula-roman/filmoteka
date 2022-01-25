@@ -44,9 +44,9 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: $main-color;
+  color: $dark-theme-color;
   body.light-theme & {
-    color: $dark-theme-color;
+    color: $main-color;
   }
 }
 
@@ -99,6 +99,7 @@
 .swiper-button-prev,
 .swiper-button-next {
   // background-color: rgba(117, 190, 218, 0.5);
+  z-index: 0;
   border-radius: 5px;
   top: 40%;
 }

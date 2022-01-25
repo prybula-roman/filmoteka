@@ -66,7 +66,7 @@ function onMyLibrary() {
 refs.homeEl.addEventListener('click', onHome);
 onRenderPopularMoviesMarkup();
 function onHome() {
-  refs.filterEl.style.display = 'block';
+  refs.filterEl.style.display = 'flex';
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');
   refs.homeEl.classList.add('nav-list__link--current');
