@@ -23,7 +23,7 @@ export default function handleMovieCard(movies) {
       elem.genre_ids = apiGenreData
         .ganreTranspiler(elem.genre_ids)
         .slice(0, 2)
-        .join(', ') + ', ' + 'Others';
+        .join(', ') + ', ' + 'Other';
     }
     else {
       elem.genre_ids = 'Unknown';
