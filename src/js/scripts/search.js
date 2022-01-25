@@ -5,6 +5,9 @@ import PopularMovies from '../API/fetchPopularMovie';
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
 import trailer from '../API/fetchTrailer';
+
+import FilmsStorage from './local-storage';
+
 // import {onSwiperNowPlayingMovies} from '../scripts/swiper'
 
 import { refs } from './refs';
@@ -16,14 +19,14 @@ import handleSwiperMovieCard from './handleSwiperMovieCard';
 
 export default onRenderPopularMoviesMarkup;
 
-refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 const apiSearchData = new FetchSearchMovie();
 const popularMovie = new PopularMovies();
 const fetchNowPlayingMovies = new FetchNowPlayingMovies();
+const filmsStorage = new FilmsStorage();
 
+refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 
 onSwiperNowPlayingMovies();
-// trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
 trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
 
 
@@ -86,19 +89,20 @@ export function onRenderPopularMoviesMarkup(e) {
     popularMovie
         .fetchPopular()
         .then(film => {
+            filmsStorage.addToCurrent(film.results);
+            
             const markup = filmCard(handleMovieCard(film.results));
             refs.galleryEl.innerHTML = markup;
             trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-
             onRenderPagination(film.total_pages, film.page);
         })
         .catch(error => {
             popularMovie.fetchPopular().then(film => {
+                filmsStorage.addToCurrent(film.results);
+
                 const markup = filmCard(handleMovieCard(film.results));
                 refs.galleryEl.innerHTML = markup;
-
                 trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
-                // trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
                 onRenderPagination(film.total_pages, film.page);
             });
         })
@@ -137,6 +141,8 @@ function onRenderPaginationMarkup() {
     apiSearchData
         .fetchMovies()
         .then(film => {
+            filmsStorage.addToCurrent(film.results);
+            
             refs.filterEl.style.display = 'none';
             refs.wrapperSwiperEl.classList.add("is-hidden")
             refs.errorEl.classList.add('visually-hidden');
