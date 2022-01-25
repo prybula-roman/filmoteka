@@ -49,7 +49,7 @@ export default class Form {
 
   btnRegClicked() {
     if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
-      const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
+      const newAuth = new Auth();
       newAuth.createNewUser(
         newAuth.auth,
         this.nameAreaVal,

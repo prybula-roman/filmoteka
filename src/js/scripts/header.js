@@ -3,16 +3,14 @@ import onRenderPopularMoviesMarkup from './search';
 
 //////////////////////roman/////////////
 import filmCard from '../templates/preview_card.hbs';
-//import filmCard from '../templates/modal_lybr.hbs';
-
-// import handleMovieCard from './handleMovieCard';
-// import {
-//   getAuth,
-//   signInWithEmailAndPassword,
-//   createUserWithEmailAndPassword,
-//   currentUser,
-//   signOut,
-// } from 'firebase/auth';
+import handleMovieCard from './handleMovieCard';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  currentUser,
+  signOut,
+} from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
 ////////////////////////////////////////
@@ -29,22 +27,12 @@ function onMyLibrary() {
   refs.headerEl.classList.remove('header__container');
   refs.headerEl.classList.add('library-bgi');
   refs.galleryEl.innerHTML = '';
-  // refs.mainEl.style.minHeight = 'calc(100vh - 80px)';
   refs.paginationEl.classList.add('pagination__off');
   refs.errorEl.classList.add('visually-hidden');
-
-
-  // if(refs.galleryEl.innerHTML === ''){
-  //   refs.noMoviesEl.classList.remove("visually-hidden");
-  // }else{
-  //   refs.noMoviesEl.classList.add("visually-hidden");
-  // }
   //////////////////////////////////////////////////////////////////////////
   //------------------------------------------------
   const listCards = document.querySelector('.movies');
   listCards.classList.toggle('my-library-movies');
-
-  console.log('listCards=', listCards);
   if (document.querySelector('.my-library-movies')) {
     renderLibrary();
   }
@@ -54,10 +42,7 @@ function onMyLibrary() {
   //-----------------------------------------------
   const btnQueue = refs.queueEl;
   btnQueue.addEventListener('click', renderQueue);
-  //-----------------------------------------------
-  if (document.querySelector('.my-library-movies')) {//??????
-    renderLibrary();
-  }
+
   //-----------------------------------------------
 
   //////////////////////////////////////////////////////////////////////////
@@ -82,8 +67,8 @@ function onHome() {
   refs.wrapperSwiperEl.classList.remove('is-hidden');
 
   ///////////////////////////////////////
-  refs.GLOBAL_IS_LIB = false;
   refs.GLOBAL_IS_QUE = false;
+  refs.GLOBAL_IS_LIB = false;
   ///////////////////////////////////////
 }
 
@@ -93,28 +78,32 @@ function renderLibrary() {
   const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
   const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
   const newAuth = new Auth(fullName, email, password);
+  refs.GLOBAL_IS_LIB = true;
+  refs.GLOBAL_IS_QUE = false;
   get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
     .then(snapshot => {
       console.log('renderLibrary()  snapshot=', snapshot);
       let arrFilm = [];
       if (snapshot.exists()) {
         //--------------------------------
-        if(!refs.watchedEl.classList.contains("btn-activ")){
-          refs.watchedEl.classList.add("btn-activ")    
+        if (!refs.watchedEl.classList.contains('btn-activ')) {
+          refs.watchedEl.classList.add('btn-activ');
         }
-        if(refs.queueEl.classList.contains("btn-activ")){
-          refs.queueEl.classList.remove("btn-activ")    
+        if (refs.queueEl.classList.contains('btn-activ')) {
+          refs.queueEl.classList.remove('btn-activ');
         }
-        refs.GLOBAL_IS_LIB = true;
-        refs.GLOBAL_IS_QUE = false;
+
         //----------------------------------
+        const listCards = document.querySelector('.movies');
         if (JSON.parse(snapshot.val()).length === 0) {
+          listCards.innerHTML = '';
           refs.noMoviesEl.classList.remove('visually-hidden');
+          listCards.innerHTML = '';
           console.log('Nothig do');
         } else {
           refs.noMoviesEl.classList.add('visually-hidden');
           arrFilm = JSON.parse(snapshot.val());
-          const listCards = document.querySelector('.movies');
+
           listCards.innerHTML = '';
           listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
           console.log('renderLibrary()  arrFilm=', arrFilm);
@@ -129,34 +118,37 @@ function renderLibrary() {
 }
 
 function renderQueue() {
-  console.log('renderQueue()');
+  console.log('-------------renderQueue()');
   const fullName = JSON.parse(sessionStorage.getItem('logInUser')).name;
   const email = JSON.parse(sessionStorage.getItem('logInUser')).email;
   const password = JSON.parse(sessionStorage.getItem('logInUser')).password;
   const newAuth = new Auth(fullName, email, password);
+  refs.GLOBAL_IS_LIB = false;
+  refs.GLOBAL_IS_QUE = true;
   get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/queueList'))
     .then(snapshot => {
       console.log('renderQueue()  snapshot=', snapshot);
-      let arrFilm = [];
-      if (snapshot.exists()) {
-//--------------------------------
-        if(refs.watchedEl.classList.contains("btn-activ")){
-          refs.watchedEl.classList.remove("btn-activ")    
-        }
-        if(!refs.queueEl.classList.contains("btn-activ")){
-          refs.queueEl.classList.add("btn-activ")    
-        }
-        refs.GLOBAL_IS_LIB = false;
-        refs.GLOBAL_IS_QUE = true;
-        //----------------------------------
 
+      if (snapshot.exists()) {
+        let arrFilm = [];
+        //--------------------------------
+        if (refs.watchedEl.classList.contains('btn-activ')) {
+          refs.watchedEl.classList.remove('btn-activ');
+        }
+        if (!refs.queueEl.classList.contains('btn-activ')) {
+          refs.queueEl.classList.add('btn-activ');
+        }
+
+        //----------------------------------
+        const listCards = document.querySelector('.movies');
         if (JSON.parse(snapshot.val()).length === 0) {
           refs.noMoviesEl.classList.remove('visually-hidden');
+          listCards.innerHTML = '';
           console.log('Nothig do');
         } else {
           refs.noMoviesEl.classList.add('visually-hidden');
           arrFilm = JSON.parse(snapshot.val());
-          const listCards = document.querySelector('.movies');
+
           listCards.innerHTML = '';
           listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
           console.log('renderQueue()  arrFilm=', arrFilm);

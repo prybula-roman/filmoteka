@@ -9,22 +9,21 @@ import { handleModalMovieCard } from './handleModalMovieCard'
 import { currentTheme } from './toggle-theme';
 // import { changeModalLanguage } from './localization';
 //////////////////////roman/////////////
-// import {
-//   getAuth,
-//   signInWithEmailAndPassword,
-//   createUserWithEmailAndPassword,
-//   currentUser,
-//   signOut,
-// } from 'firebase/auth';
-// import { getDatabase, ref, set, get, child, update } from 'firebase/database';
-// import Auth from './authForm/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  currentUser,
+  signOut,
+} from 'firebase/auth';
+import { getDatabase, ref, set, get, child, update } from 'firebase/database';
+import Auth from './authForm/auth';
 import {
   btnAddFilmClicked,
   btnDelFilmClicked,
   btnDelQueueClicked,
   btnAddQueueClicked,
 } from './authForm/authentic';
-
 ////////////////////////////////////////
 
 refs.openModalEl.addEventListener('click', onOpenModal);
@@ -75,21 +74,17 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
-        ///////////////////////////////////////////////////
+        ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
+        btnAdd.innerHTML = 'ADD TO WATCHED';
         let btnQueue = document.querySelector('.currentLang-addQueue');
-
-        if(refs.GLOBAL_IS_LIB){
-          btnAdd.innerHTML = 'DELETE WATCHED';
-        }else{
-          btnAdd.innerHTML = 'ADD TO WATCHED';
-        }
-
-        // if (document.querySelector('.my-library-movies')) {
-        //   btnAdd = document.querySelector('.currentLang-addWatched');
-        //   btnAdd.innerHTML = 'DELETE WATCHED';
-        // }
+        btnQueue.innerHTML = 'ADD TO QUEUE';
+        const newAuth = new Auth();
+        //------------------------------------------------
+        newAuth.findFilm(film, btnAdd, `/filmList`);
+        newAuth.findFilm(film, btnQueue, `/queueList`);
+        //--------------------------------------------------------
         btnAdd.addEventListener('click', () => {
           if (btnAdd.textContent === 'DELETE WATCHED') {
             btnDelFilmClicked(film);
@@ -98,17 +93,6 @@ function onOpenModal(e) {
           }
         });
         //-------------------------------------------------------------
-
-        if(refs.GLOBAL_IS_QUE){
-          btnQueue.innerHTML = 'DELETE QUEUE';
-        }else{
-          btnQueue.innerHTML = 'ADD TO QUEUE';
-        }
-
-        // if (document.querySelector('.my-library-movies')) {
-        //   btnQueue = document.querySelector('.currentLang-addQueue');
-        //   btnQueue.innerHTML = 'DELETE QUEUE';
-        // }
         btnQueue.addEventListener('click', e => {
           console.log('e=', e);
           if (btnQueue.textContent === 'DELETE QUEUE') {
@@ -118,7 +102,7 @@ function onOpenModal(e) {
           }
         });
         //--------------------------------------------------------------
-        //////////////////////////////////////////////////
+        ////////////////////конец p.s. Рома //////////////////////////////
       }
     });
   });

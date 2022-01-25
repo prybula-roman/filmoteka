@@ -1,5 +1,4 @@
 const refs = {
-
   // header section elements
   homeEl: document.querySelector('#home-link'),
   myLibEl: document.querySelector('#library-link'),
@@ -21,7 +20,6 @@ const refs = {
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
   noMoviesEl: document.querySelector('.no-movies'),
   filterEl: document.querySelector('.filter__container'),
-
 
   // pagination section elements
   paginationEl: document.querySelector('.pagination'),
@@ -58,15 +56,14 @@ const refs = {
   // theme(day/night)
   checkboxEl: document.getElementById('checkbox'),
 
-
   // filter
   //yearOptionEl: document.querySelector('#yearpicker'),
   //genreOptionEl: document.querySelector('#genrepicker'),
 
   yearPickerEl: document.querySelector('#yearpicker'),
-    genrePickerEl: document.querySelector('#genrepicker'),
-    sortPickerEl: document.querySelector('#sortpicker'),
-    clearBtnEl: document.querySelector('.clear-btn'),
+  genrePickerEl: document.querySelector('#genrepicker'),
+  sortPickerEl: document.querySelector('#sortpicker'),
+  clearBtnEl: document.querySelector('.clear-btn'),
   // clearBtnEl: document.querySelector('.clear-btn'),
   //filter
   // filterInputEl: document.querySelectorAll('.filter-input'),
@@ -74,6 +71,8 @@ const refs = {
   //firebase
   GLOBAL_IS_LIB: false,
   GLOBAL_IS_QUE: false,
+  modalInpName: document.querySelector('.modal-form__input'),
+  modalInpNameIcon: document.querySelector('.modal-form__icon-name'),
   // genres
   // genresEl: [
   //   {
@@ -191,7 +190,6 @@ const refs = {
   //      "genre-name_ua": "Вестерн"
   //   }
   // ],
-
 
   //location
   enEl: document.querySelector('#englishLink'),
