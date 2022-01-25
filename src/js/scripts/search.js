@@ -23,7 +23,8 @@ const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 
 onSwiperNowPlayingMovies();
-trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+// trailer.onPlayTrailer(document.querySelectorAll('.movies__playSwiperBtn'));
+trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
 
 
 function onSwiperNowPlayingMovies() {
