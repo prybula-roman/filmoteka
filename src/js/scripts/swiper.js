@@ -2,16 +2,11 @@
 // import { refs } from './refs';
 
 // import scripts
-import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
+// import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 // import handleSwiperMovieCard from './handleSwiperMovieCard';
 
-// import Swiper JS
 import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';  
-
-// import Swiper css
 import 'swiper/swiper-bundle.css'
-
-
 // const fetchNowPlayingMovies = new FetchNowPlayingMovies();
 
 new Swiper('.swiper', {
@@ -52,7 +47,6 @@ new Swiper('.swiper', {
     },
 
   }
-  
 });
 
 // const sliderBlock = document.querySelector('.image-slider');

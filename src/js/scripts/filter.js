@@ -12,7 +12,7 @@ class MovieFilter {
     }
     async fetchMovies(genre, year, sort) {
       const url = `${this.BASE_URL}/discover/movie?with_genres=${genre}&sort_by=${sort}
-&primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
+                    &primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));

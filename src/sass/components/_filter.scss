@@ -4,12 +4,15 @@
 }
 
 .filter__container {
-  width: 280px;
+  width: 250px;
   margin: 0 auto;
   padding-bottom: 10px;
   background-color: $footer-bg-color;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 
+  @media screen and (min-width: $mobile) {
+    width: 280px;
+  }
   @media screen and (min-width: $tablet) {
     width: 625px;
     padding: 15px 0px 70px 0px;

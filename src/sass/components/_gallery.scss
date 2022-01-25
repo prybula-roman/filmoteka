@@ -38,6 +38,7 @@
 
 .movies__item {
   position: relative;
+  width: fit-content;
   border-radius: 15px;
   transition: all $time $timing-function;
   margin-bottom: 25px;

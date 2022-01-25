@@ -5,14 +5,14 @@ import onRenderPopularMoviesMarkup from './search';
 import filmCard from '../templates/preview_card.hbs';
 //import filmCard from '../templates/modal_lybr.hbs';
 
-import handleMovieCard from './handleMovieCard';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  currentUser,
-  signOut,
-} from 'firebase/auth';
+// import handleMovieCard from './handleMovieCard';
+// import {
+//   getAuth,
+//   signInWithEmailAndPassword,
+//   createUserWithEmailAndPassword,
+//   currentUser,
+//   signOut,
+// } from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
 ////////////////////////////////////////
@@ -66,7 +66,7 @@ function onMyLibrary() {
 refs.homeEl.addEventListener('click', onHome);
 onRenderPopularMoviesMarkup();
 function onHome() {
-  refs.filterEl.style.display = 'block';
+  refs.filterEl.style.display = 'flex';
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');
   refs.homeEl.classList.add('nav-list__link--current');
@@ -139,18 +139,16 @@ function renderQueue() {
       console.log('renderQueue()  snapshot=', snapshot);
       let arrFilm = [];
       if (snapshot.exists()) {
-
 //--------------------------------
-
-if(refs.watchedEl.classList.contains("btn-activ")){
-  refs.watchedEl.classList.remove("btn-activ")    
-}
-if(!refs.queueEl.classList.contains("btn-activ")){
-  refs.queueEl.classList.add("btn-activ")    
-}
-refs.GLOBAL_IS_LIB = false;
-refs.GLOBAL_IS_QUE = true;
-//----------------------------------
+        if(refs.watchedEl.classList.contains("btn-activ")){
+          refs.watchedEl.classList.remove("btn-activ")    
+        }
+        if(!refs.queueEl.classList.contains("btn-activ")){
+          refs.queueEl.classList.add("btn-activ")    
+        }
+        refs.GLOBAL_IS_LIB = false;
+        refs.GLOBAL_IS_QUE = true;
+        //----------------------------------
 
         if (JSON.parse(snapshot.val()).length === 0) {
           refs.noMoviesEl.classList.remove('visually-hidden');
