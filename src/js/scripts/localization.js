@@ -51,13 +51,13 @@ function setLanguageData(current) {
 }
 
 export function changeModalLanguage() {
-  const popularity = document.querySelector('.current-popularity');
-  const genres = document.querySelector('.current-genres');
-  const votes = document.querySelector('.current-votes');
-  const title = document.querySelector('.current-titleOriginal');
-  const about = document.querySelector('.current-about');
-  const addWatched = document.querySelector('.current-addWatched');
-  const addQueue = document.querySelector('.current-addQueue');
+  const popularity = document.querySelector('.currentLang-popularity');
+  const genres = document.querySelector('.currentLang-genres');
+  const votes = document.querySelector('.currentLang-votes');
+  const title = document.querySelector('.currentLang-titleOriginal');
+  const about = document.querySelector('.currentLang-about');
+  const addWatched = document.querySelector('.currentLang-addWatched');
+  const addQueue = document.querySelector('.currentLang-addQueue');
 
   if (langs === 'ru') {
     popularity.textContent = `${modalLang.popularity.ru}`;
