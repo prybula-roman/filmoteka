@@ -71,8 +71,26 @@ const refs = {
   //firebase
   GLOBAL_IS_LIB: false,
   GLOBAL_IS_QUE: false,
+  GLOBAL_IS_REG_FORM: false,
+  GLOBAL_IS_LOG_FORM: false,
+  modalForm: document.querySelector('.modal-form'),
   modalInpName: document.querySelector('.modal-form__input'),
   modalInpNameIcon: document.querySelector('.modal-form__icon-name'),
+  nameBtnAddWatch: 'add to watched',
+  nameBtnAddQueue: 'add to queue',
+  nameBtnDelWatch: 'delete from watched',
+  nameBtnDelQueue: 'delete from queue',
+  //----
+  nameBtnAddWatchRu: 'добавить в проссмотренные',
+  nameBtnAddQueueRu: 'добавить в очередь',
+  nameBtnDelWatchRu: 'удалить из проссмотренных',
+  nameBtnDelQueueRu: 'удалить из очереди',
+  //---
+  nameBtnAddWatchUa: 'додати до переглянутих',
+  nameBtnAddQueueUa: 'додати до черги',
+  nameBtnDelWatchUa: 'видалити з переглянутих',
+  nameBtnDelQueueUa: 'видалити з черги',
+
   // genres
   // genresEl: [
   //   {
@@ -200,7 +218,7 @@ const refs = {
 
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
-  wrapperSwiperEl: document.querySelector('.wrapper'),
+  wrapperSwiperEl: document.querySelector('.wrapper-section'),
 };
 
 export { refs };
