@@ -3,8 +3,8 @@ body {
   background-color: $main-color;
   color: $black-color;
   transition: all $time $timing-function;
-  &::-webkit-scrollbar {
-    width: 2px;
-    height: 8px;
-  }
+  // &::-webkit-scrollbar {
+  //   width: 2px;
+  //   height: 8px;
+  // }
 }
