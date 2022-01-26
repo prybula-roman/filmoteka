@@ -50,6 +50,9 @@ const refs = {
   // spinner
   spinner: document.querySelector('.spinner'),
 
+  // localization
+  langWrapEl: document.querySelector('.langWrap'),
+
   // to top button
   toTopButtonEl: document.querySelector('.toTopButton'),
 

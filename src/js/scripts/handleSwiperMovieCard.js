@@ -30,6 +30,7 @@ export default function handleSwiperMovieCard(movies) {
   });
   
   filmsSwiperStorage.addToCurrentSwiper(movies);
+  
 
   return movies;
 } 

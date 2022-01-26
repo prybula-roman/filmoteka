@@ -12,7 +12,7 @@
   },
 
   "registration": {
-    "uk": "Регiстрацiя",
+    "uk": "Реєстрацiя",
     "ru": "Регистрация",
     "en": "registration"
   },
@@ -24,7 +24,7 @@
   },
 
   "logout": {
-    "uk": "выхiд",
+    "uk": "вихiд",
     "ru": "выход",
     "en": "logOut"
   },
@@ -256,7 +256,7 @@
   "ourteam": {
     "uk": "Наша команда",
     "ru": "Наша команда",
-    "en": "Our team<"
+    "en": "Our team"
   },
 
   "teamname1": {

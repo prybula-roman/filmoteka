@@ -18,6 +18,7 @@ import Auth from './authForm/auth';
 refs.myLibEl.addEventListener('click', onMyLibrary);
 
 function onMyLibrary() {
+  refs.langWrapEl.classList.add('visually-hidden');
   refs.wrapperSwiperEl.classList.add('is-hidden');
   refs.filterEl.style.display = 'none';
   refs.formEl.classList.add('is-hidden');
@@ -54,6 +55,7 @@ function onHome() {
   console.log('onHome()   refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
   console.log('onHome()   refs.GLOBAL_IS_QUE=', refs.GLOBAL_IS_QUE);
   refs.filterEl.style.display = 'flex';
+  refs.langWrapEl.classList.remove('visually-hidden');
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');
   refs.homeEl.classList.add('nav-list__link--current');
