@@ -1,6 +1,6 @@
 import { refs } from './refs';
 
-import pageLang from '../scripts/templates/pageLang';
+import pageLang from '../scripts/templates/pageLang.json';
 
  import modalLang from '../scripts/templates/modalLang.json';
 
@@ -90,6 +90,6 @@ export function changeModalLanguage() {
     addQueue.textContent = `${modalLang.addQueue.en}`;
   }
 }
-
+console.log(refs.modalAuth); 
 
 export { langs };

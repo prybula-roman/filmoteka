@@ -28,9 +28,42 @@
   border-radius: 5px;
   background-color: #ffffff;
   transition: 250ms;
+
   @media screen and (min-width: $tablet) {
     padding: 45px 60px 15px;
     width: 500px;
+  }
+  &.dark-theme {
+    background-color: $dark-theme-color;
+    color: $white-color;
+    box-shadow: 0px 0px 15px 5px $accent-color;
+  }
+  &.dark-theme .modal-form__title {
+    color: $white-color;
+  }
+  &.dark-theme .modal__close-icon {
+    fill: $white-color;
+  }
+  &.dark-theme .modal-form__label {
+    color: $white-color;
+  }
+  &.dark-theme .modal-form__input {
+    background-color: $dark-theme-color;
+    transition: $time;
+    border-color: $white-color;
+    color: $white-color;
+   
+    &:hover,
+    &:focus {
+      border: 1px solid $accent-color;
+      outline: 0;
+    }
+    &::placeholder {
+      color: $white-color;
+    }
+  }
+  &.dark-theme .modal-form__icon {
+    fill: $white-color;
   }
 }
 .modal-form__title {
@@ -39,6 +72,10 @@
   text-align: center;
   letter-spacing: 0.03em;
   color: black;
+  &.dark-theme {
+    background-color: $dark-theme-color;
+    color: $white-color;
+  }
 }
 .modal__close-btn {
   width: 30px;
@@ -81,12 +118,11 @@
     margin-top: 10px;
   }
 }
-
 .modal-form__label {
   position: relative;
   display: flex;
   flex-direction: column;
-
+  color: $black-color;
   font-size: 14px;
   line-height: 1.16;
   letter-spacing: 0.01em;

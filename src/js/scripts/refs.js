@@ -73,6 +73,8 @@ const refs = {
   GLOBAL_IS_QUE: false,
   GLOBAL_IS_REG_FORM: false,
   GLOBAL_IS_LOG_FORM: false,
+  
+  modalAuth: document.querySelector('.modalAuth'),
   modalForm: document.querySelector('.modal-form'),
   modalInpName: document.querySelector('.modal-form__input'),
   modalInpNameIcon: document.querySelector('.modal-form__icon-name'),
