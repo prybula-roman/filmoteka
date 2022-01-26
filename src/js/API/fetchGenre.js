@@ -1,4 +1,4 @@
-import { langs } from '../scripts/localization';
+ import { langs } from '../scripts/localization';
 
 export default class FetchGenre {
   constructor() {

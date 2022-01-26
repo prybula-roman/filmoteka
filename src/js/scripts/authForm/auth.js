@@ -14,6 +14,7 @@ import { onHome } from '../header';
 import { config } from './configForm';
 import { onCloseModal } from '../modal.js';
 import { refs } from '../refs';
+import { langs } from '../localization';
 
 export default class Auth {
   constructor() {
@@ -45,14 +46,33 @@ export default class Auth {
           filmList: '[]',
           queueList: '[]',
         });
-
+        if (langs === 'ru') {
+          alert('Пользователь был зарегистрирован.');
+      }
+      if (langs === 'uk') {
+        alert('Користувач був зареєстрований');
+      }
+      if (langs === 'en') {
         alert('User was registred');
+      }
+
+        // alert('User was registred');
       })
       .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        if (errorCode == 'auth/weak-password') {
+        if (errorCode == 'auth/weak-password')
+        {
+          if (langs === 'ru') {
+            alert('Пароль слишком слабый.');
+        }
+        if (langs === 'uk') {
+          alert('Пароль занадто слабкий');
+        }
+        if (langs === 'en') {
           alert('The password is too weak.');
+        }
+          // alert('The password is too weak.');
         } else {
           alert(errorMessage);
         }
@@ -89,10 +109,32 @@ export default class Auth {
       .then(resp => {
         //------------------------------------------------
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
-        if (btnAddFilm.textContent === 'DELETE WATCHED') {
+        if (
+          btnAddFilm.textContent === 'DELETE WATCHED' ||
+          btnAddFilm.textContent === 'ВИДАЛИТИ З ПЕРЕГЛЯНУTИХ' ||
+          btnAddFilm.textContent === 'УДАЛИТЬ C ПРОСМОТРЕННЫХ'
+        ) {
           btnAddFilm.innerHTML = 'ADD TO WATCHED';
+          if (langs === 'ru') {
+            btnAddFilm.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
+          }
+          if (langs === 'uk') {
+            btnAddFilm.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
+          }
+          if (langs === 'en') {
+            btnAddFilm.textContent = 'ADD TO WATCHED';
+          }
         } else {
           btnAddFilm.innerHTML = 'DELETE WATCHED';
+          if (langs === 'ru') {
+            btnAddFilm.textContent = 'УДАЛИТЬ C ПРОСМОТРЕННЫХ';
+          }
+          if (langs === 'uk') {
+            btnAddFilm.textContent = 'ВИДАЛИТИ З ПЕРЕГЛЯНУTИХ';
+          }
+          if (langs === 'en') {
+            btnAddFilm.textContent = 'DELETE WATCHED';
+          }
         }
       })
       .catch(error => {
@@ -106,10 +148,32 @@ export default class Auth {
     })
       .then(resp => {
         const btnQueueFilm = document.querySelector('.currentLang-addQueue');
-        if (btnQueueFilm.textContent === 'DELETE QUEUE') {
+        if (
+          btnQueueFilm.textContent === 'DELETE QUEUE' ||
+          btnQueueFilm.textContent === 'ВДАЛИТИ З ЧЕРГИ' ||
+          btnQueueFilm.textContent === 'УДАЛИТЬ С ОЧЕРЕДИ'
+        ) {
           btnQueueFilm.innerHTML = 'ADD TO QUEUE';
+          if (langs === 'ru') {
+            btnQueueFilm.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
+          }
+          if (langs === 'uk') {
+            btnQueueFilm.textContent = 'ДОДАТИ ДО ЧЕРГИ';
+          }
+          if (langs === 'en') {
+            btnQueueFilm.textContent = 'ADD TO QUEUE';
+          }
         } else {
           btnQueueFilm.innerHTML = 'DELETE QUEUE';
+          if (langs === 'ru') {
+            btnQueueFilm.textContent = 'УДАЛИТЬ С ОЧЕРЕДИ';
+          }
+          if (langs === 'uk') {
+            btnQueueFilm.textContent = 'ВДАЛИТИ З ЧЕРГИ';
+          }
+          if (langs === 'en') {
+            btnQueueFilm.textContent = 'DELETE QUEUE';
+          }
         }
       })
       .catch(error => {
@@ -164,7 +228,16 @@ export default class Auth {
         }
       }
     } else {
+      if (langs === 'ru') {
+        alert('Додати фiльм до перегллянутих Немає входу користувача');
+    }
+    if (langs === 'uk') {
+      alert('Добавить фильм в просмотренные Нет входа пользователя');
+    }
+    if (langs === 'en') {
       alert('addToWatched(film)   Not User LogIn');
+    }
+      // alert('addToWatched(film)   Not User LogIn');
       return;
     }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
@@ -179,7 +252,16 @@ export default class Auth {
             let filmInList = false;
             arrFilm.forEach(element => {
               if (element.id === film.id) {
+                if (langs === 'ru') {
+                  alert('Фильм находится в списке просмотренных');
+              }
+              if (langs === 'uk') {
+                alert('Фiльм знаходиться у списку переглянутих');
+              }
+              if (langs === 'en') {
                 alert('Film in the list watched');
+              }
+                // alert('Film in the list watched');
                 filmInList = true;
               }
             });
@@ -279,7 +361,17 @@ export default class Auth {
         }
       }
     } else {
+
+    if (langs === 'ru') {
+        alert('Добавить в очередь просмотренных Нет входа пользователя');
+    }
+    if (langs === 'uk') {
+      alert('Додати до черги переглянутих Нема входу користувача');
+    }
+    if (langs === 'en') {
       alert('addQueueWatched   Not User LogIn');
+    }
+      // alert('addQueueWatched   Not User LogIn');
       return;
     }
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
@@ -294,7 +386,16 @@ export default class Auth {
             let filmInList = false;
             arrFilm.forEach(element => {
               if (element.id === film.id) {
-                alert('Film is in the list queue');
+                if (langs === 'ru') {
+                  alert('Фильм находится в списке просмотренных');
+              }
+              if (langs === 'uk') {
+                alert('Фiльм знаходиться у списку переглянутих');
+              }
+              if (langs === 'en') {
+                alert('Film in the list watched');
+              }
+                // alert('Film is in the list queue');
                 filmInList = true;
               }
             });
@@ -395,16 +496,43 @@ export default class Auth {
               if (element.id === film.id) {
                 // alert('Film in the list watched');
                 console.log('btn=', btn.textContent);
-                if (btn.textContent === 'ADD TO QUEUE') {
-                  btn.innerHTML = 'DELETE QUEUE';
+                if (btn.textContent === 'ADD TO QUEUE'||btn.textContent === 'ДОДАТИ ДО ЧЕРГИ'||btn.textContent === 'ДОБАВИТЬ В ОЧЕРЕДЬ') {
+                  // btn.innerHTML = 'DELETE QUEUE';
+                  if (langs === 'ru') {
+                     btn.innerHTML = 'УДАЛИТЬ ОЧЕРЕДЬ';
+                  }
+                  if (langs === 'uk') {
+                     btn.innerHTML = 'ВДАЛИТИ ЧЕРГУ';
+                  }
+                  if (langs === 'en') {
+                     btn.innerHTML = 'DELETE QUEUE';
+                  }
                 }
-                if (btn.textContent === 'ADD TO WATCHED') {
-                  btn.innerHTML = 'DELETE WATCHED';
+                if (btn.textContent === 'ADD TO WATCHED'||btn.textContent === 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ'||btn.textContent === 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ') {
+                  // btn.innerHTML = 'DELETE WATCHED';
+                  if (langs === 'ru') {
+                    btn.innerHTML = 'УДАЛИТЬ ПРОСМОТРЕННЫЕ';
+                 }
+                 if (langs === 'uk') {
+                    btn.innerHTML = 'ВДАЛИТИ ПЕРЕГЛЯНУТI';
+                 }
+                 if (langs === 'en') {
+                    btn.innerHTML = 'DELETE WATCHED';
+                 }
                 }
               }
             }); //foreach
           } else {
+            // alert('findFilm   Not User LogIn');
+            if (langs === 'ru') {
+              alert('Найти фильм Нет входа пользователя');
+          }
+          if (langs === 'uk') {
+            alert('Зайти фiльм Немa входу користувача');
+          }
+          if (langs === 'en') {
             alert('findFilm   Not User LogIn');
+          }
             return;
           }
         })
