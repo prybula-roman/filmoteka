@@ -51,6 +51,8 @@ function onMyLibrary() {
 refs.homeEl.addEventListener('click', onHome);
 onRenderPopularMoviesMarkup();
 function onHome() {
+  console.log('onHome()   refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
+  console.log('onHome()   refs.GLOBAL_IS_QUE=', refs.GLOBAL_IS_QUE);
   refs.filterEl.style.display = 'flex';
   refs.formEl.classList.remove('is-hidden');
   refs.libraryListEl.classList.add('is-hidden');

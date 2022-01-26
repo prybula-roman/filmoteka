@@ -3,6 +3,7 @@ import { refs } from './refs';
 
 // import templates
 import movieCard from '../templates/modal.hbs';
+import { handleModalMovieCard } from './handleModalMovieCard'
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
@@ -71,7 +72,7 @@ function onOpenModal(e) {
     films.forEach(film => {
       if (currentFilmId === film.id) {
         let markupModal = null;
-        markupModal = movieCard(film);
+        markupModal = movieCard(handleModalMovieCard(film));
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');

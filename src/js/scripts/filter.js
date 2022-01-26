@@ -51,11 +51,10 @@ document.querySelectorAll('.filter-input').forEach(item => {
     genreValue = refs.genrePickerEl.value;
 
     createCard(genreValue, yearValue, sortValue);
-
   });
 });
 
-function createCard(genre, year, sort) {
+export default function createCard(genre, year, sort) {
   movieFilter.fetchMovies(genre, year, sort).then(res => {
     refs.galleryEl.innerHTML = filmCard(handleMovieCard(res.results));   
     refs.paginationEl.innerHTML = ''    
@@ -74,4 +73,4 @@ refs.clearBtnEl.addEventListener('click', () => {
   onRenderPopularMoviesMarkup()
 })
 
-export {createCard};
+export {yearValue, genreValue, sortValue};

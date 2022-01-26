@@ -1,7 +1,5 @@
 import FetchGenre from '../API/fetchGenre';
-import FilmsStorage from './local-storage';
 
-const filmsStorage = new FilmsStorage();
 const apiGenreData = new FetchGenre();
 
 export default function handleMovieCard(movies) {
@@ -16,12 +14,18 @@ export default function handleMovieCard(movies) {
         (elem.release_date = 'Unknown');
     }
 
-    if (elem.genre_ids.length > 0) {
+    if (elem.genre_ids.length > 0 && elem.genre_ids.length <3) {
       elem.genre_ids = apiGenreData
         .ganreTranspiler(elem.genre_ids)
         .slice(0, 2)
         .join(', ');
-    } else {
+    } else if (elem.genre_ids.length > 2) {
+      elem.genre_ids = apiGenreData
+        .ganreTranspiler(elem.genre_ids)
+        .slice(0, 2)
+        .join(', ') + ', ' + 'Other';
+    }
+    else {
       elem.genre_ids = 'Unknown';
     }
 
@@ -35,8 +39,6 @@ export default function handleMovieCard(movies) {
       elem.poster_path = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsairhVA5q080vP7Niigy3bMCnGZNdzNCN4w&usqp=CAU'
     }
   });
-
-  filmsStorage.addToCurrent(movies);
 
   return movies;
 } 
