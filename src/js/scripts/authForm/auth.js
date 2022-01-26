@@ -48,13 +48,16 @@ export default class Auth {
           queueList: '[]',
         });
         if (langs === 'ru') {
-          alert('Пользователь был зарегистрирован.');
+          Notiflix.Notify.success('Пользователь был зарегистрирован.');
+          // alert('Пользователь был зарегистрирован.');
         }
         if (langs === 'uk') {
-          alert('Користувач був зареєстрований');
+          Notiflix.Notify.success('Користувач був зареєстрований');
+          //alert('Користувач був зареєстрований');
         }
         if (langs === 'en') {
-          alert('User was registred');
+          Notiflix.Notify.success('User was registred');
+          //alert('User was registred');
         }
 
         // alert('User was registred');
@@ -64,7 +67,8 @@ export default class Auth {
         var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
           if (langs === 'ru') {
-            alert('Пароль слишком слабый.');
+            Notiflix.Notify.failure('Пароль слишком слабый.');
+            //alert('Пароль слишком слабый.');
           }
           if (langs === 'uk') {
             alert('Пароль занадто слабкий');
