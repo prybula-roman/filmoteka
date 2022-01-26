@@ -4,6 +4,7 @@ import { config } from './configForm';
 var validator = require('email-validator');
 import { refs } from '../refs';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
+import Notiflix from 'notiflix';
 // const config = {
 //   btnReg: document.getElementById('register'),
 //   btnLogIn: document.getElementById('login'),
@@ -38,7 +39,8 @@ export default class Form {
       this.setMailAreaVal('');
       this.setPasswordAreaVal('');
     } else {
-      alert('Not valid form');
+      Notiflix.Notify.failure('Not valid form');
+      //alert('Not valid form');
     }
   }
 
@@ -58,7 +60,8 @@ export default class Form {
       this.setMailAreaVal('');
       this.setPasswordAreaVal('');
     } else {
-      alert('Not valid form');
+      Notiflix.Notify.failure('Not valid form');
+      //alert('Not valid form');
     }
   }
 
@@ -95,14 +98,16 @@ export default class Form {
       if (this.validEmail(email) && this.validPasword(pass)) {
         return true;
       } else {
-        alert('Not Valid email/password');
+        Notiflix.Notify.failure('Not Valid email/password');
+        //alert('Not Valid email/password');
       }
     }
     if (refs.GLOBAL_IS_REG_FORM) {
       if (this.validName(fullName) && this.validEmail(email) && this.validPasword(pass)) {
         return true;
       } else {
-        alert('Not Valid Reg Form');
+        Notiflix.Notify.failure('Not Valid Reg Form');
+        //alert('Not Valid Reg Form');
       }
     }
   }

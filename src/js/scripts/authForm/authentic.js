@@ -95,17 +95,6 @@ config.btnLogIn.addEventListener('click', () => {
   if (langs === 'en') {
     btnSubmit.textContent = 'Sing In';
   }
-  titleRegForm.textContent = 'Sing In';
-  if (langs === 'ru') {
-    titleRegForm.textContent = 'Войти';
-  }
-  if (langs === 'uk') {
-    titleRegForm.textContent = 'Увійти';
-  }
-  if (langs === 'en') {
-    titleRegForm.textContent = 'Sing In';
-  }
-  
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
@@ -128,7 +117,7 @@ btnSubmit.addEventListener('click', e => {
     btnSubmit.textContent === 'Sing In' ||
     btnSubmit.textContent === 'Увійти' ||
     btnSubmit.textContent === 'Войти'
-  )  {
+  ) {
     const form = new Form();
     form.btnLoginClicked();
   }

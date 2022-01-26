@@ -19,6 +19,7 @@ export default function handleMovieCard(movies) {
       console.log('bufArr=', bufArr);
       elem.genre_ids = bufArr;
     }
+    console.log('typeof elem.genre_ids=', typeof elem.genre_ids);
     //----------------------------------------------------
     if (elem.genre_ids.length > 0 && elem.genre_ids.length < 3) {
       elem.genre_ids = apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ');

@@ -15,6 +15,7 @@ import { config } from './configForm';
 import { onCloseModal } from '../modal.js';
 import { refs } from '../refs';
 import { langs } from '../localization';
+import Notiflix from 'notiflix';
 
 export default class Auth {
   constructor() {
@@ -148,7 +149,8 @@ export default class Auth {
         //  }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
+        // alert(error.message);
       });
   }
   //---------------------------------------------------------------------------
@@ -190,7 +192,7 @@ export default class Auth {
         }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
       });
   }
   //---------------------------------------------------------------------------
@@ -238,8 +240,8 @@ export default class Auth {
         });
         //-----------------------------------------------
       })
-      .catch(e => {
-        alert(e.message);
+      .catch(error => {
+        Notiflix.Notify.failure(error.message);
         return 0;
       });
     return 1;
@@ -256,13 +258,16 @@ export default class Auth {
       }
     } else {
       if (langs === 'ru') {
-        alert('Додати фiльм до перегллянутих Немає входу користувача');
+        Notiflix.Notify.failure('Додати фiльм до перегллянутих Немає входу користувача');
+        //  alert('Додати фiльм до перегллянутих Немає входу користувача');
       }
       if (langs === 'uk') {
-        alert('Добавить фильм в просмотренные Нет входа пользователя');
+        Notiflix.Notify.failure('Добавить фильм в просмотренные Нет входа пользователя');
+        //alert('Добавить фильм в просмотренные Нет входа пользователя');
       }
       if (langs === 'en') {
-        alert('addToWatched(film)   Not User LogIn');
+        Notiflix.Notify.failure('addToWatched(film)   Not User LogIn');
+        // alert('addToWatched(film)   Not User LogIn');
       }
       // alert('addToWatched(film)   Not User LogIn');
       return;
@@ -270,7 +275,7 @@ export default class Auth {
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        console.log('snapshot.val()=', snapshot.val());
+        //   console.log('snapshot.val()=', snapshot.val());
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
             arrFilm.push(film);
@@ -307,11 +312,13 @@ export default class Auth {
             JSON.stringify(arrFilm),
           );
         } else {
-          console.log('No data available');
+          Notiflix.Notify.info('No data available');
+          //console.log('No data available');
         }
       })
       .catch(error => {
-        console.error(error.message);
+        Notiflix.Notify.error(error.message);
+        //console.error(error.message);
       });
   }
   //---------------------------------------------------------------------------
