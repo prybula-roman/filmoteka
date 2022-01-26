@@ -49,8 +49,10 @@
   }
   &.dark-theme .modal-form__input {
     background-color: $dark-theme-color;
+    transition: $time;
     border-color: $white-color;
     color: $white-color;
+   
     &:hover,
     &:focus {
       border: 1px solid $accent-color;
