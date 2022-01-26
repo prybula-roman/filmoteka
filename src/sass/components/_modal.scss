@@ -67,6 +67,11 @@ body.show-modal .modal {
     }
   }
 
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+  }
+
   &.dark-theme .movies__description,
   &.dark-theme .movies__title,
   &.dark-theme .movies-info__value,
@@ -266,14 +271,14 @@ body.show-modal .modal {
 .movies-info__average {
   height: 16px;
   padding: 1px 8px;
-  margin-right: 3px;
+  margin-right: 5px;
   color: $main-color;
   background-color: $accent-color;
   border-radius: 5px;
 }
 
 .movies-info__votes {
-  margin-left: 3px;
+  margin-left: 5px;
   padding: 1px 8px;
   background-color: $footer-bg-color;
   border-radius: 5px;
