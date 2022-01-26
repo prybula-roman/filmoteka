@@ -1,7 +1,7 @@
 .container--gallery {
   width: $mobile;
   margin: 0 auto;
-  min-height: 50vh;
+
   @media screen and (min-width: $tablet) {
     width: $tablet;
   }
@@ -14,6 +14,7 @@
 }
 
 .section--gallery {
+  min-height: calc(100vh - 402px);
   padding: 50px 0px 40px 0px;
 
   font-weight: 500;

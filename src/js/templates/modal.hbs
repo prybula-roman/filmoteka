@@ -1,35 +1,37 @@
 <article class="movies movies__modal">
-        <img class="movies__img" src="{{poster_path}}" alt="{{title}} poster" id="{{id}}" />
-        <div class="movies__details">
-          <h2 class="movies__title ">{{title}}</h2>
-        {{!-- <div>
-          <h2 class="movies__title ">{{title}}</h2> --}}
+  <img class="movies__img" src="{{poster_path}}" alt="{{title}} poster" id="{{id}}" />
+  <div class="movies__details">
+    <h2 class="movies__title lang-titleOriginal">{{title}}</h2>
 
-          <table class="movies-info">
-            <tr>
-                <td class="movies-info__item current-votes"> Vote / Votes </td>
-            <td><span class="movies-info__value"><span class="movies-info__average">{{vote_average}}</span>/{{vote_count}}</span></td>
-            </tr>
-            <tr>
-                <td class="movies-info__item current-popularity"> Popularity </td> <td><span class="movies-info__value">{{popularity}}</span></td>
-            </tr>
-            <tr>
-                <td class="movies-info__item current-titleOriginal"> Original Title </td> <td><span class="movies-info__value movies-info__value--accent">{{original_title}}</span></td>
-            </tr>
-            <tr>
-                <td class="movies-info__item current-genres">Genre</td> <td><span class="movies-info__value">{{genre_ids}} </span></td>
-            </tr>
-          </table >
-      
-          <p class="movies__info current-about">About</p>
-          <p class="movies__description">{{overview}}</p>
+    <table class="movies-info">
+      <tr>
+        <td class="movies-info__item currentLang-votes"> Vote / Votes </td>
+        <td><span class="movies-info__value"><span class="movies-info__average">{{vote_average}}</span> /<span
+              class="movies-info__votes"> {{vote_count}}</span></span></td>
+      </tr>
+      <tr>
+        <td class="movies-info__item currentLang-popularity"> Popularity </td>
+        <td><span class="movies-info__value">{{popularity}}</span></td>
+      </tr>
+      <tr>
+        <td class="movies-info__item currentLang-titleOriginal"> Original Title </td>
+        <td><span class="movies-info__value movies-info__value--accent">{{original_title}}</span></td>
+      </tr>
+      <tr>
+        <td class="movies-info__item currentLang-genres">Genre</td>
+        <td><span class="movies-info__value">{{genre_ids}} </span></td>
+      </tr>
+    </table>
 
-          <ul class="movies-btn">
-            <li class="movies-btn__item"><button type="button" data-id="{{id}}" data-action="addToWatched" class="movies-btn__button current-addWatched currentLang-addWatched">add to
-                Watched</button></li>
-            <li class="movies-btn__item"><button type="button" data-id="{{id}}" data-action="addToQueue" class=" movies-btn__button current-addQueue currentLang-addQueue">add to queue</button></li>
-          </ul>
-        
-        {{!-- </div> --}}
+    <p class="movies__info currentLang-about">About</p>
+    <p class="movies__description">{{overview}}</p>
 
-    </article>
+    <ul class="movies-btn">
+      <li class="movies-btn__item"><button type="button" data-id="{{id}}" data-action="addToWatched"
+          class="movies-btn__button currentLang-addWatched">add to
+          Watched</button></li>
+      <li class="movies-btn__item"><button type="button" data-id="{{id}}" data-action="addToQueue"
+          class=" movies-btn__button currentLang-addQueue">add to queue</button></li>
+    </ul>
+
+</article>
