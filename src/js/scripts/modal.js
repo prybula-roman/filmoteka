@@ -3,7 +3,7 @@ import { refs } from './refs';
 
 // import templates
 import movieCard from '../templates/modal.hbs';
-import { handleModalMovieCard } from './handleModalMovieCard'
+import { handleModalMovieCard } from './handleModalMovieCard';
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
@@ -76,11 +76,16 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
-        changeModalLanguage()
+        changeModalLanguage();
         ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
-        btnAdd.innerHTML = 'ADD TO WATCHED';
+
+        btnAdd.innerHTML = refs.nameBtnAddWatch;
+        let btnQueue = document.querySelector('.currentLang-addQueue');
+        btnQueue.innerHTML = refs.nameBtnAddQueue;
+
+        btnAdd.innerHTML = refs.nameBtnAddWatch;
         if (langs === 'ru') {
           btnAdd.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
         }
@@ -88,10 +93,10 @@ function onOpenModal(e) {
           btnAdd.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
         }
         if (langs === 'en') {
-          btnAdd.textContent = 'ADD TO WATCHED';
+          btnAdd.textContent = refs.nameBtnAddWatch;
         }
-        let btnQueue = document.querySelector('.currentLang-addQueue');
-        btnQueue.innerHTML = 'ADD TO QUEUE';
+        // let btnQueue = document.querySelector('.currentLang-addQueue');
+        btnQueue.innerHTML = refs.nameBtnAddQueue;
 
         if (langs === 'ru') {
           btnQueue.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
@@ -100,15 +105,16 @@ function onOpenModal(e) {
           btnQueue.textContent = 'ДОДАТИ ДО ЧЕРГИ';
         }
         if (langs === 'en') {
-          btnQueue.textContent = 'ADD TO QUEUE';
+          btnQueue.textContent = refs.nameBtnAddQueue;
         }
+
         const newAuth = new Auth();
         //------------------------------------------------
         newAuth.findFilm(film, btnAdd, `/filmList`);
         newAuth.findFilm(film, btnQueue, `/queueList`);
         //--------------------------------------------------------
         btnAdd.addEventListener('click', () => {
-          if (btnAdd.textContent === 'DELETE WATCHED') {
+          if (btnAdd.textContent === refs.nameBtnDelWatch) {
             btnDelFilmClicked(film);
           } else {
             btnAddFilmClicked(film);
@@ -117,7 +123,7 @@ function onOpenModal(e) {
         //-------------------------------------------------------------
         btnQueue.addEventListener('click', e => {
           console.log('e=', e);
-          if (btnQueue.textContent === 'DELETE QUEUE') {
+          if (btnQueue.textContent === refs.nameBtnDelQueue) {
             btnDelQueueClicked(film);
           } else {
             btnAddQueueClicked(film);

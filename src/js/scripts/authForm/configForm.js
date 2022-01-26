@@ -13,6 +13,8 @@ const config = {
   nameArea: document.getElementById('form-usename'),
   passwordArea: document.getElementById('form-password'),
   mailArea: document.getElementById('form-mail'),
+  ///HEDER/////////////
+  userNameLabel: document.querySelector('.nav-list__userName'),
 };
 
 export { config };

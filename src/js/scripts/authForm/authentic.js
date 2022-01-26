@@ -11,10 +11,6 @@ const userForm = document.querySelector('.form-auth');
 const btnCloseForm = document.querySelector('.modal__close-btn');
 const btnSubmit = document.querySelector('.modal-form__submit');
 const titleRegForm = document.querySelector('.modal-form__title');
-const nameBtnAddWatch = 'ADD TO WATCHED';
-const nameBtnAddQueue = 'ADD TO QUEUE';
-const nameBtnDelWatch = 'DELETE WATCHED';
-const nameBtnDelQueue = 'DELETE QUEUE';
 refs.GLOBAL_IS_LIB = false;
 refs.GLOBAL_IS_QUE = false;
 
@@ -31,8 +27,12 @@ config.btnLogOut.addEventListener('click', () => {
 /////////////////////////////////////////////////
 config.btnReg.addEventListener('click', () => {
   if (refs.modalInpName.classList.contains('visually-hidden')) {
-    refs.modalInpName.classList.toggle('visually-hidden');
-    refs.modalInpNameIcon.classList.toggle('visually-hidden');
+    refs.modalInpName.classList.remove('visually-hidden');
+    refs.modalInpNameIcon.classList.remove('visually-hidden');
+    const divName = document.querySelector('.modal-form__title').nextSibling;
+    if (refs.modalInpName.parentNode.classList.contains('visually-hidden')) {
+      refs.modalInpName.parentNode.classList.remove('visually-hidden');
+    }
   }
   userForm.classList.toggle('visually-hidden');
   btnSubmit.textContent = 'Sing Up';
@@ -67,16 +67,22 @@ config.btnLogIn.addEventListener('click', () => {
   console.log('keys=', keys);
   for (let key of keys) {
     if (key === 'authorise') {
-      const storage = JSON.parse(localStorage.getItem(key));
-      if (storage != null) {
-        config.nameArea.value = storage.name;
-        config.passwordArea.value = storage.password;
-        config.mailArea.value = storage.email;
-      }
+      // const storage = JSON.parse(localStorage.getItem(key));
+      // if (storage != null) {
+      //   config.nameArea.value = storage.name;
+      //   config.passwordArea.value = storage.password;
+      //   config.mailArea.value = storage.email;
+      // }
     }
   }
-  refs.modalInpName.classList.toggle('visually-hidden');
-  refs.modalInpNameIcon.classList.toggle('visually-hidden');
+  if (!refs.modalInpName.classList.contains('visually-hidden')) {
+    refs.modalInpName.classList.add('visually-hidden');
+    refs.modalInpNameIcon.classList.add('visually-hidden');
+    if (!refs.modalInpName.parentNode.classList.contains('visually-hidden')) {
+      refs.modalInpName.parentNode.classList.add('visually-hidden');
+    }
+  }
+
   userForm.classList.toggle('visually-hidden');
   btnSubmit.textContent = 'Sing In';
   titleRegForm.textContent = 'Sing In';
