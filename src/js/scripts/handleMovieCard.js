@@ -1,4 +1,5 @@
 import FetchGenre from '../API/fetchGenre';
+import { langs } from './localization';
 
 const apiGenreData = new FetchGenre();
 
@@ -20,10 +21,20 @@ export default function handleMovieCard(movies) {
         .slice(0, 2)
         .join(', ');
     } else if (elem.genre_ids.length > 2) {
+      let other = 'Other' 
+      if (langs === 'ru') {
+        other = 'другие';
+      }
+      if (langs === 'uk') {
+        other = 'iншi';
+      }
+      if (langs === 'en') {
+        other = 'другие';
+      }
       elem.genre_ids = apiGenreData
         .ganreTranspiler(elem.genre_ids)
         .slice(0, 2)
-        .join(', ') + ', ' + 'Other';
+        .join(', ') + ', ' + other  ; 
     }
     else {
       elem.genre_ids = 'Unknown';
