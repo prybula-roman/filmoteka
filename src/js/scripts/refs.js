@@ -200,7 +200,7 @@ const refs = {
 
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
-  wrapperSwiperEl: document.querySelector('.wrapper'),
+  wrapperSwiperEl: document.querySelector('.wrapper-section'),
 };
 
 export { refs };
