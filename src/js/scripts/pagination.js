@@ -176,8 +176,7 @@ function onRenderMarkupByPagination(page) {
   refs.spinner.classList.remove('is-hidden'); // активируем спинер
 
   if (apiSearchData.query === "") {
-
-    console.log('yearValue', yearValue, 'genreValue', genreValue, 'sortValue', sortValue);
+    
     if (yearValue || genreValue || sortValue) {    
       movieFilter.page = page;
       createCard(genreValue, yearValue, sortValue);
