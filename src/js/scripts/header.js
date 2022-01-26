@@ -107,7 +107,7 @@ function renderLibrary() {
           arrFilm = JSON.parse(snapshot.val());
 
           listCards.innerHTML = '';
-          listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+          listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
           console.log('renderLibrary()  arrFilm=', arrFilm);
         }
       } else {
@@ -152,7 +152,7 @@ function renderQueue() {
           arrFilm = JSON.parse(snapshot.val());
 
           listCards.innerHTML = '';
-          listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+          listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
           console.log('renderQueue()  arrFilm=', arrFilm);
         }
       } else {
