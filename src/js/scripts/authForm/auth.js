@@ -92,7 +92,7 @@ export default class Auth {
           document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
         }
         if (!config.userNameLabel.classList.contains('visually-hidden')) {
-          // config.userNameLabel.textContent = '';
+          config.userNameLabel.textContent = '';
           config.userNameLabel.classList.add('visually-hidden');
         }
         config.btnLogIn.classList.toggle('visually-hidden');
