@@ -29,7 +29,7 @@ export default function handleMovieCard(movies) {
         other = 'iншi';
       }
       if (langs === 'en') {
-        other = 'другие';
+        other = 'other';
       }
       elem.genre_ids = apiGenreData
         .ganreTranspiler(elem.genre_ids)
