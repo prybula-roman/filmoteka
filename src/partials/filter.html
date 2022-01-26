@@ -1,49 +1,48 @@
 <section class="section filter__section">
-    <div class="container filter__container">
-      <ul class="filters">
-          <li class="filters__item">
-            <select class="filter-input" name="genrepicker" id="genrepicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
-            onchange='this.size=1; this.blur();'>
-              <option class="filter-input__option" value="">Choose genre</option>
-              <option class="filter-input__option" value="28">Action</option>
-              <option class="filter-input__option" value="12">Adventure</option>
-              <option class="filter-input__option" value="16">Animation</option>
-              <option class="filter-input__option" value="35">Comedy</option>
-              <option class="filter-input__option" value="80">Crime</option>
-              <option class="filter-input__option" value="99">Documentary</option>
-              <option class="filter-input__option" value="18">Drama</option>
-              <option class="filter-input__option" value="10751">Family</option>
-              <option class="filter-input__option" value="14">Fantasy</option>
-              <option class="filter-input__option" value="36">History</option>
-              <option class="filter-input__option" value="27">Horror</option>
-              <option class="filter-input__option" value="10402">Music</option>
-              <option class="filter-input__option" value="9648">Mystery</option>
-              <option class="filter-input__option" value="10749">Romance</option>
-              <option class="filter-input__option" value="878">Science Fiction</option>
-              <option class="filter-input__option" value="10770">Movie</option>
-              <option class="filter-input__option" value="53">Thriller</option>
-              <option class="filter-input__option" value="10752">War</option>
-              <option class="filter-input__option" value="37">Western</option>
-          </select>
-        </li>
-          <li class="filters__item">
-            <select class="filter-input" name="yearpicker" id="yearpicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
-            onchange='this.size=1; this.blur();'>
-          </select>
-        </li>
-          <li class="filters__item">
-            <select class="filter-input" name="sortpicker" id="sortpicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
-            onchange='this.size=1; this.blur();'>
-              <option class="filter-input__option" value="">Choose sort</option>
-              <option class="filter-input__option lang-sort" value="popularity.desc">Choose sort</option>
-              <option class="filter-input__option lang-popularity" value="popularity.desc">Popularity</option>
-              <option class="filter-input__option lang-Revenue" value="revenue.desc">Revenue</option>
-              <option class="filter-input__option lang-count" value="vote_count.desc">Vote count</option>
-          </select>
-        </li>
+  <div class="container filter__container">
+    <ul class="filters">
         <li class="filters__item">
-          <button class="button clear-btn">Clear</button>
+          <select class="filter-input" name="genrepicker" id="genrepicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
+          onchange='this.size=1; this.blur();'>
+          <option class="filter-input__option current-choosegenre" value="">Choose genre</option>
+          <option class="filter-input__option current-action" value="28">Action</option>
+          <option class="filter-input__option current-adventure" value="12">Adventure</option>
+          <option class="filter-input__option current-animation" value="16">Animation</option>
+          <option class="filter-input__option current-comedy" value="35">Comedy</option>
+          <option class="filter-input__option current-crime" value="80">Crime</option>
+          <option class="filter-input__option current-documentary" value="99">Documentary</option>
+          <option class="filter-input__option current-drama" value="18">Drama</option>
+          <option class="filter-input__option current-family" value="10751">Family</option>
+          <option class="filter-input__option current-fantasy" value="14">Fantasy</option>
+          <option class="filter-input__option current-history" value="36">History</option>
+          <option class="filter-input__option current-horror" value="27">Horror</option>
+          <option class="filter-input__option current-music" value="10402">Music</option>
+          <option class="filter-input__option current-mystery" value="9648">Mystery</option>
+          <option class="filter-input__option current-romance" value="10749">Romance</option>
+          <option class="filter-input__option current-sciencefiction" value="878">Science Fiction</option>
+          <option class="filter-input__option current-tvmovie" value="10770">Movie</option>
+          <option class="filter-input__option current-thriller" value="53">Thriller</option>
+          <option class="filter-input__option current-war" value="10752">War</option>
+          <option class="filter-input__option current-western" value="37">Western</option>
+        </select>
       </li>
-    </ul>
-  </div>
+        <li class="filters__item">
+          <select class="filter-input" name="yearpicker" id="yearpicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
+          onchange='this.size=1; this.blur();'> 
+        </select>
+      </li>
+        <li class="filters__item">
+          <select class="filter-input" name="sortpicker" id="sortpicker" size="1" onfocus='this.size=4;' onblur='this.size=1;'
+          onchange='this.size=1; this.blur();'>
+          <option class="filter-input__option lang-sort current-choosesort" value="popularity.desc">Choose sort</option>
+          <option class="filter-input__option lang-popularity current-popularitypg" value="popularity.desc">Popularity</option>
+          <option class="filter-input__option lang-Revenue current-revenue" value="revenue.desc">Revenue</option>
+          <option class="filter-input__option lang-count current-votecount" value="vote_count.desc ">Vote count</option>
+        </select>
+      </li>
+      <li class="filters__item">
+        <button class="button clear-btn"><a href="./index.html" class="clear-btn__link current-clearbtn" >Clear</a></button>
+    </li>
+  </ul>
+</div>
 </section>

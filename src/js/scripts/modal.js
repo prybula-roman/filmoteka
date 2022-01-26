@@ -6,7 +6,8 @@ import movieCard from '../templates/modal.hbs';
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
-// import { changeModalLanguage } from './localization';
+import { changeModalLanguage } from './localization';
+import { langs } from './localization';
 //////////////////////roman/////////////
 import {
   getAuth,
@@ -65,18 +66,6 @@ function onOpenModal(e) {
     return;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-  
   const currentFilmId = Number(e.target.closest('li').id);
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
     films.forEach(film => {
@@ -86,12 +75,32 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
+        changeModalLanguage()
         ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
         btnAdd.innerHTML = 'ADD TO WATCHED';
+        if (langs === 'ru') {
+          btnAdd.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
+        }
+        if (langs === 'uk') {
+          btnAdd.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
+        }
+        if (langs === 'en') {
+          btnAdd.textContent = 'ADD TO WATCHED';
+        }
         let btnQueue = document.querySelector('.currentLang-addQueue');
         btnQueue.innerHTML = 'ADD TO QUEUE';
+
+        if (langs === 'ru') {
+          btnQueue.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
+        }
+        if (langs === 'uk') {
+          btnQueue.textContent = 'ДОДАТИ ДО ЧЕРГИ';
+        }
+        if (langs === 'en') {
+          btnQueue.textContent = 'ADD TO QUEUE';
+        }
         const newAuth = new Auth();
         //------------------------------------------------
         newAuth.findFilm(film, btnAdd, `/filmList`);
