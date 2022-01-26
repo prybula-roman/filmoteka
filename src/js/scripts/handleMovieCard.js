@@ -14,16 +14,14 @@ export default function handleMovieCard(movies) {
       elem.release_date = 'Unknown';
     }
     //----------------------------------------------------
-    if (typeof elem.genre_ids === 'string') {
-      let bufArr = elem.genre_ids.split(',');
-      console.log('bufArr=', bufArr);
-      elem.genre_ids = bufArr;
-    }
+    // if (typeof elem.genre_ids === 'string') {
+    //   let bufArr = elem.genre_ids.split(',');
+    //   console.log('bufArr=', bufArr);
+    //   elem.genre_ids = bufArr;
+    // }
     console.log('typeof elem.genre_ids=', typeof elem.genre_ids);
     //----------------------------------------------------
-    if (elem.genre_ids.length > 0 && elem.genre_ids.length < 3) {
-      elem.genre_ids = apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ');
-    } else if (elem.genre_ids.length > 2) {
+    if (elem.genre_ids.length > 0) {
       elem.genre_ids =
         apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
     } else {
