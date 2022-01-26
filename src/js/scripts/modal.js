@@ -7,7 +7,8 @@ import { handleModalMovieCard } from './handleModalMovieCard';
 // import trailer from '../API/fetchTrailer';
 
 import { currentTheme } from './toggle-theme';
-// import { changeModalLanguage } from './localization';
+import { changeModalLanguage } from './localization';
+import { langs } from './localization';
 //////////////////////roman/////////////
 import {
   getAuth,
@@ -65,6 +66,7 @@ function onOpenModal(e) {
   if (e.target.classList.value === 'movies__thumb') {
     return;
   }
+
   const currentFilmId = Number(e.target.closest('li').id);
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
     films.forEach(film => {
@@ -74,12 +76,38 @@ function onOpenModal(e) {
         refs.modalmarkupEl.innerHTML = '';
         refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
         refs.bodyEl.classList.add('show-modal');
+        changeModalLanguage();
         ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
+
         btnAdd.innerHTML = refs.nameBtnAddWatch;
         let btnQueue = document.querySelector('.currentLang-addQueue');
         btnQueue.innerHTML = refs.nameBtnAddQueue;
+
+        btnAdd.innerHTML = refs.nameBtnAddWatch;
+        if (langs === 'ru') {
+          btnAdd.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
+        }
+        if (langs === 'uk') {
+          btnAdd.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
+        }
+        if (langs === 'en') {
+          btnAdd.textContent = refs.nameBtnAddWatch;
+        }
+        // let btnQueue = document.querySelector('.currentLang-addQueue');
+        btnQueue.innerHTML = refs.nameBtnAddQueue;
+
+        if (langs === 'ru') {
+          btnQueue.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
+        }
+        if (langs === 'uk') {
+          btnQueue.textContent = 'ДОДАТИ ДО ЧЕРГИ';
+        }
+        if (langs === 'en') {
+          btnQueue.textContent = refs.nameBtnAddQueue;
+        }
+
         const newAuth = new Auth();
         //------------------------------------------------
         newAuth.findFilm(film, btnAdd, `/filmList`);

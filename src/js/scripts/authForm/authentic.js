@@ -4,6 +4,7 @@ import Auth from './auth';
 import { onOpenModal } from '../modal';
 //import movieCard from '../templates/modal.hbs';
 import { refs } from '../refs';
+import { langs } from '../localization';
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -34,9 +35,29 @@ config.btnReg.addEventListener('click', () => {
     }
   }
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.innerHTML = 'Sing Up';
+  btnSubmit.textContent = 'Sing Up';
   titleRegForm.textContent = 'Sing Up';
   //const objForm = new Form();
+  if (langs === 'ru') {
+    btnSubmit.textContent = 'Зарегистрироваться';
+  }
+  if (langs === 'uk') {
+    btnSubmit.textContent = 'Зареєструватись';
+  }
+  if (langs === 'en') {
+    btnSubmit.textContent = 'Sing Up';
+  }
+
+  titleRegForm.textContent = 'Sing Up';
+  if (langs === 'ru') {
+    titleRegForm.textContent = 'Зарегистрироваться';
+  }
+  if (langs === 'uk') {
+    titleRegForm.textContent = 'Зареєструватись';
+  }
+  if (langs === 'en') {
+    titleRegForm.textContent = 'Sing Up';
+  }
 });
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -63,8 +84,28 @@ config.btnLogIn.addEventListener('click', () => {
   }
 
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.innerHTML = 'Sing In';
+  btnSubmit.textContent = 'Sing In';
   titleRegForm.textContent = 'Sing In';
+  if (langs === 'ru') {
+    btnSubmit.textContent = 'Войти';
+  }
+  if (langs === 'uk') {
+    btnSubmit.textContent = 'Увійти';
+  }
+  if (langs === 'en') {
+    btnSubmit.textContent = 'Sing In';
+  }
+  titleRegForm.textContent = 'Sing In';
+  if (langs === 'ru') {
+    titleRegForm.textContent = 'Войти';
+  }
+  if (langs === 'uk') {
+    titleRegForm.textContent = 'Увійти';
+  }
+  if (langs === 'en') {
+    titleRegForm.textContent = 'Sing In';
+  }
+  
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
@@ -74,12 +115,20 @@ btnCloseForm.addEventListener('click', () => {
 /////////////////////////////////////////////////
 btnSubmit.addEventListener('click', e => {
   console.dir(btnSubmit);
-  if (btnSubmit.innerHTML === 'Sing Up') {
+  if (
+    btnSubmit.textContent === 'Sing Up' ||
+    btnSubmit.textContent === 'Зареєструватись' ||
+    btnSubmit.textContent === 'Зарегистрироваться'
+  ) {
     console.log('Registr');
     const form = new Form();
     form.btnRegClicked();
   }
-  if (btnSubmit.innerHTML === 'Sing In') {
+  if (
+    btnSubmit.textContent === 'Sing In' ||
+    btnSubmit.textContent === 'Увійти' ||
+    btnSubmit.textContent === 'Войти'
+  )  {
     const form = new Form();
     form.btnLoginClicked();
   }
@@ -94,7 +143,16 @@ export function btnAddFilmClicked(film) {
     const auth = new Auth();
     auth.addToWatched(film);
   } else {
-    alert('User is NOT LOGIN');
+    if (langs === 'ru') {
+      alert('Пользователь не зарегистрирован');
+    }
+    if (langs === 'uk') {
+      alert('Користувач не зареєстрований');
+    }
+    if (langs === 'en') {
+      alert('User is NOT LOGIN');
+    }
+    // alert('User is NOT LOGIN');
   }
 }
 
@@ -110,7 +168,16 @@ export function btnAddQueueClicked(film) {
     const auth = new Auth();
     auth.addQueueWatched(film);
   } else {
-    alert('User is NOT LOGIN');
+    if (langs === 'ru') {
+      alert('Пользователь не зарегистрирован');
+    }
+    if (langs === 'uk') {
+      alert('Користувач не зареєстрований');
+    }
+    if (langs === 'en') {
+      alert('User is NOT LOGIN');
+    }
+    // alert('User is NOT LOGIN');
   }
 }
 

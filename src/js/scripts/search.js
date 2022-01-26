@@ -157,6 +157,7 @@ function onRenderPaginationMarkup() {
             if (film.total_results === 0) {
                 refs.filterEl.style.display = 'none';
                 refs.errorEl.classList.remove('visually-hidden');
+                refs.searchError.classList.remove('visually-hidden');
                 refs.spinner.classList.add('is-hidden');
                // const noMovie = refs.noMoviesEl;
                  // if (noMovie.classList.contains('visually-hidden')) {

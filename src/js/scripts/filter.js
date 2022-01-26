@@ -3,6 +3,10 @@ import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
 import {onRenderPopularMoviesMarkup} from './search'
 import { onRenderPagination } from './pagination'
+import { langs } from '../scripts/localization';
+
+import FilmsStorage from './local-storage';
+const filmsStorage = new FilmsStorage();
 
 class MovieFilter {
     constructor() {
@@ -12,7 +16,7 @@ class MovieFilter {
     }
     async fetchMovies(genre, year, sort) {
       const url = `${this.BASE_URL}/discover/movie?with_genres=${genre}&sort_by=${sort}
-                    &primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=en-US`;
+                    &primary_release_year=${year}&api_key=${this.API_KEY}&page=${this._page}&language=${langs}`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));
@@ -55,6 +59,7 @@ document.querySelectorAll('.filter-input').forEach(item => {
 
 export default function createCard(genre, year, sort) {
   movieFilter.fetchMovies(genre, year, sort).then(res => {
+    filmsStorage.addToCurrent(res.results);
     refs.galleryEl.innerHTML = filmCard(handleMovieCard(res.results));   
     refs.paginationEl.innerHTML = ''    
     if(res.total_pages >= 500){

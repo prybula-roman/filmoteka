@@ -11,7 +11,7 @@ class MovieFilter {
       this.page = 1;
     }
     async fetchMovies(sort) {
-      const url = `${this.BASE_URL}/discover/movie?&sort_by=${sort}&api_key=${this.API_KEY}&page=${this._page}&language=${langs}`;
+      const url = `${this.BASE_URL}/discover/movie?&sort_by=${sort}&api_key=${this.API_KEY}&page=${this._page}language=${langs}`;
       return await fetch(url)
           .then(response => (response.ok ? response.json() : []))
           .catch(error => console.log(error));

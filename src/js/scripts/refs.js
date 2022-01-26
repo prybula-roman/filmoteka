@@ -57,7 +57,7 @@ const refs = {
   checkboxEl: document.getElementById('checkbox'),
 
   // filter
-  //yearOptionEl: document.querySelector('#yearpicker'),
+  yearOptionEl: document.querySelector('#yearpicker'),
   //genreOptionEl: document.querySelector('#genrepicker'),
 
   yearPickerEl: document.querySelector('#yearpicker'),
@@ -208,7 +208,7 @@ const refs = {
 
   swiperEl: document.querySelector('.swiper-wrapper'),
   swiperSlideEl: document.querySelector('.swiper-slide'),
-  wrapperSwiperEl: document.querySelector('.wrapper'),
+  wrapperSwiperEl: document.querySelector('.wrapper-section'),
 };
 
 export { refs };
