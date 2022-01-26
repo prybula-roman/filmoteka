@@ -59,8 +59,6 @@ export default class Auth {
       });
   }
 
-  readUser() {}
-
   singOutUser(auth) {
     signOut(auth)
       .then(() => {
@@ -68,8 +66,15 @@ export default class Auth {
         if (sessionStorage.getItem('logInUser')) {
           sessionStorage.removeItem('logInUser');
         }
+        if (localStorage.getItem('authorise')) {
+          localStorage.removeItem('authorise');
+        }
         if (document.querySelector('.my-library-movies')) {
           document.querySelector('.my-library-movies').classList.toggle('my-library-movies');
+        }
+        if (!config.userNameLabel.classList.contains('visually-hidden')) {
+          // config.userNameLabel.textContent = '';
+          config.userNameLabel.classList.add('visually-hidden');
         }
         config.btnLogIn.classList.toggle('visually-hidden');
         config.btnReg.classList.toggle('visually-hidden');
@@ -89,10 +94,10 @@ export default class Auth {
       .then(resp => {
         //------------------------------------------------
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
-        if (btnAddFilm.textContent === 'DELETE WATCHED') {
-          btnAddFilm.innerHTML = 'ADD TO WATCHED';
+        if (btnAddFilm.textContent === refs.nameBtnDelWatch) {
+          btnAddFilm.innerHTML = refs.nameBtnAddWatch;
         } else {
-          btnAddFilm.innerHTML = 'DELETE WATCHED';
+          btnAddFilm.innerHTML = refs.nameBtnDelWatch;
         }
       })
       .catch(error => {
@@ -106,10 +111,10 @@ export default class Auth {
     })
       .then(resp => {
         const btnQueueFilm = document.querySelector('.currentLang-addQueue');
-        if (btnQueueFilm.textContent === 'DELETE QUEUE') {
-          btnQueueFilm.innerHTML = 'ADD TO QUEUE';
+        if (btnQueueFilm.textContent === refs.nameBtnDelQueue) {
+          btnQueueFilm.innerHTML = refs.nameBtnAddQueue;
         } else {
-          btnQueueFilm.innerHTML = 'DELETE QUEUE';
+          btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
         }
       })
       .catch(error => {
@@ -125,27 +130,41 @@ export default class Auth {
         this.currentUser.name = fullName;
       }
     }
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        const user = {
-          name: fullName,
-          email: email,
-          password: password,
-        };
-        if (!localStorage.getItem('authorise')) {
-          localStorage.setItem('authorise', JSON.stringify(user));
-        } else {
-          localStorage.removeItem('authorise');
-          localStorage.setItem('authorise', JSON.stringify(user));
-        }
-        sessionStorage.setItem('logInUser', JSON.stringify(user));
-        if (!config.btnLogIn.classList.contains('visually-hidden')) {
-          config.btnLogIn.classList.add('visually-hidden');
-        }
 
-        config.btnReg.classList.toggle('visually-hidden');
-        config.btnLogOut.classList.toggle('visually-hidden');
-        config.btnMyLabr.classList.toggle('visually-hidden');
+    signInWithEmailAndPassword(auth, email, password)
+      .then(resp => {
+        console.log('resp=', resp);
+        //----------------------------------------------
+        get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/name')).then(snapshot => {
+          let arrFilm = [];
+          if (snapshot.exists()) {
+            console.log('snapshot.val()=', snapshot.val());
+            const user = {
+              name: fullName,
+              email: email,
+              password: password,
+            };
+            user.name = snapshot.val();
+            if (!localStorage.getItem('authorise')) {
+              localStorage.setItem('authorise', JSON.stringify(user));
+            } else {
+              localStorage.removeItem('authorise');
+              localStorage.setItem('authorise', JSON.stringify(user));
+            }
+            sessionStorage.setItem('logInUser', JSON.stringify(user));
+            if (!config.btnLogIn.classList.contains('visually-hidden')) {
+              config.btnLogIn.classList.add('visually-hidden');
+            }
+            if (config.userNameLabel.classList.contains('visually-hidden')) {
+              config.userNameLabel.classList.remove('visually-hidden');
+              config.userNameLabel.textContent = `${snapshot.val()}`;
+            }
+            config.btnReg.classList.toggle('visually-hidden');
+            config.btnLogOut.classList.toggle('visually-hidden');
+            config.btnMyLabr.classList.toggle('visually-hidden');
+          }
+        });
+        //-----------------------------------------------
       })
       .catch(e => {
         alert(e.message);
@@ -358,7 +377,6 @@ export default class Auth {
                   onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
                 }
-                
 
                 // refs.GLOBAL_IS_QUE = false;
               }
@@ -395,11 +413,11 @@ export default class Auth {
               if (element.id === film.id) {
                 // alert('Film in the list watched');
                 console.log('btn=', btn.textContent);
-                if (btn.textContent === 'ADD TO QUEUE') {
-                  btn.innerHTML = 'DELETE QUEUE';
+                if (btn.textContent === refs.nameBtnAddQueue) {
+                  btn.innerHTML = refs.nameBtnDelQueue;
                 }
-                if (btn.textContent === 'ADD TO WATCHED') {
-                  btn.innerHTML = 'DELETE WATCHED';
+                if (btn.textContent === refs.nameBtnAddWatch) {
+                  btn.innerHTML = refs.nameBtnDelWatch;
                 }
               }
             }); //foreach

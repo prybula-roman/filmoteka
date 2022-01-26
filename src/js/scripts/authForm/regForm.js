@@ -2,7 +2,8 @@ import { signOut } from 'firebase/auth';
 import Auth from './auth';
 import { config } from './configForm';
 var validator = require('email-validator');
-
+import { refs } from '../refs';
+import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 // const config = {
 //   btnReg: document.getElementById('register'),
 //   btnLogIn: document.getElementById('login'),
@@ -21,33 +22,29 @@ export default class Form {
 
   ///////////////////////////////////////////////////
   btnLogOutClicked(auth) {
-    console.log('btnLogOutClicked------>>>>>>');
     console.log('auth=', auth);
     const newAuth = new Auth(auth.name, auth.email, auth.password);
     newAuth.singOutUser(newAuth.auth);
-
-    console.log('<<<<<<------btnLogOutClicked');
   }
   /////////////////////////////////////////////////////
   btnLoginClicked() {
-    console.log('btnLoginClicked()---->>>>');
+    refs.GLOBAL_IS_LOG_FORM = true;
+    refs.GLOBAL_IS_REG_FORM = false;
     console.log('this.nameAreaVal=', this.nameAreaVal);
-    console.log('this.mailAreaVal=', this.mailAreaVal);
-    console.log('this.passwordAreaVal=', this.passwordAreaVal);
     if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
-      const newAuth = new Auth(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
+      const newAuth = new Auth();
       newAuth.loginUser(newAuth.auth, this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
-
       this.setNameAreaVal('');
       this.setMailAreaVal('');
       this.setPasswordAreaVal('');
     } else {
       alert('Not valid form');
     }
-    console.log('<<<<-----btnLoginClicked()');
   }
 
   btnRegClicked() {
+    refs.GLOBAL_IS_LOG_FORM = false;
+    refs.GLOBAL_IS_REG_FORM = true;
     if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
       const newAuth = new Auth();
       newAuth.createNewUser(
@@ -91,13 +88,22 @@ export default class Form {
   }
   /////////////////////////////////////
   validateForm(fullName, email, pass) {
-    console.log(fullName);
-    console.log(email);
-    console.log(pass);
-    if (this.validName(fullName) && this.validEmail(email) && this.validPasword(pass)) {
-      return true;
-    } else {
-      alert('Not Valid Form');
+    // console.log(fullName);
+    // console.log(email);
+    // console.log(pass);
+    if (refs.GLOBAL_IS_LOG_FORM) {
+      if (this.validEmail(email) && this.validPasword(pass)) {
+        return true;
+      } else {
+        alert('Not Valid email/password');
+      }
+    }
+    if (refs.GLOBAL_IS_REG_FORM) {
+      if (this.validName(fullName) && this.validEmail(email) && this.validPasword(pass)) {
+        return true;
+      } else {
+        alert('Not Valid Reg Form');
+      }
     }
   }
   ///////////////////////////////////////

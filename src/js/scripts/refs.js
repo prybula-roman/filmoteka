@@ -71,8 +71,16 @@ const refs = {
   //firebase
   GLOBAL_IS_LIB: false,
   GLOBAL_IS_QUE: false,
+  GLOBAL_IS_REG_FORM: false,
+  GLOBAL_IS_LOG_FORM: false,
+  modalForm: document.querySelector('.modal-form'),
   modalInpName: document.querySelector('.modal-form__input'),
   modalInpNameIcon: document.querySelector('.modal-form__icon-name'),
+  nameBtnAddWatch: 'add to watched',
+  nameBtnAddQueue: 'add to queue',
+  nameBtnDelWatch: 'delete from watched',
+  nameBtnDelQueue: 'delete from queue',
+
   // genres
   // genresEl: [
   //   {
