@@ -2,6 +2,8 @@ import { refs } from './refs';
 import handleMovieCard from './handleMovieCard';
 import filmCard from '../templates/preview_card.hbs';
 import { apiSearchData, popularMovie } from './search';
+import { yearValue, genreValue, sortValue, movieFilter } from './filter';
+import createCard from './filter';
 import FilmsStorage from './local-storage';
 
 const filmsStorage = new FilmsStorage();
@@ -174,6 +176,13 @@ function onRenderMarkupByPagination(page) {
   refs.spinner.classList.remove('is-hidden'); // активируем спинер
 
   if (apiSearchData.query === "") {
+
+    console.log('yearValue', yearValue, 'genreValue', genreValue, 'sortValue', sortValue);
+    if (yearValue || genreValue || sortValue) {    
+      movieFilter.page = page;
+      createCard(genreValue, yearValue, sortValue);
+    }
+
     popularMovie.page = page;
     popularMovie.fetchPopular()
       .then(film => {

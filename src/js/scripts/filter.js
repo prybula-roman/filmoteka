@@ -77,4 +77,4 @@ refs.clearBtnEl.addEventListener('click', () => {
   onRenderPopularMoviesMarkup()
 })
 
-export {yearValue, genreValue, sortValue};
+export {yearValue, genreValue, sortValue, movieFilter};
