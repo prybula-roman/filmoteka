@@ -13,7 +13,7 @@
 
   margin: 0 auto;
 
-  &.dark-theme .pagination__item{
+  &.dark-theme .pagination__item {
     background-color: $dark-theme-color;
     &--active,
     &--next:hover,
@@ -32,12 +32,12 @@
   }
   &.dark-theme .pagination__item--prev {
     border: 1px solid;
-    border-color: $accent-color;  }
+    border-color: $accent-color;
+  }
 
   &.dark-theme .pagination__item--next {
     border: 1px solid;
     border-color: $accent-color;
-   
   }
 }
 
@@ -87,17 +87,16 @@
 }
 
 .pagination__item--prev {
+  font-size: 20px;
   background-color: $light-grey-color;
   border-radius: 25px 5px 5px 25px;
 }
 
 .pagination__item--next {
+  font-size: 20px;
   background-color: $light-grey-color;
   border-radius: 5px 25px 25px 5px;
-
 }
-
-
 
 .pagination__icon--left {
   width: 16px;

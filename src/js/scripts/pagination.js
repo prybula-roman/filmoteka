@@ -21,7 +21,7 @@ function onRenderPagination(totalPages, page) {
   
   if (page > 1) { // добавление кнопки "Prev" 
     paginationMarkup += `
-    <li class="pagination__item pagination__item--prev">Prev</li>`;
+    <li class="pagination__item pagination__item--prev">&laquo;</li>`;
   };
   
   if(page > 2) { // добавление кнопки " 1 "
@@ -86,7 +86,7 @@ function onRenderPagination(totalPages, page) {
     
   if (page < totalPages) { //показываем кнопку "Next" если значение pageменьше чем totalPage
     paginationMarkup += `
-      <li class="pagination__item pagination__item--next">Next</li>`;    
+      <li class="pagination__item pagination__item--next">&raquo;</li>`;    
   };
 
   globalTotalPages = totalPages;
@@ -115,12 +115,12 @@ function onPaginationBtnClick(event) {
     });
       
     switch (listenerTarget) {
-      case 'Prev':
+      case '«':
         onRenderMarkupByPagination(globalPage - 1);
         onRenderPagination(globalTotalPages, globalPage - 1);
         break;
 
-      case 'Next':
+      case '»':
         onRenderMarkupByPagination(globalPage + 1);
         onRenderPagination(globalTotalPages, globalPage + 1);
         break;
