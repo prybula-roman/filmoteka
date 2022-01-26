@@ -154,13 +154,16 @@ export function btnAddQueueClicked(film) {
     auth.addQueueWatched(film);
   } else {
     if (langs === 'ru') {
-      alert('Пользователь не зарегистрирован');
+      Notiflix.Notify.warning('Пользователь не зарегистрирован')
+      //alert('Пользователь не зарегистрирован');
     }
     if (langs === 'uk') {
-      alert('Користувач не зареєстрований');
+      Notiflix.Notify.warning('Користувач не зареєстрований')
+      //alert('Користувач не зареєстрований');
     }
     if (langs === 'en') {
-      alert('User is NOT LOGIN');
+      Notiflix.Notify.warning('User is NOT LOGIN')
+      //alert('User is NOT LOGIN');
     }
     // alert('User is NOT LOGIN');
   }

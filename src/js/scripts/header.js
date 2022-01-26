@@ -4,7 +4,6 @@ import onRenderPopularMoviesMarkup from './search';
 //////////////////////roman/////////////
 import filmCard from '../templates/preview_card.hbs';
 import handleMovieCard from './handleMovieCard';
-import { handleModalMovieCard } from './handleModalMovieCard';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -14,7 +13,6 @@ import {
 } from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
-
 ////////////////////////////////////////
 
 refs.myLibEl.addEventListener('click', onMyLibrary);
@@ -86,10 +84,8 @@ function renderLibrary() {
   refs.GLOBAL_IS_QUE = false;
   get(ref(newAuth.db, 'users/' + newAuth.auth.currentUser.uid + '/filmList'))
     .then(snapshot => {
-      // console.log('renderLibrary()  snapshot=', snapshot);
+      console.log('renderLibrary()  snapshot=', snapshot);
       let arrFilm = [];
-      // let arrFilm = new Array();
-      console.log('arrFilm=', typeof arrFilm);
       if (snapshot.exists()) {
         //--------------------------------
         if (!refs.watchedEl.classList.contains('btn-activ')) {
@@ -98,18 +94,21 @@ function renderLibrary() {
         if (refs.queueEl.classList.contains('btn-activ')) {
           refs.queueEl.classList.remove('btn-activ');
         }
+
         //----------------------------------
         const listCards = document.querySelector('.movies');
         if (JSON.parse(snapshot.val()).length === 0) {
           listCards.innerHTML = '';
           refs.noMoviesEl.classList.remove('visually-hidden');
           listCards.innerHTML = '';
-          // console.log('Nothig do');
+          console.log('Nothig do');
         } else {
           refs.noMoviesEl.classList.add('visually-hidden');
           arrFilm = JSON.parse(snapshot.val());
+
           listCards.innerHTML = '';
-          listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
+          listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+          console.log('renderLibrary()  arrFilm=', arrFilm);
         }
       } else {
         console.log('No data available');
@@ -153,7 +152,7 @@ function renderQueue() {
           arrFilm = JSON.parse(snapshot.val());
 
           listCards.innerHTML = '';
-          listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
+          listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
           console.log('renderQueue()  arrFilm=', arrFilm);
         }
       } else {

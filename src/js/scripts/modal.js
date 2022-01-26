@@ -67,6 +67,17 @@ function onOpenModal(e) {
     return;
   }
 
+  if (langs === 'ru') {
+    btnAdd.textContent = refs.nameBtnAddWatchRu;
+  }
+  if (langs === 'uk') {
+    btnAdd.textContent = refs.nameBtnAddWatchUa;
+  }
+  if (langs === 'en') {
+    btnAdd.textContent = refs.nameBtnAddWatch;
+  }
+
+
   const currentFilmId = Number(e.target.closest('li').id);
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
     films.forEach(film => {
@@ -84,7 +95,7 @@ function onOpenModal(e) {
         let btnQueue = document.querySelector('.currentLang-addQueue');
         btnQueue.innerHTML = refs.nameBtnAddQueue;
 
-        btnAdd.innerHTML = refs.nameBtnAddWatch;
+        // btnAdd.innerHTML = refs.nameBtnAddWatch;
         if (langs === 'ru') {
           btnAdd.textContent = refs.nameBtnAddWatchRu;
         }
@@ -95,7 +106,7 @@ function onOpenModal(e) {
           btnAdd.textContent = refs.nameBtnAddWatch;
         }
         // let btnQueue = document.querySelector('.currentLang-addQueue');
-        btnQueue.innerHTML = refs.nameBtnAddQueue;
+        // btnQueue.innerHTML = refs.nameBtnAddQueue;
 
         if (langs === 'ru') {
           btnQueue.textContent = refs.nameBtnAddQueueRu;
