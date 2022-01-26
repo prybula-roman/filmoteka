@@ -35,8 +35,8 @@ config.btnReg.addEventListener('click', () => {
     }
   }
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.textContent = 'Sing Up';
-  titleRegForm.textContent = 'Sing Up';
+  btnSubmit.textContent = 'Sign Up';
+  titleRegForm.textContent = 'Sign Up';
   if (langs === 'ru') {
     btnSubmit.textContent = 'Зарегистрироваться';
   }
@@ -44,10 +44,10 @@ config.btnReg.addEventListener('click', () => {
     btnSubmit.textContent = 'Зареєструватись';
   }
   if (langs === 'en') {
-    btnSubmit.textContent = 'Sing Up';
+    btnSubmit.textContent = 'Sign Up';
   }
 
-  titleRegForm.textContent = 'Sing Up';
+  titleRegForm.textContent = 'Sign Up';
   if (langs === 'ru') {
     titleRegForm.textContent = 'Зарегистрироваться';
   }
@@ -55,7 +55,7 @@ config.btnReg.addEventListener('click', () => {
     titleRegForm.textContent = 'Зареєструватись';
   }
   if (langs === 'en') {
-    titleRegForm.textContent = 'Sing Up';
+    titleRegForm.textContent = 'Sign Up';
   }
 });
 ////////////////////////////////////////////////
@@ -77,8 +77,8 @@ config.btnLogIn.addEventListener('click', () => {
   }
 
   userForm.classList.toggle('visually-hidden');
-  btnSubmit.textContent = 'Sing In';
-  titleRegForm.textContent = 'Sing In';
+  btnSubmit.textContent = 'Sign In';
+  titleRegForm.textContent = 'Sign In';
   if (langs === 'ru') {
     btnSubmit.textContent = 'Войти';
   }
@@ -86,7 +86,7 @@ config.btnLogIn.addEventListener('click', () => {
     btnSubmit.textContent = 'Увійти';
   }
   if (langs === 'en') {
-    btnSubmit.textContent = 'Sing In';
+    btnSubmit.textContent = 'Sign In';
   }
 });
 //////////////////////////////////////////////////////
