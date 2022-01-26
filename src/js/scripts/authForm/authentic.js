@@ -5,6 +5,7 @@ import { onOpenModal } from '../modal';
 //import movieCard from '../templates/modal.hbs';
 import { refs } from '../refs';
 import { langs } from '../localization';
+import Notiflix from 'notiflix';
 
 config.btnMyLabr.classList.toggle('visually-hidden');
 const userForm = document.querySelector('.form-auth');
@@ -23,7 +24,6 @@ config.btnLogOut.addEventListener('click', () => {
   const form = new Form();
   form.btnLogOutClicked(JSON.parse(sessionStorage.getItem('logInUser')));
 });
-//////////////////////////////////////////////////
 /////////////////////////////////////////////////
 config.btnReg.addEventListener('click', () => {
   if (refs.modalInpName.classList.contains('visually-hidden')) {
@@ -37,7 +37,6 @@ config.btnReg.addEventListener('click', () => {
   userForm.classList.toggle('visually-hidden');
   btnSubmit.textContent = 'Sing Up';
   titleRegForm.textContent = 'Sing Up';
-  //const objForm = new Form();
   if (langs === 'ru') {
     btnSubmit.textContent = 'Зарегистрироваться';
   }
@@ -67,12 +66,6 @@ config.btnLogIn.addEventListener('click', () => {
   console.log('keys=', keys);
   for (let key of keys) {
     if (key === 'authorise') {
-      // const storage = JSON.parse(localStorage.getItem(key));
-      // if (storage != null) {
-      //   config.nameArea.value = storage.name;
-      //   config.passwordArea.value = storage.password;
-      //   config.mailArea.value = storage.email;
-      // }
     }
   }
   if (!refs.modalInpName.classList.contains('visually-hidden')) {
@@ -95,17 +88,6 @@ config.btnLogIn.addEventListener('click', () => {
   if (langs === 'en') {
     btnSubmit.textContent = 'Sing In';
   }
-  titleRegForm.textContent = 'Sing In';
-  if (langs === 'ru') {
-    titleRegForm.textContent = 'Войти';
-  }
-  if (langs === 'uk') {
-    titleRegForm.textContent = 'Увійти';
-  }
-  if (langs === 'en') {
-    titleRegForm.textContent = 'Sing In';
-  }
-  
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
@@ -128,7 +110,7 @@ btnSubmit.addEventListener('click', e => {
     btnSubmit.textContent === 'Sing In' ||
     btnSubmit.textContent === 'Увійти' ||
     btnSubmit.textContent === 'Войти'
-  )  {
+  ) {
     const form = new Form();
     form.btnLoginClicked();
   }
@@ -144,13 +126,16 @@ export function btnAddFilmClicked(film) {
     auth.addToWatched(film);
   } else {
     if (langs === 'ru') {
-      alert('Пользователь не зарегистрирован');
+      Notiflix.Notify.warning('Пользователь не зарегистрирован')
+      //alert('Пользователь не зарегистрирован');
     }
     if (langs === 'uk') {
-      alert('Користувач не зареєстрований');
+      Notiflix.Notify.warning('Користувач не зареєстрований')
+      //alert('Користувач не зареєстрований');
     }
     if (langs === 'en') {
-      alert('User is NOT LOGIN');
+      Notiflix.Notify.warning('User is NOT LOGIN')
+      //alert('User is NOT LOGIN');
     }
     // alert('User is NOT LOGIN');
   }
@@ -169,13 +154,16 @@ export function btnAddQueueClicked(film) {
     auth.addQueueWatched(film);
   } else {
     if (langs === 'ru') {
-      alert('Пользователь не зарегистрирован');
+      Notiflix.Notify.warning('Пользователь не зарегистрирован')
+      //alert('Пользователь не зарегистрирован');
     }
     if (langs === 'uk') {
-      alert('Користувач не зареєстрований');
+      Notiflix.Notify.warning('Користувач не зареєстрований')
+      //alert('Користувач не зареєстрований');
     }
     if (langs === 'en') {
-      alert('User is NOT LOGIN');
+      Notiflix.Notify.warning('User is NOT LOGIN')
+      //alert('User is NOT LOGIN');
     }
     // alert('User is NOT LOGIN');
   }

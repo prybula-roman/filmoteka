@@ -15,6 +15,7 @@ import { config } from './configForm';
 import { onCloseModal } from '../modal.js';
 import { refs } from '../refs';
 import { langs } from '../localization';
+import Notiflix from 'notiflix';
 
 export default class Auth {
   constructor() {
@@ -47,13 +48,16 @@ export default class Auth {
           queueList: '[]',
         });
         if (langs === 'ru') {
-          alert('Пользователь был зарегистрирован.');
+          Notiflix.Notify.success('Пользователь был зарегистрирован.');
+          // alert('Пользователь был зарегистрирован.');
         }
         if (langs === 'uk') {
-          alert('Користувач був зареєстрований');
+          Notiflix.Notify.success('Користувач був зареєстрований');
+          //alert('Користувач був зареєстрований');
         }
         if (langs === 'en') {
-          alert('User was registred');
+          Notiflix.Notify.success('User was registred');
+          //alert('User was registred');
         }
 
         // alert('User was registred');
@@ -63,17 +67,21 @@ export default class Auth {
         var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
           if (langs === 'ru') {
-            alert('Пароль слишком слабый.');
+            Notiflix.Notify.failure('Пароль слишком слабый.');
+            //alert('Пароль слишком слабый.');
           }
           if (langs === 'uk') {
-            alert('Пароль занадто слабкий');
+            Notiflix.Notify.failure('Пароль занадто слабкий');
+            //alert('Пароль занадто слабкий');
           }
           if (langs === 'en') {
-            alert('The password is too weak.');
+            Notiflix.Notify.failure('The password is too weak.');
+            //alert('The password is too weak.');
           }
           // alert('The password is too weak.');
         } else {
-          alert(errorMessage);
+          Notiflix.Notify.failure(errorMessage);
+         // alert(errorMessage);
         }
       });
   }
@@ -101,7 +109,8 @@ export default class Auth {
         config.btnMyLabr.classList.toggle('visually-hidden');
       })
       .catch(error => {
-        alert(`!!!!!!!!! ${error.messsage}`);
+        Notiflix.Notify.failure(errorMessage);
+       // alert(`!!!!!!!!! ${error.messsage}`);
       })
       .finally(() => {});
   }
@@ -148,7 +157,8 @@ export default class Auth {
         //  }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
+        // alert(error.message);
       });
   }
   //---------------------------------------------------------------------------
@@ -190,7 +200,7 @@ export default class Auth {
         }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
       });
   }
   //---------------------------------------------------------------------------
@@ -238,8 +248,8 @@ export default class Auth {
         });
         //-----------------------------------------------
       })
-      .catch(e => {
-        alert(e.message);
+      .catch(error => {
+        Notiflix.Notify.failure(error.message);
         return 0;
       });
     return 1;
@@ -256,13 +266,16 @@ export default class Auth {
       }
     } else {
       if (langs === 'ru') {
-        alert('Додати фiльм до перегллянутих Немає входу користувача');
+        Notiflix.Notify.failure('Додати фiльм до перегллянутих Немає входу користувача');
+        //  alert('Додати фiльм до перегллянутих Немає входу користувача');
       }
       if (langs === 'uk') {
-        alert('Добавить фильм в просмотренные Нет входа пользователя');
+        Notiflix.Notify.failure('Добавить фильм в просмотренные Нет входа пользователя');
+        //alert('Добавить фильм в просмотренные Нет входа пользователя');
       }
       if (langs === 'en') {
-        alert('addToWatched(film)   Not User LogIn');
+        Notiflix.Notify.failure('addToWatched(film)   Not User LogIn');
+        // alert('addToWatched(film)   Not User LogIn');
       }
       // alert('addToWatched(film)   Not User LogIn');
       return;
@@ -270,7 +283,7 @@ export default class Auth {
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        console.log('snapshot.val()=', snapshot.val());
+        //   console.log('snapshot.val()=', snapshot.val());
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
             arrFilm.push(film);
@@ -280,13 +293,16 @@ export default class Auth {
             arrFilm.forEach(element => {
               if (element.id === film.id) {
                 if (langs === 'ru') {
-                  alert('Фильм находится в списке просмотренных');
+                  Notiflix.Notify.info('Фильм находится в списке просмотренных')
+                 // alert('Фильм находится в списке просмотренных');
                 }
                 if (langs === 'uk') {
-                  alert('Фiльм знаходиться у списку переглянутих');
+                  Notiflix.Notify.info('Фiльм знаходиться у списку переглянутих')
+                  //alert('Фiльм знаходиться у списку переглянутих');
                 }
                 if (langs === 'en') {
-                  alert('Film in the list watched');
+                  Notiflix.Notify.info('Film in the list watched')
+                  //alert('Film in the list watched');
                 }
                 // alert('Film in the list watched');
                 filmInList = true;
@@ -307,11 +323,13 @@ export default class Auth {
             JSON.stringify(arrFilm),
           );
         } else {
-          console.log('No data available');
+          Notiflix.Notify.info('No data available');
+          //console.log('No data available');
         }
       })
       .catch(error => {
-        console.error(error.message);
+        Notiflix.Notify.error(error.message);
+        //console.error(error.message);
       });
   }
   //---------------------------------------------------------------------------
@@ -374,7 +392,8 @@ export default class Auth {
         }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
+        //alert(error.message);
       });
   }
   //-------------------------------------------------------------
@@ -389,13 +408,16 @@ export default class Auth {
       }
     } else {
       if (langs === 'ru') {
-        alert('Добавить в очередь просмотренных Нет входа пользователя');
+        Notiflix.Notify.warning('Добавить в очередь просмотренных Нет входа пользователя');
+       // alert('Добавить в очередь просмотренных Нет входа пользователя');
       }
       if (langs === 'uk') {
-        alert('Додати до черги переглянутих Нема входу користувача');
+        Notiflix.Notify.warning('Додати до черги переглянутих Нема входу користувача');
+       // alert('Додати до черги переглянутих Нема входу користувача');
       }
       if (langs === 'en') {
-        alert('addQueueWatched   Not User LogIn');
+        Notiflix.Notify.warning('addQueueWatched   Not User LogIn');
+        //alert('addQueueWatched   Not User LogIn');
       }
       // alert('addQueueWatched   Not User LogIn');
       return;
@@ -413,13 +435,16 @@ export default class Auth {
             arrFilm.forEach(element => {
               if (element.id === film.id) {
                 if (langs === 'ru') {
-                  alert('Фильм находится в списке просмотренных');
+                  Notiflix.Notify.warning('Фильм находится в списке просмотренных');
+                 // alert('Фильм находится в списке просмотренных');
                 }
                 if (langs === 'uk') {
-                  alert('Фiльм знаходиться у списку переглянутих');
+                  Notiflix.Notify.warning('Фiльм знаходиться у списку переглянутих');
+                 // alert('Фiльм знаходиться у списку переглянутих');
                 }
                 if (langs === 'en') {
-                  alert('Film in the list watched');
+                  Notiflix.Notify.warning('Film in the list watched');
+                  //alert('Film in the list watched');
                 }
                 // alert('Film is in the list queue');
                 filmInList = true;
@@ -445,7 +470,8 @@ export default class Auth {
         }
       })
       .catch(error => {
-        console.error(error.message);
+        Notiflix.Notify.failure(error.message);
+       // console.error(error.message);
       });
   }
   //------------------------------------------------
@@ -462,7 +488,7 @@ export default class Auth {
     } else {
       return;
     }
-    get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
+     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
       .then(snapshot => {
         let arrFilm = [];
         if (snapshot.exists()) {
@@ -485,8 +511,6 @@ export default class Auth {
                   onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
                 }
-
-                // refs.GLOBAL_IS_QUE = false;
               }
             });
           }
@@ -504,29 +528,24 @@ export default class Auth {
         }
       })
       .catch(error => {
-        alert(error.message);
+        Notiflix.Notify.failure(error.message);
+       // console.error(error.message);
       });
-  }
-
+    } 
+  
+//------------------------------------------------------------------------
   findFilm(film, btn, dataTable) {
     if (sessionStorage.getItem('logInUser') != null) {
       console.log('dataTable=', dataTable);
       get(ref(this.db, 'users/' + this.auth.currentUser.uid + dataTable))
         .then(snapshot => {
           let arrFilm = [];
-          // console.log('snapshot.val()=', snapshot.val());
+          
           if (snapshot.exists()) {
             arrFilm = JSON.parse(snapshot.val());
             arrFilm.forEach(element => {
               if (element.id === film.id) {
-                // alert('Film in the list watched');
-                console.log('btn=', btn.textContent);
-
-                // if (btn.textContent === refs.nameBtnAddQueue) {
-                //   btn.innerHTML = refs.nameBtnDelQueue;
-                // }
-                // if (btn.textContent === refs.nameBtnAddWatch) {
-                //   btn.innerHTML = refs.nameBtnDelWatch;
+                
                 if (
                   btn.textContent === refs.nameBtnAddQueue ||
                   btn.textContent === refs.nameBtnAddQueueUa ||
@@ -565,19 +584,23 @@ export default class Auth {
           } else {
             // alert('findFilm   Not User LogIn');
             if (langs === 'ru') {
-              alert('Найти фильм Нет входа пользователя');
+              Notiflix.Notify.warning('Найти фильм Нет входа пользователя');
+             // alert('Найти фильм Нет входа пользователя');
             }
             if (langs === 'uk') {
-              alert('Зайти фiльм Немa входу користувача');
+              Notiflix.Notify.warning('Зайти фiльм Немa входу користувача');
+              //alert('Зайти фiльм Немa входу користувача');
             }
             if (langs === 'en') {
-              alert('findFilm   Not User LogIn');
+              Notiflix.Notify.warning('findFilm   Not User LogIn');
+              //alert('findFilm   Not User LogIn');
             }
             return;
           }
         })
         .catch(error => {
-          alert(error.message);
+          Notiflix.Notify.warning(error.message);
+         // alert(error.message);
         });
     }
   }

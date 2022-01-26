@@ -83,9 +83,9 @@ const refs = {
   nameBtnDelWatch: 'delete from watched',
   nameBtnDelQueue: 'delete from queue',
   //----
-  nameBtnAddWatchRu: 'добавить в проссмотренные',
+  nameBtnAddWatchRu: 'добавить в просмотренные',
   nameBtnAddQueueRu: 'добавить в очередь',
-  nameBtnDelWatchRu: 'удалить из проссмотренных',
+  nameBtnDelWatchRu: 'удалить из просмотренных',
   nameBtnDelQueueRu: 'удалить из очереди',
   //---
   nameBtnAddWatchUa: 'додати до переглянутих',
