@@ -4,7 +4,7 @@ body {
   color: $black-color;
   transition: all $time $timing-function;
   &::-webkit-scrollbar {
-    width: 200px;
+    width: 2px;
     height: 8px;
   }
 }
