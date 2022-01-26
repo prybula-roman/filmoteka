@@ -80,17 +80,16 @@ function onOpenModal(e) {
         ///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
         //--------------------------------------------------------------
         let btnAdd = document.querySelector('.currentLang-addWatched');
-
         btnAdd.innerHTML = refs.nameBtnAddWatch;
         let btnQueue = document.querySelector('.currentLang-addQueue');
         btnQueue.innerHTML = refs.nameBtnAddQueue;
 
         btnAdd.innerHTML = refs.nameBtnAddWatch;
         if (langs === 'ru') {
-          btnAdd.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
+          btnAdd.textContent = refs.nameBtnAddWatchRu;
         }
         if (langs === 'uk') {
-          btnAdd.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
+          btnAdd.textContent = refs.nameBtnAddWatchUa;
         }
         if (langs === 'en') {
           btnAdd.textContent = refs.nameBtnAddWatch;
@@ -99,10 +98,10 @@ function onOpenModal(e) {
         btnQueue.innerHTML = refs.nameBtnAddQueue;
 
         if (langs === 'ru') {
-          btnQueue.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
+          btnQueue.textContent = refs.nameBtnAddQueueRu;
         }
         if (langs === 'uk') {
-          btnQueue.textContent = 'ДОДАТИ ДО ЧЕРГИ';
+          btnQueue.textContent = refs.nameBtnAddQueueUa;
         }
         if (langs === 'en') {
           btnQueue.textContent = refs.nameBtnAddQueue;
@@ -114,7 +113,11 @@ function onOpenModal(e) {
         newAuth.findFilm(film, btnQueue, `/queueList`);
         //--------------------------------------------------------
         btnAdd.addEventListener('click', () => {
-          if (btnAdd.textContent === refs.nameBtnDelWatch) {
+          if (
+            btnAdd.textContent === refs.nameBtnDelWatch ||
+            btnAdd.textContent === refs.nameBtnDelWatchRu ||
+            btnAdd.textContent === refs.nameBtnDelWatchUa
+          ) {
             btnDelFilmClicked(film);
           } else {
             btnAddFilmClicked(film);
@@ -123,7 +126,11 @@ function onOpenModal(e) {
         //-------------------------------------------------------------
         btnQueue.addEventListener('click', e => {
           console.log('e=', e);
-          if (btnQueue.textContent === refs.nameBtnDelQueue) {
+          if (
+            btnQueue.textContent === refs.nameBtnDelQueue ||
+            btnQueue.textContent === refs.nameBtnDelQueueRu ||
+            btnQueue.textContent === refs.nameBtnDelQueueUa
+          ) {
             btnDelQueueClicked(film);
           } else {
             btnAddQueueClicked(film);

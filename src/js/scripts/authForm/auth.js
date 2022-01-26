@@ -113,39 +113,39 @@ export default class Auth {
       .then(resp => {
         //------------------------------------------------
         const btnAddFilm = document.querySelector('.currentLang-addWatched');
-        if (btnAddFilm.textContent === refs.nameBtnDelWatch) {
-          btnAddFilm.innerHTML = refs.nameBtnAddWatch;
-        } else {
-          btnAddFilm.innerHTML = refs.nameBtnDelWatch;
+        // if (btnAddFilm.textContent === refs.nameBtnDelWatch) {
+        //   btnAddFilm.innerHTML = refs.nameBtnAddWatch;
+        // } else {
+        //   btnAddFilm.innerHTML = refs.nameBtnDelWatch;
 
-          if (
-            btnAddFilm.textContent === 'DELETE WATCHED' ||
-            btnAddFilm.textContent === 'ВИДАЛИТИ З ПЕРЕГЛЯНУTИХ' ||
-            btnAddFilm.textContent === 'УДАЛИТЬ C ПРОСМОТРЕННЫХ'
-          ) {
-            btnAddFilm.innerHTML = 'ADD TO WATCHED';
-            if (langs === 'ru') {
-              btnAddFilm.textContent = 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ';
-            }
-            if (langs === 'uk') {
-              btnAddFilm.textContent = 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ';
-            }
-            if (langs === 'en') {
-              btnAddFilm.textContent = 'ADD TO WATCHED';
-            }
-          } else {
-            btnAddFilm.innerHTML = refs.nameBtnDelWatch;
-            if (langs === 'ru') {
-              btnAddFilm.textContent = 'УДАЛИТЬ C ПРОСМОТРЕННЫХ';
-            }
-            if (langs === 'uk') {
-              btnAddFilm.textContent = 'ВИДАЛИТИ З ПЕРЕГЛЯНУTИХ';
-            }
-            if (langs === 'en') {
-              btnAddFilm.textContent = refs.nameBtnDelWatch;
-            }
+        if (
+          btnAddFilm.textContent === refs.nameBtnDelWatch ||
+          btnAddFilm.textContent === refs.nameBtnDelWatchUa ||
+          btnAddFilm.textContent === refs.nameBtnDelWatchRu
+        ) {
+          //  btnAddFilm.innerHTML = refs.nameBtnAddWatch;
+          if (langs === 'ru') {
+            btnAddFilm.textContent = refs.nameBtnAddWatchRu;
+          }
+          if (langs === 'uk') {
+            btnAddFilm.textContent = refs.nameBtnAddWatchUa;
+          }
+          if (langs === 'en') {
+            btnAddFilm.textContent = refs.nameBtnAddWatch;
+          }
+        } else {
+          //  btnAddFilm.innerHTML = refs.nameBtnDelWatch;
+          if (langs === 'ru') {
+            btnAddFilm.textContent = refs.nameBtnDelWatchRu;
+          }
+          if (langs === 'uk') {
+            btnAddFilm.textContent = refs.nameBtnDelWatchUa;
+          }
+          if (langs === 'en') {
+            btnAddFilm.textContent = refs.nameBtnDelWatch;
           }
         }
+        //  }
       })
       .catch(error => {
         alert(error.message);
@@ -159,36 +159,33 @@ export default class Auth {
       .then(resp => {
         const btnQueueFilm = document.querySelector('.currentLang-addQueue');
 
-        if (btnQueueFilm.textContent === refs.nameBtnDelQueue) {
-          btnQueueFilm.innerHTML = refs.nameBtnAddQueue;
+        // btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
+        console.log('btnQueueFilm=', btnQueueFilm);
+        if (
+          btnQueueFilm.textContent === refs.nameBtnDelQueue ||
+          btnQueueFilm.textContent === refs.nameBtnDelQueueUa ||
+          btnQueueFilm.textContent === refs.nameBtnDelQueueRu
+        ) {
+          // btnQueueFilm.innerHTML = refs.nameBtnAddQueue;
+          if (langs === 'ru') {
+            btnQueueFilm.textContent = refs.nameBtnAddQueueRu;
+          }
+          if (langs === 'uk') {
+            btnQueueFilm.textContent = refs.nameBtnAddQueueUa;
+          }
+          if (langs === 'en') {
+            btnQueueFilm.textContent = refs.nameBtnAddQueue;
+          }
         } else {
-          btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
-          if (
-            btnQueueFilm.textContent === refs.nameBtnDelQueue ||
-            btnQueueFilm.textContent === 'ВДАЛИТИ З ЧЕРГИ' ||
-            btnQueueFilm.textContent === 'УДАЛИТЬ С ОЧЕРЕДИ'
-          ) {
-            btnQueueFilm.innerHTML = refs.nameBtnAddQueue;
-            if (langs === 'ru') {
-              btnQueueFilm.textContent = 'ДОБАВИТЬ В ОЧЕРЕДЬ';
-            }
-            if (langs === 'uk') {
-              btnQueueFilm.textContent = 'ДОДАТИ ДО ЧЕРГИ';
-            }
-            if (langs === 'en') {
-              btnQueueFilm.textContent = refs.nameBtnAddQueue;
-            }
-          } else {
-            btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
-            if (langs === 'ru') {
-              btnQueueFilm.textContent = 'УДАЛИТЬ С ОЧЕРЕДИ';
-            }
-            if (langs === 'uk') {
-              btnQueueFilm.textContent = 'ВДАЛИТИ З ЧЕРГИ';
-            }
-            if (langs === 'en') {
-              btnQueueFilm.textContent = refs.nameBtnDelQueue;
-            }
+          //  btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
+          if (langs === 'ru') {
+            btnQueueFilm.textContent = refs.nameBtnDelQueueRu;
+          }
+          if (langs === 'uk') {
+            btnQueueFilm.textContent = refs.nameBtnDelQueueUa;
+          }
+          if (langs === 'en') {
+            btnQueueFilm.textContent = refs.nameBtnDelQueue;
           }
         }
       })
@@ -434,7 +431,7 @@ export default class Auth {
               arrFilm.push(film);
             }
           }
-          console.log(arrFilm);
+          console.log('arrFilm=', arrFilm);
           this.addFilmToQueue(
             this.auth,
             this.currentUser.name,
@@ -525,44 +522,44 @@ export default class Auth {
                 // alert('Film in the list watched');
                 console.log('btn=', btn.textContent);
 
-                if (btn.textContent === refs.nameBtnAddQueue) {
-                  btn.innerHTML = refs.nameBtnDelQueue;
-                }
-                if (btn.textContent === refs.nameBtnAddWatch) {
-                  btn.innerHTML = refs.nameBtnDelWatch;
-                  if (
-                    btn.textContent === refs.nameBtnAddQueue ||
-                    btn.textContent === 'ДОДАТИ ДО ЧЕРГИ' ||
-                    btn.textContent === 'ДОБАВИТЬ В ОЧЕРЕДЬ'
-                  ) {
-                    // btn.innerHTML = 'DELETE QUEUE';
-                    if (langs === 'ru') {
-                      btn.innerHTML = 'УДАЛИТЬ ИЗ ОЧЕРЕДи';
-                    }
-                    if (langs === 'uk') {
-                      btn.innerHTML = 'ВДАЛИТИ З ЧЕРГИ';
-                    }
-                    if (langs === 'en') {
-                      btn.innerHTML = refs.nameBtnDelQueue;
-                    }
+                // if (btn.textContent === refs.nameBtnAddQueue) {
+                //   btn.innerHTML = refs.nameBtnDelQueue;
+                // }
+                // if (btn.textContent === refs.nameBtnAddWatch) {
+                //   btn.innerHTML = refs.nameBtnDelWatch;
+                if (
+                  btn.textContent === refs.nameBtnAddQueue ||
+                  btn.textContent === refs.nameBtnAddQueueUa ||
+                  btn.textContent === refs.nameBtnAddQueueRu
+                ) {
+                  // btn.innerHTML = 'DELETE QUEUE';
+                  if (langs === 'ru') {
+                    btn.innerHTML = refs.nameBtnDelQueueRu;
                   }
-                  if (
-                    btn.textContent === refs.nameBtnAddWatch ||
-                    btn.textContent === 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ' ||
-                    btn.textContent === 'ДОДАТИ ДО ПЕРЕГЛЯНУТИХ'
-                  ) {
-                    // btn.innerHTML = 'DELETE WATCHED';
-                    if (langs === 'ru') {
-                      btn.innerHTML = 'УДАЛИТЬ ИЗ ПРОСМОТРЕННЫХ';
-                    }
-                    if (langs === 'uk') {
-                      btn.innerHTML = 'ВДАЛИТИ З ПЕРЕГЛЯНУТИХ';
-                    }
-                    if (langs === 'en') {
-                      btn.innerHTML = refs.nameBtnDelWatch;
-                    }
+                  if (langs === 'uk') {
+                    btn.innerHTML = refs.nameBtnDelQueueUa;
+                  }
+                  if (langs === 'en') {
+                    btn.innerHTML = refs.nameBtnDelQueue;
                   }
                 }
+                if (
+                  btn.textContent === refs.nameBtnAddWatch ||
+                  btn.textContent === refs.nameBtnAddWatchRu ||
+                  btn.textContent === refs.nameBtnAddWatchUa
+                ) {
+                  // btn.innerHTML = 'DELETE WATCHED';
+                  if (langs === 'ru') {
+                    btn.innerHTML = refs.nameBtnDelWatchRu;
+                  }
+                  if (langs === 'uk') {
+                    btn.innerHTML = refs.nameBtnDelWatchUa;
+                  }
+                  if (langs === 'en') {
+                    btn.innerHTML = refs.nameBtnDelWatch;
+                  }
+                }
+                // }
               }
             }); //foreach
           } else {
