@@ -2,15 +2,15 @@
   position: relative;
   margin: 0 auto;
   width: $tablet;
+  @media screen and (max-width: $mobile-max) {
+    display: none;
+  }
   @media screen and (min-width: $desktop) {
     width: $desktop;
   }
 }
 
 .wrapper {
-  @media screen and (max-width: $mobile-max) {
-    display: none;
-  }
   height: 310px;
   z-index: -1000;
 }
