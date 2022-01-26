@@ -5,6 +5,9 @@ import {onRenderPopularMoviesMarkup} from './search'
 import { onRenderPagination } from './pagination'
 import { langs } from '../scripts/localization';
 
+import FilmsStorage from './local-storage';
+const filmsStorage = new FilmsStorage();
+
 class MovieFilter {
     constructor() {
       this.BASE_URL = 'https://api.themoviedb.org/3'
@@ -56,6 +59,7 @@ document.querySelectorAll('.filter-input').forEach(item => {
 
 export default function createCard(genre, year, sort) {
   movieFilter.fetchMovies(genre, year, sort).then(res => {
+    filmsStorage.addToCurrent(res.results);
     refs.galleryEl.innerHTML = filmCard(handleMovieCard(res.results));   
     refs.paginationEl.innerHTML = ''    
     if(res.total_pages >= 500){
