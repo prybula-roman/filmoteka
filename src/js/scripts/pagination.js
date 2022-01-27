@@ -57,7 +57,7 @@ function onRenderPagination(totalPages, page) {
   }
 
   for (let pageLength = beforePage; pageLength <= afterPage; pageLength += 1) {
-    //   console.log('pageLength', pageLength, '===', 'page', page);
+    //   //console.log('pageLength', pageLength, '===', 'page', page);
     if (pageLength > totalPages) { //если pageLength больше totalPage, то continue
       continue;
     }
@@ -199,7 +199,7 @@ function onRenderMarkupByPagination(page) {
         refs.galleryEl.innerHTML = markup;
 
         onRenderPagination(film.total_pages, film.page);
-        console.log('onRenderMarkupByPagination - catch(error): ', error);
+        //console.log('onRenderMarkupByPagination - catch(error): ', error);
       })
       .finally(() => {
         refs.spinner.classList.add('is-hidden'); // деактивируем спинер

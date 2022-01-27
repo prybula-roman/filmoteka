@@ -25,6 +25,7 @@ import {
   btnDelQueueClicked,
   btnAddQueueClicked,
 } from './authForm/authentic';
+import Notiflix from 'notiflix';
 ////////////////////////////////////////
 
 refs.openModalEl.addEventListener('click', onOpenModal);
@@ -46,14 +47,20 @@ export function onCloseModal() {
   refs.modalEl.classList.add('js-backdrop');
 }
 
-function onBackdropClick(event) {
+export function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     onCloseModal();
   }
 }
 
 function onOpenModal(e) {
+  //console.log("onOpenModal()----------------->")
+  
   e.preventDefault();
+  if(refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE){
+   // Notiflix.Notify.failure("refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE -->return")
+    //console.log("return from onOpenModal()<----------------")
+    return;}
 
   if (currentTheme === 'dark-theme') {
     refs.modalWindowEl.classList.add('dark-theme');
@@ -66,8 +73,6 @@ function onOpenModal(e) {
   if (e.target.classList.value === 'movies__thumb') {
     return;
   }
-
-  
 
   const currentFilmId = Number(e.target.closest('li').id);
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
@@ -127,7 +132,7 @@ function onOpenModal(e) {
         });
         //-------------------------------------------------------------
         btnQueue.addEventListener('click', e => {
-          console.log('e=', e);
+          //console.log('e=', e);
           if (
             btnQueue.textContent === refs.nameBtnDelQueue ||
             btnQueue.textContent === refs.nameBtnDelQueueRu ||
@@ -143,5 +148,6 @@ function onOpenModal(e) {
       }
     });
   });
+  //console.log("onOpenModal()<----------------")
 }
 export { onOpenModal };
