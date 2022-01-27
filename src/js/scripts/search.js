@@ -29,10 +29,6 @@ const filmsStorage = new FilmsStorage();
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 
 
-
-trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
-
-
 function onSwiperNowPlayingMovies() {
 
     fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
@@ -56,8 +52,9 @@ function onSwiperNowPlayingMovies() {
 </li>`;        
         refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
         });
+        });
         
-    });
+        trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
     });
 
     
