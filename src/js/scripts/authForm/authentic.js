@@ -98,7 +98,7 @@ btnCloseForm.addEventListener('click', () => {
 btnSubmit.addEventListener('click', e => {
   console.dir(btnSubmit);
   if (
-    btnSubmit.textContent === 'Sing Up' ||
+    btnSubmit.textContent === 'Sign Up' ||
     btnSubmit.textContent === 'Зареєструватись' ||
     btnSubmit.textContent === 'Зарегистрироваться'
   ) {
@@ -107,7 +107,7 @@ btnSubmit.addEventListener('click', e => {
     form.btnRegClicked();
   }
   if (
-    btnSubmit.textContent === 'Sing In' ||
+    btnSubmit.textContent === 'Sign In' ||
     btnSubmit.textContent === 'Увійти' ||
     btnSubmit.textContent === 'Войти'
   ) {
