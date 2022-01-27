@@ -39,36 +39,19 @@ export default function handleMovieCard(movies) {
       elem.genre_ids = apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ');
     } else if (elem.genre_ids.length > 2) {
 
-      //  if (langs === 'uk') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Інші';
-      //   }
-      //   if (langs === 'ru') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'другие';
-      //   }
-      //   if (langs === 'en') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
-      // }
-
-      elem.genre_ids =
-        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + '...';
-    } else {
-
-        if (langs === 'uk') {
-          elem.genre_ids = 'Невідомо';
+       if (langs === 'uk') {
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Інші';
         }
         if (langs === 'ru') {
-          elem.genre_ids = 'Неизвестно';
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Другие';
         }
         if (langs === 'en') {
-          elem.genre_ids = 'Unknown';
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
       }
-      
-
-      // elem.genre_ids = 'Unknown';
-    }
+    } 
     //---------------------------------------------------
     if (elem.vote_average === 0) {
 
@@ -82,7 +65,6 @@ export default function handleMovieCard(movies) {
         elem.vote_average = 'Unknown';
 
       }
-      // elem.vote_average = 'Unknown';
     }
 
     if (elem.poster_path) {
