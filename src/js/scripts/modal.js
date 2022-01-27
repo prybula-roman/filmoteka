@@ -25,6 +25,7 @@ import {
   btnDelQueueClicked,
   btnAddQueueClicked,
 } from './authForm/authentic';
+import Notiflix from 'notiflix';
 ////////////////////////////////////////
 
 refs.openModalEl.addEventListener('click', onOpenModal);
@@ -53,7 +54,13 @@ export function onBackdropClick(event) {
 }
 
 function onOpenModal(e) {
+  console.log("onOpenModal()----------------->")
+  
   e.preventDefault();
+  if(refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE){
+    Notiflix.Notify.failure("refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE -->return")
+    console.log("return from onOpenModal()<----------------")
+    return;}
 
   if (currentTheme === 'dark-theme') {
     refs.modalWindowEl.classList.add('dark-theme');
@@ -141,5 +148,6 @@ function onOpenModal(e) {
       }
     });
   });
+  console.log("onOpenModal()<----------------")
 }
 export { onOpenModal };

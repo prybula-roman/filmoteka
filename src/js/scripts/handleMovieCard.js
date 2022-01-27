@@ -32,45 +32,26 @@ export default function handleMovieCard(movies) {
       let bufArr = elem.genre_ids.split(',');
       console.log('bufArr=', (bufArr));
       elem.genre_ids = bufArr;
-      console.log("elem.genre_ids=",elem.genre_ids)
     }
-    console.log("elem.genre_ids.length=",elem.genre_ids.length)
-    // console.log('typeof elem.genre_ids=', typeof elem.genre_ids);
+    console.log('typeof elem.genre_ids=', typeof elem.genre_ids);
     //----------------------------------------------------
     if (elem.genre_ids.length > 0 && elem.genre_ids.length < 3) {
       elem.genre_ids = apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ');
     } else if (elem.genre_ids.length > 2) {
 
-      //  if (langs === 'uk') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Інші';
-      //   }
-      //   if (langs === 'ru') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'другие';
-      //   }
-      //   if (langs === 'en') {
-      //     elem.genre_ids =
-      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
-      // }
-
-      elem.genre_ids =
-        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + '...';
-    } else {
-
-        if (langs === 'uk') {
-          elem.genre_ids = 'Невідомо';
+       if (langs === 'uk') {
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Інші';
         }
         if (langs === 'ru') {
-          elem.genre_ids = 'Неизвестно';
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Другие';
         }
         if (langs === 'en') {
-          elem.genre_ids = 'Unknown';
+          elem.genre_ids =
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
       }
-      
-
-      // elem.genre_ids = 'Unknown';
-    }
+    } 
     //---------------------------------------------------
     if (elem.vote_average === 0) {
 
@@ -84,7 +65,6 @@ export default function handleMovieCard(movies) {
         elem.vote_average = 'Unknown';
 
       }
-      // elem.vote_average = 'Unknown';
     }
 
     if (elem.poster_path) {

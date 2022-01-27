@@ -116,6 +116,8 @@ export default class Auth {
   }
   //--------------------------------------------------------------------------
   addFilmToUser(auth, fullName, email, password, database, jsonFilm) {
+
+    console.log(jsonFilm)
     update(ref(database, 'users/' + auth.currentUser.uid), {
       filmList: jsonFilm,
     })
@@ -283,7 +285,7 @@ export default class Auth {
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        //   console.log('snapshot.val()=', snapshot.val());
+           console.log('snapshot.val()=', snapshot.val());
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
             arrFilm.push(film);
@@ -311,7 +313,10 @@ export default class Auth {
             if (filmInList === true) {
               return;
             } else {
+            
               arrFilm.push(film);
+              console.log(arrFilm)
+              console.log(JSON.stringify(arrFilm))
             }
           }
           this.addFilmToUser(
@@ -398,6 +403,7 @@ export default class Auth {
   }
   //-------------------------------------------------------------
   addQueueWatched(film) {
+    console.log("___film=",film)
     if (sessionStorage.getItem('logInUser') != null) {
       if (this.currentUser) {
         if (this.currentUser != null) {
