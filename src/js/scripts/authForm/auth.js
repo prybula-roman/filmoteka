@@ -90,7 +90,7 @@ export default class Auth {
   singOutUser(auth) {
     signOut(auth)
       .then(() => {
-        console.log("adsfj")
+        // console.log("adsfj")
         onHome();
         if (sessionStorage.getItem('logInUser')) {
           sessionStorage.removeItem('logInUser');
