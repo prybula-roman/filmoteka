@@ -12,7 +12,7 @@ import './js/scripts/modal';
 
 import './js/scripts/scrollToTop';
 
-import './js/scripts/swiper';
+
 
 import './js/scripts/toggle-theme';
 
@@ -21,6 +21,8 @@ import './js/scripts/filter';
 import './js/scripts/team-modal';
 
 import './js/scripts/localization';
+
+import './js/scripts/swiper';
 
 import './js/scripts/year-option';
 

@@ -4,6 +4,11 @@ const apiGenreData = new FetchGenre();
 
 function handleModalMovieCard(film) {
 
+  if (film.genre_ids.length = 1) {
+    film.genre_ids = apiGenreData
+    .ganreTranspiler(film.genre_ids)
+  }
+
   if (film.genre_ids.length  > 1) {
     film.genre_ids = apiGenreData
     .ganreTranspiler(film.genre_ids)

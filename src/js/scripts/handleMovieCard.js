@@ -1,5 +1,7 @@
 import FetchGenre from '../API/fetchGenre';
 
+import { langs } from './localization';
+
 const apiGenreData = new FetchGenre();
 
 export default function handleMovieCard(movies) {
@@ -11,12 +13,24 @@ export default function handleMovieCard(movies) {
     if (elem.release_date) {
       elem.release_date = elem.release_date.slice(0, 4);
     } else {
-      elem.release_date = 'Unknown';
+
+         if (langs === 'uk') {
+          elem.release_date = 'Невідомо';
+        }
+        if (langs === 'ru') {
+          elem.release_date = 'Неизвестно';
+        }
+        if (langs === 'en') {
+          elem.release_date = 'Unknown';
+        }
+
+
+      // elem.release_date = 'Unknown';
     }
     //----------------------------------------------------
     if (typeof elem.genre_ids === 'string') {
       let bufArr = elem.genre_ids.split(',');
-      console.log('bufArr=', bufArr);
+      console.log('bufArr=', (bufArr));
       elem.genre_ids = bufArr;
       console.log("elem.genre_ids=",elem.genre_ids)
     }
@@ -26,14 +40,51 @@ export default function handleMovieCard(movies) {
     if (elem.genre_ids.length > 0 && elem.genre_ids.length < 3) {
       elem.genre_ids = apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ');
     } else if (elem.genre_ids.length > 2) {
+
+      //  if (langs === 'uk') {
+      //     elem.genre_ids =
+      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Інші';
+      //   }
+      //   if (langs === 'ru') {
+      //     elem.genre_ids =
+      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'другие';
+      //   }
+      //   if (langs === 'en') {
+      //     elem.genre_ids =
+      //   apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
+      // }
+
       elem.genre_ids =
-        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + 'Other';
+        apiGenreData.ganreTranspiler(elem.genre_ids).slice(0, 2).join(', ') + ', ' + '...';
     } else {
-      elem.genre_ids = 'Unknown';
+
+        if (langs === 'uk') {
+          elem.genre_ids = 'Невідомо';
+        }
+        if (langs === 'ru') {
+          elem.genre_ids = 'Неизвестно';
+        }
+        if (langs === 'en') {
+          elem.genre_ids = 'Unknown';
+      }
+      
+
+      // elem.genre_ids = 'Unknown';
     }
     //---------------------------------------------------
     if (elem.vote_average === 0) {
-      elem.vote_average = 'Unknown';
+
+       if (langs === 'uk') {
+          elem.vote_average = 'Невідомо';
+        }
+        if (langs === 'ru') {
+          elem.vote_average = 'Неизвестно';
+        }
+      if (langs === 'en') {
+        elem.vote_average = 'Unknown';
+
+      }
+      // elem.vote_average = 'Unknown';
     }
 
     if (elem.poster_path) {

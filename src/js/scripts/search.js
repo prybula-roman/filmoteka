@@ -8,11 +8,13 @@ import trailer from '../API/fetchTrailer';
 
 import FilmsStorage from './local-storage';
 
+
 // import {onSwiperNowPlayingMovies} from '../scripts/swiper'
 
 import { refs } from './refs';
 import { debounce } from 'lodash';
 import { onRenderPagination } from '../scripts/pagination';
+
 
 import FetchNowPlayingMovies from '../API/fetchNowPlayingMovies';
 import handleSwiperMovieCard from './handleSwiperMovieCard';
@@ -26,18 +28,14 @@ const filmsStorage = new FilmsStorage();
 
 refs.formEl.addEventListener('input', debounce(onSubmit, 500));
 
-onSwiperNowPlayingMovies();
-trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
-
 
 function onSwiperNowPlayingMovies() {
+
     fetchNowPlayingMovies.fetchNowPlaying().then(movies => {
 
-        console.log(movies)
         handleSwiperMovieCard(movies)
-    });
-
-    JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
+        
+        JSON.parse(localStorage.getItem('currentSwiperPage')).map(films => {
         films.results.forEach(({ id, poster_path, title, genre_ids }) => {
             const markupSwiper = ` <li class="swiper-slide"  id="${id}">
      
@@ -51,13 +49,18 @@ function onSwiperNowPlayingMovies() {
     <p class="swiper__name">${title}</p>
     <p class="swiper__genre">${genre_ids} </p>
     
-</li>`;
-
-            refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
+</li>`;        
+        refs.swiperEl.insertAdjacentHTML('beforeend', markupSwiper);
         });
+        });
+        
+        trailer.onPlayTrailer(document.querySelectorAll('.swiper-slide'));
     });
+
+    
 }
 
+onSwiperNowPlayingMovies();
 
 window.onload = function() {
     refs.bodyEl.style.overflow = 'hidden';
