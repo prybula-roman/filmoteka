@@ -17,13 +17,13 @@ import Notiflix from 'notiflix';
 export default class Form {
   //--->
   constructor() {
-    // console.log('I`m constructor of class Form');
+    // //console.log('I`m constructor of class Form');
     /////////////////////////////////////////
   } //<----
 
   ///////////////////////////////////////////////////
   btnLogOutClicked(auth) {
-    console.log('auth=', auth);
+    //console.log('auth=', auth);
     const newAuth = new Auth(auth.name, auth.email, auth.password);
     newAuth.singOutUser(newAuth.auth);
   }
@@ -31,7 +31,7 @@ export default class Form {
   btnLoginClicked() {
     refs.GLOBAL_IS_LOG_FORM = true;
     refs.GLOBAL_IS_REG_FORM = false;
-    console.log('this.nameAreaVal=', this.nameAreaVal);
+    //console.log('this.nameAreaVal=', this.nameAreaVal);
     if (this.validateForm(this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal)) {
       const newAuth = new Auth();
       newAuth.loginUser(newAuth.auth, this.nameAreaVal, this.mailAreaVal, this.passwordAreaVal);
@@ -91,9 +91,9 @@ export default class Form {
   }
   /////////////////////////////////////
   validateForm(fullName, email, pass) {
-    // console.log(fullName);
-    // console.log(email);
-    // console.log(pass);
+    // //console.log(fullName);
+    // //console.log(email);
+    // //console.log(pass);
     if (refs.GLOBAL_IS_LOG_FORM) {
       if (this.validEmail(email) && this.validPasword(pass)) {
         return true;

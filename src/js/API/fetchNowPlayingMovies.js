@@ -14,7 +14,7 @@ export default class FetchNowPlayingMovies {
         return await fetch(url)
         .then(res => {
             this.incrementPage();
-          // console.log(res.json())
+          // //console.log(res.json())
             return res.json();
         })
     }

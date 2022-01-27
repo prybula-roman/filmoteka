@@ -54,12 +54,12 @@ export function onBackdropClick(event) {
 }
 
 function onOpenModal(e) {
-  console.log("onOpenModal()----------------->")
+  //console.log("onOpenModal()----------------->")
   
   e.preventDefault();
   if(refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE){
-    Notiflix.Notify.failure("refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE -->return")
-    console.log("return from onOpenModal()<----------------")
+   // Notiflix.Notify.failure("refs.GLOBAL_IS_LIB || refs.GLOBAL_IS_QUE -->return")
+    //console.log("return from onOpenModal()<----------------")
     return;}
 
   if (currentTheme === 'dark-theme') {
@@ -132,7 +132,7 @@ function onOpenModal(e) {
         });
         //-------------------------------------------------------------
         btnQueue.addEventListener('click', e => {
-          console.log('e=', e);
+          //console.log('e=', e);
           if (
             btnQueue.textContent === refs.nameBtnDelQueue ||
             btnQueue.textContent === refs.nameBtnDelQueueRu ||
@@ -148,6 +148,6 @@ function onOpenModal(e) {
       }
     });
   });
-  console.log("onOpenModal()<----------------")
+  //console.log("onOpenModal()<----------------")
 }
 export { onOpenModal };

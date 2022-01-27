@@ -63,7 +63,7 @@ config.btnReg.addEventListener('click', () => {
 
 config.btnLogIn.addEventListener('click', () => {
   let keys = Object.keys(localStorage);
-  console.log('keys=', keys);
+  //console.log('keys=', keys);
   for (let key of keys) {
     if (key === 'authorise') {
     }
@@ -91,7 +91,7 @@ config.btnLogIn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////
 btnCloseForm.addEventListener('click', () => {
-  // console.log('click');
+  // //console.log('click');
   userForm.classList.toggle('visually-hidden');
 });
 /////////////////////////////////////////////////
@@ -102,7 +102,7 @@ btnSubmit.addEventListener('click', e => {
     btnSubmit.textContent === 'Зареєструватись' ||
     btnSubmit.textContent === 'Зарегистрироваться'
   ) {
-    console.log('Registr');
+    //console.log('Registr');
     const form = new Form();
     form.btnRegClicked();
   }
@@ -120,7 +120,7 @@ btnSubmit.addEventListener('click', e => {
 //////////////////////надо потерять это в auth////////////////////////////////
 
 export function btnAddFilmClicked(film) {
-  console.log('btnAddFilmClicked()');
+  //console.log('btnAddFilmClicked()');
   if (sessionStorage.getItem('logInUser') != null) {
     const auth = new Auth();
     auth.addToWatched(film);
@@ -142,13 +142,13 @@ export function btnAddFilmClicked(film) {
 }
 
 export function btnDelFilmClicked(film) {
-  console.log('btnDelFilmClicked()');
+  //console.log('btnDelFilmClicked()');
   const auth = new Auth();
   auth.delFilmWatched(film);
 }
 
 export function btnAddQueueClicked(film) {
-  console.log('btnAddQueueClicked()');
+  //console.log('btnAddQueueClicked()');
   if (sessionStorage.getItem('logInUser') != null) {
     const auth = new Auth();
     auth.addQueueWatched(film);
@@ -170,7 +170,7 @@ export function btnAddQueueClicked(film) {
 }
 
 export function btnDelQueueClicked(film) {
-  console.log('btnDelQueueClicked()');
+  //console.log('btnDelQueueClicked()');
   const auth = new Auth();
   auth.delQueueWatched(film);
 }
@@ -180,7 +180,7 @@ export function autoLogin() {
     for (let i = 0; i < localStorage.length; i++) {
       if (localStorage.key(i) === 'authorise') {
         const rez = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        console.log('rez=', rez);
+        //console.log('rez=', rez);
         const auth = new Auth();
         // newAuth.loginUser(newAuth.auth, rez.name, rez.email, rez.password)
       }

@@ -29,9 +29,9 @@ export default function handleMovieCardLS(movies) {
     // }
     // if (refs.GLOBAL_IS_QUE || refs.GLOBAL_IS_LIB) {
     //        let bufArr = film.genre_ids.split(',');
-    //        console.log('bufArr=', (bufArr));
+    //        //console.log('bufArr=', (bufArr));
     //        film.genre_ids = bufArr;
-    //        console.log("film.genre_ids=",film.genre_ids)
+    //        //console.log("film.genre_ids=",film.genre_ids)
     //      }
 
 

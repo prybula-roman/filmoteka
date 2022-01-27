@@ -26,7 +26,7 @@ export default class Auth {
     this.db = getDatabase(this.fbase);
     this.currentUser = JSON.parse(sessionStorage.getItem('logInUser'));
 
-    //    console.log('this.currentUser');
+    //    //console.log('this.currentUser');
   }
   get database() {
     return this.db;
@@ -90,6 +90,7 @@ export default class Auth {
   singOutUser(auth) {
     signOut(auth)
       .then(() => {
+        console.log("adsfj")
         onHome();
         if (sessionStorage.getItem('logInUser')) {
           sessionStorage.removeItem('logInUser');
@@ -171,7 +172,7 @@ export default class Auth {
         const btnQueueFilm = document.querySelector('.currentLang-addQueue');
 
         // btnQueueFilm.innerHTML = refs.nameBtnDelQueue;
-        console.log('btnQueueFilm=', btnQueueFilm);
+        //console.log('btnQueueFilm=', btnQueueFilm);
         if (
           btnQueueFilm.textContent === refs.nameBtnDelQueue ||
           btnQueueFilm.textContent === refs.nameBtnDelQueueUa ||
@@ -216,12 +217,12 @@ export default class Auth {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(resp => {
-        console.log('resp=', resp);
+        //console.log('resp=', resp);
         //----------------------------------------------
         get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/name')).then(snapshot => {
           let arrFilm = [];
           if (snapshot.exists()) {
-            console.log('snapshot.val()=', snapshot.val());
+            //console.log('snapshot.val()=', snapshot.val());
             const user = {
               name: fullName,
               email: email,
@@ -284,7 +285,7 @@ export default class Auth {
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/filmList'))
       .then(snapshot => {
         let arrFilm = [];
-        //   console.log('snapshot.val()=', snapshot.val());
+        //   //console.log('snapshot.val()=', snapshot.val());
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
             arrFilm.push(film);
@@ -325,7 +326,7 @@ export default class Auth {
           );
         } else {
           Notiflix.Notify.info('No data available');
-          //console.log('No data available');
+          ////console.log('No data available');
         }
       })
       .catch(error => {
@@ -335,7 +336,7 @@ export default class Auth {
   }
   //---------------------------------------------------------------------------
   delFilmWatched(film) {
-    console.log('delFilmWatched(film)');
+    //console.log('delFilmWatched(film)');
     if (sessionStorage.getItem('logInUser') != null) {
       if (this.currentUser) {
         if (this.currentUser != null) {
@@ -352,7 +353,7 @@ export default class Auth {
         let arrFilm = [];
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
-            console.log(snapshot.val() === '[]');
+            //console.log(snapshot.val() === '[]');
           } else {
             arrFilm = JSON.parse(snapshot.val());
 
@@ -368,9 +369,9 @@ export default class Auth {
                 }
                 //
                 ///---------------
-                // console.log('refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
+                // //console.log('refs.GLOBAL_IS_LIB=', refs.GLOBAL_IS_LIB);
                 if (refs.GLOBAL_IS_LIB === true) {
-                  // console.log('film.id=', film.id);
+                  // //console.log('film.id=', film.id);
                   // document.getElementById(`${film.id}`).remove();
                   onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
@@ -389,7 +390,7 @@ export default class Auth {
             JSON.stringify(arrFilm),
           );
         } else {
-          console.log('Not data available');
+          //console.log('Not data available');
         }
       })
       .catch(error => {
@@ -426,7 +427,7 @@ export default class Auth {
     get(ref(this.db, 'users/' + this.auth.currentUser.uid + '/queueList'))
       .then(snapshot => {
         let arrFilm = [];
-        console.log('snapshot.val()=', snapshot.val());
+        //console.log('snapshot.val()=', snapshot.val());
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
             arrFilm.push(film);
@@ -457,7 +458,7 @@ export default class Auth {
               arrFilm.push(film);
             }
           }
-          console.log('arrFilm=', arrFilm);
+          //console.log('arrFilm=', arrFilm);
           this.addFilmToQueue(
             this.auth,
             this.currentUser.name,
@@ -467,7 +468,7 @@ export default class Auth {
             JSON.stringify(arrFilm),
           );
         } else {
-          console.log('No data available');
+          //console.log('No data available');
         }
       })
       .catch(error => {
@@ -477,7 +478,7 @@ export default class Auth {
   }
   //------------------------------------------------
   delQueueWatched(film) {
-    console.log('delQueueWatched()');
+    //console.log('delQueueWatched()');
     if (sessionStorage.getItem('logInUser') != null) {
       if (this.currentUser) {
         if (this.currentUser != null) {
@@ -494,7 +495,7 @@ export default class Auth {
         let arrFilm = [];
         if (snapshot.exists()) {
           if (snapshot.val() === '[]') {
-            console.log(snapshot.val() === '[]');
+            //console.log(snapshot.val() === '[]');
           } else {
             arrFilm = JSON.parse(snapshot.val());
             arrFilm.forEach((item, index, arr) => {
@@ -507,7 +508,7 @@ export default class Auth {
                   }
                 }
                 // onCloseModal(); //закрыть модалку
-                console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
+                //console.log('refs.GLOBAL_IS_QUE', refs.GLOBAL_IS_QUE);
                 if (refs.GLOBAL_IS_QUE === true) {
                   onCloseModal(); //закрыть модалку
                   document.getElementById(`${film.id}`).remove();
@@ -525,7 +526,7 @@ export default class Auth {
             JSON.stringify(arrFilm),
           );
         } else {
-          console.log('Not data available');
+          //console.log('Not data available');
         }
       })
       .catch(error => {
@@ -537,7 +538,7 @@ export default class Auth {
 //------------------------------------------------------------------------
   findFilm(film, btn, dataTable) {
     if (sessionStorage.getItem('logInUser') != null) {
-      console.log('dataTable=', dataTable);
+      //console.log('dataTable=', dataTable);
       get(ref(this.db, 'users/' + this.auth.currentUser.uid + dataTable))
         .then(snapshot => {
           let arrFilm = [];

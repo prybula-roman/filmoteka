@@ -15,7 +15,7 @@ const getMoviesData = async function (promise) {
         filmArr.push(obj);
       });
     })
-    .catch(er => console.log(er) );
+    .catch(er => //console.log(er) );
   return filmArr;
 };
 

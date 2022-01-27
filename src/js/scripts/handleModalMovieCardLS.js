@@ -5,7 +5,7 @@ import { refs } from './refs';
 const apiGenreData = new FetchGenre();
 
 function handleModalMovieCardLS(film) {
-console.log(film)
+//console.log(film)
 //   if (film.genre_ids.length === 1) {
 //     film.genre_ids = apiGenreData
 //     .ganreTranspiler(film.genre_ids)

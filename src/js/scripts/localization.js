@@ -51,8 +51,8 @@ function setLanguageData(current) {
 }
 
 export function changeModalLanguage() {
-  console.log("changeModalLanguage()-------------->")
-  console.log("langs=",langs)
+  //console.log("changeModalLanguage()-------------->")
+  //console.log("langs=",langs)
   const popularity = document.querySelector('.currentLang-popularity');
   const genres = document.querySelector('.currentLang-genres');
   const votes = document.querySelector('.currentLang-votes');
@@ -91,7 +91,7 @@ export function changeModalLanguage() {
     addWatched.textContent = `${modalLang.addWatched.en}`;
     addQueue.textContent = `${modalLang.addQueue.en}`;
   }
-  console.log("changeModalLanguage()-------------->")
+  //console.log("changeModalLanguage()-------------->")
 }
 
 export { langs};
