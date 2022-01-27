@@ -24,6 +24,10 @@
   color: $dark-grey-color;
 }
 
+.current-rights {
+  margin: 0 5px;
+}
+
 .footer__br {
   @media screen and (min-width: $tablet) {
     display: none;
