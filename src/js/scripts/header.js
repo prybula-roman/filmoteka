@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import onRenderPopularMoviesMarkup from './search';
-
+import {onBackdropClick,onOpenModal} from './modal';
 //////////////////////roman/////////////
 import filmCard from '../templates/preview_card.hbs';
 import handleMovieCard from './handleMovieCard';
@@ -13,6 +13,16 @@ import {
 } from 'firebase/auth';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Auth from './authForm/auth';
+import movieCard from '../templates/modal.hbs';
+import { handleModalMovieCard } from './handleModalMovieCard';
+import { changeModalLanguage } from './localization';
+import {
+  btnAddFilmClicked,
+  btnDelFilmClicked,
+  btnDelQueueClicked,
+  btnAddQueueClicked,
+} from './authForm/authentic';
+import { langs } from './localization';
 ////////////////////////////////////////
 
 refs.myLibEl.addEventListener('click', onMyLibrary);
@@ -107,10 +117,102 @@ function renderLibrary() {
         } else {
           refs.noMoviesEl.classList.add('visually-hidden');
           arrFilm = JSON.parse(snapshot.val());
+          
 
           listCards.innerHTML = '';
           listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
           //listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
+          //------------------------------>
+          
+          refs.openModalEl.addEventListener('click', /*onOpenModal*/(e)=>{
+            console.log("refs.openModalEl  clicked")
+            const currentFilmId = Number(e.target.closest('li').id);
+            console.log("currentFilmId=",currentFilmId);
+arrFilm.forEach(film=>{
+  if (currentFilmId === film.id) {
+    let markupModal = null;
+    markupModal = movieCard(handleModalMovieCard(film));
+    refs.modalmarkupEl.innerHTML = '';
+    refs.modalmarkupEl.insertAdjacentHTML('beforeend', markupModal);
+    refs.bodyEl.classList.add('show-modal');
+    changeModalLanguage();
+
+///////////////////////Не трогать, сам уберу  p.s. Роман///////////////////////////////////////////////////
+        //--------------------------------------------------------------
+        let btnAdd = document.querySelector('.currentLang-addWatched');
+        btnAdd.innerHTML = refs.nameBtnAddWatch;
+        let btnQueue = document.querySelector('.currentLang-addQueue');
+        btnQueue.innerHTML = refs.nameBtnAddQueue;
+
+        // btnAdd.innerHTML = refs.nameBtnAddWatch;
+        if (langs === 'ru') {
+          btnAdd.textContent = refs.nameBtnAddWatchRu;
+        }
+        if (langs === 'uk') {
+          btnAdd.textContent = refs.nameBtnAddWatchUa;
+        }
+        if (langs === 'en') {
+          btnAdd.textContent = refs.nameBtnAddWatch;
+        }
+        // let btnQueue = document.querySelector('.currentLang-addQueue');
+        // btnQueue.innerHTML = refs.nameBtnAddQueue;
+
+        if (langs === 'ru') {
+          btnQueue.textContent = refs.nameBtnAddQueueRu;
+        }
+        if (langs === 'uk') {
+          btnQueue.textContent = refs.nameBtnAddQueueUa;
+        }
+        if (langs === 'en') {
+          btnQueue.textContent = refs.nameBtnAddQueue;
+        }
+
+        const newAuth = new Auth();
+        //------------------------------------------------
+        newAuth.findFilm(film, btnAdd, `/filmList`);
+        newAuth.findFilm(film, btnQueue, `/queueList`);
+        //--------------------------------------------------------
+        btnAdd.addEventListener('click', () => {
+          if (
+            btnAdd.textContent === refs.nameBtnDelWatch ||
+            btnAdd.textContent === refs.nameBtnDelWatchRu ||
+            btnAdd.textContent === refs.nameBtnDelWatchUa
+          ) {
+            btnDelFilmClicked(film);
+          } else {
+            btnAddFilmClicked(film);
+          }
+        });
+        //-------------------------------------------------------------
+        btnQueue.addEventListener('click', e => {
+          console.log('e=', e);
+          if (
+            btnQueue.textContent === refs.nameBtnDelQueue ||
+            btnQueue.textContent === refs.nameBtnDelQueueRu ||
+            btnQueue.textContent === refs.nameBtnDelQueueUa
+          ) {
+            btnDelQueueClicked(film);
+          } else {
+            btnAddQueueClicked(film);
+          }
+        });
+        //--------------------------------------------------------------
+        ////////////////////конец p.s. Рома //////////////////////////////
+
+
+  }
+
+})
+
+
+
+
+          });
+          //<------------------------------
+          refs.backdropEl.addEventListener('click', /*onBackdropClick*/);
+          for(let i=0;i!=arrFilm.length;i++){
+            console.log(`arrFilm[${i}]=`,arrFilm[i])
+          }
           console.log('renderLibrary()  arrFilm=', arrFilm);
         }
       } else {

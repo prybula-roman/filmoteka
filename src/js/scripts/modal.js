@@ -46,7 +46,7 @@ export function onCloseModal() {
   refs.modalEl.classList.add('js-backdrop');
 }
 
-function onBackdropClick(event) {
+export function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     onCloseModal();
   }
@@ -66,8 +66,6 @@ function onOpenModal(e) {
   if (e.target.classList.value === 'movies__thumb') {
     return;
   }
-
-  
 
   const currentFilmId = Number(e.target.closest('li').id);
   return JSON.parse(localStorage.getItem('currentPage')).map(films => {
