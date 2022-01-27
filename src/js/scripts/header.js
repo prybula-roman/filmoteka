@@ -108,6 +108,7 @@ function renderLibrary() {
 
           listCards.innerHTML = '';
           listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
+          //listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
           console.log('renderLibrary()  arrFilm=', arrFilm);
         }
       } else {
@@ -140,7 +141,6 @@ function renderQueue() {
         if (!refs.queueEl.classList.contains('btn-activ')) {
           refs.queueEl.classList.add('btn-activ');
         }
-
         //----------------------------------
         const listCards = document.querySelector('.movies');
         if (JSON.parse(snapshot.val()).length === 0) {
@@ -153,6 +153,7 @@ function renderQueue() {
 
           listCards.innerHTML = '';
           listCards.insertAdjacentHTML('beforeend', filmCard(handleMovieCard(arrFilm)));
+        // listCards.insertAdjacentHTML('beforeend', filmCard(arrFilm));
           console.log('renderQueue()  arrFilm=', arrFilm);
         }
       } else {
