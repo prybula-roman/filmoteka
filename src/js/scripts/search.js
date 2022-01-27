@@ -90,7 +90,7 @@ export function onRenderPopularMoviesMarkup(e) {
         .fetchPopular()
         .then(film => {
             filmsStorage.addToCurrent(film.results);
-            
+            console.log("*****film.results=",film.results)
             const markup = filmCard(handleMovieCard(film.results));
             refs.galleryEl.innerHTML = markup;
             trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
@@ -100,7 +100,6 @@ export function onRenderPopularMoviesMarkup(e) {
         .catch(error => {
             popularMovie.fetchPopular().then(film => {
                 filmsStorage.addToCurrent(film.results);
-
                 const markup = filmCard(handleMovieCard(film.results));
                 refs.galleryEl.innerHTML = markup;
                 trailer.onPlayTrailer(document.querySelectorAll('.movies__playBtn'));
