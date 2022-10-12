@@ -17,6 +17,7 @@ import { refs } from '../refs';
 import { langs } from '../localization';
 import Notiflix from 'notiflix';
 
+//define class
 export default class Auth {
   constructor() {
     //--->
