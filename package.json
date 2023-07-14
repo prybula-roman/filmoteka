@@ -6,11 +6,11 @@
   "homepage": "https://KurbatovAS.github.io/project6",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project6/"
+    "build": "parcel build src/*.html --public-url /filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KurbatovAS/project6.git"
+    "url": "git+https://github.com/prybula-roman/filmoteka.git"
   },
   "keywords": [],
   "author": "Roman Prybula <roman.bismail@gmail.com>",
