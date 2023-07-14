@@ -13,7 +13,7 @@
     "url": "git+https://github.com/KurbatovAS/project6.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Roman Prybula <roman.bismail@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
@@ -33,7 +33,7 @@
     "firebase": "^9.6.2",
     "handlebars": "^4.7.7",
     "lodash.throttle": "^4.1.1",
-    "notiflix": "^3.2.2",
+    "notiflix": "^3.2.6",
     "swiper": "^7.4.1",
     "trim": "^1.0.1"
   }
